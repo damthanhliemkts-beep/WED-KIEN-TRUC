@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Giới thiệu Kiến trúc sư &amp; Quy trình thiết kế — Living Blueprint. Portfolio cá nhân thực hành kiến trúc và nội thất tối giản đương đại.">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Giới thiệu &amp; Quy trình — Living Blueprint</title>
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="profile">
+  <meta property="og:title" content="Giới thiệu &amp; Quy trình — Living Blueprint">
+  <meta property="og:description" content="Portfolio cá nhân kiến trúc sư thực hành kiến trúc và nội thất tối giản đương đại.">
+  <meta property="og:locale" content="vi_VN">
+
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23F5F3EF'/%3E%3Cline x1='8' y1='8' x2='8' y2='22' stroke='%231A1916' stroke-width='2'/%3E%3Cline x1='8' y1='22' x2='15' y2='22' stroke='%231A1916' stroke-width='2'/%3E%3Cline x1='18' y1='8' x2='18' y2='22' stroke='%231A1916' stroke-width='2'/%3E%3Cpath d='M18 8 L25 8 Q28 8 28 12 Q28 15 18 16' stroke='%231A1916' stroke-width='1.5' fill='none'/%3E%3Cpath d='M18 16 L26 16 Q30 16 30 20 Q30 24 18 24' stroke='%231A1916' stroke-width='1.5' fill='none'/%3E%3Cline x1='8' y1='28' x2='28' y2='28' stroke='%23A8865C' stroke-width='1'/%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+  <!-- Foundation CSS -->
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/typography.css">
+  <link rel="stylesheet" href="css/layout.css">
+
+  <!-- Global Components CSS — Phase 1 -->
+  <link rel="stylesheet" href="css/components/navbar.css">
+  <link rel="stylesheet" href="css/components/drawer.css">
+  <link rel="stylesheet" href="css/components/cursor.css">
+  <link rel="stylesheet" href="css/components/footer.css">
+  <link rel="stylesheet" href="css/components/loader.css">
+
+  <!-- Page CSS — Phase 5 -->
+  <link rel="stylesheet" href="css/pages/about.css">
+</head>
+
+<body>
+
+  <!-- ── 1. PAGE LOADER ── -->
+  <div class="page-loader" aria-hidden="false">
+    <div class="page-loader__content">
+      <img src="assets/svg/logo.svg" alt="" class="page-loader__logo" width="48" height="48">
+      <span class="page-loader__brand">Living Blueprint</span>
+      <div class="page-loader__line-wrap" aria-hidden="true">
+        <div class="page-loader__line"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 2. CUSTOM RING CURSOR ── -->
+  <div class="custom-cursor is-hidden" aria-hidden="true">
+    <div class="custom-cursor__dot"></div>
+    <div class="custom-cursor__ring">
+      <span class="custom-cursor__label">XEM</span>
+    </div>
+  </div>
+
+  <!-- ── 3. MOBILE FULLSCREEN DRAWER ── -->
+  <aside id="mobile-nav-drawer" class="mobile-drawer" aria-label="Menu di động" aria-hidden="true">
+    <div class="mobile-drawer__header">
+      <a href="index.html" class="mobile-drawer__brand">
+        <img src="assets/svg/logo.svg" alt="" width="28" height="28">
+        <span class="mobile-drawer__brand-title">Living Blueprint</span>
+      </a>
+      <button class="mobile-drawer__close" type="button" aria-label="Đóng menu">
+        <img src="assets/svg/icons/close.svg" alt="" class="mobile-drawer__close-icon" width="18" height="18">
+      </button>
+    </div>
+
+    <nav class="mobile-drawer__nav" aria-label="Liên kết điều hướng di động">
+      <ul class="mobile-drawer__list" role="list">
+        <li class="mobile-drawer__item">
+          <a href="projects.html" class="mobile-drawer__link">
+            <span class="mobile-drawer__num">01</span>
+            <span class="mobile-drawer__text">Dự án</span>
+          </a>
+        </li>
+        <li class="mobile-drawer__item">
+          <a href="about.html" class="mobile-drawer__link is-active">
+            <span class="mobile-drawer__num">02</span>
+            <span class="mobile-drawer__text">Giới thiệu</span>
+          </a>
+        </li>
+        <li class="mobile-drawer__item">
+          <a href="about.html#process" class="mobile-drawer__link">
+            <span class="mobile-drawer__num">03</span>
+            <span class="mobile-drawer__text">Quy trình</span>
+          </a>
+        </li>
+        <li class="mobile-drawer__item">
+          <a href="contact.html" class="mobile-drawer__link">
+            <span class="mobile-drawer__num">04</span>
+            <span class="mobile-drawer__text">Liên hệ</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="mobile-drawer__footer">
+      <span class="mobile-drawer__meta">Trao đổi ý tưởng</span>
+      <a href="mailto:hello@livingblueprint.demo" class="mobile-drawer__email">hello@livingblueprint.demo</a>
+      <span class="mobile-drawer__note">Portfolio cá nhân kiến trúc sư · Mọi đồ án là ý niệm sáng tạo mẫu.</span>
+    </div>
+  </aside>
+
+  <!-- ── PAGE WRAPPER ── -->
+  <div class="page-wrapper">
+
+    <a href="#main-content" class="sr-only">Bỏ qua điều hướng</a>
+
+    <!-- ── 4. HEADER & NAVBAR ── -->
+    <header role="banner">
+      <nav class="site-navbar" aria-label="Điều hướng chính">
+        <div class="site-navbar__inner">
+          <a href="index.html" class="site-navbar__brand" aria-label="Living Blueprint — Trang chủ">
+            <img src="assets/svg/logo.svg" alt="" class="site-navbar__logo-icon" width="32" height="32">
+            <div class="site-navbar__brand-text">
+              <span class="site-navbar__brand-title">Living Blueprint</span>
+              <span class="site-navbar__brand-sub">Kiến trúc &amp; Nội thất</span>
+            </div>
+          </a>
+
+          <div class="site-navbar__nav">
+            <ul class="site-navbar__links" role="list">
+              <li><a href="projects.html" class="site-navbar__link">Dự án</a></li>
+              <li><a href="about.html" class="site-navbar__link is-active" aria-current="page">Giới thiệu</a></li>
+              <li><a href="about.html#process" class="site-navbar__link">Quy trình</a></li>
+              <li><a href="contact.html" class="site-navbar__link">Liên hệ</a></li>
+            </ul>
+
+            <a href="contact.html" class="site-navbar__cta" aria-label="Gửi yêu cầu tư vấn">
+              <span>Tư vấn</span>
+              <span class="site-navbar__cta-plus" aria-hidden="true">+</span>
+            </a>
+          </div>
+
+          <button class="site-navbar__toggle" type="button" aria-label="Mở menu điều hướng di động" aria-expanded="false" aria-controls="mobile-nav-drawer">
+            <span class="site-navbar__toggle-line"></span>
+            <span class="site-navbar__toggle-line"></span>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <!-- ── MAIN CONTENT ── -->
+    <main id="main-content">
+
+      <!-- ── SECTION 01: GIỚI THIỆU KIẾN TRÚC SƯ ── -->
+      <section class="about-hero" aria-label="Giới thiệu kiến trúc sư">
+        <div class="container">
+          <div class="about-hero__grid">
+            
+            <!-- Portrait Placeholder Container -->
+            <div class="about-portrait-wrap">
+              <div class="about-portrait" role="img" aria-label="Vị trí ảnh chân dung kiến trúc sư" data-cursor="view" data-cursor-label="CHÂN DUNG">
+                <span class="about-portrait__badge">Hồ sơ cá nhân · Kiến trúc sư</span>
+                
+                <!-- Architectural watermark icon -->
+                <svg class="about-portrait__watermark" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <circle cx="50" cy="50" r="48" stroke="#A8865C" stroke-width="1" stroke-dasharray="4,4"/>
+                  <rect x="25" y="25" width="50" height="50" stroke="#F5F3EF" stroke-width="1.5"/>
+                  <line x1="25" y1="25" x2="75" y2="75" stroke="#A8865C" stroke-width="1"/>
+                  <line x1="75" y1="25" x2="25" y2="75" stroke="#A8865C" stroke-width="1"/>
+                </svg>
+
+                <div class="about-portrait__notice-box">
+                  <span class="about-portrait__notice-title">Khung ảnh chân dung</span>
+                  <p class="about-portrait__notice-text">
+                    Vị trí ảnh chân dung kiến trúc sư — Sẽ được cập nhật khi có ảnh chính thức.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Intro Narrative -->
+            <div class="about-intro">
+              <span class="about-kicker">Portfolio Kiến trúc sư Cá nhân</span>
+              <h1 class="about-name">
+                Living Blueprint
+                <em>Kiến tạo từ ánh sáng &amp; khoảng lặng</em>
+              </h1>
+              <p class="about-bio">
+                Tôi là kiến trúc sư thực hành độc lập, chuyên sâu về thiết kế kiến trúc, sáng tạo không gian nội thất và nghiên cứu phát triển các ý niệm không gian đương đại.
+              </p>
+              <p class="about-bio" style="font-size: var(--text-body); color: var(--color-ink-muted);">
+                Trọng tâm thực hành hướng đến việc kiến tạo những nơi chốn cư ngụ tĩnh tại — nơi hình khối kiến trúc đối thoại hài hòa cùng khí hậu bản địa, và từng chi tiết nội thất được đúc kết từ sự tinh khiết của vật liệu tự nhiên.
+              </p>
+
+              <blockquote class="about-pullquote">
+                "Kiến trúc không phải hành vi chiếm đoạt cảnh quan, mà là sự dung hòa tinh tế giữa ánh sáng tự nhiên, xúc cảm vật liệu và tỷ lệ con người trước không gian."
+              </blockquote>
+
+              <p class="about-meta-note">
+                * Thông tin thực hành: Portfolio thể hiện các phương án ý niệm kiến trúc và nội thất do kiến trúc sư cá nhân nghiên cứu và định hình; không sử dụng danh xưng công ty nhiều nhân viên hay thông tin tiểu sử chưa qua xác minh.
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ── SECTION 02: TRIẾT LÝ THIẾT KẾ ── -->
+      <section class="philosophy-section" aria-label="Triết lý thiết kế kiến trúc">
+        <div class="container">
+          <div class="section-head">
+            <span class="section-kicker">Triết lý thực hành</span>
+            <h2 class="section-title">
+              Sự giao hòa giữa <em>Con người, Không gian, Vật liệu</em> &amp; <em>Ánh sáng</em>
+            </h2>
+          </div>
+
+          <div class="philosophy-grid" role="list">
+            <!-- Philosophy 1: Light & Space -->
+            <article class="philosophy-card" role="listitem">
+              <span class="philosophy-card__num">01 / Ánh sáng &amp; Khoảng lặng</span>
+              <h3 class="philosophy-card__title">Ánh sáng như chất liệu tạo hình</h3>
+              <p class="philosophy-card__desc">
+                Ánh sáng tự nhiên là yếu tố tiên quyết định hình cấu trúc không gian. Từng khẩu độ mở, lam chắn nắng và khoảng đệm hiên được tính toán để dẫn truyền nhịp điệu ánh sáng và bóng đổ thay đổi duyên dáng theo từng thời khắc trong ngày.
+              </p>
+            </article>
+
+            <!-- Philosophy 2: Honest Materials -->
+            <article class="philosophy-card" role="listitem">
+              <span class="philosophy-card__num">02 / Bản chất Vật liệu</span>
+              <h3 class="philosophy-card__title">Tính chân thực của vật liệu</h3>
+              <p class="philosophy-card__desc">
+                Tôn trọng xúc cảm bề mặt nguyên bản của đá tự nhiên, gỗ thô, bê tông trần, kính và kim loại ấm. Vật liệu được chọn lọc từ bối cảnh bản địa, giữ trọn vẻ mộc mạc và có khả năng lưu dấu thời gian một cách trang nhã.
+              </p>
+            </article>
+
+            <!-- Philosophy 3: Living Experience & Functionality -->
+            <article class="philosophy-card" role="listitem">
+              <span class="philosophy-card__num">03 / Công năng &amp; Trải nghiệm</span>
+              <h3 class="philosophy-card__title">Lấy con người làm trung tâm</h3>
+              <p class="philosophy-card__desc">
+                Đề cao tính công năng hợp lý, sự tiện nghi tinh tế và trải nghiệm sống an yên. Một công trình thành công là nơi người cư ngụ tìm thấy sự kết nối mật thiết với thiên nhiên và cảm nhận trọn vẹn sự che chở, bình yên trong tâm trí.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── SECTION 03: CHUYÊN MÔN THIẾT KẾ ── -->
+      <section class="disciplines-section" aria-label="Chuyên môn thiết kế">
+        <div class="container">
+          <div class="section-head">
+            <span class="section-kicker">Lĩnh vực hoạt động</span>
+            <h2 class="section-title">Chuyên môn <em>Thiết kế</em></h2>
+          </div>
+
+          <div class="disciplines-grid" role="list">
+            <!-- Discipline 1: Architecture -->
+            <div class="discipline-card" role="listitem">
+              <div>
+                <span class="discipline-card__badge">CHUYÊN MÔN 01</span>
+                <h3 class="discipline-card__title">Thiết kế Kiến trúc</h3>
+                <p class="discipline-card__desc">
+                  Nghiên cứu hình khối kiến trúc đương đại, thiết kế quy hoạch tổng mặt bằng, biệt thự pavilion, nhà ở tư nhân cao cấp và các không gian lưu trú gắn liền với cảnh quan thiên nhiên.
+                </p>
+              </div>
+              <div class="discipline-card__focus">
+                Trọng tâm: Tỷ lệ hình khối · Vi khí hậu · Hòa nhịp cảnh quan
+              </div>
+            </div>
+
+            <!-- Discipline 2: Interior -->
+            <div class="discipline-card" role="listitem">
+              <div>
+                <span class="discipline-card__badge">CHUYÊN MÔN 02</span>
+                <h3 class="discipline-card__title">Thiết kế Nội thất</h3>
+                <p class="discipline-card__desc">
+                  Thiết lập ngôn ngữ nội thất đồng nhất với vỏ bọc kiến trúc. Định hình bảng vật liệu xúc giác, thiết kế hệ đồ mộc riêng biệt và phối hợp ánh sáng nội vi tinh tế theo phong cách Minimal Luxury.
+                </p>
+              </div>
+              <div class="discipline-card__focus">
+                Trọng tâm: Tinh tế tối giản · Vật liệu tự nhiên · Chi tiết thủ công
+              </div>
+            </div>
+
+            <!-- Discipline 3: Concept & Spatial Development -->
+            <div class="discipline-card" role="listitem">
+              <div>
+                <span class="discipline-card__badge">CHUYÊN MÔN 03</span>
+                <h3 class="discipline-card__title">Phát triển Ý tưởng &amp; Giải pháp Không gian</h3>
+                <p class="discipline-card__desc">
+                  Khảo cứu luận đề thiết kế ban đầu, phân tích sơ đồ công năng luân chuyển, mô phỏng không gian 3D và tư vấn định hướng thẩm mỹ cho gia chủ trước khi triển khai các giai đoạn tiếp theo.
+                </p>
+              </div>
+              <div class="discipline-card__focus">
+                Trọng tâm: Luận đề ý niệm · Tối ưu công năng · Mô phỏng trực quan
+              </div>
+            </div>
+          </div>
+
+          <div class="discipline-disclaimer-box">
+            <strong>* Phạm vi dịch vụ:</strong> Website thể hiện năng lực sáng tạo và thiết kế ý tưởng kiến trúc — nội thất cá nhân. Kiến trúc sư không khẳng định cung cấp các dịch vụ xây dựng chuyên môn có điều kiện (như nhà thầu thi công trọn gói, chứng chỉ thẩm tra/giám sát thi công xây dựng) khi chưa được các cơ quan chức năng xác nhận theo quy định.
+          </div>
+        </div>
+      </section>
+
+      <!-- ── SECTION 04: PHƯƠNG PHÁP LÀM VIỆC ── -->
+      <section class="methodology-section" aria-label="Phương pháp làm việc của kiến trúc sư">
+        <div class="container">
+          <div class="section-head">
+            <span class="section-kicker">Cách thức tiếp cận</span>
+            <h2 class="section-title">Phương pháp <em>Làm việc</em></h2>
+          </div>
+
+          <div class="methodology-list" role="list">
+            <!-- Step 1 -->
+            <div class="methodology-item" role="listitem">
+              <span class="methodology-num">01</span>
+              <h3 class="methodology-name">Nghiên cứu bối cảnh</h3>
+              <p class="methodology-detail">
+                Khảo sát cẩn trọng hiện trạng khu đất, đánh giá độ dốc, hướng nắng, luồng gió tự nhiên, thảm thực vật bản địa và những nét đặc trưng văn hóa xung quanh công trình.
+              </p>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="methodology-item" role="listitem">
+              <span class="methodology-num">02</span>
+              <h3 class="methodology-name">Phân tích nhu cầu</h3>
+              <p class="methodology-detail">
+                Lắng nghe sâu sắc thói quen sinh hoạt, nhu cầu thẩm mỹ, quy mô gia đình và kỳ vọng về phong cách sống lâu dài của chủ nhân không gian.
+              </p>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="methodology-item" role="listitem">
+              <span class="methodology-num">03</span>
+              <h3 class="methodology-name">Tổ chức không gian</h3>
+              <p class="methodology-detail">
+                Quy hoạch luồng giao thông mạch lạc, phân tách rõ rệt giữa khu vực tĩnh và động, xóa nhòa ranh giới giữa nội thất và ngoại thất bằng các khoảng thở thiên nhiên.
+              </p>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="methodology-item" role="listitem">
+              <span class="methodology-num">04</span>
+              <h3 class="methodology-name">Khai thác vật liệu và ánh sáng</h3>
+              <p class="methodology-detail">
+                Lựa chọn tổ hợp vật liệu giàu tính xúc cảm, kết hợp các giải pháp đón nhận ánh sáng tự nhiên và bố trí ánh sáng nhân tạo để tạo chiều sâu cảm xúc cho từng gian phòng.
+              </p>
+            </div>
+
+            <!-- Step 5 -->
+            <div class="methodology-item" role="listitem">
+              <span class="methodology-num">05</span>
+              <h3 class="methodology-name">Phát triển giải pháp thiết kế</h3>
+              <p class="methodology-detail">
+                Chuyển hóa toàn bộ ý tưởng thành bộ bản vẽ ý niệm rõ ràng, phối cảnh không gian chân thực và giải pháp chi tiết đảm bảo tính khả thi cao nhất.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── SECTION 05: QUY TRÌNH THIẾT KẾ (5 GIAI ĐOẠN) ── -->
+      <section id="process" class="process-section" aria-label="Quy trình thiết kế 5 giai đoạn">
+        <div class="container">
+          <div class="process-header">
+            <span class="section-kicker">Lộ trình triển khai</span>
+            <h2 class="section-title">5 Giai đoạn <em>Hiện thực hóa Công trình</em></h2>
+          </div>
+
+          <div class="process-timeline" role="list">
+            <!-- Step 1 -->
+            <div class="process-step" role="listitem">
+              <div class="process-marker">
+                <span class="process-dot"></span>
+                <span class="process-step-num">GIAI ĐOẠN 01</span>
+              </div>
+              <h3 class="process-step-title">01. Khảo sát và tiếp nhận yêu cầu</h3>
+              <p class="process-step-desc">
+                Tiếp nhận thông tin sơ bộ từ gia chủ, khảo sát hiện trạng khu đất và cùng thống nhất định hướng bài toán thiết kế.
+              </p>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="process-step" role="listitem">
+              <div class="process-marker">
+                <span class="process-dot"></span>
+                <span class="process-step-num">GIAI ĐOẠN 02</span>
+              </div>
+              <h3 class="process-step-title">02. Nghiên cứu bối cảnh và phát triển ý tưởng</h3>
+              <p class="process-step-desc">
+                Phân tích vi khí hậu tự nhiên, hình thành ý niệm kiến trúc ban đầu và phác thảo các phương án mặt bằng công năng sơ bộ.
+              </p>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="process-step" role="listitem">
+              <div class="process-marker">
+                <span class="process-dot"></span>
+                <span class="process-step-num">GIAI ĐOẠN 03</span>
+              </div>
+              <h3 class="process-step-title">03. Hoàn thiện phương án kiến trúc và nội thất</h3>
+              <p class="process-step-desc">
+                Cụ thể hóa không gian 3D, lựa chọn bảng vật liệu chính, nghiên cứu ánh sáng và hoàn thiện giải pháp thiết kế tổng thể.
+              </p>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="process-step" role="listitem">
+              <div class="process-marker">
+                <span class="process-dot"></span>
+                <span class="process-step-num">GIAI ĐOẠN 04</span>
+              </div>
+              <h3 class="process-step-title">04. Triển khai hồ sơ thiết kế</h3>
+              <p class="process-step-desc">
+                Phát triển hệ thống bản vẽ ý niệm chi tiết, định vị kích thước, chỉ định vật liệu và các thông số hoàn thiện không gian.
+              </p>
+            </div>
+
+            <!-- Step 5 -->
+            <div class="process-step" role="listitem">
+              <div class="process-marker">
+                <span class="process-dot"></span>
+                <span class="process-step-num">GIAI ĐOẠN 05</span>
+              </div>
+              <h3 class="process-step-title">05. Đồng hành trong quá trình hiện thực hóa công trình</h3>
+              <p class="process-step-desc">
+                Hỗ trợ giải đáp chuyên môn, tư vấn tinh chỉnh vật liệu mẫu và đồng hành theo dõi sự hình thành trọn vẹn của công trình.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ── 5. EDITORIAL FOOTER ── -->
+    <footer class="site-footer" role="contentinfo">
+      <div class="site-footer__inner">
+
+        <div class="site-footer__hero">
+          <span class="site-footer__tagline">Portfolio Kiến trúc sư Cá nhân</span>
+          <h2 class="site-footer__headline">
+            Kiến trúc thở cùng <em>thiên nhiên</em>.<br>
+            Không gian trường tồn cùng <em>thời gian</em>.
+          </h2>
+        </div>
+
+        <div class="site-footer__grid">
+          <div class="site-footer__col">
+            <a href="index.html" class="site-footer__brand" aria-label="Living Blueprint — Trang chủ">
+              <img src="assets/svg/logo.svg" alt="" width="28" height="28">
+              <span class="site-footer__brand-title">Living Blueprint</span>
+            </a>
+            <p class="site-footer__desc">
+              Portfolio cá nhân kiến trúc sư thực hành kiến trúc và nội thất tối giản đương đại, chuyên sâu về biệt thự pavilion, không gian nghỉ dưỡng và nghiên cứu ý niệm không gian.
+            </p>
+          </div>
+
+          <div class="site-footer__col">
+            <h3 class="site-footer__col-title">Mục lục</h3>
+            <ul class="site-footer__list" role="list">
+              <li><a href="index.html" class="site-footer__link">Trang chủ</a></li>
+              <li><a href="projects.html" class="site-footer__link">Dự án tiêu biểu</a></li>
+              <li><a href="about.html" class="site-footer__link">Về kiến trúc sư</a></li>
+              <li><a href="about.html#process" class="site-footer__link">Quy trình thiết kế</a></li>
+              <li><a href="contact.html" class="site-footer__link">Liên hệ tư vấn</a></li>
+            </ul>
+          </div>
+
+          <div class="site-footer__col">
+            <h3 class="site-footer__col-title">Liên hệ</h3>
+            <div class="site-footer__info-item">
+              <span class="site-footer__info-label">Trao đổi trực tiếp</span>
+              <a href="mailto:inquiries@livingblueprint.demo" class="site-footer__info-value">inquiries@livingblueprint.demo</a>
+            </div>
+            <div class="site-footer__info-item">
+              <span class="site-footer__info-label">Bối cảnh thực hành</span>
+              <span class="site-footer__info-value">Hà Nội · Đà Nẵng · TP.HCM (Minh họa)</span>
+            </div>
+            <div class="site-footer__info-item">
+              <span class="site-footer__info-label">Thời gian làm việc</span>
+              <span class="site-footer__info-value">Thứ Hai — Thứ Sáu: 09:00 — 18:00 (GMT+7)</span>
+            </div>
+          </div>
+
+          <div class="site-footer__col">
+            <h3 class="site-footer__col-title">Chuyên môn</h3>
+            <ul class="site-footer__list" role="list">
+              <li><span class="site-footer__link">Thiết kế Kiến trúc</span></li>
+              <li><span class="site-footer__link">Thiết kế Nội thất</span></li>
+              <li><span class="site-footer__link">Phát triển Ý tưởng Không gian</span></li>
+              <li><span class="site-footer__link">Khảo cứu Vi khí hậu</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="site-footer__bottom">
+          <p class="site-footer__disclaimer">
+            <strong>Thông báo minh họa:</strong> Mọi đồ án kiến trúc, hình ảnh minh họa, địa danh,
+            tên gọi và thông số trên website đều là các ý niệm sáng tạo phục vụ mục đích trưng bày portfolio cá nhân kiến trúc sư.
+            Không cấu thành hợp đồng dịch vụ thương mại thực tế.
+          </p>
+
+          <div class="site-footer__actions">
+            <span class="site-footer__copyright">&copy; 2024 Living Blueprint</span>
+            <button class="site-footer__back-to-top" type="button" aria-label="Cuộn về đầu trang">
+              <span>Về đầu trang</span>
+              <span class="site-footer__back-to-top-arrow" aria-hidden="true">&uarr;</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </footer>
+
+  </div><!-- .page-wrapper -->
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

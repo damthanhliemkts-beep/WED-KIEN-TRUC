@@ -1,0 +1,147 @@
+{
+  "site": {
+    "brandTitle": "Living Blueprint",
+    "brandSub": "Kiến trúc & Nội thất",
+    "metaDescription": "Living Blueprint — Portfolio cá nhân kiến trúc sư thực hành kiến trúc & nội thất đương đại. Trải nghiệm biến đổi không gian kiến trúc 4 giai đoạn."
+  },
+  "home": {
+    "heroKicker": "LIVING BLUEPRINT · PORTFOLIO KIẾN TRÚC SƯ CÁ NHÂN",
+    "heroTitle": "Từ Nét Vẽ Đến Không Gian Sống",
+    "heroDesc": "Hành trình kiến tạo từ nét phác thảo ý niệm đến không gian cư ngụ tĩnh tại. Biệt thự pavilion, kiến trúc đương đại và ánh sáng tự nhiên.",
+    "heroNotice": "* Concurrent test notice #1",
+    "heroCta": "Khám phá công trình tiêu biểu",
+    "featuredKicker": "Công trình tuyển chọn",
+    "featuredTitle": "Kiến trúc & Nội thất"
+  },
+  "about": {
+    "portraitNotice": "Vị trí ảnh chân dung kiến trúc sư — Sẽ được cập nhật khi có ảnh chính thức.",
+    "kicker": "Portfolio Kiến trúc sư Cá nhân",
+    "name": "Living Blueprint",
+    "nameSub": "Kiến tạo từ ánh sáng & khoảng lặng",
+    "bio": "Tôi là kiến trúc sư thực hành độc lập, chuyên sâu về thiết kế kiến trúc, sáng tạo không gian nội thất và nghiên cứu phát triển các ý niệm không gian đương đại.",
+    "bioSub": "Trọng tâm thực hành hướng đến việc kiến tạo những nơi chốn cư ngụ tĩnh tại — nơi hình khối kiến trúc đối thoại hài hòa cùng khí hậu bản địa, và từng chi tiết nội thất được đúc kết từ sự tinh khiết của vật liệu tự nhiên.",
+    "pullquote": "\"Kiến trúc không phải hành vi chiếm đoạt cảnh quan, mà là sự dung hòa tinh tế giữa ánh sáng tự nhiên, xúc cảm vật liệu và tỷ lệ con người trước không gian.\"",
+    "metaNote": "* Thông tin thực hành: Portfolio thể hiện các phương án ý niệm kiến trúc và nội thất do kiến trúc sư cá nhân nghiên cứu và định hình; không sử dụng danh xưng công ty nhiều nhân viên hay thông tin tiểu sử chưa qua xác minh.",
+    "philosophyKicker": "Triết lý thực hành",
+    "philosophyTitle": "Sự giao hòa giữa Con người, Không gian, Vật liệu & Ánh sáng",
+    "philosophyCards": [
+      {
+        "num": "01 / Ánh sáng & Khoảng lặng",
+        "title": "Ánh sáng như chất liệu tạo hình",
+        "desc": "Ánh sáng tự nhiên là yếu tố tiên quyết định hình cấu trúc không gian. Từng khẩu độ mở, lam chắn nắng và khoảng đệm hiên được tính toán để dẫn truyền nhịp điệu ánh sáng và bóng đổ thay đổi duyên dáng theo từng thời khắc trong ngày."
+      },
+      {
+        "num": "02 / Bản chất Vật liệu",
+        "title": "Tính chân thực của vật liệu",
+        "desc": "Tôn trọng xúc cảm bề mặt nguyên bản của đá tự nhiên, gỗ thô, bê tông trần, kính và kim loại ấm. Vật liệu được chọn lọc từ bối cảnh bản địa, giữ trọn vẻ mộc mạc và có khả năng lưu dấu thời gian một cách trang nhã."
+      },
+      {
+        "num": "03 / Công năng & Trải nghiệm",
+        "title": "Lấy con người làm trung tâm",
+        "desc": "Đề cao tính công năng hợp lý, sự tiện nghi tinh tế và trải nghiệm sống an yên. Một công trình thành công là nơi người cư ngụ tìm thấy sự kết nối mật thiết với thiên nhiên và cảm nhận trọn vẹn sự che chở, bình yên trong tâm trí."
+      }
+    ],
+    "disciplinesKicker": "Lĩnh vực hoạt động",
+    "disciplinesTitle": "Chuyên môn Thiết kế",
+    "disciplinesCards": [
+      {
+        "badge": "CHUYÊN MÔN 01",
+        "title": "Thiết kế Kiến trúc",
+        "desc": "Nghiên cứu hình khối kiến trúc đương đại, thiết kế quy hoạch tổng mặt bằng, biệt thự pavilion, nhà ở tư nhân cao cấp và các không gian lưu trú gắn liền với cảnh quan thiên nhiên.",
+        "focus": "Trọng tâm: Tỷ lệ hình khối · Vi khí hậu · Hòa nhịp cảnh quan"
+      },
+      {
+        "badge": "CHUYÊN MÔN 02",
+        "title": "Thiết kế Nội thất",
+        "desc": "Thiết lập ngôn ngữ nội thất đồng nhất với vỏ bọc kiến trúc. Định hình bảng vật liệu xúc giác, thiết kế hệ đồ mộc riêng biệt và phối hợp ánh sáng nội vi tinh tế theo phong cách Minimal Luxury.",
+        "focus": "Trọng tâm: Tinh tế tối giản · Vật liệu tự nhiên · Chi tiết thủ công"
+      },
+      {
+        "badge": "CHUYÊN MÔN 03",
+        "title": "Phát triển Ý tưởng & Giải pháp Không gian",
+        "desc": "Khảo cứu luận đề thiết kế ban đầu, phân tích sơ đồ công năng luân chuyển, mô phỏng không gian 3D và tư vấn định hướng thẩm mỹ cho gia chủ trước khi triển khai các giai đoạn tiếp theo.",
+        "focus": "Trọng tâm: Luận đề ý niệm · Tối ưu công năng · Mô phỏng trực quan"
+      }
+    ],
+    "disciplinesDisclaimer": "* Phạm vi dịch vụ: Website thể hiện năng lực sáng tạo và thiết kế ý tưởng kiến trúc — nội thất cá nhân. Kiến trúc sư không khẳng định cung cấp các dịch vụ xây dựng chuyên môn có điều kiện (như nhà thầu thi công trọn gói, chứng chỉ thẩm tra/giám sát thi công xây dựng) khi chưa được các cơ quan chức năng xác nhận theo quy định.",
+    "methodologyKicker": "Cách thức tiếp cận",
+    "methodologyTitle": "Phương pháp Làm việc",
+    "methodologySteps": [
+      {
+        "num": "01",
+        "name": "Nghiên cứu bối cảnh",
+        "desc": "Khảo sát cẩn trọng hiện trạng khu đất, đánh giá độ dốc, hướng nắng, luồng gió tự nhiên, thảm thực vật bản địa và những nét đặc trưng văn hóa xung quanh công trình."
+      },
+      {
+        "num": "02",
+        "name": "Phân tích nhu cầu",
+        "desc": "Lắng nghe sâu sắc thói quen sinh hoạt, nhu cầu thẩm mỹ, quy mô gia đình và kỳ vọng về phong cách sống lâu dài của chủ nhân không gian."
+      },
+      {
+        "num": "03",
+        "name": "Tổ chức không gian",
+        "desc": "Quy hoạch luồng giao thông mạch lạc, phân tách rõ rệt giữa khu vực tĩnh và động, xóa nhòa ranh giới giữa nội thất và ngoại thất bằng các khoảng thở thiên nhiên."
+      },
+      {
+        "num": "04",
+        "name": "Khai thác vật liệu và ánh sáng",
+        "desc": "Lựa chọn tổ hợp vật liệu giàu tính xúc cảm, kết hợp các giải pháp đón nhận ánh sáng tự nhiên và bố trí ánh sáng nhân tạo để tạo chiều sâu cảm xúc cho từng gian phòng."
+      },
+      {
+        "num": "05",
+        "name": "Phát triển giải pháp thiết kế",
+        "desc": "Chuyển hóa toàn bộ ý tưởng thành bộ bản vẽ ý niệm rõ ràng, phối cảnh không gian chân thực và giải pháp chi tiết đảm bảo tính khả thi cao nhất."
+      }
+    ],
+    "processKicker": "Lộ trình triển khai",
+    "processTitle": "5 Giai đoạn Hiện thực hóa Công trình",
+    "processSteps": [
+      {
+        "step": "GIAI ĐOẠN 01",
+        "title": "01. Khảo sát và tiếp nhận yêu cầu",
+        "desc": "Tiếp nhận thông tin sơ bộ từ gia chủ, khảo sát hiện trạng khu đất và cùng thống nhất định hướng bài toán thiết kế."
+      },
+      {
+        "step": "GIAI ĐOẠN 02",
+        "title": "02. Nghiên cứu bối cảnh và phát triển ý tưởng",
+        "desc": "Phân tích vi khí hậu tự nhiên, hình thành ý niệm kiến trúc ban đầu và phác thảo các phương án mặt bằng công năng sơ bộ."
+      },
+      {
+        "step": "GIAI ĐOẠN 03",
+        "title": "03. Hoàn thiện phương án kiến trúc và nội thất",
+        "desc": "Cụ thể hóa không gian 3D, lựa chọn bảng vật liệu chính, nghiên cứu ánh sáng và hoàn thiện giải pháp thiết kế tổng thể."
+      },
+      {
+        "step": "GIAI ĐOẠN 04",
+        "title": "04. Triển khai hồ sơ thiết kế",
+        "desc": "Phát triển hệ thống bản vẽ ý niệm chi tiết, định vị kích thước, chỉ định vật liệu và các thông số hoàn thiện không gian."
+      },
+      {
+        "step": "GIAI ĐOẠN 05",
+        "title": "05. Đồng hành trong quá trình hiện thực hóa công trình",
+        "desc": "Hỗ trợ giải đáp chuyên môn, tư vấn tinh chỉnh vật liệu mẫu và đồng hành theo dõi sự hình thành trọn vẹn của công trình."
+      }
+    ]
+  },
+  "contact": {
+    "title": "Khởi tạo",
+    "titleSub": "không gian sống.",
+    "desc": "Nếu bạn đang ấp ủ một ý niệm cư ngụ tĩnh tại, một biệt thự nghỉ dưỡng hòa mình vào thiên nhiên hay một giải pháp không gian nội thất tối giản, hãy để lại thông tin để chúng ta cùng đối thoại.",
+    "practiceName": "Living Blueprint — Portfolio Kiến trúc sư Cá nhân",
+    "email": "inquiries@livingblueprint.demo",
+    "locations": "Hà Nội · Đà Nẵng · TP.Hồ Chí Minh",
+    "hours": "Thứ Hai — Thứ Sáu: 09:00 — 18:00 (GMT+7)",
+    "disclaimer": "* Ghi chú portfolio: Biểu mẫu liên hệ đóng vai trò là thành phần giao diện trải nghiệm mẫu (UX Demo). Thông tin bạn nhập được kiểm tra định dạng trực tiếp tại trình duyệt nhưng chưa được gửi tới máy chủ thật.",
+    "formKicker": "Trao đổi ban đầu",
+    "formTitle": "Gửi Yêu Cầu Tư Vấn"
+  },
+  "footer": {
+    "tagline": "Portfolio Kiến trúc sư Cá nhân",
+    "headline": "Kiến trúc thở cùng thiên nhiên.\nKhông gian trường tồn cùng thời gian.",
+    "desc": "Portfolio cá nhân kiến trúc sư thực hành kiến trúc và nội thất tối giản đương đại, chuyên sâu về biệt thự pavilion, không gian nghỉ dưỡng và nghiên cứu ý niệm không gian.",
+    "locations": "Hà Nội · Đà Nẵng · TP.HCM (Minh họa)",
+    "hours": "Thứ Hai — Thứ Sáu: 09:00 — 18:00 (GMT+7)",
+    "disclaimer": "Thông báo minh họa: Mọi đồ án kiến trúc, hình ảnh minh họa, địa danh, tên gọi và thông số trên website đều là các ý niệm sáng tạo phục vụ mục đích trưng bày portfolio cá nhân kiến trúc sư. Không cấu thành hợp đồng dịch vụ thương mại thực tế.",
+    "copyright": "© 2024 Living Blueprint"
+  }
+}

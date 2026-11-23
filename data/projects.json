@@ -1,0 +1,819 @@
+[
+  {
+    "slug": "villa-la-phong",
+    "title": "Villa Lá Phong",
+    "category": "architecture",
+    "year": 2024,
+    "location": "Đà Lạt, Lâm Đồng",
+    "status": "completed",
+    "statusLabel": "Đã hoàn thành",
+    "coverGradient": "linear-gradient(145deg, #5E7050 0%, #8B9D7A 45%, #A8B896 100%)",
+    "coverAlt": "Phối cảnh ngoại thất Villa Lá Phong ẩn mình giữa rừng thông Đà Lạt — Minh họa ý niệm",
+    "area": "420 m²",
+    "type": "Biệt thự tư nhân",
+    "style": "Nhiệt đới đương đại",
+    "shortDesc": "Biệt thự nghỉ dưỡng tư nhân hòa nhịp cùng rừng thông đại ngàn và vi khí hậu cao nguyên Đà Lạt.",
+    "role": "Chủ trì Thiết kế Kiến trúc & Giám sát Tác giả",
+    "summary": "Tọa lạc trên sườn đồi dốc tự nhiên cao 1,500m so với mực nước biển, Villa Lá Phong là một khảo sát kiến trúc về sự đối thoại giữa khối tích cư ngụ và cảnh quan rừng thông nguyên sinh. Công trình tiết chế tối đa việc san lấp mặt bằng, chọn giải pháp kết cấu móng điểm vươn nhẹ theo độ dốc để giữ trọn vẹn thảm thực vật bản địa.",
+    "context": "Vùng cao nguyên Đà Lạt với đặc trưng sương mù sáng sớm, mưa dầm kéo dài vào mùa thu và biên độ nhiệt ngày đêm lớn. Thách thức đặt ra là tạo nên một không gian thoáng đãng nhưng ấm áp, vừa đón trọn ánh sáng tự nhiên vừa ngăn chặn thất thoát nhiệt.",
+    "objectives": [
+      "Bảo tồn tối đa 100% cây thông cổ thụ hiện hữu trên khu đất dốc 22 độ.",
+      "Tạo lập vi khí hậu nội vi ấm áp, thông gió tự nhiên không cần điều hòa cơ học.",
+      "Thiết lập góc nhìn panorama mở rộng 270 độ ra thung lũng sương mù.",
+      "Sử dụng vật liệu địa phương bền vững có khả năng già đi duyên dáng cùng thời gian."
+    ],
+    "philosophy": "\"Kiến trúc không phải là một hành vi chiếm đoạt cảnh quan, mà là một sự lắng nghe thấu đáo để định hình nên ranh giới che chở cho con người.\"",
+    "concept": "Khối nhà được tổ chức thành hai thể tích lệch tầng trượt theo địa hình. Khối dưới bám vào sườn đồi bằng đá bazan thô mộc làm điểm tựa vững chãi, trong khi khối trên sử dụng kết cấu thép mảnh và dầm gỗ vươn dài 4.2m tạo cảm giác lơ lửng giữa tầng tán lá thông.",
+    "spatialStrategy": "Dây chuyền công năng phân tách rõ ràng giữa khu vực tĩnh và động. Lối tiếp cận đi qua hành lang cầu gỗ xuyên tán thông trước khi mở òa vào không gian phòng khách trần cao 4.8m. Bếp và bàn ăn kết nối liền mạch với hiên ngắm cảnh ngoài trời có mái che rộng.",
+    "landscapeRelation": "Mặt nước hồ gương phản chiếu bầu trời và tán thông đóng vai trò như một bộ điều hòa độ ẩm tự nhiên, đồng thời xóa nhòa ranh giới giữa sàn gạch nung trong nhà và thảm cỏ đồi bên ngoài.",
+    "keyDecisions": [
+      "Giữ nguyên địa hình dốc 22 độ bằng hệ cột bê tông ứng suất trước, hạn chế đào đắp.",
+      "Mái đua vươn xa 2.8m với máng thu nước ẩn tránh tạt mưa mù và tạo vùng đệm râm mát.",
+      "Hệ lam gỗ teak xoay góc tùy chỉnh giúp gia chủ chủ động điều tiết ánh nắng xiên ban chiều.",
+      "Vách kính hộp 3 lớp Low-E bơm khí trơ cách nhiệt tuyệt đối cho mùa đông giá lạnh."
+    ],
+    "drawings": [
+      {
+        "id": "drw-vlp-1",
+        "title": "Mặt Bằng Tổng Thể & Quy Hoạch Cảnh Quan",
+        "type": "plan",
+        "scale": "1:200",
+        "desc": "Bố trí công trình nương theo đường đồng mức tự nhiên, kết nối sân đỗ xe, hồ nước sinh thái và các phân khu chức năng.",
+        "svg": "\n    <svg viewBox=\"0 0 1200 750\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\" class=\"drawing-svg-canvas\">\n      <defs>\n        <pattern id=\"cad-grid-vlp\" width=\"30\" height=\"30\" patternUnits=\"userSpaceOnUse\">\n          <path d=\"M 30 0 L 0 0 0 30\" fill=\"none\" stroke=\"#E2DFD8\" stroke-width=\"0.75\"/>\n        </pattern>\n      </defs>\n      <rect width=\"1200\" height=\"750\" fill=\"#FAF8F5\"/>\n      <rect width=\"1200\" height=\"750\" fill=\"url(#cad-grid-vlp)\"/>\n\n      <!-- Grid Axis Lines -->\n      <line x1=\"120\" y1=\"80\" x2=\"1080\" y2=\"80\" stroke=\"#A8865C\" stroke-width=\"1\" stroke-dasharray=\"8,4\"/>\n      <line x1=\"120\" y1=\"360\" x2=\"1080\" y2=\"360\" stroke=\"#A8865C\" stroke-width=\"0.8\" stroke-dasharray=\"6,3\"/>\n      <line x1=\"120\" y1=\"620\" x2=\"1080\" y2=\"620\" stroke=\"#A8865C\" stroke-width=\"1\" stroke-dasharray=\"8,4\"/>\n      <line x1=\"180\" y1=\"60\" x2=\"180\" y2=\"660\" stroke=\"#A8865C\" stroke-width=\"1\" stroke-dasharray=\"8,4\"/>\n      <line x1=\"560\" y1=\"60\" x2=\"560\" y2=\"660\" stroke=\"#A8865C\" stroke-width=\"0.8\" stroke-dasharray=\"6,3\"/>\n      <line x1=\"980\" y1=\"60\" x2=\"980\" y2=\"660\" stroke=\"#A8865C\" stroke-width=\"1\" stroke-dasharray=\"8,4\"/>\n\n      <!-- Axis Bubbles -->\n      <circle cx=\"180\" cy=\"50\" r=\"14\" fill=\"#1A1916\"/><text x=\"180\" y=\"55\" fill=\"#FAF8F5\" font-size=\"11\" font-family=\"Space Mono, monospace\" text-anchor=\"middle\">A</text>\n      <circle cx=\"560\" cy=\"50\" r=\"14\" fill=\"#1A1916\"/><text x=\"560\" y=\"55\" fill=\"#FAF8F5\" font-size=\"11\" font-family=\"Space Mono, monospace\" text-anchor=\"middle\">B</text>\n      <circle cx=\"980\" cy=\"50\" r=\"14\" fill=\"#1A1916\"/><text x=\"980\" y=\"55\" fill=\"#FAF8F5\" font-size=\"11\" font-family=\"Space Mono, monospace\" text-anchor=\"middle\">C</text>\n      <circle cx=\"95\" cy=\"80\" r=\"14\" fill=\"#1A1916\"/><text x=\"95\" y=\"85\" fill=\"#FAF8F5\" font-size=\"11\" font-family=\"Space Mono, monospace\" text-anchor=\"middle\">1</text>\n      <circle cx=\"95\" cy=\"360\" r=\"14\" fill=\"#1A1916\"/><text x=\"95\" y=\"365\" fill=\"#FAF8F5\" font-size=\"11\" font-family=\"Space Mono, monospace\" text-anchor=\"middle\">2</text>\n      <circle cx=\"95\" cy=\"620\" r=\"14\" fill=\"#1A1916\"/><text x=\"95\" y=\"625\" fill=\"#FAF8F5\" font-size=\"11\" font-family=\"Space Mono, monospace\" text-anchor=\"middle\">3</text>\n\n      <!-- Main Building Footprint & Walls -->\n      <rect x=\"220\" y=\"120\" width=\"720\" height=\"460\" fill=\"rgba(240, 237, 230, 0.6)\" stroke=\"#1A1916\" stroke-width=\"3\"/>\n      <!-- Inner zoning -->\n      <rect x=\"240\" y=\"140\" width=\"300\" height=\"240\" fill=\"none\" stroke=\"#2B2A27\" stroke-width=\"1.8\"/>\n      <text x=\"390\" y=\"250\" fill=\"#1A1916\" font-family=\"Cormorant Garamond, serif\" font-size=\"18\" font-style=\"italic\" text-anchor=\"middle\">Living & Dining Hall</text>\n      <text x=\"390\" y=\"275\" fill=\"#7A766F\" font-family=\"Space Mono, monospace\" font-size=\"11\" text-anchor=\"middle\">±0.000 · 84.5 m²</text>\n\n      <rect x=\"570\" y=\"140\" width=\"350\" height=\"240\" fill=\"none\" stroke=\"#2B2A27\" stroke-width=\"1.8\"/>\n      <text x=\"745\" y=\"250\" fill=\"#1A1916\" font-family=\"Cormorant Garamond, serif\" font-size=\"18\" font-style=\"italic\" text-anchor=\"middle\">Master Suite Pavilion</text>\n      <text x=\"745\" y=\"275\" fill=\"#7A766F\" font-family=\"Space Mono, monospace\" font-size=\"11\" text-anchor=\"middle\">+0.150 · 62.0 m²</text>\n\n      <rect x=\"240\" y=\"410\" width=\"680\" height=\"150\" fill=\"none\" stroke=\"#2B2A27\" stroke-width=\"1.8\"/>\n      <text x=\"580\" y=\"480\" fill=\"#1A1916\" font-family=\"Cormorant Garamond, serif\" font-size=\"18\" font-style=\"italic\" text-anchor=\"middle\">Covered Terrace & Water Courtyard</text>\n      <text x=\"580\" y=\"505\" fill=\"#7A766F\" font-family=\"Space Mono, monospace\" font-size=\"11\" text-anchor=\"middle\">-0.300 · 96.0 m²</text>\n\n      <!-- Structural Columns -->\n      <g fill=\"#1A1916\">\n        <rect x=\"215\" y=\"115\" width=\"16\" height=\"16\"/><rect x=\"552\" y=\"115\" width=\"16\" height=\"16\"/><rect x=\"932\" y=\"115\" width=\"16\" height=\"16\"/>\n        <rect x=\"215\" y=\"352\" width=\"16\" height=\"16\"/><rect x=\"552\" y=\"352\" width=\"16\" height=\"16\"/><rect x=\"932\" y=\"352\" width=\"16\" height=\"16\"/>\n        <rect x=\"215\" y=\"572\" width=\"16\" height=\"16\"/><rect x=\"552\" y=\"572\" width=\"16\" height=\"16\"/><rect x=\"932\" y=\"572\" width=\"16\" height=\"16\"/>\n      </g>\n\n      <!-- Dimension Lines Bottom -->\n      <line x1=\"220\" y1=\"670\" x2=\"940\" y2=\"670\" stroke=\"#7A766F\" stroke-width=\"1\"/>\n      <line x1=\"220\" y1=\"662\" x2=\"220\" y2=\"678\" stroke=\"#7A766F\" stroke-width=\"1.5\"/>\n      <line x1=\"560\" y1=\"662\" x2=\"560\" y2=\"678\" stroke=\"#7A766F\" stroke-width=\"1.5\"/>\n      <line x1=\"940\" y1=\"662\" x2=\"940\" y2=\"678\" stroke=\"#7A766F\" stroke-width=\"1.5\"/>\n      <text x=\"390\" y=\"692\" fill=\"#7A766F\" font-family=\"Space Mono, monospace\" font-size=\"11\" text-anchor=\"middle\">8,200 mm</text>\n      <text x=\"750\" y=\"692\" fill=\"#7A766F\" font-family=\"Space Mono, monospace\" font-size=\"11\" text-anchor=\"middle\">9,600 mm</text>\n\n      <!-- Technical Title Block -->\n      <g transform=\"translate(830, 620)\">\n        <rect width=\"250\" height=\"95\" fill=\"#FAF8F5\" stroke=\"#1A1916\" stroke-width=\"1\"/>\n        <text x=\"14\" y=\"24\" fill=\"#1A1916\" font-family=\"Space Mono, monospace\" font-size=\"10\" font-weight=\"bold\">LIVING BLUEPRINT ARCHIVE</text>\n        <text x=\"14\" y=\"44\" fill=\"#1A1916\" font-family=\"Inter, sans-serif\" font-size=\"11\">VILLA LÁ PHONG · MẶT BẰNG TỔNG THỂ</text>\n        <text x=\"14\" y=\"62\" fill=\"#7A766F\" font-family=\"Space Mono, monospace\" font-size=\"9.5\">MẶT BẰNG TỔNG THỂ · TỶ LỆ 1:100</text>\n        <text x=\"14\" y=\"80\" fill=\"#A8865C\" font-family=\"Space Mono, monospace\" font-size=\"9\">MINH HỌA Ý NIỆM KIẾN TRÚC</text>\n      </g>\n    </svg>\n  "
+      },
+      {
+        "id": "drw-vlp-2",
+        "title": "Mặt Cắt Địa Hình Dọc A-A",
+        "type": "section",
+        "scale": "1:100",
+        "desc": "Thể hiện mối tương quan giữa độ dốc sườn đồi 22 độ, cốt cao độ các tầng và tán rừng thông bao bọc.",
+        "svg": "\n    <svg viewBox=\"0 0 1200 750\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\" class=\"drawing-svg-canvas\">\n      <defs>\n        <pattern id=\"cad-grid-sec-vlp\" width=\"30\" height=\"30\" patternUnits=\"userSpaceOnUse\">\n          <path d=\"M 30 0 L 0 0 0 30\" fill=\"none\" stroke=\"#E2DFD8\" stroke-width=\"0.75\"/>\n        </pattern>\n      </defs>\n      <rect width=\"1200\" height=\"750\" fill=\"#FAF8F5\"/>\n      <rect width=\"1200\" height=\"750\" fill=\"url(#cad-grid-sec-vlp)\"/>\n\n      <!-- Natural Ground Line (Hatched terrain) -->\n      <path d=\"M 60 520 Q 340 500 600 530 T 1140 510 L 1140 700 L 60 700 Z\" fill=\"#EAE5DC\" stroke=\"#1A1916\" stroke-width=\"2.5\"/>\n      <text x=\"100\" y=\"555\" fill=\"#7A766F\" font-family=\"Space Mono, monospace\" font-size=\"10\">ĐỊA HÌNH TỰ NHIÊN / NATURAL TOPOGRAPHY</text>\n\n      <!-- Building Foundation & Slabs -->\n      <rect x=\"220\" y=\"480\" width=\"720\" height=\"35\" fill=\"#383633\" stroke=\"#1A1916\" stroke-width=\"2\"/>\n      <rect x=\"240\" y=\"270\" width=\"680\" height=\"24\" fill=\"#383633\" stroke=\"#1A1916\" stroke-width=\"2\"/>\n      <rect x=\"180\" y=\"130\" width=\"800\" height=\"28\" fill=\"#383633\" stroke=\"#1A1916\" stroke-width=\"2\"/>\n\n      <!-- Vertical Structure & Slender Mullions -->\n      <line x1=\"280\" y1=\"158\" x2=\"280\" y2=\"480\" stroke=\"#1A1916\" stroke-width=\"4\"/>\n      <line x1=\"560\" y1=\"158\" x2=\"560\" y2=\"480\" stroke=\"#1A1916\" stroke-width=\"4\"/>\n      <line x1=\"860\" y1=\"158\" x2=\"860\" y2=\"480\" stroke=\"#1A1916\" stroke-width=\"4\"/>\n\n      <!-- Floor-to-Ceiling Glazing -->\n      <rect x=\"290\" y=\"160\" width=\"260\" height=\"110\" fill=\"rgba(190, 215, 225, 0.35)\" stroke=\"#7A98A6\" stroke-width=\"1.2\"/>\n      <rect x=\"570\" y=\"160\" width=\"280\" height=\"110\" fill=\"rgba(190, 215, 225, 0.35)\" stroke=\"#7A98A6\" stroke-width=\"1.2\"/>\n      <rect x=\"290\" y=\"294\" width=\"560\" height=\"186\" fill=\"rgba(190, 215, 225, 0.4)\" stroke=\"#7A98A6\" stroke-width=\"1.2\"/>\n\n      <!-- Level Markers Left -->\n      <g transform=\"translate(80, 0)\">\n        <line x1=\"40\" y1=\"130\" x2=\"160\" y2=\"130\" stroke=\"#A8865C\" stroke-width=\"1\" stroke-dasharray=\"3,3\"/>\n        <text x=\"30\" y=\"134\" fill=\"#1A1916\" font-family=\"Space Mono, monospace\" font-size=\"10\" text-anchor=\"end\">▲ +7.650 MÁI ĐUA</text>\n\n        <line x1=\"40\" y1=\"270\" x2=\"220\" y2=\"270\" stroke=\"#A8865C\" stroke-width=\"1\" stroke-dasharray=\"3,3\"/>\n        <text x=\"30\" y=\"274\" fill=\"#1A1916\" font-family=\"Space Mono, monospace\" font-size=\"10\" text-anchor=\"end\">▲ +3.800 SÀN TẦNG 2</text>\n\n        <line x1=\"40\" y1=\"480\" x2=\"200\" y2=\"480\" stroke=\"#A8865C\" stroke-width=\"1\" stroke-dasharray=\"3,3\"/>\n        <text x=\"30\" y=\"484\" fill=\"#1A1916\" font-family=\"Space Mono, monospace\" font-size=\"10\" text-anchor=\"end\">▼ ±0.000 SÀN TẦNG 1</text>\n      </g>\n\n      <!-- Section Labels -->\n      <text x=\"420\" y=\"225\" fill=\"#1A1916\" font-family=\"Cormorant Garamond, serif\" font-size=\"16\" font-style=\"italic\" text-anchor=\"middle\">Thư viện & Góc làm việc</text>\n      <text x=\"710\" y=\"225\" fill=\"#1A1916\" font-family=\"Cormorant Garamond, serif\" font-size=\"16\" font-style=\"italic\" text-anchor=\"middle\">Phòng ngủ chính</text>\n      <text x=\"560\" y=\"390\" fill=\"#1A1916\" font-family=\"Cormorant Garamond, serif\" font-size=\"18\" font-style=\"italic\" text-anchor=\"middle\">Không gian sinh hoạt thông tầng</text>\n\n      <!-- Technical Title Block -->\n      <g transform=\"translate(830, 620)\">\n        <rect width=\"250\" height=\"95\" fill=\"#FAF8F5\" stroke=\"#1A1916\" stroke-width=\"1\"/>\n        <text x=\"14\" y=\"24\" fill=\"#1A1916\" font-family=\"Space Mono, monospace\" font-size=\"10\" font-weight=\"bold\">LIVING BLUEPRINT ARCHIVE</text>\n        <text x=\"14\" y=\"44\" fill=\"#1A1916\" font-family=\"Inter, sans-serif\" font-size=\"11\">VILLA LÁ PHONG · MẶT CẮT ĐỊA HÌNH A-A</text>\n        <text x=\"14\" y=\"62\" fill=\"#7A766F\" font-family=\"Space Mono, monospace\" font-size=\"9.5\">MẶT CẮT KIẾN TRÚC A-A · 1:100</text>\n        <text x=\"14\" y=\"80\" fill=\"#A8865C\" font-family=\"Space Mono, monospace\" font-size=\"9\">MINH HỌA Ý NIỆM KIẾN TRÚC</text>\n      </g>\n    </svg>\n  "
+      },
+      {
+        "id": "drw-vlp-3",
+        "title": "Sơ Đồ Trục Đo Phân Tách Khối Không Gian",
+        "type": "diagram",
+        "scale": "N.T.S",
+        "desc": "Minh họa giải pháp tách khối cantilever vươn tự do trên khối đế đá bazan kiên cố.",
+        "svg": "\n    <svg viewBox=\"0 0 1200 750\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\" class=\"drawing-svg-canvas\">\n      <defs>\n        <pattern id=\"cad-grid-ax-vlp\" width=\"30\" height=\"30\" patternUnits=\"userSpaceOnUse\">\n          <path d=\"M 30 0 L 0 0 0 30\" fill=\"none\" stroke=\"#E2DFD8\" stroke-width=\"0.75\"/>\n        </pattern>\n      </defs>\n      <rect width=\"1200\" height=\"750\" fill=\"#FAF8F5\"/>\n      <rect width=\"1200\" height=\"750\" fill=\"url(#cad-grid-ax-vlp)\"/>\n\n      <!-- Axonometric Isometric Volume 1: Foundation Base -->\n      <polygon points=\"260,540 600,430 940,510 600,620\" fill=\"#DDD7CC\" stroke=\"#1A1916\" stroke-width=\"2\"/>\n      <polygon points=\"260,540 260,570 600,650 600,620\" fill=\"#BDB6A8\" stroke=\"#1A1916\" stroke-width=\"2\"/>\n      <polygon points=\"600,620 600,650 940,540 940,510\" fill=\"#8F887B\" stroke=\"#1A1916\" stroke-width=\"2\"/>\n      <text x=\"600\" y=\"580\" fill=\"#1A1916\" font-family=\"Cormorant Garamond, serif\" font-size=\"18\" font-style=\"italic\" text-anchor=\"middle\">Khối Đế Tiếp Địa & Mặt Nước</text>\n\n      <!-- Axonometric Volume 2: Middle Glazing Pavilion -->\n      <polygon points=\"340,380 600,300 860,360 600,440\" fill=\"rgba(190, 215, 225, 0.45)\" stroke=\"#1A1916\" stroke-width=\"1.8\"/>\n      <line x1=\"340\" y1=\"380\" x2=\"340\" y2=\"480\" stroke=\"#1A1916\" stroke-width=\"2\" stroke-dasharray=\"4,4\"/>\n      <line x1=\"860\" y1=\"360\" x2=\"860\" y2=\"460\" stroke=\"#1A1916\" stroke-width=\"2\" stroke-dasharray=\"4,4\"/>\n      <line x1=\"600\" y1=\"440\" x2=\"600\" y2=\"540\" stroke=\"#1A1916\" stroke-width=\"2\" stroke-dasharray=\"4,4\"/>\n      <text x=\"600\" y=\"380\" fill=\"#1A1916\" font-family=\"Cormorant Garamond, serif\" font-size=\"18\" font-style=\"italic\" text-anchor=\"middle\">Lớp Vỏ Kính Trong Suốt & Khoảng Đệm</text>\n\n      <!-- Axonometric Volume 3: Floating Cantilever Roof Plate -->\n      <polygon points=\"240,210 600,120 960,190 600,280\" fill=\"#FAF8F5\" stroke=\"#1A1916\" stroke-width=\"2.5\"/>\n      <polygon points=\"240,210 240,225 600,295 600,280\" fill=\"#A8865C\" stroke=\"#1A1916\" stroke-width=\"1.5\"/>\n      <polygon points=\"600,280 600,295 960,205 960,190\" fill=\"#8A6840\" stroke=\"#1A1916\" stroke-width=\"1.5\"/>\n      <text x=\"600\" y=\"210\" fill=\"#1A1916\" font-family=\"Cormorant Garamond, serif\" font-size=\"20\" font-style=\"italic\" text-anchor=\"middle\">Mái Vươn Tự Do (Cantilever Overhang)</text>\n\n      <!-- Exploded Projection Rays -->\n      <line x1=\"240\" y1=\"210\" x2=\"260\" y2=\"540\" stroke=\"#A8865C\" stroke-width=\"1.2\" stroke-dasharray=\"5,5\"/>\n      <line x1=\"600\" y1=\"120\" x2=\"600\" y2=\"430\" stroke=\"#A8865C\" stroke-width=\"1.2\" stroke-dasharray=\"5,5\"/>\n      <line x1=\"960\" y1=\"190\" x2=\"940\" y2=\"510\" stroke=\"#A8865C\" stroke-width=\"1.2\" stroke-dasharray=\"5,5\"/>\n\n      <!-- Annotations Left -->\n      <g transform=\"translate(140, 180)\">\n        <circle cx=\"0\" cy=\"0\" r=\"4\" fill=\"#A8865C\"/>\n        <line x1=\"0\" y1=\"0\" x2=\"-40\" y2=\"-30\" stroke=\"#A8865C\" stroke-width=\"1\"/>\n        <line x1=\"-40\" y1=\"-30\" x2=\"-90\" y2=\"-30\" stroke=\"#A8865C\" stroke-width=\"1\"/>\n        <text x=\"-95\" y=\"-26\" fill=\"#1A1916\" font-family=\"Space Mono, monospace\" font-size=\"10\" text-anchor=\"end\">KẾT CẤU MÁI THÉP VƯƠN XA 4.2M</text>\n      </g>\n\n      <!-- Technical Title Block -->\n      <g transform=\"translate(830, 620)\">\n        <rect width=\"250\" height=\"95\" fill=\"#FAF8F5\" stroke=\"#1A1916\" stroke-width=\"1\"/>\n        <text x=\"14\" y=\"24\" fill=\"#1A1916\" font-family=\"Space Mono, monospace\" font-size=\"10\" font-weight=\"bold\">LIVING BLUEPRINT ARCHIVE</text>\n        <text x=\"14\" y=\"44\" fill=\"#1A1916\" font-family=\"Inter, sans-serif\" font-size=\"11\">VILLA LÁ PHONG · SƠ ĐỒ TRỤC ĐO KHỐI</text>\n        <text x=\"14\" y=\"62\" fill=\"#7A766F\" font-family=\"Space Mono, monospace\" font-size=\"9.5\">SƠ ĐỒ TRỤC ĐO PHÂN TÁCH KHỐI</text>\n        <text x=\"14\" y=\"80\" fill=\"#A8865C\" font-family=\"Space Mono, monospace\" font-size=\"9\">MINH HỌA Ý NIỆM KIẾN TRÚC</text>\n      </g>\n    </svg>\n  "
+      }
+    ],
+    "gallery": [
+      {
+        "id": "gal-vlp-1",
+        "title": "Phối cảnh góc tiếp cận xuyên rừng thông",
+        "aspect": "wide",
+        "gradient": "linear-gradient(150deg, #3C4A32 0%, #687A56 50%, #8FA678 100%)",
+        "caption": "Lối tiếp cận được giấu kín sau rặng thông cổ thụ, mở dần tầm nhìn khi bước qua chiếc cầu gỗ mộc.",
+        "tag": "Ngoại thất",
+        "alt": "Lối vào công trình xuyên qua rừng thông nguyên sinh"
+      },
+      {
+        "id": "gal-vlp-2",
+        "title": "Phòng khách lớn ngập tràn ánh sáng cao nguyên",
+        "aspect": "wide",
+        "gradient": "linear-gradient(135deg, #B8A888 0%, #8C7858 50%, #5E4E36 100%)",
+        "caption": "Không gian phòng khách trần cao 4.8m với vách kính panoramic đón trọn thung lũng sương sớm.",
+        "tag": "Nội thất",
+        "alt": "Phòng khách trần cao với vách kính lớn nhìn ra rừng thông"
+      },
+      {
+        "id": "gal-vlp-3",
+        "title": "Chi tiết khớp nối dầm gỗ teak và bê tông trần",
+        "aspect": "portrait",
+        "gradient": "linear-gradient(170deg, #5A564E 0%, #827C72 50%, #AAA498 100%)",
+        "caption": "Sự tương phản xúc giác giữa độ ấm của vân gỗ tự nhiên và độ lạnh đanh thép của bê tông cốp-pha gỗ.",
+        "tag": "Vật liệu",
+        "alt": "Đặc tả chi tiết giao thoa giữa gỗ tự nhiên và bê tông mộc"
+      },
+      {
+        "id": "gal-vlp-4",
+        "title": "Hành lang đệm bán ngoài trời lát đá chẻ bản địa",
+        "aspect": "portrait",
+        "gradient": "linear-gradient(160deg, #4A5644 0%, #6E7C66 50%, #98A690 100%)",
+        "caption": "Khoảng hiên chuyển tiếp giữa nội thất ấm cúng và thiên nhiên khoáng đạt bên ngoài.",
+        "tag": "Không gian đệm",
+        "alt": "Hiên nhà có mái che vươn dài nhìn ra thung lũng"
+      },
+      {
+        "id": "gal-vlp-5",
+        "title": "Phòng ngủ Master nhìn về thung lũng sương mù",
+        "aspect": "wide",
+        "gradient": "linear-gradient(140deg, #6B5844 0%, #968066 50%, #C4B096 100%)",
+        "caption": "Không gian tĩnh lặng tối đa, sử dụng vải linen thô và sàn gỗ tự nhiên mang lại giấc ngủ thư thái.",
+        "tag": "Nội thất",
+        "alt": "Phòng ngủ chính với tầm nhìn tĩnh lặng hướng rừng thông"
+      },
+      {
+        "id": "gal-vlp-6",
+        "title": "Hoàng hôn buông xuống trên mặt nước hồ cảnh quan",
+        "aspect": "wide",
+        "gradient": "linear-gradient(145deg, #1C2418 0%, #384230 45%, #6A7460 100%)",
+        "caption": "Ánh sáng vàng ấm 2700K từ bên trong phản chiếu lung linh xuống mặt nước phẳng lặng lúc chập tối.",
+        "tag": "Ánh sáng",
+        "alt": "Khung cảnh hoàng hôn ấm áp của công trình giữa rừng"
+      }
+    ],
+    "materials": [
+      {
+        "name": "Gỗ Teak Tự Nhiên Tái Chế",
+        "category": "Gỗ hoàn thiện & Kết cấu mái",
+        "origin": "Gỗ tái chế từ công trình cũ, xử lý dầu thực vật",
+        "description": "Khả năng chịu ẩm vượt trội trong môi trường sương mù Đà Lạt, lên màu xám bạc tự nhiên theo thời gian.",
+        "swatchColor": "#9C7244"
+      },
+      {
+        "name": "Bê Tông Trần Cốp-Pha Vân Gỗ",
+        "category": "Kết cấu chịu lực",
+        "origin": "Bê tông cấp phối mác cao đổ tại chỗ",
+        "description": "Bề mặt giữ lại thớ vân gỗ thông thô ráp, tạo sự vững chãi và cảm giác kiến trúc gắn chặt vào lòng đất.",
+        "swatchColor": "#8C8880"
+      },
+      {
+        "name": "Đá Chẻ Bazan Tự Nhiên",
+        "category": "Khối đế & Lát sân",
+        "origin": "Mỏ đá địa phương Lâm Đồng",
+        "description": "Gia công chẻ tay thủ công, mạch vữa chìm tạo cảm giác bức tường mọc tự nhiên từ sườn đồi.",
+        "swatchColor": "#4A4844"
+      },
+      {
+        "name": "Kính Hộp Low-E 3 Lớp Bơm Khí Argon",
+        "category": "Vách kính bao che",
+        "origin": "Kính hiệu suất cao kiểm soát nhiệt",
+        "description": "Hệ số truyền nhiệt U-value cực thấp, cho phép đưa thiên nhiên vào phòng mà không làm lạnh buốt không gian.",
+        "swatchColor": "#9BB8C4"
+      }
+    ],
+    "lightingStrategy": "Triết lý chiếu sáng tôn vinh bóng đổ và sự tĩnh lặng. Ban ngày, ánh sáng mặt trời được lọc qua tán lá thông và hệ lam gỗ tạo thành những vệt nắng nhảy múa trên sàn. Ban đêm, toàn bộ hệ thống đèn LED 2700K được giấu kín dưới chân tường và trần khe, chỉ chiếu hắt dịu nhẹ vào các diện vật liệu thô mộc, bảo vệ bầu trời sao nguyên sơ của rừng núi.",
+    "tectonicDetails": [
+      "Chi tiết sê-nô thu nước mưa âm mái giấu kín hoàn toàn đường ống trong cột thép hộp.",
+      "Khe lún co giãn giữa khối bê tông và dầm gỗ được bịt bằng cao su EPDM chuyên dụng cho thời tiết khắc nghiệt.",
+      "Khung cửa trượt nhôm rãnh chìm bằng cốt sàn triệt tiêu hoàn toàn gờ chắn khi bước ra hiên."
+    ]
+  },
+  {
+    "slug": "cliff-house",
+    "title": "The Cliff House",
+    "category": "architecture",
+    "year": 2024,
+    "location": "Quy Nhơn, Bình Định",
+    "status": "completed",
+    "statusLabel": "Đã hoàn thành",
+    "coverGradient": "linear-gradient(145deg, #3A5060 0%, #6A8D9D 45%, #9AB8C8 100%)",
+    "coverAlt": "Biệt thự vách đá vươn ra biển Quy Nhơn — Minh họa ý niệm",
+    "area": "580 m²",
+    "type": "Biệt thự ven biển",
+    "style": "Tối giản thô mộc (Brutalist)",
+    "shortDesc": "Công trình biệt thự vách đá điêu khắc bên bờ biển Quy Nhơn, nơi biển cả trở thành yếu tố định hình không gian.",
+    "role": "Thiết kế Kiến trúc & Kết cấu Đặc thù",
+    "summary": "Treo mình ở độ cao 40m trên vách đá bazan nhìn thẳng ra biển Quy Nhơn, The Cliff House thách thức ranh giới giữa một công trình nhân tạo và một cấu trúc địa chất tự nhiên. Các khối bê tông console vươn dài trên mặt biển mang lại trải nghiệm phi trọng lực giữa đại dương bao la.",
+    "context": "Vùng bờ biển miền Trung với nắng gắt, gió mùa đông bắc mạnh và hơi muối biển ăn mòn cao độ. Công trình đòi hỏi sự tính toán chuẩn xác về khí động học và vật liệu có khả năng chống chịu điều kiện biển khắc nghiệt.",
+    "objectives": [
+      "Tạo dựng cấu trúc console vươn xa 5.5m trên mặt biển mà không cần cột chống phía dưới.",
+      "Ứng dụng bê tông bền sunfat chống xâm thực muối biển suốt vòng đời công trình.",
+      "Thiết kế luồng gió đối lưu tự nhiên làm mát toàn bộ không gian sống mà không phụ thuộc điều hòa.",
+      "Hòa quyện màu sắc công trình cùng dải đá bazan phong hóa của bờ biển Quy Nhơn."
+    ],
+    "philosophy": "\"Một ngôi nhà ven biển thực sự không nên là một chiếc lồng kính khép kín, mà phải là một cánh buồm đón gió và lắng nghe âm thanh của những con sóng.\"",
+    "concept": "Công trình gồm ba khối hộp bê tông trần xếp chồng so-le. Tầng trệt gắn chặt vào đá phiến, tầng hai xoay 15 độ hướng về mũi ngắm hoàng hôn, và tầng thượng vươn dài đón gió biển.",
+    "spatialStrategy": "Lối vào được hạ thấp tạo cảm giác hang đá mát lạnh trước khi mở bung ra phòng khách vô cực với tầm nhìn không ranh giới ra chân trời biển Đông. Hồ bơi tràn đáy kính kết nối trực tiếp với không gian sinh hoạt chính.",
+    "landscapeRelation": "Địa hình vách đá hiểm trở được giữ nguyên vẹn, các bậc thang đá tự nhiên dẫn lối trực tiếp từ sân hiên xuống ghềnh đá và bãi tắm nhỏ biệt lập.",
+    "keyDecisions": [
+      "Sử dụng cốt sợi carbon gia cường cho dầm console giúp giảm 40% trọng lượng bản thân kết cấu.",
+      "Bề mặt bê tông trộn phụ gia silica fume làm tăng độ đặc chắc, chống thấm muối biển tuyệt đối.",
+      "Mặt tiền hướng biển sử dụng lam chắn gió cơ động bằng thép phong hóa corten.",
+      "Hồ bơi vô cực dài 22m đóng vai trò đối trọng tĩnh cho phần dầm console vươn ra biển."
+    ],
+    "drawings": [
+      {
+        "id": "drw-clh-1",
+        "title": "Mặt Bằng Tầng Trệt & Hồ Bơi Vô Cực",
+        "type": "plan",
+        "scale": "1:100",
+        "desc": "Mặt bằng công năng tầng sinh hoạt chính bám sát mép vách đá và hồ bơi cantilever.",
+        "svg": "\n    <svg viewBox=\"0 0 1200 750\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\" class=\"drawing-svg-canvas\">\n      <defs>\n        <pattern id=\"cad-grid-clh\" width=\"30\" height=\"30\" patternUnits=\"userSpaceOnUse\">\n          <path d=\"M 30 0 L 0 0 0 30\" fill=\"none\" stroke=\"#E2DFD8\" stroke-width=\"0.75\"/>\n        </pattern>\n      </defs>\n      <rect width=\"1200\" height=\"750\" fill=\"#FAF8F5\"/>\n      <rect width=\"1200\" height=\"750\" fill=\"url(#cad-grid-clh)\"/>\n\n      <!-- Grid Axis Lines -->\n      <line x1=\"120\" y1=\"80\" x2=\"1080\" y2=\"80\" stroke=\"#A8865C\" stroke-width=\"1\" stroke-dasharray=\"8,4\"/>\n      <line x1=\"120\" y1=\"360\" x2=\"1080\" y2=\"360\" stroke=\"#A8865C\" stroke-width=\"0.8\" stroke-dasharray=\"6,3\"/>\n      <line x1=\"120\" y1=\"620\" x2=\"1080\" y2=\"620\" stroke=\"#A8865C\" stroke-width=\"1\" stroke-dasharray=\"8,4\"/>\n      <line x1=\"180\" y1=\"60\" x2=\"180\" y2=\"660\" stroke=\"#A8865C\" stroke-width=\"1\" stroke-dasharray=\"8,4\"/>\n      <line x1=\"560\" y1=\"60\" x2=\"560\" y2=\"660\" stroke=\"#A8865C\" stroke-width=\"0.8\" stroke-dasharray=\"6,3\"/>\n      <line x1=\"980\" y1=\"60\" x2=\"980\" y2=\"660\" stroke=\"#A8865C\" stroke-width=\"1\" stroke-dasharray=\"8,4\"/>\n\n      <!-- Axis Bubbles -->\n      <circle cx=\"180\" cy=\"50\" r=\"14\" fill=\"#1A1916\"/><text x=\"180\" y=\"55\" fill=\"#FAF8F5\" font-size=\"11\" font-family=\"Space Mono, monospace\" text-anchor=\"middle\">A</text>\n      <circle cx=\"560\" cy=\"50\" r=\"14\" fill=\"#1A1916\"/><text x=\"560\" y=\"55\" fill=\"#FAF8F5\" font-size=\"11\" font-family=\"Space Mono, monospace\" text-anchor=\"middle\">B</text>\n      <circle cx=\"980\" cy=\"50\" r=\"14\" fill=\"#1A1916\"/><text x=\"980\" y=\"55\" fill=\"#FAF8F5\" font-size=\"11\" font-family=\"Space Mono, monospace\" text-anchor=\"middle\">C</text>\n      <circle cx=\"95\" cy=\"80\" r=\"14\" fill=\"#1A1916\"/><text x=\"95\" y=\"85\" fill=\"#FAF8F5\" font-size=\"11\" font-family=\"Space Mono, monospace\" text-anchor=\"middle\">1</text>\n      <circle cx=\"95\" cy=\"360\" r=\"14\" fill=\"#1A1916\"/><text x=\"95\" y=\"365\" fill=\"#FAF8F5\" font-size=\"11\" font-family=\"Space Mono, monospace\" text-anchor=\"middle\">2</text>\n      <circle cx=\"95\" cy=\"620\" r=\"14\" fill=\"#1A1916\"/><text x=\"95\" y=\"625\" fill=\"#FAF8F5\" font-size=\"11\" font-family=\"Space Mono, monospace\" text-anchor=\"middle\">3</text>\n\n      <!-- Main Building Footprint & Walls -->\n      <rect x=\"220\" y=\"120\" width=\"720\" height=\"460\" fill=\"rgba(240, 237, 230, 0.6)\" stroke=\"#1A1916\" stroke-width=\"3\"/>\n      <!-- Inner zoning -->\n      <rect x=\"240\" y=\"140\" width=\"300\" height=\"240\" fill=\"none\" stroke=\"#2B2A27\" stroke-width=\"1.8\"/>\n      <text x=\"390\" y=\"250\" fill=\"#1A1916\" font-family=\"Cormorant Garamond, serif\" font-size=\"18\" font-style=\"italic\" text-anchor=\"middle\">Living & Dining Hall</text>\n      <text x=\"390\" y=\"275\" fill=\"#7A766F\" font-family=\"Space Mono, monospace\" font-size=\"11\" text-anchor=\"middle\">±0.000 · 84.5 m²</text>\n\n      <rect x=\"570\" y=\"140\" width=\"350\" height=\"240\" fill=\"none\" stroke=\"#2B2A27\" stroke-width=\"1.8\"/>\n      <text x=\"745\" y=\"250\" fill=\"#1A1916\" font-family=\"Cormorant Garamond, serif\" font-size=\"18\" font-style=\"italic\" text-anchor=\"middle\">Master Suite Pavilion</text>\n      <text x=\"745\" y=\"275\" fill=\"#7A766F\" font-family=\"Space Mono, monospace\" font-size=\"11\" text-anchor=\"middle\">+0.150 · 62.0 m²</text>\n\n      <rect x=\"240\" y=\"410\" width=\"680\" height=\"150\" fill=\"none\" stroke=\"#2B2A27\" stroke-width=\"1.8\"/>\n      <text x=\"580\" y=\"480\" fill=\"#1A1916\" font-family=\"Cormorant Garamond, serif\" font-size=\"18\" font-style=\"italic\" text-anchor=\"middle\">Covered Terrace & Water Courtyard</text>\n      <text x=\"580\" y=\"505\" fill=\"#7A766F\" font-family=\"Space Mono, monospace\" font-size=\"11\" text-anchor=\"middle\">-0.300 · 96.0 m²</text>\n\n      <!-- Structural Columns -->\n      <g fill=\"#1A1916\">\n        <rect x=\"215\" y=\"115\" width=\"16\" height=\"16\"/><rect x=\"552\" y=\"115\" width=\"16\" height=\"16\"/><rect x=\"932\" y=\"115\" width=\"16\" height=\"16\"/>\n        <rect x=\"215\" y=\"352\" width=\"16\" height=\"16\"/><rect x=\"552\" y=\"352\" width=\"16\" height=\"16\"/><rect x=\"932\" y=\"352\" width=\"16\" height=\"16\"/>\n        <rect x=\"215\" y=\"572\" width=\"16\" height=\"16\"/><rect x=\"552\" y=\"572\" width=\"16\" height=\"16\"/><rect x=\"932\" y=\"572\" width=\"16\" height=\"16\"/>\n      </g>\n\n      <!-- Dimension Lines Bottom -->\n      <line x1=\"220\" y1=\"670\" x2=\"940\" y2=\"670\" stroke=\"#7A766F\" stroke-width=\"1\"/>\n      <line x1=\"220\" y1=\"662\" x2=\"220\" y2=\"678\" stroke=\"#7A766F\" stroke-width=\"1.5\"/>\n      <line x1=\"560\" y1=\"662\" x2=\"560\" y2=\"678\" stroke=\"#7A766F\" stroke-width=\"1.5\"/>\n      <line x1=\"940\" y1=\"662\" x2=\"940\" y2=\"678\" stroke=\"#7A766F\" stroke-width=\"1.5\"/>\n      <text x=\"390\" y=\"692\" fill=\"#7A766F\" font-family=\"Space Mono, monospace\" font-size=\"11\" text-anchor=\"middle\">8,200 mm</text>\n      <text x=\"750\" y=\"692\" fill=\"#7A766F\" font-family=\"Space Mono, monospace\" font-size=\"11\" text-anchor=\"middle\">9,600 mm</text>\n\n      <!-- Technical Title Block -->\n      <g transform=\"translate(830, 620)\">\n        <rect width=\"250\" height=\"95\" fill=\"#FAF8F5\" stroke=\"#1A1916\" stroke-width=\"1\"/>\n        <text x=\"14\" y=\"24\" fill=\"#1A1916\" font-family=\"Space Mono, monospace\" font-size=\"10\" font-weight=\"bold\">LIVING BLUEPRINT ARCHIVE</text>\n        <text x=\"14\" y=\"44\" fill=\"#1A1916\" font-family=\"Inter, sans-serif\" font-size=\"11\">THE CLIFF HOUSE · MẶT BẰNG TẦNG TRỆT</text>\n        <text x=\"14\" y=\"62\" fill=\"#7A766F\" font-family=\"Space Mono, monospace\" font-size=\"9.5\">MẶT BẰNG TỔNG THỂ · TỶ LỆ 1:100</text>\n        <text x=\"14\" y=\"80\" fill=\"#A8865C\" font-family=\"Space Mono, monospace\" font-size=\"9\">MINH HỌA Ý NIỆM KIẾN TRÚC</text>\n      </g>\n    </svg>\n  "
+      },
+      {
+        "id": "drw-clh-2",
+        "title": "Mặt Cắt Địa Chất & Console Vươn Biển",
+        "type": "section",
+        "scale": "1:100",
+        "desc": "Minh họa giải pháp móng neo sâu vào tầng đá bazan và nhịp console 5.5m trên ngọn sóng.",
+        "svg": "\n    <svg viewBox=\"0 0 1200 750\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\" class=\"drawing-svg-canvas\">\n      <defs>\n        <pattern id=\"cad-grid-sec-clh\" width=\"30\" height=\"30\" patternUnits=\"userSpaceOnUse\">\n          <path d=\"M 30 0 L 0 0 0 30\" fill=\"none\" stroke=\"#E2DFD8\" stroke-width=\"0.75\"/>\n        </pattern>\n      </defs>\n      <rect width=\"1200\" height=\"750\" fill=\"#FAF8F5\"/>\n      <rect width=\"1200\" height=\"750\" fill=\"url(#cad-grid-sec-clh)\"/>\n\n      <!-- Natural Ground Line (Hatched terrain) -->\n      <path d=\"M 60 520 Q 340 500 600 530 T 1140 510 L 1140 700 L 60 700 Z\" fill=\"#EAE5DC\" stroke=\"#1A1916\" stroke-width=\"2.5\"/>\n      <text x=\"100\" y=\"555\" fill=\"#7A766F\" font-family=\"Space Mono, monospace\" font-size=\"10\">ĐỊA HÌNH TỰ NHIÊN / NATURAL TOPOGRAPHY</text>\n\n      <!-- Building Foundation & Slabs -->\n      <rect x=\"220\" y=\"480\" width=\"720\" height=\"35\" fill=\"#383633\" stroke=\"#1A1916\" stroke-width=\"2\"/>\n      <rect x=\"240\" y=\"270\" width=\"680\" height=\"24\" fill=\"#383633\" stroke=\"#1A1916\" stroke-width=\"2\"/>\n      <rect x=\"180\" y=\"130\" width=\"800\" height=\"28\" fill=\"#383633\" stroke=\"#1A1916\" stroke-width=\"2\"/>\n\n      <!-- Vertical Structure & Slender Mullions -->\n      <line x1=\"280\" y1=\"158\" x2=\"280\" y2=\"480\" stroke=\"#1A1916\" stroke-width=\"4\"/>\n      <line x1=\"560\" y1=\"158\" x2=\"560\" y2=\"480\" stroke=\"#1A1916\" stroke-width=\"4\"/>\n      <line x1=\"860\" y1=\"158\" x2=\"860\" y2=\"480\" stroke=\"#1A1916\" stroke-width=\"4\"/>\n\n      <!-- Floor-to-Ceiling Glazing -->\n      <rect x=\"290\" y=\"160\" width=\"260\" height=\"110\" fill=\"rgba(190, 215, 225, 0.35)\" stroke=\"#7A98A6\" stroke-width=\"1.2\"/>\n      <rect x=\"570\" y=\"160\" width=\"280\" height=\"110\" fill=\"rgba(190, 215, 225, 0.35)\" stroke=\"#7A98A6\" stroke-width=\"1.2\"/>\n      <rect x=\"290\" y=\"294\" width=\"560\" height=\"186\" fill=\"rgba(190, 215, 225, 0.4)\" stroke=\"#7A98A6\" stroke-width=\"1.2\"/>\n\n      <!-- Level Markers Left -->\n      <g transform=\"translate(80, 0)\">\n        <line x1=\"40\" y1=\"130\" x2=\"160\" y2=\"130\" stroke=\"#A8865C\" stroke-width=\"1\" stroke-dasharray=\"3,3\"/>\n        <text x=\"30\" y=\"134\" fill=\"#1A1916\" font-family=\"Space Mono, monospace\" font-size=\"10\" text-anchor=\"end\">▲ +7.650 MÁI ĐUA</text>\n\n        <line x1=\"40\" y1=\"270\" x2=\"220\" y2=\"270\" stroke=\"#A8865C\" stroke-width=\"1\" stroke-dasharray=\"3,3\"/>\n        <text x=\"30\" y=\"274\" fill=\"#1A1916\" font-family=\"Space Mono, monospace\" font-size=\"10\" text-anchor=\"end\">▲ +3.800 SÀN TẦNG 2</text>\n\n        <line x1=\"40\" y1=\"480\" x2=\"200\" y2=\"480\" stroke=\"#A8865C\" stroke-width=\"1\" stroke-dasharray=\"3,3\"/>\n        <text x=\"30\" y=\"484\" fill=\"#1A1916\" font-family=\"Space Mono, monospace\" font-size=\"10\" text-anchor=\"end\">▼ ±0.000 SÀN TẦNG 1</text>\n      </g>\n\n      <!-- Section Labels -->\n      <text x=\"420\" y=\"225\" fill=\"#1A1916\" font-family=\"Cormorant Garamond, serif\" font-size=\"16\" font-style=\"italic\" text-anchor=\"middle\">Thư viện & Góc làm việc</text>\n      <text x=\"710\" y=\"225\" fill=\"#1A1916\" font-family=\"Cormorant Garamond, serif\" font-size=\"16\" font-style=\"italic\" text-anchor=\"middle\">Phòng ngủ chính</text>\n      <text x=\"560\" y=\"390\" fill=\"#1A1916\" font-family=\"Cormorant Garamond, serif\" font-size=\"18\" font-style=\"italic\" text-anchor=\"middle\">Không gian sinh hoạt thông tầng</text>\n\n      <!-- Technical Title Block -->\n      <g transform=\"translate(830, 620)\">\n        <rect width=\"250\" height=\"95\" fill=\"#FAF8F5\" stroke=\"#1A1916\" stroke-width=\"1\"/>\n        <text x=\"14\" y=\"24\" fill=\"#1A1916\" font-family=\"Space Mono, monospace\" font-size=\"10\" font-weight=\"bold\">LIVING BLUEPRINT ARCHIVE</text>\n        <text x=\"14\" y=\"44\" fill=\"#1A1916\" font-family=\"Inter, sans-serif\" font-size=\"11\">THE CLIFF HOUSE · MẶT CẮT CONSOLE BIỂN</text>\n        <text x=\"14\" y=\"62\" fill=\"#7A766F\" font-family=\"Space Mono, monospace\" font-size=\"9.5\">MẶT CẮT KIẾN TRÚC A-A · 1:100</text>\n        <text x=\"14\" y=\"80\" fill=\"#A8865C\" font-family=\"Space Mono, monospace\" font-size=\"9\">MINH HỌA Ý NIỆM KIẾN TRÚC</text>\n      </g>\n    </svg>\n  "
+      },
+      {
+        "id": "drw-clh-3",
+        "title": "Sơ Đồ Tải Trọng & Cân Bằng Khối Tích",
+        "type": "diagram",
+        "scale": "N.T.S",
+        "desc": "Phân tích sơ đồ lực đối trọng giữa khối neo đá và khối vươn tự do.",
+        "svg": "\n    <svg viewBox=\"0 0 1200 750\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\" class=\"drawing-svg-canvas\">\n      <defs>\n        <pattern id=\"cad-grid-ax-clh\" width=\"30\" height=\"30\" patternUnits=\"userSpaceOnUse\">\n          <path d=\"M 30 0 L 0 0 0 30\" fill=\"none\" stroke=\"#E2DFD8\" stroke-width=\"0.75\"/>\n        </pattern>\n      </defs>\n      <rect width=\"1200\" height=\"750\" fill=\"#FAF8F5\"/>\n      <rect width=\"1200\" height=\"750\" fill=\"url(#cad-grid-ax-clh)\"/>\n\n      <!-- Axonometric Isometric Volume 1: Foundation Base -->\n      <polygon points=\"260,540 600,430 940,510 600,620\" fill=\"#DDD7CC\" stroke=\"#1A1916\" stroke-width=\"2\"/>\n      <polygon points=\"260,540 260,570 600,650 600,620\" fill=\"#BDB6A8\" stroke=\"#1A1916\" stroke-width=\"2\"/>\n      <polygon points=\"600,620 600,650 940,540 940,510\" fill=\"#8F887B\" stroke=\"#1A1916\" stroke-width=\"2\"/>\n      <text x=\"600\" y=\"580\" fill=\"#1A1916\" font-family=\"Cormorant Garamond, serif\" font-size=\"18\" font-style=\"italic\" text-anchor=\"middle\">Khối Đế Tiếp Địa & Mặt Nước</text>\n\n      <!-- Axonometric Volume 2: Middle Glazing Pavilion -->\n      <polygon points=\"340,380 600,300 860,360 600,440\" fill=\"rgba(190, 215, 225, 0.45)\" stroke=\"#1A1916\" stroke-width=\"1.8\"/>\n      <line x1=\"340\" y1=\"380\" x2=\"340\" y2=\"480\" stroke=\"#1A1916\" stroke-width=\"2\" stroke-dasharray=\"4,4\"/>\n      <line x1=\"860\" y1=\"360\" x2=\"860\" y2=\"460\" stroke=\"#1A1916\" stroke-width=\"2\" stroke-dasharray=\"4,4\"/>\n      <line x1=\"600\" y1=\"440\" x2=\"600\" y2=\"540\" stroke=\"#1A1916\" stroke-width=\"2\" stroke-dasharray=\"4,4\"/>\n      <text x=\"600\" y=\"380\" fill=\"#1A1916\" font-family=\"Cormorant Garamond, serif\" font-size=\"18\" font-style=\"italic\" text-anchor=\"middle\">Lớp Vỏ Kính Trong Suốt & Khoảng Đệm</text>\n\n      <!-- Axonometric Volume 3: Floating Cantilever Roof Plate -->\n      <polygon points=\"240,210 600,120 960,190 600,280\" fill=\"#FAF8F5\" stroke=\"#1A1916\" stroke-width=\"2.5\"/>\n      <polygon points=\"240,210 240,225 600,295 600,280\" fill=\"#A8865C\" stroke=\"#1A1916\" stroke-width=\"1.5\"/>\n      <polygon points=\"600,280 600,295 960,205 960,190\" fill=\"#8A6840\" stroke=\"#1A1916\" stroke-width=\"1.5\"/>\n      <text x=\"600\" y=\"210\" fill=\"#1A1916\" font-family=\"Cormorant Garamond, serif\" font-size=\"20\" font-style=\"italic\" text-anchor=\"middle\">Mái Vươn Tự Do (Cantilever Overhang)</text>\n\n      <!-- Exploded Projection Rays -->\n      <line x1=\"240\" y1=\"210\" x2=\"260\" y2=\"540\" stroke=\"#A8865C\" stroke-width=\"1.2\" stroke-dasharray=\"5,5\"/>\n      <line x1=\"600\" y1=\"120\" x2=\"600\" y2=\"430\" stroke=\"#A8865C\" stroke-width=\"1.2\" stroke-dasharray=\"5,5\"/>\n      <line x1=\"960\" y1=\"190\" x2=\"940\" y2=\"510\" stroke=\"#A8865C\" stroke-width=\"1.2\" stroke-dasharray=\"5,5\"/>\n\n      <!-- Annotations Left -->\n      <g transform=\"translate(140, 180)\">\n        <circle cx=\"0\" cy=\"0\" r=\"4\" fill=\"#A8865C\"/>\n        <line x1=\"0\" y1=\"0\" x2=\"-40\" y2=\"-30\" stroke=\"#A8865C\" stroke-width=\"1\"/>\n        <line x1=\"-40\" y1=\"-30\" x2=\"-90\" y2=\"-30\" stroke=\"#A8865C\" stroke-width=\"1\"/>\n        <text x=\"-95\" y=\"-26\" fill=\"#1A1916\" font-family=\"Space Mono, monospace\" font-size=\"10\" text-anchor=\"end\">KẾT CẤU MÁI THÉP VƯƠN XA 4.2M</text>\n      </g>\n\n      <!-- Technical Title Block -->\n      <g transform=\"translate(830, 620)\">\n        <rect width=\"250\" height=\"95\" fill=\"#FAF8F5\" stroke=\"#1A1916\" stroke-width=\"1\"/>\n        <text x=\"14\" y=\"24\" fill=\"#1A1916\" font-family=\"Space Mono, monospace\" font-size=\"10\" font-weight=\"bold\">LIVING BLUEPRINT ARCHIVE</text>\n        <text x=\"14\" y=\"44\" fill=\"#1A1916\" font-family=\"Inter, sans-serif\" font-size=\"11\">THE CLIFF HOUSE · SƠ ĐỒ ĐỐI TRỌNG LỰC</text>\n        <text x=\"14\" y=\"62\" fill=\"#7A766F\" font-family=\"Space Mono, monospace\" font-size=\"9.5\">SƠ ĐỒ TRỤC ĐO PHÂN TÁCH KHỐI</text>\n        <text x=\"14\" y=\"80\" fill=\"#A8865C\" font-family=\"Space Mono, monospace\" font-size=\"9\">MINH HỌA Ý NIỆM KIẾN TRÚC</text>\n      </g>\n    </svg>\n  "
+      }
+    ],
+    "gallery": [
+      {
+        "id": "gal-clh-1",
+        "title": "Console bê tông vươn trên ghềnh đá biển",
+        "aspect": "wide",
+        "gradient": "linear-gradient(155deg, #243442 0%, #465E72 50%, #7694A8 100%)",
+        "caption": "Khối kiến trúc dũng mãnh vươn mình 40m trên mặt biển Quy Nhơn.",
+        "tag": "Ngoại thất",
+        "alt": "Biệt thự bê tông vươn console trên vách đá biển"
+      },
+      {
+        "id": "gal-clh-2",
+        "title": "Phòng khách vô cực ngập tràn gió biển",
+        "aspect": "wide",
+        "gradient": "linear-gradient(135deg, #7A98A8 0%, #547282 50%, #2E4654 100%)",
+        "caption": "Hệ cửa kính trượt âm tường mở trọn 12m chiều ngang ra đường chân trời xanh biếc.",
+        "tag": "Nội thất",
+        "alt": "Phòng khách mở toang nhìn ra biển xanh"
+      },
+      {
+        "id": "gal-clh-3",
+        "title": "Bê tông cốp-pha thô và thép Corten nhuốm màu gió biển",
+        "aspect": "portrait",
+        "gradient": "linear-gradient(170deg, #604030 0%, #8A624E 50%, #B8907A 100%)",
+        "caption": "Lớp gỉ sét tự bảo vệ của thép Corten tạo nên gam màu ấm áp tương phản với nền trời biển.",
+        "tag": "Vật liệu",
+        "alt": "Chi tiết vật liệu bê tông và thép phong hóa"
+      },
+      {
+        "id": "gal-clh-4",
+        "title": "Cầu thang đá bazan nguyên khối khoét vào vách núi",
+        "aspect": "portrait",
+        "gradient": "linear-gradient(160deg, #283038 0%, #44505C 50%, #687A8A 100%)",
+        "caption": "Trục giao thông đứng dẫn lối từ hầm rượu mát lạnh lên các tầng không gian trên cao.",
+        "tag": "Giao thông",
+        "alt": "Cầu thang đá bazan điêu khắc tối giản"
+      },
+      {
+        "id": "gal-clh-5",
+        "title": "Hồ bơi vô cực hòa lẫn vào màu nước biển chiều tà",
+        "aspect": "wide",
+        "gradient": "linear-gradient(145deg, #101E28 0%, #283E50 50%, #52748E 100%)",
+        "caption": "Mặt nước hồ bơi đóng vai trò tấm gương khổng lồ gom trọn bầu trời hoàng hôn rực rỡ.",
+        "tag": "Cảnh quan",
+        "alt": "Hồ bơi tràn mép nhìn ra biển lúc hoàng hôn"
+      }
+    ],
+    "materials": [
+      {
+        "name": "Bê Tông Tro Bay Bền Sunfat",
+        "category": "Kết cấu biển",
+        "origin": "Xi măng bền sunfat trộn tro bay nhiệt điện",
+        "description": "Chống rỉ sét cốt thép và ngăn chặn muối thẩm thấu trong môi trường sóng biển đại dương.",
+        "swatchColor": "#6B7A85"
+      },
+      {
+        "name": "Thép Phong Hóa Corten Weathering Steel",
+        "category": "Lam che nắng & Lan can",
+        "origin": "Thép hợp kim tạo màng oxit bảo vệ",
+        "description": "Không cần sơn bảo dưỡng, màu nâu rỉ ấm áp chuyển biến theo độ ẩm gió biển.",
+        "swatchColor": "#9E5B32"
+      },
+      {
+        "name": "Đá Granite Đen Phù Mỹ Khò Lửa",
+        "category": "Ốp sàn sân & Hồ bơi",
+        "origin": "Mỏ đá tự nhiên Bình Định",
+        "description": "Độ cứng cao, không trơn trượt dưới tác động của nước biển và bước chân trần.",
+        "swatchColor": "#28292B"
+      }
+    ],
+    "lightingStrategy": "Thiết kế ánh sáng mô phỏng chu kỳ mặt trời. Toàn bộ đèn ngoài trời có góc chiếu hẹp hướng xuống mặt sàn để chống ô nhiễm ánh sáng ven biển và bảo tồn thảm sinh vật rùa biển bản địa.",
+    "tectonicDetails": [
+      "Gối đỡ trượt cao su giảm chấn bảo vệ công trình trước dao động gió bão cấp 14.",
+      "Kính cường lực 19mm ghép film PVB 4 lớp chịu được áp lực gió biển tương đương 3.5 kPa.",
+      "Chi tiết thoát nước sàn ngầm ẩn dưới khe đá granite 10mm."
+    ]
+  },
+  {
+    "slug": "ha-dong-cultural-center",
+    "title": "Hà Đông Cultural Center",
+    "category": "architecture",
+    "year": 2023,
+    "location": "Hà Đông, Hà Nội",
+    "status": "completed",
+    "statusLabel": "Đã hoàn thành",
+    "coverGradient": "linear-gradient(145deg, #6A5C44 0%, #9D8E78 45%, #C0B09A 100%)",
+    "coverAlt": "Trung tâm văn hóa đương đại lấy cảm hứng từ đình làng — Minh họa ý niệm",
+    "area": "2,800 m²",
+    "type": "Công trình văn hóa công cộng",
+    "style": "Công cộng đương đại",
+    "shortDesc": "Không gian sinh hoạt văn hóa cộng đồng tái hiện cấu trúc mái đình truyền thống qua lăng kính kiến trúc đương đại.",
+    "role": "Chủ trì Thiết kế Ý niệm & Quy hoạch Không gian Công cộng",
+    "summary": "Trung tâm Văn hóa Hà Đông là một nỗ lực kết nối di sản văn hóa lụa truyền thống với đời sống đô thị hiện đại. Lấy cảm hứng từ không gian mở đa năng của mái Đình làng Bắc Bộ, công trình tạo ra các tầng bậc cảnh quan chuyển tiếp mềm mại từ hè phố vào sảnh triển lãm, xóa bỏ rào cản giữa người dân và không gian văn hóa.",
+    "context": "Khu đô thị mới Hà Đông với tốc độ bê tông hóa nhanh, thiếu hụt các không gian công cộng mở mang tính gắn kết cộng đồng. Dự án đặt mục tiêu trở thành một \"khoảng thở\" xanh mát và giàu bản sắc văn hóa cho cư dân mọi lứa tuổi.",
+    "objectives": [
+      "Tái hiện tinh thần không gian đình làng: mái lớn che chở, hàng hiên rộng và không gian linh hoạt.",
+      "Ứng dụng vật liệu gốm nung và dệt lụa thủ công vào chi tiết lam che nắng mặt tiền.",
+      "Tích hợp công nghệ năng lượng mặt trời tàng hình dưới ngói gốm năng lượng.",
+      "Đảm bảo 100% công trình tiếp cận thuận tiện cho người khuyết tật và người cao tuổi."
+    ],
+    "philosophy": "\"Một công trình công cộng thành công là nơi người dân cảm thấy thuộc về ngay từ bước chân đầu tiên trên bậc thềm.\"",
+    "concept": "Hệ mái cong nhịp lớn lấy cảm hứng từ độ cong của đao đình truyền thống được cấu trúc lại bằng giàn không gian thép nhẹ, cho phép tạo ra sảnh đa năng khẩu độ 28m không cột chống.",
+    "spatialStrategy": "Quảng trường bậc thềm ngoài trời đóng vai trò nhà hát lộ thiên cho các lễ hội dân gian. Bên trong là chuỗi phòng triển lãm nghệ thuật, xưởng thực hành nghề dệt thủ công và thư viện mở.",
+    "landscapeRelation": "Hồ sen cảnh quan đóng vai trò hồ điều hòa vi khí hậu mùa hè, đồng thời tái hiện hình ảnh \"ao làng\" quen thuộc trong ký ức người dân xứ Đoài.",
+    "keyDecisions": [
+      "Giải phóng tầng trệt làm không gian mở liên thông ra công viên lân cận.",
+      "Sử dụng 65,000 viên gạch gốm Bát Tràng làm vách hoa gió tạo bóng mát tự nhiên.",
+      "Thu gom 100% nước mưa từ mái dốc đưa vào bể lọc sinh học ngầm tưới cây cảnh quan."
+    ],
+    "drawings": [
+      {
+        "id": "drw-hdc-1",
+        "title": "Mặt Bằng Sảnh Lớn & Quảng Trường Bậc Thềm",
+        "type": "plan",
+        "scale": "1:200",
+        "desc": "Sơ đồ tổ chức không gian đa năng không cột và quảng trường giao lưu cộng đồng.",
+        "svg": "\n    <svg viewBox=\"0 0 1200 750\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\" class=\"drawing-svg-canvas\">\n      <defs>\n        <pattern id=\"cad-grid-hdc\" width=\"30\" height=\"30\" patternUnits=\"userSpaceOnUse\">\n          <path d=\"M 30 0 L 0 0 0 30\" fill=\"none\" stroke=\"#E2DFD8\" stroke-width=\"0.75\"/>\n        </pattern>\n      </defs>\n      <rect width=\"1200\" height=\"750\" fill=\"#FAF8F5\"/>\n      <rect width=\"1200\" height=\"750\" fill=\"url(#cad-grid-hdc)\"/>\n\n      <!-- Grid Axis Lines -->\n      <line x1=\"120\" y1=\"80\" x2=\"1080\" y2=\"80\" stroke=\"#A8865C\" stroke-width=\"1\" stroke-dasharray=\"8,4\"/>\n      <line x1=\"120\" y1=\"360\" x2=\"1080\" y2=\"360\" stroke=\"#A8865C\" stroke-width=\"0.8\" stroke-dasharray=\"6,3\"/>\n      <line x1=\"120\" y1=\"620\" x2=\"1080\" y2=\"620\" stroke=\"#A8865C\" stroke-width=\"1\" stroke-dasharray=\"8,4\"/>\n      <line x1=\"180\" y1=\"60\" x2=\"180\" y2=\"660\" stroke=\"#A8865C\" stroke-width=\"1\" stroke-dasharray=\"8,4\"/>\n      <line x1=\"560\" y1=\"60\" x2=\"560\" y2=\"660\" stroke=\"#A8865C\" stroke-width=\"0.8\" stroke-dasharray=\"6,3\"/>\n      <line x1=\"980\" y1=\"60\" x2=\"980\" y2=\"660\" stroke=\"#A8865C\" stroke-width=\"1\" stroke-dasharray=\"8,4\"/>\n\n      <!-- Axis Bubbles -->\n      <circle cx=\"180\" cy=\"50\" r=\"14\" fill=\"#1A1916\"/><text x=\"180\" y=\"55\" fill=\"#FAF8F5\" font-size=\"11\" font-family=\"Space Mono, monospace\" text-anchor=\"middle\">A</text>\n      <circle cx=\"560\" cy=\"50\" r=\"14\" fill=\"#1A1916\"/><text x=\"560\" y=\"55\" fill=\"#FAF8F5\" font-size=\"11\" font-family=\"Space Mono, monospace\" text-anchor=\"middle\">B</text>\n      <circle cx=\"980\" cy=\"50\" r=\"14\" fill=\"#1A1916\"/><text x=\"980\" y=\"55\" fill=\"#FAF8F5\" font-size=\"11\" font-family=\"Space Mono, monospace\" text-anchor=\"middle\">C</text>\n      <circle cx=\"95\" cy=\"80\" r=\"14\" fill=\"#1A1916\"/><text x=\"95\" y=\"85\" fill=\"#FAF8F5\" font-size=\"11\" font-family=\"Space Mono, monospace\" text-anchor=\"middle\">1</text>\n      <circle cx=\"95\" cy=\"360\" r=\"14\" fill=\"#1A1916\"/><text x=\"95\" y=\"365\" fill=\"#FAF8F5\" font-size=\"11\" font-family=\"Space Mono, monospace\" text-anchor=\"middle\">2</text>\n      <circle cx=\"95\" cy=\"620\" r=\"14\" fill=\"#1A1916\"/><text x=\"95\" y=\"625\" fill=\"#FAF8F5\" font-size=\"11\" font-family=\"Space Mono, monospace\" text-anchor=\"middle\">3</text>\n\n      <!-- Main Building Footprint & Walls -->\n      <rect x=\"220\" y=\"120\" width=\"720\" height=\"460\" fill=\"rgba(240, 237, 230, 0.6)\" stroke=\"#1A1916\" stroke-width=\"3\"/>\n      <!-- Inner zoning -->\n      <rect x=\"240\" y=\"140\" width=\"300\" height=\"240\" fill=\"none\" stroke=\"#2B2A27\" stroke-width=\"1.8\"/>\n      <text x=\"390\" y=\"250\" fill=\"#1A1916\" font-family=\"Cormorant Garamond, serif\" font-size=\"18\" font-style=\"italic\" text-anchor=\"middle\">Living & Dining Hall</text>\n      <text x=\"390\" y=\"275\" fill=\"#7A766F\" font-family=\"Space Mono, monospace\" font-size=\"11\" text-anchor=\"middle\">±0.000 · 84.5 m²</text>\n\n      <rect x=\"570\" y=\"140\" width=\"350\" height=\"240\" fill=\"none\" stroke=\"#2B2A27\" stroke-width=\"1.8\"/>\n      <text x=\"745\" y=\"250\" fill=\"#1A1916\" font-family=\"Cormorant Garamond, serif\" font-size=\"18\" font-style=\"italic\" text-anchor=\"middle\">Master Suite Pavilion</text>\n      <text x=\"745\" y=\"275\" fill=\"#7A766F\" font-family=\"Space Mono, monospace\" font-size=\"11\" text-anchor=\"middle\">+0.150 · 62.0 m²</text>\n\n      <rect x=\"240\" y=\"410\" width=\"680\" height=\"150\" fill=\"none\" stroke=\"#2B2A27\" stroke-width=\"1.8\"/>\n      <text x=\"580\" y=\"480\" fill=\"#1A1916\" font-family=\"Cormorant Garamond, serif\" font-size=\"18\" font-style=\"italic\" text-anchor=\"middle\">Covered Terrace & Water Courtyard</text>\n      <text x=\"580\" y=\"505\" fill=\"#7A766F\" font-family=\"Space Mono, monospace\" font-size=\"11\" text-anchor=\"middle\">-0.300 · 96.0 m²</text>\n\n      <!-- Structural Columns -->\n      <g fill=\"#1A1916\">\n        <rect x=\"215\" y=\"115\" width=\"16\" height=\"16\"/><rect x=\"552\" y=\"115\" width=\"16\" height=\"16\"/><rect x=\"932\" y=\"115\" width=\"16\" height=\"16\"/>\n        <rect x=\"215\" y=\"352\" width=\"16\" height=\"16\"/><rect x=\"552\" y=\"352\" width=\"16\" height=\"16\"/><rect x=\"932\" y=\"352\" width=\"16\" height=\"16\"/>\n        <rect x=\"215\" y=\"572\" width=\"16\" height=\"16\"/><rect x=\"552\" y=\"572\" width=\"16\" height=\"16\"/><rect x=\"932\" y=\"572\" width=\"16\" height=\"16\"/>\n      </g>\n\n      <!-- Dimension Lines Bottom -->\n      <line x1=\"220\" y1=\"670\" x2=\"940\" y2=\"670\" stroke=\"#7A766F\" stroke-width=\"1\"/>\n      <line x1=\"220\" y1=\"662\" x2=\"220\" y2=\"678\" stroke=\"#7A766F\" stroke-width=\"1.5\"/>\n      <line x1=\"560\" y1=\"662\" x2=\"560\" y2=\"678\" stroke=\"#7A766F\" stroke-width=\"1.5\"/>\n      <line x1=\"940\" y1=\"662\" x2=\"940\" y2=\"678\" stroke=\"#7A766F\" stroke-width=\"1.5\"/>\n      <text x=\"390\" y=\"692\" fill=\"#7A766F\" font-family=\"Space Mono, monospace\" font-size=\"11\" text-anchor=\"middle\">8,200 mm</text>\n      <text x=\"750\" y=\"692\" fill=\"#7A766F\" font-family=\"Space Mono, monospace\" font-size=\"11\" text-anchor=\"middle\">9,600 mm</text>\n\n      <!-- Technical Title Block -->\n      <g transform=\"translate(830, 620)\">\n        <rect width=\"250\" height=\"95\" fill=\"#FAF8F5\" stroke=\"#1A1916\" stroke-width=\"1\"/>\n        <text x=\"14\" y=\"24\" fill=\"#1A1916\" font-family=\"Space Mono, monospace\" font-size=\"10\" font-weight=\"bold\">LIVING BLUEPRINT ARCHIVE</text>\n        <text x=\"14\" y=\"44\" fill=\"#1A1916\" font-family=\"Inter, sans-serif\" font-size=\"11\">HÀ ĐÔNG CULTURAL CENTER · MẶT BẰNG SẢNH LỚN</text>\n        <text x=\"14\" y=\"62\" fill=\"#7A766F\" font-family=\"Space Mono, monospace\" font-size=\"9.5\">MẶT BẰNG TỔNG THỂ · TỶ LỆ 1:100</text>\n        <text x=\"14\" y=\"80\" fill=\"#A8865C\" font-family=\"Space Mono, monospace\" font-size=\"9\">MINH HỌA Ý NIỆM KIẾN TRÚC</text>\n      </g>\n    </svg>\n  "
+      },
+      {
+        "id": "drw-hdc-2",
+        "title": "Mặt Cắt Không Gian Mái Đình Đương Đại",
+        "type": "section",
+        "scale": "1:150",
+        "desc": "Cấu trúc mái vươn cong và hệ thống lấy sáng tán xạ đỉnh mái.",
+        "svg": "\n    <svg viewBox=\"0 0 1200 750\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\" class=\"drawing-svg-canvas\">\n      <defs>\n        <pattern id=\"cad-grid-sec-hdc\" width=\"30\" height=\"30\" patternUnits=\"userSpaceOnUse\">\n          <path d=\"M 30 0 L 0 0 0 30\" fill=\"none\" stroke=\"#E2DFD8\" stroke-width=\"0.75\"/>\n        </pattern>\n      </defs>\n      <rect width=\"1200\" height=\"750\" fill=\"#FAF8F5\"/>\n      <rect width=\"1200\" height=\"750\" fill=\"url(#cad-grid-sec-hdc)\"/>\n\n      <!-- Natural Ground Line (Hatched terrain) -->\n      <path d=\"M 60 520 Q 340 500 600 530 T 1140 510 L 1140 700 L 60 700 Z\" fill=\"#EAE5DC\" stroke=\"#1A1916\" stroke-width=\"2.5\"/>\n      <text x=\"100\" y=\"555\" fill=\"#7A766F\" font-family=\"Space Mono, monospace\" font-size=\"10\">ĐỊA HÌNH TỰ NHIÊN / NATURAL TOPOGRAPHY</text>\n\n      <!-- Building Foundation & Slabs -->\n      <rect x=\"220\" y=\"480\" width=\"720\" height=\"35\" fill=\"#383633\" stroke=\"#1A1916\" stroke-width=\"2\"/>\n      <rect x=\"240\" y=\"270\" width=\"680\" height=\"24\" fill=\"#383633\" stroke=\"#1A1916\" stroke-width=\"2\"/>\n      <rect x=\"180\" y=\"130\" width=\"800\" height=\"28\" fill=\"#383633\" stroke=\"#1A1916\" stroke-width=\"2\"/>\n\n      <!-- Vertical Structure & Slender Mullions -->\n      <line x1=\"280\" y1=\"158\" x2=\"280\" y2=\"480\" stroke=\"#1A1916\" stroke-width=\"4\"/>\n      <line x1=\"560\" y1=\"158\" x2=\"560\" y2=\"480\" stroke=\"#1A1916\" stroke-width=\"4\"/>\n      <line x1=\"860\" y1=\"158\" x2=\"860\" y2=\"480\" stroke=\"#1A1916\" stroke-width=\"4\"/>\n\n      <!-- Floor-to-Ceiling Glazing -->\n      <rect x=\"290\" y=\"160\" width=\"260\" height=\"110\" fill=\"rgba(190, 215, 225, 0.35)\" stroke=\"#7A98A6\" stroke-width=\"1.2\"/>\n      <rect x=\"570\" y=\"160\" width=\"280\" height=\"110\" fill=\"rgba(190, 215, 225, 0.35)\" stroke=\"#7A98A6\" stroke-width=\"1.2\"/>\n      <rect x=\"290\" y=\"294\" width=\"560\" height=\"186\" fill=\"rgba(190, 215, 225, 0.4)\" stroke=\"#7A98A6\" stroke-width=\"1.2\"/>\n\n      <!-- Level Markers Left -->\n      <g transform=\"translate(80, 0)\">\n        <line x1=\"40\" y1=\"130\" x2=\"160\" y2=\"130\" stroke=\"#A8865C\" stroke-width=\"1\" stroke-dasharray=\"3,3\"/>\n        <text x=\"30\" y=\"134\" fill=\"#1A1916\" font-family=\"Space Mono, monospace\" font-size=\"10\" text-anchor=\"end\">▲ +7.650 MÁI ĐUA</text>\n\n        <line x1=\"40\" y1=\"270\" x2=\"220\" y2=\"270\" stroke=\"#A8865C\" stroke-width=\"1\" stroke-dasharray=\"3,3\"/>\n        <text x=\"30\" y=\"274\" fill=\"#1A1916\" font-family=\"Space Mono, monospace\" font-size=\"10\" text-anchor=\"end\">▲ +3.800 SÀN TẦNG 2</text>\n\n        <line x1=\"40\" y1=\"480\" x2=\"200\" y2=\"480\" stroke=\"#A8865C\" stroke-width=\"1\" stroke-dasharray=\"3,3\"/>\n        <text x=\"30\" y=\"484\" fill=\"#1A1916\" font-family=\"Space Mono, monospace\" font-size=\"10\" text-anchor=\"end\">▼ ±0.000 SÀN TẦNG 1</text>\n      </g>\n\n      <!-- Section Labels -->\n      <text x=\"420\" y=\"225\" fill=\"#1A1916\" font-family=\"Cormorant Garamond, serif\" font-size=\"16\" font-style=\"italic\" text-anchor=\"middle\">Thư viện & Góc làm việc</text>\n      <text x=\"710\" y=\"225\" fill=\"#1A1916\" font-family=\"Cormorant Garamond, serif\" font-size=\"16\" font-style=\"italic\" text-anchor=\"middle\">Phòng ngủ chính</text>\n      <text x=\"560\" y=\"390\" fill=\"#1A1916\" font-family=\"Cormorant Garamond, serif\" font-size=\"18\" font-style=\"italic\" text-anchor=\"middle\">Không gian sinh hoạt thông tầng</text>\n\n      <!-- Technical Title Block -->\n      <g transform=\"translate(830, 620)\">\n        <rect width=\"250\" height=\"95\" fill=\"#FAF8F5\" stroke=\"#1A1916\" stroke-width=\"1\"/>\n        <text x=\"14\" y=\"24\" fill=\"#1A1916\" font-family=\"Space Mono, monospace\" font-size=\"10\" font-weight=\"bold\">LIVING BLUEPRINT ARCHIVE</text>\n        <text x=\"14\" y=\"44\" fill=\"#1A1916\" font-family=\"Inter, sans-serif\" font-size=\"11\">HÀ ĐÔNG CULTURAL CENTER · MẶT CẮT MÁI CONG</text>\n        <text x=\"14\" y=\"62\" fill=\"#7A766F\" font-family=\"Space Mono, monospace\" font-size=\"9.5\">MẶT CẮT KIẾN TRÚC A-A · 1:100</text>\n        <text x=\"14\" y=\"80\" fill=\"#A8865C\" font-family=\"Space Mono, monospace\" font-size=\"9\">MINH HỌA Ý NIỆM KIẾN TRÚC</text>\n      </g>\n    </svg>\n  "
+      }
+    ],
+    "gallery": [
+      {
+        "id": "gal-hdc-1",
+        "title": "Quảng trường bậc thềm và mái cong biểu tượng",
+        "aspect": "wide",
+        "gradient": "linear-gradient(150deg, #4A3E2C 0%, #76644C 50%, #A89478 100%)",
+        "caption": "Bậc thềm quảng trường trở thành nơi hóng mát và trò chuyện mỗi buổi hoàng hôn của người dân địa phương.",
+        "tag": "Công cộng",
+        "alt": "Mặt tiền trung tâm văn hóa với mái cong truyền thống đương đại"
+      },
+      {
+        "id": "gal-hdc-2",
+        "title": "Sảnh đa năng 28m không cột tràn ngập ánh sáng tự nhiên",
+        "aspect": "wide",
+        "gradient": "linear-gradient(135deg, #B09C80 0%, #887254 50%, #5C4A32 100%)",
+        "caption": "Không gian mở linh hoạt phục vụ triển lãm tranh ảnh, hòa nhạc và giao lưu văn hóa dân gian.",
+        "tag": "Nội thất",
+        "alt": "Sảnh triển lãm rộng lớn với trần gỗ cong"
+      },
+      {
+        "id": "gal-hdc-3",
+        "title": "Vách gốm hoa gió thủ công tạo bóng đổ điêu khắc",
+        "aspect": "portrait",
+        "gradient": "linear-gradient(170deg, #8A5638 0%, #B47854 50%, #DE9E78 100%)",
+        "caption": "Vật liệu gốm đất nung truyền thống được Module hóa tạo nên nhịp điệu ánh sáng sinh động.",
+        "tag": "Chi tiết",
+        "alt": "Vách hoa gió gốm đất nung che nắng"
+      }
+    ],
+    "materials": [
+      {
+        "name": "Gốm Đất Nung Bát Tràng",
+        "category": "Lam chắn nắng hoa gió",
+        "origin": "Làng gốm Bát Tràng, Hà Nội",
+        "description": "Vật liệu bản địa có khả năng làm mát không khí tự nhiên khi gió thổi qua bề mặt đất nung ẩm.",
+        "swatchColor": "#A85D3B"
+      },
+      {
+        "name": "Gỗ Keo Ghép Thanh Tẩm Áp Lực",
+        "category": "Trần cong âm học",
+        "origin": "Gỗ rừng trồng bền vững",
+        "description": "Uốn cong mềm mại theo nhịp mái đình, tối ưu hóa âm học tự nhiên cho không gian biểu diễn.",
+        "swatchColor": "#B08852"
+      }
+    ],
+    "lightingStrategy": "Ánh sáng tán xạ từ các khe mái hướng bắc mang lại ánh sáng dịu mắt, không gây chói lóa cho các tác phẩm nghệ thuật trưng bày bên trong.",
+    "tectonicDetails": [
+      "Khớp nối thép hình mạ kẽm nhúng nóng liên kết các thanh dầm gỗ uốn cong.",
+      "Hệ thống máng xối âm bê tông cốt thép thu gom nước mưa theo đúng triết lý \"nước chảy về rốn\" của đình làng."
+    ]
+  },
+  {
+    "slug": "mekong-riverside-office",
+    "title": "Mekong Riverside Office",
+    "category": "architecture",
+    "year": 2022,
+    "location": "Cần Thơ, Đồng Bằng Sông Cửu Long",
+    "status": "completed",
+    "statusLabel": "Đã hoàn thành",
+    "coverGradient": "linear-gradient(145deg, #3C5A48 0%, #6A9080 45%, #98B8A8 100%)",
+    "coverAlt": "Tòa nhà văn phòng sinh thái ven sông Mekong — Minh họa ý niệm",
+    "area": "4,200 m²",
+    "type": "Văn phòng thương mại sinh thái",
+    "style": "Nhiệt đới hiện đại",
+    "shortDesc": "Công trình văn phòng ven sông Cần Thơ ứng phó biến đổi khí hậu và nhịp điệu mùa nước nổi.",
+    "role": "Thiết kế Kiến trúc Xanh & Tư vấn Năng lượng Thụ động",
+    "summary": "Nằm trên bờ tây sông Cần Thơ, tòa nhà văn phòng 5 tầng này là một ví dụ tiêu biểu về kiến trúc sinh thái thích ứng khí hậu nhiệt đới gió mùa và chế độ thủy triều sông Mekong. Công trình ứng dụng hệ lam xoay chắn nắng cơ động và hành lang arcade truyền thống để đón gió mát từ mặt nước.",
+    "context": "Vùng đồng bằng sông Cửu Long với nắng nóng quanh năm, độ ẩm cao và hiện tượng triều cường dâng cao định kỳ. Yêu cầu đặt ra là một tòa nhà văn phòng hiện đại nhưng tiêu thụ ít năng lượng điều hòa và thân thiện với người đi bộ.",
+    "objectives": [
+      "Giảm 45% phụ tải điện cho hệ thống làm mát bằng giải pháp thông gió tự nhiên qua mặt sông.",
+      "Thiết kế tầng trệt nổi thích ứng hoàn toàn với đỉnh triều cường lịch sử +2.20m.",
+      "Tạo lập không gian làm việc mở tràn ngập ánh sáng xanh và tầm nhìn sông nước khoáng đạt."
+    ],
+    "philosophy": "\"Kiến trúc miền sông nước phải biết hòa nhịp thở cùng con nước lớn, nước ròng thay vì tìm cách đắp đê ngăn chặn thiên nhiên.\"",
+    "concept": "Mặt tiền công trình được thiết kế như một lớp màng lọc hai lớp (Double-skin facade): lớp kính bên trong và hệ lam nhôm đục lỗ xoay theo hướng nắng bên ngoài.",
+    "spatialStrategy": "Tầng trệt được thiết kế thông thoáng như một hành lang thương mại mở, nơi nhân viên văn phòng và người dân có thể dừng chân nghỉ ngơi ven sông.",
+    "landscapeRelation": "Bờ kè sinh thái bằng đá rọ kết hợp thảm thực vật ngập mặn địa phương (bần, dừa nước) giúp chống xói mòn và lọc sạch nước thải bề mặt.",
+    "keyDecisions": [
+      "Nâng cao cốt sàn tầng 1 lên +2.50m trên mực triều cường dự báo 50 năm.",
+      "Lắp đặt hệ lam nhôm đục lỗ thông minh tự động xoay theo góc chiếu mặt trời.",
+      "Tận dụng nước sông qua hệ thống trao đổi nhiệt ngầm để làm mát chiller."
+    ],
+    "drawings": [
+      {
+        "id": "drw-mro-1",
+        "title": "Mặt Bằng Tầng Điển Hình & Hành Lang Đón Gió",
+        "type": "plan",
+        "scale": "1:150",
+        "desc": "Mặt bằng văn phòng mở tối ưu luồng gió sông xuyên phòng.",
+        "svg": "\n    <svg viewBox=\"0 0 1200 750\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\" class=\"drawing-svg-canvas\">\n      <defs>\n        <pattern id=\"cad-grid-mro\" width=\"30\" height=\"30\" patternUnits=\"userSpaceOnUse\">\n          <path d=\"M 30 0 L 0 0 0 30\" fill=\"none\" stroke=\"#E2DFD8\" stroke-width=\"0.75\"/>\n        </pattern>\n      </defs>\n      <rect width=\"1200\" height=\"750\" fill=\"#FAF8F5\"/>\n      <rect width=\"1200\" height=\"750\" fill=\"url(#cad-grid-mro)\"/>\n\n      <!-- Grid Axis Lines -->\n      <line x1=\"120\" y1=\"80\" x2=\"1080\" y2=\"80\" stroke=\"#A8865C\" stroke-width=\"1\" stroke-dasharray=\"8,4\"/>\n      <line x1=\"120\" y1=\"360\" x2=\"1080\" y2=\"360\" stroke=\"#A8865C\" stroke-width=\"0.8\" stroke-dasharray=\"6,3\"/>\n      <line x1=\"120\" y1=\"620\" x2=\"1080\" y2=\"620\" stroke=\"#A8865C\" stroke-width=\"1\" stroke-dasharray=\"8,4\"/>\n      <line x1=\"180\" y1=\"60\" x2=\"180\" y2=\"660\" stroke=\"#A8865C\" stroke-width=\"1\" stroke-dasharray=\"8,4\"/>\n      <line x1=\"560\" y1=\"60\" x2=\"560\" y2=\"660\" stroke=\"#A8865C\" stroke-width=\"0.8\" stroke-dasharray=\"6,3\"/>\n      <line x1=\"980\" y1=\"60\" x2=\"980\" y2=\"660\" stroke=\"#A8865C\" stroke-width=\"1\" stroke-dasharray=\"8,4\"/>\n\n      <!-- Axis Bubbles -->\n      <circle cx=\"180\" cy=\"50\" r=\"14\" fill=\"#1A1916\"/><text x=\"180\" y=\"55\" fill=\"#FAF8F5\" font-size=\"11\" font-family=\"Space Mono, monospace\" text-anchor=\"middle\">A</text>\n      <circle cx=\"560\" cy=\"50\" r=\"14\" fill=\"#1A1916\"/><text x=\"560\" y=\"55\" fill=\"#FAF8F5\" font-size=\"11\" font-family=\"Space Mono, monospace\" text-anchor=\"middle\">B</text>\n      <circle cx=\"980\" cy=\"50\" r=\"14\" fill=\"#1A1916\"/><text x=\"980\" y=\"55\" fill=\"#FAF8F5\" font-size=\"11\" font-family=\"Space Mono, monospace\" text-anchor=\"middle\">C</text>\n      <circle cx=\"95\" cy=\"80\" r=\"14\" fill=\"#1A1916\"/><text x=\"95\" y=\"85\" fill=\"#FAF8F5\" font-size=\"11\" font-family=\"Space Mono, monospace\" text-anchor=\"middle\">1</text>\n      <circle cx=\"95\" cy=\"360\" r=\"14\" fill=\"#1A1916\"/><text x=\"95\" y=\"365\" fill=\"#FAF8F5\" font-size=\"11\" font-family=\"Space Mono, monospace\" text-anchor=\"middle\">2</text>\n      <circle cx=\"95\" cy=\"620\" r=\"14\" fill=\"#1A1916\"/><text x=\"95\" y=\"625\" fill=\"#FAF8F5\" font-size=\"11\" font-family=\"Space Mono, monospace\" text-anchor=\"middle\">3</text>\n\n      <!-- Main Building Footprint & Walls -->\n      <rect x=\"220\" y=\"120\" width=\"720\" height=\"460\" fill=\"rgba(240, 237, 230, 0.6)\" stroke=\"#1A1916\" stroke-width=\"3\"/>\n      <!-- Inner zoning -->\n      <rect x=\"240\" y=\"140\" width=\"300\" height=\"240\" fill=\"none\" stroke=\"#2B2A27\" stroke-width=\"1.8\"/>\n      <text x=\"390\" y=\"250\" fill=\"#1A1916\" font-family=\"Cormorant Garamond, serif\" font-size=\"18\" font-style=\"italic\" text-anchor=\"middle\">Living & Dining Hall</text>\n      <text x=\"390\" y=\"275\" fill=\"#7A766F\" font-family=\"Space Mono, monospace\" font-size=\"11\" text-anchor=\"middle\">±0.000 · 84.5 m²</text>\n\n      <rect x=\"570\" y=\"140\" width=\"350\" height=\"240\" fill=\"none\" stroke=\"#2B2A27\" stroke-width=\"1.8\"/>\n      <text x=\"745\" y=\"250\" fill=\"#1A1916\" font-family=\"Cormorant Garamond, serif\" font-size=\"18\" font-style=\"italic\" text-anchor=\"middle\">Master Suite Pavilion</text>\n      <text x=\"745\" y=\"275\" fill=\"#7A766F\" font-family=\"Space Mono, monospace\" font-size=\"11\" text-anchor=\"middle\">+0.150 · 62.0 m²</text>\n\n      <rect x=\"240\" y=\"410\" width=\"680\" height=\"150\" fill=\"none\" stroke=\"#2B2A27\" stroke-width=\"1.8\"/>\n      <text x=\"580\" y=\"480\" fill=\"#1A1916\" font-family=\"Cormorant Garamond, serif\" font-size=\"18\" font-style=\"italic\" text-anchor=\"middle\">Covered Terrace & Water Courtyard</text>\n      <text x=\"580\" y=\"505\" fill=\"#7A766F\" font-family=\"Space Mono, monospace\" font-size=\"11\" text-anchor=\"middle\">-0.300 · 96.0 m²</text>\n\n      <!-- Structural Columns -->\n      <g fill=\"#1A1916\">\n        <rect x=\"215\" y=\"115\" width=\"16\" height=\"16\"/><rect x=\"552\" y=\"115\" width=\"16\" height=\"16\"/><rect x=\"932\" y=\"115\" width=\"16\" height=\"16\"/>\n        <rect x=\"215\" y=\"352\" width=\"16\" height=\"16\"/><rect x=\"552\" y=\"352\" width=\"16\" height=\"16\"/><rect x=\"932\" y=\"352\" width=\"16\" height=\"16\"/>\n        <rect x=\"215\" y=\"572\" width=\"16\" height=\"16\"/><rect x=\"552\" y=\"572\" width=\"16\" height=\"16\"/><rect x=\"932\" y=\"572\" width=\"16\" height=\"16\"/>\n      </g>\n\n      <!-- Dimension Lines Bottom -->\n      <line x1=\"220\" y1=\"670\" x2=\"940\" y2=\"670\" stroke=\"#7A766F\" stroke-width=\"1\"/>\n      <line x1=\"220\" y1=\"662\" x2=\"220\" y2=\"678\" stroke=\"#7A766F\" stroke-width=\"1.5\"/>\n      <line x1=\"560\" y1=\"662\" x2=\"560\" y2=\"678\" stroke=\"#7A766F\" stroke-width=\"1.5\"/>\n      <line x1=\"940\" y1=\"662\" x2=\"940\" y2=\"678\" stroke=\"#7A766F\" stroke-width=\"1.5\"/>\n      <text x=\"390\" y=\"692\" fill=\"#7A766F\" font-family=\"Space Mono, monospace\" font-size=\"11\" text-anchor=\"middle\">8,200 mm</text>\n      <text x=\"750\" y=\"692\" fill=\"#7A766F\" font-family=\"Space Mono, monospace\" font-size=\"11\" text-anchor=\"middle\">9,600 mm</text>\n\n      <!-- Technical Title Block -->\n      <g transform=\"translate(830, 620)\">\n        <rect width=\"250\" height=\"95\" fill=\"#FAF8F5\" stroke=\"#1A1916\" stroke-width=\"1\"/>\n        <text x=\"14\" y=\"24\" fill=\"#1A1916\" font-family=\"Space Mono, monospace\" font-size=\"10\" font-weight=\"bold\">LIVING BLUEPRINT ARCHIVE</text>\n        <text x=\"14\" y=\"44\" fill=\"#1A1916\" font-family=\"Inter, sans-serif\" font-size=\"11\">MEKONG RIVERSIDE OFFICE · MẶT BẰNG ĐIỂN HÌNH</text>\n        <text x=\"14\" y=\"62\" fill=\"#7A766F\" font-family=\"Space Mono, monospace\" font-size=\"9.5\">MẶT BẰNG TỔNG THỂ · TỶ LỆ 1:100</text>\n        <text x=\"14\" y=\"80\" fill=\"#A8865C\" font-family=\"Space Mono, monospace\" font-size=\"9\">MINH HỌA Ý NIỆM KIẾN TRÚC</text>\n      </g>\n    </svg>\n  "
+      },
+      {
+        "id": "drw-mro-2",
+        "title": "Mặt Cắt Mặt Tiền Double-Skin & Chắn Triều",
+        "type": "section",
+        "scale": "1:100",
+        "desc": "Chi tiết hệ lam hai lớp và cốt nền thích ứng triều cường sông Hậu.",
+        "svg": "\n    <svg viewBox=\"0 0 1200 750\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\" class=\"drawing-svg-canvas\">\n      <defs>\n        <pattern id=\"cad-grid-sec-mro\" width=\"30\" height=\"30\" patternUnits=\"userSpaceOnUse\">\n          <path d=\"M 30 0 L 0 0 0 30\" fill=\"none\" stroke=\"#E2DFD8\" stroke-width=\"0.75\"/>\n        </pattern>\n      </defs>\n      <rect width=\"1200\" height=\"750\" fill=\"#FAF8F5\"/>\n      <rect width=\"1200\" height=\"750\" fill=\"url(#cad-grid-sec-mro)\"/>\n\n      <!-- Natural Ground Line (Hatched terrain) -->\n      <path d=\"M 60 520 Q 340 500 600 530 T 1140 510 L 1140 700 L 60 700 Z\" fill=\"#EAE5DC\" stroke=\"#1A1916\" stroke-width=\"2.5\"/>\n      <text x=\"100\" y=\"555\" fill=\"#7A766F\" font-family=\"Space Mono, monospace\" font-size=\"10\">ĐỊA HÌNH TỰ NHIÊN / NATURAL TOPOGRAPHY</text>\n\n      <!-- Building Foundation & Slabs -->\n      <rect x=\"220\" y=\"480\" width=\"720\" height=\"35\" fill=\"#383633\" stroke=\"#1A1916\" stroke-width=\"2\"/>\n      <rect x=\"240\" y=\"270\" width=\"680\" height=\"24\" fill=\"#383633\" stroke=\"#1A1916\" stroke-width=\"2\"/>\n      <rect x=\"180\" y=\"130\" width=\"800\" height=\"28\" fill=\"#383633\" stroke=\"#1A1916\" stroke-width=\"2\"/>\n\n      <!-- Vertical Structure & Slender Mullions -->\n      <line x1=\"280\" y1=\"158\" x2=\"280\" y2=\"480\" stroke=\"#1A1916\" stroke-width=\"4\"/>\n      <line x1=\"560\" y1=\"158\" x2=\"560\" y2=\"480\" stroke=\"#1A1916\" stroke-width=\"4\"/>\n      <line x1=\"860\" y1=\"158\" x2=\"860\" y2=\"480\" stroke=\"#1A1916\" stroke-width=\"4\"/>\n\n      <!-- Floor-to-Ceiling Glazing -->\n      <rect x=\"290\" y=\"160\" width=\"260\" height=\"110\" fill=\"rgba(190, 215, 225, 0.35)\" stroke=\"#7A98A6\" stroke-width=\"1.2\"/>\n      <rect x=\"570\" y=\"160\" width=\"280\" height=\"110\" fill=\"rgba(190, 215, 225, 0.35)\" stroke=\"#7A98A6\" stroke-width=\"1.2\"/>\n      <rect x=\"290\" y=\"294\" width=\"560\" height=\"186\" fill=\"rgba(190, 215, 225, 0.4)\" stroke=\"#7A98A6\" stroke-width=\"1.2\"/>\n\n      <!-- Level Markers Left -->\n      <g transform=\"translate(80, 0)\">\n        <line x1=\"40\" y1=\"130\" x2=\"160\" y2=\"130\" stroke=\"#A8865C\" stroke-width=\"1\" stroke-dasharray=\"3,3\"/>\n        <text x=\"30\" y=\"134\" fill=\"#1A1916\" font-family=\"Space Mono, monospace\" font-size=\"10\" text-anchor=\"end\">▲ +7.650 MÁI ĐUA</text>\n\n        <line x1=\"40\" y1=\"270\" x2=\"220\" y2=\"270\" stroke=\"#A8865C\" stroke-width=\"1\" stroke-dasharray=\"3,3\"/>\n        <text x=\"30\" y=\"274\" fill=\"#1A1916\" font-family=\"Space Mono, monospace\" font-size=\"10\" text-anchor=\"end\">▲ +3.800 SÀN TẦNG 2</text>\n\n        <line x1=\"40\" y1=\"480\" x2=\"200\" y2=\"480\" stroke=\"#A8865C\" stroke-width=\"1\" stroke-dasharray=\"3,3\"/>\n        <text x=\"30\" y=\"484\" fill=\"#1A1916\" font-family=\"Space Mono, monospace\" font-size=\"10\" text-anchor=\"end\">▼ ±0.000 SÀN TẦNG 1</text>\n      </g>\n\n      <!-- Section Labels -->\n      <text x=\"420\" y=\"225\" fill=\"#1A1916\" font-family=\"Cormorant Garamond, serif\" font-size=\"16\" font-style=\"italic\" text-anchor=\"middle\">Thư viện & Góc làm việc</text>\n      <text x=\"710\" y=\"225\" fill=\"#1A1916\" font-family=\"Cormorant Garamond, serif\" font-size=\"16\" font-style=\"italic\" text-anchor=\"middle\">Phòng ngủ chính</text>\n      <text x=\"560\" y=\"390\" fill=\"#1A1916\" font-family=\"Cormorant Garamond, serif\" font-size=\"18\" font-style=\"italic\" text-anchor=\"middle\">Không gian sinh hoạt thông tầng</text>\n\n      <!-- Technical Title Block -->\n      <g transform=\"translate(830, 620)\">\n        <rect width=\"250\" height=\"95\" fill=\"#FAF8F5\" stroke=\"#1A1916\" stroke-width=\"1\"/>\n        <text x=\"14\" y=\"24\" fill=\"#1A1916\" font-family=\"Space Mono, monospace\" font-size=\"10\" font-weight=\"bold\">LIVING BLUEPRINT ARCHIVE</text>\n        <text x=\"14\" y=\"44\" fill=\"#1A1916\" font-family=\"Inter, sans-serif\" font-size=\"11\">MEKONG RIVERSIDE OFFICE · CHI TIẾT MẶT TIỀN</text>\n        <text x=\"14\" y=\"62\" fill=\"#7A766F\" font-family=\"Space Mono, monospace\" font-size=\"9.5\">MẶT CẮT KIẾN TRÚC A-A · 1:100</text>\n        <text x=\"14\" y=\"80\" fill=\"#A8865C\" font-family=\"Space Mono, monospace\" font-size=\"9\">MINH HỌA Ý NIỆM KIẾN TRÚC</text>\n      </g>\n    </svg>\n  "
+      }
+    ],
+    "gallery": [
+      {
+        "id": "gal-mro-1",
+        "title": "Mặt đứng ven sông với hệ lam nhôm đục lỗ xoay linh hoạt",
+        "aspect": "wide",
+        "gradient": "linear-gradient(150deg, #203A2E 0%, #446856 50%, #729E88 100%)",
+        "caption": "Hệ lam chuyển động tạo nên diện mạo mặt đứng biến đổi liên tục theo từng giờ trong ngày.",
+        "tag": "Ngoại thất",
+        "alt": "Tòa nhà văn phòng hiện đại soi bóng xuống dòng sông Cần Thơ"
+      },
+      {
+        "id": "gal-mro-2",
+        "title": "Không gian làm việc mở đón gió và ánh sáng mặt nước",
+        "aspect": "wide",
+        "gradient": "linear-gradient(135deg, #7FA894 0%, #587C6C 50%, #305042 100%)",
+        "caption": "Tầm nhìn bao quát khúc quanh sông Cần Thơ mang lại cảm hứng sáng tạo dồi dào cho nhân viên.",
+        "tag": "Nội thất",
+        "alt": "Không gian văn phòng mở nhìn ra dòng sông hiền hòa"
+      }
+    ],
+    "materials": [
+      {
+        "name": "Nhôm Tái Chế Anodized Đục Lỗ",
+        "category": "Hệ lam mặt tiền",
+        "origin": "Hợp kim nhôm tái chế chống ăn mòn nhiệt đới",
+        "description": "Tỷ lệ đục lỗ 40% đảm bảo tầm nhìn từ bên trong nhưng chặn 75% bức xạ nhiệt mặt trời.",
+        "swatchColor": "#7A9488"
+      }
+    ],
+    "lightingStrategy": "Cảm biến quang học tự động điều chỉnh độ sáng đèn LED âm trần tương ứng với cường độ ánh sáng tự nhiên từ bờ sông.",
+    "tectonicDetails": [
+      "Khớp quay cơ khí tự bôi trơn bằng vật liệu teflon chịu ngập nước định kỳ."
+    ]
+  },
+  {
+    "slug": "moc-studio",
+    "title": "Mộc Studio",
+    "category": "interior",
+    "year": 2024,
+    "location": "Quận 2, TP. Hồ Chí Minh",
+    "status": "completed",
+    "statusLabel": "Đã hoàn thành",
+    "coverGradient": "linear-gradient(145deg, #A87840 0%, #C8A060 45%, #E0C888 100%)",
+    "coverAlt": "Nội thất căn hộ Mộc Studio với gỗ tái chế và bê tông mộc — Minh họa ý niệm",
+    "area": "95 m²",
+    "type": "Căn hộ Studio cao cấp",
+    "style": "Tối giản Wabi-Sabi",
+    "shortDesc": "Không gian sống tĩnh tại nơi gỗ tái chế, tường vôi thủ công và ánh sáng tự nhiên hòa quyện.",
+    "role": "Thiết kế Nội thất & Giám sát Hoàn thiện May đo",
+    "summary": "Mộc Studio chuyển hóa triết lý Wabi-Sabi vào bối cảnh nhịp sống đô thị sôi động của Sài Gòn. Toàn bộ tường bê tông hiện trạng được bóc tách và phủ một lớp vôi tôi thủ công pha tro rơm, tạo bề mặt nhám mờ biết thở và lưu giữ dấu ấn thời gian.",
+    "context": "Căn hộ chung cư tiêu chuẩn tại Thảo Điền với bố cục ban đầu chia nhỏ vụn vặt. Gia chủ là một nhà thiết kế cần một không gian sống tĩnh lặng để tái tạo năng lượng sáng tạo.",
+    "objectives": [
+      "Dỡ bỏ toàn bộ vách ngăn thạch cao để tạo không gian mở liên hoàn 95m².",
+      "Sử dụng 100% gỗ teak và gỗ dầu tái chế từ các ngôi nhà cổ miền Tây Nam Bộ.",
+      "Kiểm soát ánh sáng tự nhiên qua các lớp rèm vải đũi dệt tay thô mộc."
+    ],
+    "philosophy": "\"Vẻ đẹp chân thực nhất không nằm ở sự hoàn hảo bóng bẩy, mà ẩn chứa trong những vết nứt, vân thớ gồ ghề và sự trôi chảy của thời gian.\"",
+    "concept": "Ý niệm \"Căn phòng bên trong căn phòng\": Một khối hộp gỗ đa năng đặt ở trung tâm vừa là giường ngủ, vừa là tủ quần áo và hệ kệ sách âm tường.",
+    "spatialStrategy": "Không gian không có hành lang thừa. Khu vực tiếp khách, góc thiền, bàn làm việc và bếp ăn hòa quyện trong một dòng chảy thị giác liền mạch.",
+    "landscapeRelation": "Ban công được cải tạo thành một vườn tiểu cảnh đá cuội và cây dương xỉ bản địa, tạo cảm giác một góc sân vườn mặt đất ngay giữa tầng cao.",
+    "keyDecisions": [
+      "Giữ nguyên trần bê tông mộc lộ ống kỹ thuật mạ kẽm sơn mờ.",
+      "Sàn nhà láng xi-măng mác cao đánh bóng mờ chống trơn trượt.",
+      "Bàn ăn nguyên tấm gỗ teak 2.4m với đường mép giữ nguyên hình dáng vỏ cây tự nhiên."
+    ],
+    "drawings": [
+      {
+        "id": "drw-mos-1",
+        "title": "Mặt Bằng Bố Trí Nội Thất & Dây Chuyền Không Gian",
+        "type": "plan",
+        "scale": "1:50",
+        "desc": "Mặt bằng chi tiết bố trí đồ nội thất may đo và khối hộp gỗ trung tâm.",
+        "svg": "\n    <svg viewBox=\"0 0 1200 750\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\" class=\"drawing-svg-canvas\">\n      <defs>\n        <pattern id=\"cad-grid-mos\" width=\"30\" height=\"30\" patternUnits=\"userSpaceOnUse\">\n          <path d=\"M 30 0 L 0 0 0 30\" fill=\"none\" stroke=\"#E2DFD8\" stroke-width=\"0.75\"/>\n        </pattern>\n      </defs>\n      <rect width=\"1200\" height=\"750\" fill=\"#FAF8F5\"/>\n      <rect width=\"1200\" height=\"750\" fill=\"url(#cad-grid-mos)\"/>\n\n      <!-- Grid Axis Lines -->\n      <line x1=\"120\" y1=\"80\" x2=\"1080\" y2=\"80\" stroke=\"#A8865C\" stroke-width=\"1\" stroke-dasharray=\"8,4\"/>\n      <line x1=\"120\" y1=\"360\" x2=\"1080\" y2=\"360\" stroke=\"#A8865C\" stroke-width=\"0.8\" stroke-dasharray=\"6,3\"/>\n      <line x1=\"120\" y1=\"620\" x2=\"1080\" y2=\"620\" stroke=\"#A8865C\" stroke-width=\"1\" stroke-dasharray=\"8,4\"/>\n      <line x1=\"180\" y1=\"60\" x2=\"180\" y2=\"660\" stroke=\"#A8865C\" stroke-width=\"1\" stroke-dasharray=\"8,4\"/>\n      <line x1=\"560\" y1=\"60\" x2=\"560\" y2=\"660\" stroke=\"#A8865C\" stroke-width=\"0.8\" stroke-dasharray=\"6,3\"/>\n      <line x1=\"980\" y1=\"60\" x2=\"980\" y2=\"660\" stroke=\"#A8865C\" stroke-width=\"1\" stroke-dasharray=\"8,4\"/>\n\n      <!-- Axis Bubbles -->\n      <circle cx=\"180\" cy=\"50\" r=\"14\" fill=\"#1A1916\"/><text x=\"180\" y=\"55\" fill=\"#FAF8F5\" font-size=\"11\" font-family=\"Space Mono, monospace\" text-anchor=\"middle\">A</text>\n      <circle cx=\"560\" cy=\"50\" r=\"14\" fill=\"#1A1916\"/><text x=\"560\" y=\"55\" fill=\"#FAF8F5\" font-size=\"11\" font-family=\"Space Mono, monospace\" text-anchor=\"middle\">B</text>\n      <circle cx=\"980\" cy=\"50\" r=\"14\" fill=\"#1A1916\"/><text x=\"980\" y=\"55\" fill=\"#FAF8F5\" font-size=\"11\" font-family=\"Space Mono, monospace\" text-anchor=\"middle\">C</text>\n      <circle cx=\"95\" cy=\"80\" r=\"14\" fill=\"#1A1916\"/><text x=\"95\" y=\"85\" fill=\"#FAF8F5\" font-size=\"11\" font-family=\"Space Mono, monospace\" text-anchor=\"middle\">1</text>\n      <circle cx=\"95\" cy=\"360\" r=\"14\" fill=\"#1A1916\"/><text x=\"95\" y=\"365\" fill=\"#FAF8F5\" font-size=\"11\" font-family=\"Space Mono, monospace\" text-anchor=\"middle\">2</text>\n      <circle cx=\"95\" cy=\"620\" r=\"14\" fill=\"#1A1916\"/><text x=\"95\" y=\"625\" fill=\"#FAF8F5\" font-size=\"11\" font-family=\"Space Mono, monospace\" text-anchor=\"middle\">3</text>\n\n      <!-- Main Building Footprint & Walls -->\n      <rect x=\"220\" y=\"120\" width=\"720\" height=\"460\" fill=\"rgba(240, 237, 230, 0.6)\" stroke=\"#1A1916\" stroke-width=\"3\"/>\n      <!-- Inner zoning -->\n      <rect x=\"240\" y=\"140\" width=\"300\" height=\"240\" fill=\"none\" stroke=\"#2B2A27\" stroke-width=\"1.8\"/>\n      <text x=\"390\" y=\"250\" fill=\"#1A1916\" font-family=\"Cormorant Garamond, serif\" font-size=\"18\" font-style=\"italic\" text-anchor=\"middle\">Living & Dining Hall</text>\n      <text x=\"390\" y=\"275\" fill=\"#7A766F\" font-family=\"Space Mono, monospace\" font-size=\"11\" text-anchor=\"middle\">±0.000 · 84.5 m²</text>\n\n      <rect x=\"570\" y=\"140\" width=\"350\" height=\"240\" fill=\"none\" stroke=\"#2B2A27\" stroke-width=\"1.8\"/>\n      <text x=\"745\" y=\"250\" fill=\"#1A1916\" font-family=\"Cormorant Garamond, serif\" font-size=\"18\" font-style=\"italic\" text-anchor=\"middle\">Master Suite Pavilion</text>\n      <text x=\"745\" y=\"275\" fill=\"#7A766F\" font-family=\"Space Mono, monospace\" font-size=\"11\" text-anchor=\"middle\">+0.150 · 62.0 m²</text>\n\n      <rect x=\"240\" y=\"410\" width=\"680\" height=\"150\" fill=\"none\" stroke=\"#2B2A27\" stroke-width=\"1.8\"/>\n      <text x=\"580\" y=\"480\" fill=\"#1A1916\" font-family=\"Cormorant Garamond, serif\" font-size=\"18\" font-style=\"italic\" text-anchor=\"middle\">Covered Terrace & Water Courtyard</text>\n      <text x=\"580\" y=\"505\" fill=\"#7A766F\" font-family=\"Space Mono, monospace\" font-size=\"11\" text-anchor=\"middle\">-0.300 · 96.0 m²</text>\n\n      <!-- Structural Columns -->\n      <g fill=\"#1A1916\">\n        <rect x=\"215\" y=\"115\" width=\"16\" height=\"16\"/><rect x=\"552\" y=\"115\" width=\"16\" height=\"16\"/><rect x=\"932\" y=\"115\" width=\"16\" height=\"16\"/>\n        <rect x=\"215\" y=\"352\" width=\"16\" height=\"16\"/><rect x=\"552\" y=\"352\" width=\"16\" height=\"16\"/><rect x=\"932\" y=\"352\" width=\"16\" height=\"16\"/>\n        <rect x=\"215\" y=\"572\" width=\"16\" height=\"16\"/><rect x=\"552\" y=\"572\" width=\"16\" height=\"16\"/><rect x=\"932\" y=\"572\" width=\"16\" height=\"16\"/>\n      </g>\n\n      <!-- Dimension Lines Bottom -->\n      <line x1=\"220\" y1=\"670\" x2=\"940\" y2=\"670\" stroke=\"#7A766F\" stroke-width=\"1\"/>\n      <line x1=\"220\" y1=\"662\" x2=\"220\" y2=\"678\" stroke=\"#7A766F\" stroke-width=\"1.5\"/>\n      <line x1=\"560\" y1=\"662\" x2=\"560\" y2=\"678\" stroke=\"#7A766F\" stroke-width=\"1.5\"/>\n      <line x1=\"940\" y1=\"662\" x2=\"940\" y2=\"678\" stroke=\"#7A766F\" stroke-width=\"1.5\"/>\n      <text x=\"390\" y=\"692\" fill=\"#7A766F\" font-family=\"Space Mono, monospace\" font-size=\"11\" text-anchor=\"middle\">8,200 mm</text>\n      <text x=\"750\" y=\"692\" fill=\"#7A766F\" font-family=\"Space Mono, monospace\" font-size=\"11\" text-anchor=\"middle\">9,600 mm</text>\n\n      <!-- Technical Title Block -->\n      <g transform=\"translate(830, 620)\">\n        <rect width=\"250\" height=\"95\" fill=\"#FAF8F5\" stroke=\"#1A1916\" stroke-width=\"1\"/>\n        <text x=\"14\" y=\"24\" fill=\"#1A1916\" font-family=\"Space Mono, monospace\" font-size=\"10\" font-weight=\"bold\">LIVING BLUEPRINT ARCHIVE</text>\n        <text x=\"14\" y=\"44\" fill=\"#1A1916\" font-family=\"Inter, sans-serif\" font-size=\"11\">MỘC STUDIO · MẶT BẰNG NỘI THẤT</text>\n        <text x=\"14\" y=\"62\" fill=\"#7A766F\" font-family=\"Space Mono, monospace\" font-size=\"9.5\">MẶT BẰNG TỔNG THỂ · TỶ LỆ 1:100</text>\n        <text x=\"14\" y=\"80\" fill=\"#A8865C\" font-family=\"Space Mono, monospace\" font-size=\"9\">MINH HỌA Ý NIỆM KIẾN TRÚC</text>\n      </g>\n    </svg>\n  "
+      },
+      {
+        "id": "drw-mos-2",
+        "title": "Mặt Đứng Khối Hộp Gỗ & Chi Tiết Tủ Âm",
+        "type": "elevation",
+        "scale": "1:25",
+        "desc": "Chi tiết mộng gỗ thủ công và cánh cửa trượt âm vách.",
+        "svg": "\n    <svg viewBox=\"0 0 1200 750\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\" class=\"drawing-svg-canvas\">\n      <defs>\n        <pattern id=\"cad-grid-sec-mos\" width=\"30\" height=\"30\" patternUnits=\"userSpaceOnUse\">\n          <path d=\"M 30 0 L 0 0 0 30\" fill=\"none\" stroke=\"#E2DFD8\" stroke-width=\"0.75\"/>\n        </pattern>\n      </defs>\n      <rect width=\"1200\" height=\"750\" fill=\"#FAF8F5\"/>\n      <rect width=\"1200\" height=\"750\" fill=\"url(#cad-grid-sec-mos)\"/>\n\n      <!-- Natural Ground Line (Hatched terrain) -->\n      <path d=\"M 60 520 Q 340 500 600 530 T 1140 510 L 1140 700 L 60 700 Z\" fill=\"#EAE5DC\" stroke=\"#1A1916\" stroke-width=\"2.5\"/>\n      <text x=\"100\" y=\"555\" fill=\"#7A766F\" font-family=\"Space Mono, monospace\" font-size=\"10\">ĐỊA HÌNH TỰ NHIÊN / NATURAL TOPOGRAPHY</text>\n\n      <!-- Building Foundation & Slabs -->\n      <rect x=\"220\" y=\"480\" width=\"720\" height=\"35\" fill=\"#383633\" stroke=\"#1A1916\" stroke-width=\"2\"/>\n      <rect x=\"240\" y=\"270\" width=\"680\" height=\"24\" fill=\"#383633\" stroke=\"#1A1916\" stroke-width=\"2\"/>\n      <rect x=\"180\" y=\"130\" width=\"800\" height=\"28\" fill=\"#383633\" stroke=\"#1A1916\" stroke-width=\"2\"/>\n\n      <!-- Vertical Structure & Slender Mullions -->\n      <line x1=\"280\" y1=\"158\" x2=\"280\" y2=\"480\" stroke=\"#1A1916\" stroke-width=\"4\"/>\n      <line x1=\"560\" y1=\"158\" x2=\"560\" y2=\"480\" stroke=\"#1A1916\" stroke-width=\"4\"/>\n      <line x1=\"860\" y1=\"158\" x2=\"860\" y2=\"480\" stroke=\"#1A1916\" stroke-width=\"4\"/>\n\n      <!-- Floor-to-Ceiling Glazing -->\n      <rect x=\"290\" y=\"160\" width=\"260\" height=\"110\" fill=\"rgba(190, 215, 225, 0.35)\" stroke=\"#7A98A6\" stroke-width=\"1.2\"/>\n      <rect x=\"570\" y=\"160\" width=\"280\" height=\"110\" fill=\"rgba(190, 215, 225, 0.35)\" stroke=\"#7A98A6\" stroke-width=\"1.2\"/>\n      <rect x=\"290\" y=\"294\" width=\"560\" height=\"186\" fill=\"rgba(190, 215, 225, 0.4)\" stroke=\"#7A98A6\" stroke-width=\"1.2\"/>\n\n      <!-- Level Markers Left -->\n      <g transform=\"translate(80, 0)\">\n        <line x1=\"40\" y1=\"130\" x2=\"160\" y2=\"130\" stroke=\"#A8865C\" stroke-width=\"1\" stroke-dasharray=\"3,3\"/>\n        <text x=\"30\" y=\"134\" fill=\"#1A1916\" font-family=\"Space Mono, monospace\" font-size=\"10\" text-anchor=\"end\">▲ +7.650 MÁI ĐUA</text>\n\n        <line x1=\"40\" y1=\"270\" x2=\"220\" y2=\"270\" stroke=\"#A8865C\" stroke-width=\"1\" stroke-dasharray=\"3,3\"/>\n        <text x=\"30\" y=\"274\" fill=\"#1A1916\" font-family=\"Space Mono, monospace\" font-size=\"10\" text-anchor=\"end\">▲ +3.800 SÀN TẦNG 2</text>\n\n        <line x1=\"40\" y1=\"480\" x2=\"200\" y2=\"480\" stroke=\"#A8865C\" stroke-width=\"1\" stroke-dasharray=\"3,3\"/>\n        <text x=\"30\" y=\"484\" fill=\"#1A1916\" font-family=\"Space Mono, monospace\" font-size=\"10\" text-anchor=\"end\">▼ ±0.000 SÀN TẦNG 1</text>\n      </g>\n\n      <!-- Section Labels -->\n      <text x=\"420\" y=\"225\" fill=\"#1A1916\" font-family=\"Cormorant Garamond, serif\" font-size=\"16\" font-style=\"italic\" text-anchor=\"middle\">Thư viện & Góc làm việc</text>\n      <text x=\"710\" y=\"225\" fill=\"#1A1916\" font-family=\"Cormorant Garamond, serif\" font-size=\"16\" font-style=\"italic\" text-anchor=\"middle\">Phòng ngủ chính</text>\n      <text x=\"560\" y=\"390\" fill=\"#1A1916\" font-family=\"Cormorant Garamond, serif\" font-size=\"18\" font-style=\"italic\" text-anchor=\"middle\">Không gian sinh hoạt thông tầng</text>\n\n      <!-- Technical Title Block -->\n      <g transform=\"translate(830, 620)\">\n        <rect width=\"250\" height=\"95\" fill=\"#FAF8F5\" stroke=\"#1A1916\" stroke-width=\"1\"/>\n        <text x=\"14\" y=\"24\" fill=\"#1A1916\" font-family=\"Space Mono, monospace\" font-size=\"10\" font-weight=\"bold\">LIVING BLUEPRINT ARCHIVE</text>\n        <text x=\"14\" y=\"44\" fill=\"#1A1916\" font-family=\"Inter, sans-serif\" font-size=\"11\">MỘC STUDIO · CHI TIẾT GỖ NỘI THẤT</text>\n        <text x=\"14\" y=\"62\" fill=\"#7A766F\" font-family=\"Space Mono, monospace\" font-size=\"9.5\">MẶT CẮT KIẾN TRÚC A-A · 1:100</text>\n        <text x=\"14\" y=\"80\" fill=\"#A8865C\" font-family=\"Space Mono, monospace\" font-size=\"9\">MINH HỌA Ý NIỆM KIẾN TRÚC</text>\n      </g>\n    </svg>\n  "
+      }
+    ],
+    "gallery": [
+      {
+        "id": "gal-mos-1",
+        "title": "Góc sinh hoạt chung với đảo bếp và bàn ăn gỗ teak nguyên tấm",
+        "aspect": "wide",
+        "gradient": "linear-gradient(150deg, #6E461A 0%, #A4743C 50%, #D4A86E 100%)",
+        "caption": "Sự hòa quyện giữa sắc ấm của gỗ dầu cổ và bề mặt xám nhạt của tường vôi thủ công.",
+        "tag": "Nội thất",
+        "alt": "Không gian mở phòng khách và bếp ăn bằng gỗ tự nhiên"
+      },
+      {
+        "id": "gal-mos-2",
+        "title": "Hốc ngủ thiền định bọc gỗ ấm cúng",
+        "aspect": "portrait",
+        "gradient": "linear-gradient(170deg, #8C6234 0%, #B88A56 50%, #E2B884 100%)",
+        "caption": "Không gian ngủ riêng tư được nâng cốt sàn 20cm, mang lại cảm giác an yên tuyệt đối.",
+        "tag": "Phòng ngủ",
+        "alt": "Góc ngủ ấm cúng bằng gỗ và nệm bông tự nhiên"
+      },
+      {
+        "id": "gal-mos-3",
+        "title": "Chi tiết gốm thủ công mộc mạc trên kệ gỗ âm tường",
+        "aspect": "portrait",
+        "gradient": "linear-gradient(160deg, #4A3018 0%, #765230 50%, #A87E56 100%)",
+        "caption": "Những món đồ gốm men tro do chính nghệ nhân Việt vuốt tay thủ công.",
+        "tag": "Chi tiết",
+        "alt": "Bình gốm mộc mạc trên kệ sách gỗ thô"
+      }
+    ],
+    "materials": [
+      {
+        "name": "Gỗ Teak Thuộc Địa Tái Chế",
+        "category": "Nội thất may đo",
+        "origin": "Nhà cổ tháo dỡ miền Tây Nam Bộ",
+        "description": "Vân gỗ đậm màu, tinh dầu tự nhiên tỏa mùi hương trầm nhẹ nhàng tạo cảm giác an thần.",
+        "swatchColor": "#8C5A28"
+      },
+      {
+        "name": "Vôi Tôi Pha Tro Rơm Thủ Công",
+        "category": "Sơn bả tường",
+        "origin": "Lò vôi thủ công Hà Nam",
+        "description": "Bề mặt thở tự nhiên, khử khuẩn và hấp thụ độ ẩm thừa trong không khí ẩm ướt nhiệt đới.",
+        "swatchColor": "#DDD6C6"
+      }
+    ],
+    "lightingStrategy": "Tuyệt đối không dùng đèn downlight rọi thẳng đỉnh đầu. Toàn bộ đèn là dải LED 2400K giấu khe hắt trần và đèn bàn gốm phát ánh sáng vàng ấm dịu mắt.",
+    "tectonicDetails": [
+      "Hệ mộng gỗ đuôi én truyền thống không sử dụng đinh vít kim loại.",
+      "Tay nắm cửa bằng đồng thau đúc cát thủ công có vết rỗ bề mặt tự nhiên."
+    ]
+  },
+  {
+    "slug": "penthouse-lakeview",
+    "title": "Penthouse Lakeview",
+    "category": "interior",
+    "year": 2024,
+    "location": "Tây Hồ, Hà Nội",
+    "status": "in-progress",
+    "statusLabel": "Đang thực hiện",
+    "coverGradient": "linear-gradient(145deg, #505070 0%, #7878A0 45%, #A0A0C8 100%)",
+    "coverAlt": "Nội thất Penthouse cao cấp nhìn ra Hồ Tây — Minh họa ý niệm",
+    "area": "340 m²",
+    "type": "Penthouse nghệ thuật cao cấp",
+    "style": "Sang trọng đương đại",
+    "shortDesc": "Penthouse tầng thượng Tây Hồ nơi kiến trúc trở thành khung tranh vô hình cho bộ sưu tập nghệ thuật đương đại.",
+    "role": "Thiết kế Nội thất & Cố vấn Trưng bày Nghệ thuật",
+    "summary": "Được đặt hàng bởi một nhà sưu tập nghệ thuật đương đại Đông Nam Á, Penthouse Lakeview được hình thành như một không gian triển lãm sống trên tầng 28 nhìn trọn mặt nước Hồ Tây. Toàn bộ vật liệu đá travertine mài mờ, gỗ sồi hun khói và vữa trát stucco đóng vai trò lớp nền tĩnh tại tôn vinh các tác phẩm hội họa và điêu khắc.",
+    "context": "Căn penthouse thông tầng đỉnh tháp với 3 mặt thoáng view hồ và đường chân trời thành phố Hà Nội. Dự án đòi hỏi hệ thống chiếu sáng chuẩn bảo tàng và khả năng kiểm soát độ ẩm tuyệt đối.",
+    "objectives": [
+      "Thiết kế hành lang gallery dài 18m kết nối các không gian phòng.",
+      "Trang bị hệ thống chiếu sáng CRI > 98 điều chỉnh nhiệt độ màu linh hoạt.",
+      "Sử dụng đá travertine cẩm thạch Ý mài mờ cho toàn bộ diện tường sảnh lớn."
+    ],
+    "philosophy": "\"Nội thất xa xỉ đỉnh cao không phô diễn kim loại lấp lánh, mà nằm ở sự chính xác của tỷ lệ và sự thanh lọc của chi tiết.\"",
+    "concept": "Trục thị giác xuyên suốt từ sảnh chính dẫn thẳng ra ban công mặt hồ. Không gian phân tầng rõ rệt: tầng dưới dành cho tiếp khách và triển lãm, tầng trên là không gian nghỉ ngơi riêng tư.",
+    "spatialStrategy": "Các mảng tường ngăn đóng vai trò các diện treo tranh chuyên dụng. Hệ cửa lùa kịch trần 3.2m cho phép đóng mở linh hoạt các phân khu triển lãm.",
+    "landscapeRelation": "Cửa kính cong không đố góc mở rộng tầm nhìn 180 độ ôm trọn mặt hồ Tây lộng gió.",
+    "keyDecisions": [
+      "Ốp đá travertine Navona nguyên khối không đánh bóng gương để triệt tiêu ánh phản xạ chói lóa.",
+      "Tích hợp hệ thống kiểm soát vi khí hậu độ ẩm 50% bảo vệ tranh sơn mài và giấy dó.",
+      "Cầu thang xoắn ốc điêu khắc bằng thép tấm dày 12mm sơn mờ không mối hàn lộ."
+    ],
+    "drawings": [
+      {
+        "id": "drw-plv-1",
+        "title": "Mặt Bằng Bố Trí Trục Triển Lãm Tầng 1",
+        "type": "plan",
+        "scale": "1:100",
+        "desc": "Hành lang gallery và các điểm đặt tác phẩm điêu khắc trọng tâm.",
+        "svg": "\n    <svg viewBox=\"0 0 1200 750\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\" class=\"drawing-svg-canvas\">\n      <defs>\n        <pattern id=\"cad-grid-plv\" width=\"30\" height=\"30\" patternUnits=\"userSpaceOnUse\">\n          <path d=\"M 30 0 L 0 0 0 30\" fill=\"none\" stroke=\"#E2DFD8\" stroke-width=\"0.75\"/>\n        </pattern>\n      </defs>\n      <rect width=\"1200\" height=\"750\" fill=\"#FAF8F5\"/>\n      <rect width=\"1200\" height=\"750\" fill=\"url(#cad-grid-plv)\"/>\n\n      <!-- Grid Axis Lines -->\n      <line x1=\"120\" y1=\"80\" x2=\"1080\" y2=\"80\" stroke=\"#A8865C\" stroke-width=\"1\" stroke-dasharray=\"8,4\"/>\n      <line x1=\"120\" y1=\"360\" x2=\"1080\" y2=\"360\" stroke=\"#A8865C\" stroke-width=\"0.8\" stroke-dasharray=\"6,3\"/>\n      <line x1=\"120\" y1=\"620\" x2=\"1080\" y2=\"620\" stroke=\"#A8865C\" stroke-width=\"1\" stroke-dasharray=\"8,4\"/>\n      <line x1=\"180\" y1=\"60\" x2=\"180\" y2=\"660\" stroke=\"#A8865C\" stroke-width=\"1\" stroke-dasharray=\"8,4\"/>\n      <line x1=\"560\" y1=\"60\" x2=\"560\" y2=\"660\" stroke=\"#A8865C\" stroke-width=\"0.8\" stroke-dasharray=\"6,3\"/>\n      <line x1=\"980\" y1=\"60\" x2=\"980\" y2=\"660\" stroke=\"#A8865C\" stroke-width=\"1\" stroke-dasharray=\"8,4\"/>\n\n      <!-- Axis Bubbles -->\n      <circle cx=\"180\" cy=\"50\" r=\"14\" fill=\"#1A1916\"/><text x=\"180\" y=\"55\" fill=\"#FAF8F5\" font-size=\"11\" font-family=\"Space Mono, monospace\" text-anchor=\"middle\">A</text>\n      <circle cx=\"560\" cy=\"50\" r=\"14\" fill=\"#1A1916\"/><text x=\"560\" y=\"55\" fill=\"#FAF8F5\" font-size=\"11\" font-family=\"Space Mono, monospace\" text-anchor=\"middle\">B</text>\n      <circle cx=\"980\" cy=\"50\" r=\"14\" fill=\"#1A1916\"/><text x=\"980\" y=\"55\" fill=\"#FAF8F5\" font-size=\"11\" font-family=\"Space Mono, monospace\" text-anchor=\"middle\">C</text>\n      <circle cx=\"95\" cy=\"80\" r=\"14\" fill=\"#1A1916\"/><text x=\"95\" y=\"85\" fill=\"#FAF8F5\" font-size=\"11\" font-family=\"Space Mono, monospace\" text-anchor=\"middle\">1</text>\n      <circle cx=\"95\" cy=\"360\" r=\"14\" fill=\"#1A1916\"/><text x=\"95\" y=\"365\" fill=\"#FAF8F5\" font-size=\"11\" font-family=\"Space Mono, monospace\" text-anchor=\"middle\">2</text>\n      <circle cx=\"95\" cy=\"620\" r=\"14\" fill=\"#1A1916\"/><text x=\"95\" y=\"625\" fill=\"#FAF8F5\" font-size=\"11\" font-family=\"Space Mono, monospace\" text-anchor=\"middle\">3</text>\n\n      <!-- Main Building Footprint & Walls -->\n      <rect x=\"220\" y=\"120\" width=\"720\" height=\"460\" fill=\"rgba(240, 237, 230, 0.6)\" stroke=\"#1A1916\" stroke-width=\"3\"/>\n      <!-- Inner zoning -->\n      <rect x=\"240\" y=\"140\" width=\"300\" height=\"240\" fill=\"none\" stroke=\"#2B2A27\" stroke-width=\"1.8\"/>\n      <text x=\"390\" y=\"250\" fill=\"#1A1916\" font-family=\"Cormorant Garamond, serif\" font-size=\"18\" font-style=\"italic\" text-anchor=\"middle\">Living & Dining Hall</text>\n      <text x=\"390\" y=\"275\" fill=\"#7A766F\" font-family=\"Space Mono, monospace\" font-size=\"11\" text-anchor=\"middle\">±0.000 · 84.5 m²</text>\n\n      <rect x=\"570\" y=\"140\" width=\"350\" height=\"240\" fill=\"none\" stroke=\"#2B2A27\" stroke-width=\"1.8\"/>\n      <text x=\"745\" y=\"250\" fill=\"#1A1916\" font-family=\"Cormorant Garamond, serif\" font-size=\"18\" font-style=\"italic\" text-anchor=\"middle\">Master Suite Pavilion</text>\n      <text x=\"745\" y=\"275\" fill=\"#7A766F\" font-family=\"Space Mono, monospace\" font-size=\"11\" text-anchor=\"middle\">+0.150 · 62.0 m²</text>\n\n      <rect x=\"240\" y=\"410\" width=\"680\" height=\"150\" fill=\"none\" stroke=\"#2B2A27\" stroke-width=\"1.8\"/>\n      <text x=\"580\" y=\"480\" fill=\"#1A1916\" font-family=\"Cormorant Garamond, serif\" font-size=\"18\" font-style=\"italic\" text-anchor=\"middle\">Covered Terrace & Water Courtyard</text>\n      <text x=\"580\" y=\"505\" fill=\"#7A766F\" font-family=\"Space Mono, monospace\" font-size=\"11\" text-anchor=\"middle\">-0.300 · 96.0 m²</text>\n\n      <!-- Structural Columns -->\n      <g fill=\"#1A1916\">\n        <rect x=\"215\" y=\"115\" width=\"16\" height=\"16\"/><rect x=\"552\" y=\"115\" width=\"16\" height=\"16\"/><rect x=\"932\" y=\"115\" width=\"16\" height=\"16\"/>\n        <rect x=\"215\" y=\"352\" width=\"16\" height=\"16\"/><rect x=\"552\" y=\"352\" width=\"16\" height=\"16\"/><rect x=\"932\" y=\"352\" width=\"16\" height=\"16\"/>\n        <rect x=\"215\" y=\"572\" width=\"16\" height=\"16\"/><rect x=\"552\" y=\"572\" width=\"16\" height=\"16\"/><rect x=\"932\" y=\"572\" width=\"16\" height=\"16\"/>\n      </g>\n\n      <!-- Dimension Lines Bottom -->\n      <line x1=\"220\" y1=\"670\" x2=\"940\" y2=\"670\" stroke=\"#7A766F\" stroke-width=\"1\"/>\n      <line x1=\"220\" y1=\"662\" x2=\"220\" y2=\"678\" stroke=\"#7A766F\" stroke-width=\"1.5\"/>\n      <line x1=\"560\" y1=\"662\" x2=\"560\" y2=\"678\" stroke=\"#7A766F\" stroke-width=\"1.5\"/>\n      <line x1=\"940\" y1=\"662\" x2=\"940\" y2=\"678\" stroke=\"#7A766F\" stroke-width=\"1.5\"/>\n      <text x=\"390\" y=\"692\" fill=\"#7A766F\" font-family=\"Space Mono, monospace\" font-size=\"11\" text-anchor=\"middle\">8,200 mm</text>\n      <text x=\"750\" y=\"692\" fill=\"#7A766F\" font-family=\"Space Mono, monospace\" font-size=\"11\" text-anchor=\"middle\">9,600 mm</text>\n\n      <!-- Technical Title Block -->\n      <g transform=\"translate(830, 620)\">\n        <rect width=\"250\" height=\"95\" fill=\"#FAF8F5\" stroke=\"#1A1916\" stroke-width=\"1\"/>\n        <text x=\"14\" y=\"24\" fill=\"#1A1916\" font-family=\"Space Mono, monospace\" font-size=\"10\" font-weight=\"bold\">LIVING BLUEPRINT ARCHIVE</text>\n        <text x=\"14\" y=\"44\" fill=\"#1A1916\" font-family=\"Inter, sans-serif\" font-size=\"11\">PENTHOUSE LAKEVIEW · MẶT BẰNG TRIỂN LÃM</text>\n        <text x=\"14\" y=\"62\" fill=\"#7A766F\" font-family=\"Space Mono, monospace\" font-size=\"9.5\">MẶT BẰNG TỔNG THỂ · TỶ LỆ 1:100</text>\n        <text x=\"14\" y=\"80\" fill=\"#A8865C\" font-family=\"Space Mono, monospace\" font-size=\"9\">MINH HỌA Ý NIỆM KIẾN TRÚC</text>\n      </g>\n    </svg>\n  "
+      }
+    ],
+    "gallery": [
+      {
+        "id": "gal-plv-1",
+        "title": "Hành lang Gallery trưng bày nghệ thuật đương đại",
+        "aspect": "wide",
+        "gradient": "linear-gradient(150deg, #2E2E42 0%, #525272 50%, #7E7E9E 100%)",
+        "caption": "Diện tường đá travertine mài mờ làm nền cho các tác phẩm hội họa khổ lớn.",
+        "tag": "Gallery",
+        "alt": "Hành lang gallery nghệ thuật với ánh sáng rọi điểm"
+      },
+      {
+        "id": "gal-plv-2",
+        "title": "Phòng khách lớn hướng trọn mặt nước Hồ Tây",
+        "aspect": "wide",
+        "gradient": "linear-gradient(135deg, #7A7A9E 0%, #4E4E6E 50%, #28283E 100%)",
+        "caption": "Tầm nhìn không giới hạn ra mặt hồ Tây trong ánh hoàng hôn tím biếc.",
+        "tag": "Nội thất",
+        "alt": "Phòng khách penthouse với tầm nhìn toàn cảnh hồ Tây"
+      }
+    ],
+    "materials": [
+      {
+        "name": "Đá Travertine Navona Honed",
+        "category": "Ốp tường sảnh lớn",
+        "origin": "Tivoli, Ý",
+        "description": "Bề mặt có lỗ rỗng tự nhiên đặc trưng, xúc giác mịn màng không phản xạ bóng gương.",
+        "swatchColor": "#D8CFBC"
+      },
+      {
+        "name": "Gỗ Sồi Châu Âu Hun Khói (Smoked Oak)",
+        "category": "Sàn & Hệ vách tủ",
+        "origin": "Gỗ sồi Pháp xử lý khói amoniac tự nhiên",
+        "description": "Gam màu nâu sô-cô-la sâu lắng, làm nổi bật các bức tượng đồng và điêu khắc đá.",
+        "swatchColor": "#4A3C32"
+      }
+    ],
+    "lightingStrategy": "Hệ thống đèn ray nam châm Erco tích hợp ống kính zoom quang học cho phép định hình chùm sáng khít từng khung tranh.",
+    "tectonicDetails": [
+      "Chân tường len âm 15mm tạo cảm giác các mảng tường đá lơ lửng không chạm sàn.",
+      "Khung cửa âm trần không nẹp chỉ viền phẳng tuyệt đối theo chuẩn bảo tàng."
+    ]
+  },
+  {
+    "slug": "linen-suite",
+    "title": "The Linen Suite",
+    "category": "interior",
+    "year": 2023,
+    "location": "Mỹ Khê, Đà Nẵng",
+    "status": "completed",
+    "statusLabel": "Đã hoàn thành",
+    "coverGradient": "linear-gradient(145deg, #A89880 0%, #C8B8A0 45%, #E0D0C0 100%)",
+    "coverAlt": "Nội thất suite khách sạn boutique ven biển Mỹ Khê — Minh họa ý niệm",
+    "area": "65 m² × 12 phòng",
+    "type": "Khách sạn Boutique nghỉ dưỡng",
+    "style": "Tối giản duyên hải",
+    "shortDesc": "Chuỗi 12 suite nghỉ dưỡng ven biển nơi vật liệu mộc mạc và sự tiết chế mang lại cảm giác xa xỉ thầm lặng.",
+    "role": "Thiết kế Nội thất & Định hình Phong cách Không gian",
+    "summary": "The Linen Suite là dự án khách sạn boutique ven biển Mỹ Khê được hình thành như một liều thuốc giải tỏa tiếng ồn thị giác của các resort thương mại quy mô lớn. 12 căn suite được thiết kế với bảng vật liệu tối giản: vải linen dệt tay thô mộc, đá mài Terrazzo cát biển và mây tre đan thủ công bản địa.",
+    "context": "Vùng biển Đà Nẵng với gió cát và ánh nắng nhiệt đới chói chang. Thiết kế tập trung tạo ra một chốn trú ẩn dịu mát, tĩnh tại và kích thích xúc giác thư giãn.",
+    "objectives": [
+      "Tạo lập bầu không khí nghỉ dưỡng xa xỉ thầm lặng (Quiet Luxury).",
+      "Ứng dụng 100% vải linen tự nhiên và vật liệu mây tre thủ công truyền thống.",
+      "Bồn tắm đá mài nguyên khối đặt cạnh vách kính ngắm sóng biển."
+    ],
+    "philosophy": "\"Sự sang trọng đích thực của kỳ nghỉ biển không nằm ở mạ vàng lộng lẫy, mà ở cảm giác bước chân trần trên sàn đá mát lạnh và ngửi thấy mùi gió mặn.\"",
+    "concept": "Không gian mở tối đa, giường ngủ bọc vải linen đặt ở trung tâm xoay về phía ban công đón gió biển.",
+    "spatialStrategy": "Phòng tắm và phòng ngủ liên thông mềm mại qua hệ vách trượt mây đan mờ ảo.",
+    "landscapeRelation": "Ban công rộng 15m² với bồn cây xương rồng và ghế lười ngắm biển Đông.",
+    "keyDecisions": [
+      "Sử dụng đá mài Terrazzo trộn vỏ sò và cát biển địa phương làm sàn nhà mát lạnh.",
+      "Trần nhà ốp nan mây đan thủ công che giấu hệ thống điều hòa gián tiếp."
+    ],
+    "drawings": [
+      {
+        "id": "drw-lns-1",
+        "title": "Mặt Bằng Căn Suite Điển Hình",
+        "type": "plan",
+        "scale": "1:50",
+        "desc": "Mặt bằng căn suite 65m² với bồn tắm mở và ban công đón gió biển.",
+        "svg": "\n    <svg viewBox=\"0 0 1200 750\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\" class=\"drawing-svg-canvas\">\n      <defs>\n        <pattern id=\"cad-grid-lns\" width=\"30\" height=\"30\" patternUnits=\"userSpaceOnUse\">\n          <path d=\"M 30 0 L 0 0 0 30\" fill=\"none\" stroke=\"#E2DFD8\" stroke-width=\"0.75\"/>\n        </pattern>\n      </defs>\n      <rect width=\"1200\" height=\"750\" fill=\"#FAF8F5\"/>\n      <rect width=\"1200\" height=\"750\" fill=\"url(#cad-grid-lns)\"/>\n\n      <!-- Grid Axis Lines -->\n      <line x1=\"120\" y1=\"80\" x2=\"1080\" y2=\"80\" stroke=\"#A8865C\" stroke-width=\"1\" stroke-dasharray=\"8,4\"/>\n      <line x1=\"120\" y1=\"360\" x2=\"1080\" y2=\"360\" stroke=\"#A8865C\" stroke-width=\"0.8\" stroke-dasharray=\"6,3\"/>\n      <line x1=\"120\" y1=\"620\" x2=\"1080\" y2=\"620\" stroke=\"#A8865C\" stroke-width=\"1\" stroke-dasharray=\"8,4\"/>\n      <line x1=\"180\" y1=\"60\" x2=\"180\" y2=\"660\" stroke=\"#A8865C\" stroke-width=\"1\" stroke-dasharray=\"8,4\"/>\n      <line x1=\"560\" y1=\"60\" x2=\"560\" y2=\"660\" stroke=\"#A8865C\" stroke-width=\"0.8\" stroke-dasharray=\"6,3\"/>\n      <line x1=\"980\" y1=\"60\" x2=\"980\" y2=\"660\" stroke=\"#A8865C\" stroke-width=\"1\" stroke-dasharray=\"8,4\"/>\n\n      <!-- Axis Bubbles -->\n      <circle cx=\"180\" cy=\"50\" r=\"14\" fill=\"#1A1916\"/><text x=\"180\" y=\"55\" fill=\"#FAF8F5\" font-size=\"11\" font-family=\"Space Mono, monospace\" text-anchor=\"middle\">A</text>\n      <circle cx=\"560\" cy=\"50\" r=\"14\" fill=\"#1A1916\"/><text x=\"560\" y=\"55\" fill=\"#FAF8F5\" font-size=\"11\" font-family=\"Space Mono, monospace\" text-anchor=\"middle\">B</text>\n      <circle cx=\"980\" cy=\"50\" r=\"14\" fill=\"#1A1916\"/><text x=\"980\" y=\"55\" fill=\"#FAF8F5\" font-size=\"11\" font-family=\"Space Mono, monospace\" text-anchor=\"middle\">C</text>\n      <circle cx=\"95\" cy=\"80\" r=\"14\" fill=\"#1A1916\"/><text x=\"95\" y=\"85\" fill=\"#FAF8F5\" font-size=\"11\" font-family=\"Space Mono, monospace\" text-anchor=\"middle\">1</text>\n      <circle cx=\"95\" cy=\"360\" r=\"14\" fill=\"#1A1916\"/><text x=\"95\" y=\"365\" fill=\"#FAF8F5\" font-size=\"11\" font-family=\"Space Mono, monospace\" text-anchor=\"middle\">2</text>\n      <circle cx=\"95\" cy=\"620\" r=\"14\" fill=\"#1A1916\"/><text x=\"95\" y=\"625\" fill=\"#FAF8F5\" font-size=\"11\" font-family=\"Space Mono, monospace\" text-anchor=\"middle\">3</text>\n\n      <!-- Main Building Footprint & Walls -->\n      <rect x=\"220\" y=\"120\" width=\"720\" height=\"460\" fill=\"rgba(240, 237, 230, 0.6)\" stroke=\"#1A1916\" stroke-width=\"3\"/>\n      <!-- Inner zoning -->\n      <rect x=\"240\" y=\"140\" width=\"300\" height=\"240\" fill=\"none\" stroke=\"#2B2A27\" stroke-width=\"1.8\"/>\n      <text x=\"390\" y=\"250\" fill=\"#1A1916\" font-family=\"Cormorant Garamond, serif\" font-size=\"18\" font-style=\"italic\" text-anchor=\"middle\">Living & Dining Hall</text>\n      <text x=\"390\" y=\"275\" fill=\"#7A766F\" font-family=\"Space Mono, monospace\" font-size=\"11\" text-anchor=\"middle\">±0.000 · 84.5 m²</text>\n\n      <rect x=\"570\" y=\"140\" width=\"350\" height=\"240\" fill=\"none\" stroke=\"#2B2A27\" stroke-width=\"1.8\"/>\n      <text x=\"745\" y=\"250\" fill=\"#1A1916\" font-family=\"Cormorant Garamond, serif\" font-size=\"18\" font-style=\"italic\" text-anchor=\"middle\">Master Suite Pavilion</text>\n      <text x=\"745\" y=\"275\" fill=\"#7A766F\" font-family=\"Space Mono, monospace\" font-size=\"11\" text-anchor=\"middle\">+0.150 · 62.0 m²</text>\n\n      <rect x=\"240\" y=\"410\" width=\"680\" height=\"150\" fill=\"none\" stroke=\"#2B2A27\" stroke-width=\"1.8\"/>\n      <text x=\"580\" y=\"480\" fill=\"#1A1916\" font-family=\"Cormorant Garamond, serif\" font-size=\"18\" font-style=\"italic\" text-anchor=\"middle\">Covered Terrace & Water Courtyard</text>\n      <text x=\"580\" y=\"505\" fill=\"#7A766F\" font-family=\"Space Mono, monospace\" font-size=\"11\" text-anchor=\"middle\">-0.300 · 96.0 m²</text>\n\n      <!-- Structural Columns -->\n      <g fill=\"#1A1916\">\n        <rect x=\"215\" y=\"115\" width=\"16\" height=\"16\"/><rect x=\"552\" y=\"115\" width=\"16\" height=\"16\"/><rect x=\"932\" y=\"115\" width=\"16\" height=\"16\"/>\n        <rect x=\"215\" y=\"352\" width=\"16\" height=\"16\"/><rect x=\"552\" y=\"352\" width=\"16\" height=\"16\"/><rect x=\"932\" y=\"352\" width=\"16\" height=\"16\"/>\n        <rect x=\"215\" y=\"572\" width=\"16\" height=\"16\"/><rect x=\"552\" y=\"572\" width=\"16\" height=\"16\"/><rect x=\"932\" y=\"572\" width=\"16\" height=\"16\"/>\n      </g>\n\n      <!-- Dimension Lines Bottom -->\n      <line x1=\"220\" y1=\"670\" x2=\"940\" y2=\"670\" stroke=\"#7A766F\" stroke-width=\"1\"/>\n      <line x1=\"220\" y1=\"662\" x2=\"220\" y2=\"678\" stroke=\"#7A766F\" stroke-width=\"1.5\"/>\n      <line x1=\"560\" y1=\"662\" x2=\"560\" y2=\"678\" stroke=\"#7A766F\" stroke-width=\"1.5\"/>\n      <line x1=\"940\" y1=\"662\" x2=\"940\" y2=\"678\" stroke=\"#7A766F\" stroke-width=\"1.5\"/>\n      <text x=\"390\" y=\"692\" fill=\"#7A766F\" font-family=\"Space Mono, monospace\" font-size=\"11\" text-anchor=\"middle\">8,200 mm</text>\n      <text x=\"750\" y=\"692\" fill=\"#7A766F\" font-family=\"Space Mono, monospace\" font-size=\"11\" text-anchor=\"middle\">9,600 mm</text>\n\n      <!-- Technical Title Block -->\n      <g transform=\"translate(830, 620)\">\n        <rect width=\"250\" height=\"95\" fill=\"#FAF8F5\" stroke=\"#1A1916\" stroke-width=\"1\"/>\n        <text x=\"14\" y=\"24\" fill=\"#1A1916\" font-family=\"Space Mono, monospace\" font-size=\"10\" font-weight=\"bold\">LIVING BLUEPRINT ARCHIVE</text>\n        <text x=\"14\" y=\"44\" fill=\"#1A1916\" font-family=\"Inter, sans-serif\" font-size=\"11\">THE LINEN SUITE · MẶT BẰNG SUITE ĐIỂN HÌNH</text>\n        <text x=\"14\" y=\"62\" fill=\"#7A766F\" font-family=\"Space Mono, monospace\" font-size=\"9.5\">MẶT BẰNG TỔNG THỂ · TỶ LỆ 1:100</text>\n        <text x=\"14\" y=\"80\" fill=\"#A8865C\" font-family=\"Space Mono, monospace\" font-size=\"9\">MINH HỌA Ý NIỆM KIẾN TRÚC</text>\n      </g>\n    </svg>\n  "
+      }
+    ],
+    "gallery": [
+      {
+        "id": "gal-lns-1",
+        "title": "Không gian phòng ngủ suite với ban công nhìn ra sóng biển",
+        "aspect": "wide",
+        "gradient": "linear-gradient(150deg, #7A6856 0%, #A89680 50%, #D8C8B4 100%)",
+        "caption": "Chất liệu vải linen tự nhiên mang lại cảm giác mềm mại thư thái cho kỳ nghỉ biển.",
+        "tag": "Suite",
+        "alt": "Phòng ngủ suite khách sạn boutique với rèm vải linen thô"
+      },
+      {
+        "id": "gal-lns-2",
+        "title": "Bồn tắm Terrazzo nguyên khối bên vách kính lớn",
+        "aspect": "portrait",
+        "gradient": "linear-gradient(170deg, #988874 0%, #C0B09E 50%, #E8DCD0 100%)",
+        "caption": "Bồn tắm đá mài thủ công ngâm mình thư giãn trong tiếng sóng biển rì rào.",
+        "tag": "Phòng tắm",
+        "alt": "Bồn tắm đá mài terrazzo bên cửa sổ ngắm biển"
+      }
+    ],
+    "materials": [
+      {
+        "name": "Vải Linen Thô Dệt Tay",
+        "category": "Rèm cửa & Ga bọc giường",
+        "origin": "Hợp tác xã dệt thủ công Việt Nam",
+        "description": "Chất liệu thoáng khí, độ rủ tự nhiên cản nắng gắt mà vẫn giữ cho căn phòng tràn ngập gió mát.",
+        "swatchColor": "#D8CBB8"
+      },
+      {
+        "name": "Đá Mài Terrazzo Cát Biển",
+        "category": "Sàn & Bồn tắm",
+        "origin": "Cát biển và đá hạt mịn địa phương",
+        "description": "Mát mẻ dưới bàn chân trần, không bám cát và dễ dàng vệ sinh.",
+        "swatchColor": "#CEC5B6"
+      }
+    ],
+    "lightingStrategy": "Đèn lồng mây tre đan thủ công phát ra những hoa văn bóng đổ ấm áp trên trần và tường khi đêm về.",
+    "tectonicDetails": [
+      "Vách ngăn mây tre đan mắt cáo hai lớp thông gió tự nhiên giữa phòng ngủ và phòng tắm."
+    ]
+  },
+  {
+    "slug": "bo-song-cafe",
+    "title": "Bờ Sông Café",
+    "category": "interior",
+    "year": 2022,
+    "location": "Hội An, Quảng Nam",
+    "status": "completed",
+    "statusLabel": "Đã hoàn thành",
+    "coverGradient": "linear-gradient(145deg, #784A28 0%, #A87848 45%, #C8A878 100%)",
+    "coverAlt": "Nội thất quán café phục dựng nhà cổ ven sông Thu Bồn — Minh họa ý niệm",
+    "area": "180 m²",
+    "type": "F&B / Café di sản",
+    "style": "Bảo tồn thích ứng (Heritage)",
+    "shortDesc": "Không gian café phục dựng bên bờ sông Thu Bồn, đan cài cấu trúc đương đại lên ngôi nhà cổ trăm tuổi.",
+    "role": "Bảo tồn Di sản Thích ứng & Thiết kế Nội thất",
+    "summary": "Bờ Sông Café nằm trong một ngôi nhà phố thương mại cổ ven sông Thu Bồn, Hội An. Thay vì tẩy xóa những vết tích thời gian trên bức tường vôi vàng trăm tuổi, thiết kế chọn cách trân trọng và đan cài các chi tiết thép đen, kính trong suốt và bàn ghế gỗ mộc một cách chuẩn xác, có thể hoàn trả nguyên trạng (reversible).",
+    "context": "Khu phố cổ Hội An với quy định bảo tồn nghiêm ngặt về di sản kiến trúc. Công trình phải tôn trọng kết cấu gỗ truyền thống và không xâm hại nền móng cổ.",
+    "objectives": [
+      "Bảo tồn 100% khung vì kèo gỗ lim và tường vôi vàng nguyên bản.",
+      "Thiết kế hiên gỗ nổi trên mặt sông Thu Bồn ngắm hoàng hôn.",
+      "Sử dụng gạch gốm tráng men phục chế từ lò cổ xứ Quảng."
+    ],
+    "philosophy": "\"Bảo tồn không phải là ướp xác quá khứ, mà là đem lại cho di sản một cuộc đời mới đầy sức sống đương đại.\"",
+    "concept": "Sự đối thoại giữa nét thô ráp của rêu phong thế kỷ trước và sự chuẩn xác của chi tiết kim loại mảnh mai thời nay.",
+    "spatialStrategy": "Lối vào từ phố cổ dẫn qua giếng trời ngập tràn cây xanh trước khi mở ra sàn hiên gỗ vươn sát mặt sông.",
+    "landscapeRelation": "Mặt nước sông Thu Bồn và những con thuyền chài trôi êm đềm trở thành phông nền sống động cho quán.",
+    "keyDecisions": [
+      "Toàn bộ cấu trúc nội thất mới được lắp ráp độc lập không khoan đục vào tường gạch cổ.",
+      "Sàn hiên gỗ sử dụng cọc gỗ dầu cắm ngập nước theo kinh nghiệm dân gian vùng sông nước."
+    ],
+    "drawings": [
+      {
+        "id": "drw-bsc-1",
+        "title": "Mặt Bằng Cải Tạo Nhà Cổ & Hiên Sông",
+        "type": "plan",
+        "scale": "1:50",
+        "desc": "Mặt bằng phân khu bảo tồn và phần hiên gỗ vươn ra mặt nước sông Thu Bồn.",
+        "svg": "\n    <svg viewBox=\"0 0 1200 750\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\" class=\"drawing-svg-canvas\">\n      <defs>\n        <pattern id=\"cad-grid-bsc\" width=\"30\" height=\"30\" patternUnits=\"userSpaceOnUse\">\n          <path d=\"M 30 0 L 0 0 0 30\" fill=\"none\" stroke=\"#E2DFD8\" stroke-width=\"0.75\"/>\n        </pattern>\n      </defs>\n      <rect width=\"1200\" height=\"750\" fill=\"#FAF8F5\"/>\n      <rect width=\"1200\" height=\"750\" fill=\"url(#cad-grid-bsc)\"/>\n\n      <!-- Grid Axis Lines -->\n      <line x1=\"120\" y1=\"80\" x2=\"1080\" y2=\"80\" stroke=\"#A8865C\" stroke-width=\"1\" stroke-dasharray=\"8,4\"/>\n      <line x1=\"120\" y1=\"360\" x2=\"1080\" y2=\"360\" stroke=\"#A8865C\" stroke-width=\"0.8\" stroke-dasharray=\"6,3\"/>\n      <line x1=\"120\" y1=\"620\" x2=\"1080\" y2=\"620\" stroke=\"#A8865C\" stroke-width=\"1\" stroke-dasharray=\"8,4\"/>\n      <line x1=\"180\" y1=\"60\" x2=\"180\" y2=\"660\" stroke=\"#A8865C\" stroke-width=\"1\" stroke-dasharray=\"8,4\"/>\n      <line x1=\"560\" y1=\"60\" x2=\"560\" y2=\"660\" stroke=\"#A8865C\" stroke-width=\"0.8\" stroke-dasharray=\"6,3\"/>\n      <line x1=\"980\" y1=\"60\" x2=\"980\" y2=\"660\" stroke=\"#A8865C\" stroke-width=\"1\" stroke-dasharray=\"8,4\"/>\n\n      <!-- Axis Bubbles -->\n      <circle cx=\"180\" cy=\"50\" r=\"14\" fill=\"#1A1916\"/><text x=\"180\" y=\"55\" fill=\"#FAF8F5\" font-size=\"11\" font-family=\"Space Mono, monospace\" text-anchor=\"middle\">A</text>\n      <circle cx=\"560\" cy=\"50\" r=\"14\" fill=\"#1A1916\"/><text x=\"560\" y=\"55\" fill=\"#FAF8F5\" font-size=\"11\" font-family=\"Space Mono, monospace\" text-anchor=\"middle\">B</text>\n      <circle cx=\"980\" cy=\"50\" r=\"14\" fill=\"#1A1916\"/><text x=\"980\" y=\"55\" fill=\"#FAF8F5\" font-size=\"11\" font-family=\"Space Mono, monospace\" text-anchor=\"middle\">C</text>\n      <circle cx=\"95\" cy=\"80\" r=\"14\" fill=\"#1A1916\"/><text x=\"95\" y=\"85\" fill=\"#FAF8F5\" font-size=\"11\" font-family=\"Space Mono, monospace\" text-anchor=\"middle\">1</text>\n      <circle cx=\"95\" cy=\"360\" r=\"14\" fill=\"#1A1916\"/><text x=\"95\" y=\"365\" fill=\"#FAF8F5\" font-size=\"11\" font-family=\"Space Mono, monospace\" text-anchor=\"middle\">2</text>\n      <circle cx=\"95\" cy=\"620\" r=\"14\" fill=\"#1A1916\"/><text x=\"95\" y=\"625\" fill=\"#FAF8F5\" font-size=\"11\" font-family=\"Space Mono, monospace\" text-anchor=\"middle\">3</text>\n\n      <!-- Main Building Footprint & Walls -->\n      <rect x=\"220\" y=\"120\" width=\"720\" height=\"460\" fill=\"rgba(240, 237, 230, 0.6)\" stroke=\"#1A1916\" stroke-width=\"3\"/>\n      <!-- Inner zoning -->\n      <rect x=\"240\" y=\"140\" width=\"300\" height=\"240\" fill=\"none\" stroke=\"#2B2A27\" stroke-width=\"1.8\"/>\n      <text x=\"390\" y=\"250\" fill=\"#1A1916\" font-family=\"Cormorant Garamond, serif\" font-size=\"18\" font-style=\"italic\" text-anchor=\"middle\">Living & Dining Hall</text>\n      <text x=\"390\" y=\"275\" fill=\"#7A766F\" font-family=\"Space Mono, monospace\" font-size=\"11\" text-anchor=\"middle\">±0.000 · 84.5 m²</text>\n\n      <rect x=\"570\" y=\"140\" width=\"350\" height=\"240\" fill=\"none\" stroke=\"#2B2A27\" stroke-width=\"1.8\"/>\n      <text x=\"745\" y=\"250\" fill=\"#1A1916\" font-family=\"Cormorant Garamond, serif\" font-size=\"18\" font-style=\"italic\" text-anchor=\"middle\">Master Suite Pavilion</text>\n      <text x=\"745\" y=\"275\" fill=\"#7A766F\" font-family=\"Space Mono, monospace\" font-size=\"11\" text-anchor=\"middle\">+0.150 · 62.0 m²</text>\n\n      <rect x=\"240\" y=\"410\" width=\"680\" height=\"150\" fill=\"none\" stroke=\"#2B2A27\" stroke-width=\"1.8\"/>\n      <text x=\"580\" y=\"480\" fill=\"#1A1916\" font-family=\"Cormorant Garamond, serif\" font-size=\"18\" font-style=\"italic\" text-anchor=\"middle\">Covered Terrace & Water Courtyard</text>\n      <text x=\"580\" y=\"505\" fill=\"#7A766F\" font-family=\"Space Mono, monospace\" font-size=\"11\" text-anchor=\"middle\">-0.300 · 96.0 m²</text>\n\n      <!-- Structural Columns -->\n      <g fill=\"#1A1916\">\n        <rect x=\"215\" y=\"115\" width=\"16\" height=\"16\"/><rect x=\"552\" y=\"115\" width=\"16\" height=\"16\"/><rect x=\"932\" y=\"115\" width=\"16\" height=\"16\"/>\n        <rect x=\"215\" y=\"352\" width=\"16\" height=\"16\"/><rect x=\"552\" y=\"352\" width=\"16\" height=\"16\"/><rect x=\"932\" y=\"352\" width=\"16\" height=\"16\"/>\n        <rect x=\"215\" y=\"572\" width=\"16\" height=\"16\"/><rect x=\"552\" y=\"572\" width=\"16\" height=\"16\"/><rect x=\"932\" y=\"572\" width=\"16\" height=\"16\"/>\n      </g>\n\n      <!-- Dimension Lines Bottom -->\n      <line x1=\"220\" y1=\"670\" x2=\"940\" y2=\"670\" stroke=\"#7A766F\" stroke-width=\"1\"/>\n      <line x1=\"220\" y1=\"662\" x2=\"220\" y2=\"678\" stroke=\"#7A766F\" stroke-width=\"1.5\"/>\n      <line x1=\"560\" y1=\"662\" x2=\"560\" y2=\"678\" stroke=\"#7A766F\" stroke-width=\"1.5\"/>\n      <line x1=\"940\" y1=\"662\" x2=\"940\" y2=\"678\" stroke=\"#7A766F\" stroke-width=\"1.5\"/>\n      <text x=\"390\" y=\"692\" fill=\"#7A766F\" font-family=\"Space Mono, monospace\" font-size=\"11\" text-anchor=\"middle\">8,200 mm</text>\n      <text x=\"750\" y=\"692\" fill=\"#7A766F\" font-family=\"Space Mono, monospace\" font-size=\"11\" text-anchor=\"middle\">9,600 mm</text>\n\n      <!-- Technical Title Block -->\n      <g transform=\"translate(830, 620)\">\n        <rect width=\"250\" height=\"95\" fill=\"#FAF8F5\" stroke=\"#1A1916\" stroke-width=\"1\"/>\n        <text x=\"14\" y=\"24\" fill=\"#1A1916\" font-family=\"Space Mono, monospace\" font-size=\"10\" font-weight=\"bold\">LIVING BLUEPRINT ARCHIVE</text>\n        <text x=\"14\" y=\"44\" fill=\"#1A1916\" font-family=\"Inter, sans-serif\" font-size=\"11\">BỜ SÔNG CAFÉ · MẶT BẰNG CẢI TẠO</text>\n        <text x=\"14\" y=\"62\" fill=\"#7A766F\" font-family=\"Space Mono, monospace\" font-size=\"9.5\">MẶT BẰNG TỔNG THỂ · TỶ LỆ 1:100</text>\n        <text x=\"14\" y=\"80\" fill=\"#A8865C\" font-family=\"Space Mono, monospace\" font-size=\"9\">MINH HỌA Ý NIỆM KIẾN TRÚC</text>\n      </g>\n    </svg>\n  "
+      }
+    ],
+    "gallery": [
+      {
+        "id": "gal-bsc-1",
+        "title": "Sàn hiên gỗ vươn sát mép nước sông Thu Bồn lúc hoàng hôn",
+        "aspect": "wide",
+        "gradient": "linear-gradient(150deg, #5A2A12 0%, #904822 50%, #C8783E 100%)",
+        "caption": "Nơi thực khách nhâm nhi tách cà phê phin và ngắm nhìn hoàng hôn nhuộm vàng dòng sông di sản.",
+        "tag": "Hiên sông",
+        "alt": "Hiên gỗ ven sông cổ kính nhìn ra những con thuyền Hội An"
+      },
+      {
+        "id": "gal-bsc-2",
+        "title": "Không gian bên trong với tường vôi vàng cổ nguyên bản",
+        "aspect": "portrait",
+        "gradient": "linear-gradient(170deg, #8A6428 0%, #B88A3E 50%, #E0B460 100%)",
+        "caption": "Bức tường vàng rêu phong lưu giữ ký ức thương cảng Hội An qua nhiều thế hệ.",
+        "tag": "Di sản",
+        "alt": "Bức tường cổ kính màu vàng Hội An với bàn ghế gỗ tối giản"
+      }
+    ],
+    "materials": [
+      {
+        "name": "Gỗ Kiền Kiền Thuộc Địa Cũ",
+        "category": "Sàn hiên ven sông",
+        "origin": "Gỗ tận thu từ cầu tàu cũ",
+        "description": "Khả năng chịu ngâm nước ngọt và nước lợ cực tốt, vân gỗ sẫm màu đanh chắc.",
+        "swatchColor": "#583620"
+      },
+      {
+        "name": "Gạch Bông Men Gốm Cổ Phục Chế",
+        "category": "Lát sàn khu pha chế",
+        "origin": "Lò gốm thủ công Quảng Nam",
+        "description": "Họa tiết hình học cổ điển tạo điểm nhấn thị giác duyên dáng cho quầy bar.",
+        "swatchColor": "#9C6842"
+      }
+    ],
+    "lightingStrategy": "Ánh sáng đèn lồng sợi đốt ấm áp 2200K tôn vinh chất vàng trầm của gỗ lim cổ.",
+    "tectonicDetails": [
+      "Khớp mộng trượt tháo rời linh hoạt cho phép dỡ bỏ nội thất mà không làm sứt mẻ tường cổ."
+    ]
+  }
+]

@@ -1,0 +1,104 @@
+/* ============================================================
+   LIVING BLUEPRINT — Component: Page Entrance Loader
+   Minimal luxury · Fast & Non-blocking
+   ============================================================ */
+
+.page-loader {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  background-color: var(--color-bg);
+  z-index: var(--z-loader);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-6);
+  opacity: 1;
+  visibility: visible;
+  transition:
+    opacity 0.5s var(--ease-expo),
+    visibility 0.5s;
+  pointer-events: auto;
+}
+
+/* When loaded, smoothly disappear */
+body.is-loaded .page-loader {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.page-loader__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.page-loader__logo {
+  width: 48px;
+  height: 48px;
+  animation: loaderPulse 1.2s ease-in-out infinite alternate;
+}
+
+.page-loader__brand {
+  font-family: var(--font-heading);
+  font-size: 1.125rem;
+  letter-spacing: var(--ls-wider);
+  text-transform: uppercase;
+  color: var(--color-ink);
+}
+
+/* Architectural progress line */
+.page-loader__line-wrap {
+  width: 120px;
+  height: 1.5px;
+  background-color: var(--color-border);
+  position: relative;
+  overflow: hidden;
+}
+
+.page-loader__line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 50%;
+  background-color: var(--color-accent);
+  animation: loaderLineSlide 1s ease-in-out infinite alternate;
+}
+
+@keyframes loaderPulse {
+  from {
+    transform: scale(0.96);
+    opacity: 0.8;
+  }
+  to {
+    transform: scale(1.02);
+    opacity: 1;
+  }
+}
+
+@keyframes loaderLineSlide {
+  0% {
+    left: -50%;
+    width: 30%;
+  }
+  50% {
+    width: 60%;
+  }
+  100% {
+    left: 100%;
+    width: 30%;
+  }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .page-loader {
+    display: none !important;
+  }
+}

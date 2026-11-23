@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Thư viện dự án kiến trúc &amp; nội thất chọn lọc — Living Blueprint. Khám phá các ý niệm không gian biệt thự pavilion và nội thất tối giản.">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Dự án chọn lọc — Living Blueprint</title>
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Dự án chọn lọc — Living Blueprint">
+  <meta property="og:description" content="Thư viện ý niệm kiến trúc &amp; nội thất chọn lọc của kiến trúc sư cá nhân.">
+  <meta property="og:locale" content="vi_VN">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23F5F3EF'/%3E%3Cline x1='8' y1='8' x2='8' y2='22' stroke='%231A1916' stroke-width='2'/%3E%3Cline x1='8' y1='22' x2='15' y2='22' stroke='%231A1916' stroke-width='2'/%3E%3Cline x1='18' y1='8' x2='18' y2='22' stroke='%231A1916' stroke-width='2'/%3E%3Cpath d='M18 8 L25 8 Q28 8 28 12 Q28 15 18 16' stroke='%231A1916' stroke-width='1.5' fill='none'/%3E%3Cpath d='M18 16 L26 16 Q30 16 30 20 Q30 24 18 24' stroke='%231A1916' stroke-width='1.5' fill='none'/%3E%3Cline x1='8' y1='28' x2='28' y2='28' stroke='%23A8865C' stroke-width='1'/%3E%3C/svg%3E">
+
+  <!-- Google Fonts: Cormorant Garamond, Inter, Space Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+  <!-- Foundation CSS -->
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/typography.css">
+  <link rel="stylesheet" href="css/layout.css">
+
+  <!-- Global Components CSS — Phase 1 -->
+  <link rel="stylesheet" href="css/components/navbar.css">
+  <link rel="stylesheet" href="css/components/drawer.css">
+  <link rel="stylesheet" href="css/components/cursor.css">
+  <link rel="stylesheet" href="css/components/footer.css">
+  <link rel="stylesheet" href="css/components/loader.css">
+
+  <!-- Phase 3: Projects Page CSS -->
+  <link rel="stylesheet" href="css/pages/projects.css">
+</head>
+
+<body>
+
+  <!-- ── 1. PAGE LOADER ── -->
+  <div class="page-loader" aria-hidden="false">
+    <div class="page-loader__content">
+      <img src="assets/svg/logo.svg" alt="" class="page-loader__logo" width="48" height="48">
+      <span class="page-loader__brand">Living Blueprint</span>
+      <div class="page-loader__line-wrap" aria-hidden="true">
+        <div class="page-loader__line"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 2. CUSTOM RING CURSOR ── -->
+  <div class="custom-cursor is-hidden" aria-hidden="true">
+    <div class="custom-cursor__dot"></div>
+    <div class="custom-cursor__ring">
+      <span class="custom-cursor__label">XEM</span>
+    </div>
+  </div>
+
+  <!-- ── 3. MOBILE FULLSCREEN DRAWER ── -->
+  <aside id="mobile-nav-drawer" class="mobile-drawer" aria-label="Menu di động" aria-hidden="true">
+    <div class="mobile-drawer__header">
+      <a href="index.html" class="mobile-drawer__brand">
+        <img src="assets/svg/logo.svg" alt="" width="28" height="28">
+        <span class="mobile-drawer__brand-title">Living Blueprint</span>
+      </a>
+      <button class="mobile-drawer__close" type="button" aria-label="Đóng menu">
+        <img src="assets/svg/icons/close.svg" alt="" class="mobile-drawer__close-icon" width="18" height="18">
+      </button>
+    </div>
+
+    <nav class="mobile-drawer__nav" aria-label="Liên kết điều hướng di động">
+      <ul class="mobile-drawer__list" role="list">
+        <li class="mobile-drawer__item">
+          <a href="projects.html" class="mobile-drawer__link is-active">
+            <span class="mobile-drawer__num">01</span>
+            <span class="mobile-drawer__text">Dự án</span>
+          </a>
+        </li>
+        <li class="mobile-drawer__item">
+          <a href="about.html" class="mobile-drawer__link">
+            <span class="mobile-drawer__num">02</span>
+            <span class="mobile-drawer__text">Giới thiệu</span>
+          </a>
+        </li>
+        <li class="mobile-drawer__item">
+          <a href="about.html#process" class="mobile-drawer__link">
+            <span class="mobile-drawer__num">03</span>
+            <span class="mobile-drawer__text">Quy trình</span>
+          </a>
+        </li>
+        <li class="mobile-drawer__item">
+          <a href="contact.html" class="mobile-drawer__link">
+            <span class="mobile-drawer__num">04</span>
+            <span class="mobile-drawer__text">Liên hệ</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="mobile-drawer__footer">
+      <span class="mobile-drawer__meta">Liên hệ hợp tác</span>
+      <a href="mailto:hello@livingblueprint.demo" class="mobile-drawer__email">hello@livingblueprint.demo</a>
+      <span class="mobile-drawer__note">Mọi ý tưởng kiến trúc hiển thị là tác phẩm minh họa mẫu.</span>
+    </div>
+  </aside>
+
+  <!-- ── PAGE WRAPPER ── -->
+  <div class="page-wrapper">
+
+    <a href="#main-content" class="sr-only">Bỏ qua điều hướng</a>
+
+    <!-- ── 4. HEADER & NAVBAR ── -->
+    <header role="banner">
+      <nav class="site-navbar" aria-label="Điều hướng chính">
+        <div class="site-navbar__inner">
+          <a href="index.html" class="site-navbar__brand" aria-label="Living Blueprint — Trang chủ">
+            <img src="assets/svg/logo.svg" alt="" class="site-navbar__logo-icon" width="32" height="32">
+            <div class="site-navbar__brand-text">
+              <span class="site-navbar__brand-title">Living Blueprint</span>
+              <span class="site-navbar__brand-sub">Kiến trúc &amp; Nội thất</span>
+            </div>
+          </a>
+
+          <div class="site-navbar__nav">
+            <ul class="site-navbar__links" role="list">
+              <li><a href="projects.html" class="site-navbar__link is-active" aria-current="page">Dự án</a></li>
+              <li><a href="about.html" class="site-navbar__link">Giới thiệu</a></li>
+              <li><a href="about.html#process" class="site-navbar__link">Quy trình</a></li>
+              <li><a href="contact.html" class="site-navbar__link">Liên hệ</a></li>
+            </ul>
+
+            <a href="contact.html" class="site-navbar__cta" aria-label="Gửi yêu cầu tư vấn">
+              <span>Tư vấn</span>
+              <span class="site-navbar__cta-plus" aria-hidden="true">+</span>
+            </a>
+          </div>
+
+          <button class="site-navbar__toggle" type="button" aria-label="Mở menu điều hướng di động" aria-expanded="false" aria-controls="mobile-nav-drawer">
+            <span class="site-navbar__toggle-line"></span>
+            <span class="site-navbar__toggle-line"></span>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <!-- ── MAIN CONTENT ── -->
+    <main id="main-content">
+      <div class="container">
+
+        <!-- ========================================================
+             PROJECTS HERO HEADER & 2-TIER FILTER SYSTEM
+             Inspired by YODEZEEN & Huni Architectes
+             ======================================================== -->
+        <header class="projects-hero">
+          <div class="projects-hero__top">
+            <div class="projects-hero__heading-group">
+              <span class="projects-hero__kicker">Công trình tiêu biểu &amp; Chuyên khảo</span>
+              <h1 class="projects-hero__title">Kiến trúc &amp; <em>Nội thất</em></h1>
+            </div>
+            <span class="projects-hero__meta-index">Lưu trữ 2022 — 2024</span>
+          </div>
+
+          <!-- Two-Tier Filter Navigation -->
+          <div class="filter-system">
+
+            <!-- Tier 1: Primary Architectural Categories -->
+            <nav class="filter-tier-primary" role="tablist" aria-label="Phân loại chuyên ngành chính">
+              <button
+                class="filter-btn-primary is-active"
+                data-filter="all"
+                role="tab"
+                aria-selected="true"
+                id="tab-all"
+              >
+                <span>Tất cả dự án</span>
+                <span class="filter-count-badge">8</span>
+              </button>
+
+              <span class="filter-sep" aria-hidden="true">/</span>
+
+              <button
+                class="filter-btn-primary"
+                data-filter="architecture"
+                role="tab"
+                aria-selected="false"
+                id="tab-arch"
+              >
+                <span>Kiến trúc</span>
+                <span class="filter-count-badge">4</span>
+              </button>
+
+              <span class="filter-sep" aria-hidden="true">/</span>
+
+              <button
+                class="filter-btn-primary"
+                data-filter="interior"
+                role="tab"
+                aria-selected="false"
+                id="tab-int"
+              >
+                <span>Nội thất</span>
+                <span class="filter-count-badge">4</span>
+              </button>
+            </nav>
+
+            <!-- Tier 2: Sub-filter by Status + Project Count Readout + Grid Switcher (2/4 Cols) -->
+            <div class="filter-tier-secondary">
+
+              <!-- Status sub-filter pills -->
+              <div class="filter-status-group" role="group" aria-label="Lọc theo trạng thái dự án">
+                <button class="filter-btn-status is-active" data-status="all" type="button" aria-pressed="true">
+                  Tất cả trạng thái
+                </button>
+                <button class="filter-btn-status" data-status="completed" type="button" aria-pressed="false">
+                  Đã hoàn thành
+                </button>
+                <button class="filter-btn-status" data-status="in-progress" type="button" aria-pressed="false">
+                  Đang thực hiện
+                </button>
+              </div>
+
+              <!-- Controls right: Counter readout & Grid View Switcher -->
+              <div class="filter-controls-group">
+                <span id="project-count" class="filter-readout-count" aria-live="polite">
+                  Đang hiển thị 8 / 8 công trình
+                </span>
+
+                <!-- 2-Column / 4-Column Grid Switcher (Desktop/Tablet) -->
+                <div class="grid-view-switcher" role="group" aria-label="Chuyển chế độ hiển thị lưới">
+                  <button
+                    class="grid-view-btn"
+                    data-grid="2"
+                    type="button"
+                    aria-pressed="false"
+                    title="Chế độ 2 cột (Góc nhìn toàn cảnh)"
+                  >
+                    <svg viewBox="0 0 20 20" fill="none" aria-hidden="true" focusable="false">
+                      <rect x="1" y="1" width="8" height="18" stroke="currentColor" stroke-width="1.5"/>
+                      <rect x="11" y="1" width="8" height="18" stroke="currentColor" stroke-width="1.5"/>
+                    </svg>
+                    <span>2 Cột</span>
+                  </button>
+
+                  <button
+                    class="grid-view-btn is-active"
+                    data-grid="4"
+                    type="button"
+                    aria-pressed="true"
+                    title="Chế độ 4 cột (Lưới tổng quan)"
+                  >
+                    <svg viewBox="0 0 24 20" fill="none" aria-hidden="true" focusable="false">
+                      <rect x="1" y="1" width="4.5" height="18" stroke="currentColor" stroke-width="1.4"/>
+                      <rect x="6.5" y="1" width="4.5" height="18" stroke="currentColor" stroke-width="1.4"/>
+                      <rect x="13" y="1" width="4.5" height="18" stroke="currentColor" stroke-width="1.4"/>
+                      <rect x="18.5" y="1" width="4.5" height="18" stroke="currentColor" stroke-width="1.4"/>
+                    </svg>
+                    <span>4 Cột</span>
+                  </button>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </header>
+
+        <!-- ========================================================
+             PROJECTS GALLERY GRID CONTAINER (DYNAMIC RENDERING)
+             ======================================================== -->
+        <section class="projects-gallery-section" aria-label="Thư viện công trình kiến trúc và nội thất">
+
+          <!-- Dynamic Projects Grid (Rendered by js/pages/projects.js) -->
+          <div
+            id="projects-grid"
+            class="projects-grid projects-grid--col-4"
+            role="region"
+            aria-live="polite"
+          >
+            <!-- Generated dynamically via data.js -->
+          </div>
+
+          <!-- Empty Filter State (When no projects match criteria) -->
+          <div id="projects-empty-state" class="projects-empty-state" role="status" aria-hidden="true">
+            <svg class="projects-empty-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="6" y="6" width="36" height="36" stroke="currentColor" stroke-width="2"/>
+              <line x1="6" y1="6" x2="42" y2="42" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4,4"/>
+              <line x1="16" y1="6" x2="16" y2="42" stroke="currentColor" stroke-width="1" stroke-dasharray="2,2"/>
+              <line x1="32" y1="6" x2="32" y2="42" stroke="currentColor" stroke-width="1" stroke-dasharray="2,2"/>
+            </svg>
+            <h2 class="projects-empty-title">Không tìm thấy công trình phù hợp</h2>
+            <p class="projects-empty-desc">
+              Không có công trình nào trong lưu trữ khớp với tổ hợp bộ lọc đã chọn. Vui lòng chọn phân loại khác hoặc đặt lại bộ lọc.
+            </p>
+            <button id="projects-reset-btn" class="projects-empty-reset-btn" type="button">
+              Đặt lại bộ lọc &rarr;
+            </button>
+          </div>
+
+        </section>
+
+      </div>
+    </main>
+
+    <!-- ── 5. EDITORIAL FOOTER (Phase 1) ── -->
+    <footer class="site-footer" role="contentinfo">
+      <div class="site-footer__inner">
+
+        <!-- Hero statement -->
+        <div class="site-footer__hero">
+          <span class="site-footer__tagline">Portfolio Kiến trúc sư Cá nhân</span>
+          <h2 class="site-footer__headline">
+            Kiến trúc thở cùng <em>thiên nhiên</em>.<br>
+            Không gian trường tồn cùng <em>thời gian</em>.
+          </h2>
+        </div>
+
+        <!-- 4 Columns Grid -->
+        <div class="site-footer__grid">
+          <!-- Col 1: Brand -->
+          <div class="site-footer__col">
+            <a href="index.html" class="site-footer__brand" aria-label="Living Blueprint — Trang chủ">
+              <img src="assets/svg/logo.svg" alt="" width="28" height="28">
+              <span class="site-footer__brand-title">Living Blueprint</span>
+            </a>
+            <p class="site-footer__desc">
+              Portfolio cá nhân kiến trúc sư thực hành kiến trúc và nội thất tối giản đương đại, chuyên sâu về biệt thự pavilion, không gian nghỉ dưỡng và nghiên cứu ý niệm không gian.
+            </p>
+          </div>
+
+          <!-- Col 2: Navigation -->
+          <div class="site-footer__col">
+            <h3 class="site-footer__col-title">Mục lục</h3>
+            <ul class="site-footer__list" role="list">
+              <li><a href="index.html" class="site-footer__link">Trang chủ</a></li>
+              <li><a href="projects.html" class="site-footer__link">Dự án tiêu biểu</a></li>
+              <li><a href="about.html" class="site-footer__link">Về kiến trúc sư</a></li>
+              <li><a href="about.html#process" class="site-footer__link">Quy trình thiết kế</a></li>
+              <li><a href="contact.html" class="site-footer__link">Liên hệ tư vấn</a></li>
+            </ul>
+          </div>
+
+          <!-- Col 3: Practice info -->
+          <div class="site-footer__col">
+            <h3 class="site-footer__col-title">Liên hệ</h3>
+            <div class="site-footer__info-item">
+              <span class="site-footer__info-label">Trao đổi trực tiếp</span>
+              <a href="mailto:inquiries@livingblueprint.demo" class="site-footer__info-value">inquiries@livingblueprint.demo</a>
+            </div>
+            <div class="site-footer__info-item">
+              <span class="site-footer__info-label">Bối cảnh thực hành</span>
+              <span class="site-footer__info-value">Hà Nội · Đà Nẵng · TP.HCM (Minh họa)</span>
+            </div>
+            <div class="site-footer__info-item">
+              <span class="site-footer__info-label">Thời gian làm việc</span>
+              <span class="site-footer__info-value">Thứ Hai — Thứ Sáu: 09:00 — 18:00 (GMT+7)</span>
+            </div>
+          </div>
+
+          <!-- Col 4: Disciplines & Social -->
+          <div class="site-footer__col">
+            <h3 class="site-footer__col-title">Chuyên ngành</h3>
+            <ul class="site-footer__list" role="list">
+              <li><span class="site-footer__link">Thiết kế Kiến trúc</span></li>
+              <li><span class="site-footer__link">Kiến trúc Nội thất</span></li>
+              <li><span class="site-footer__link">Hòa hợp Cảnh quan</span></li>
+              <li><span class="site-footer__link">Cấu trúc Không gian</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Bottom Bar -->
+        <div class="site-footer__bottom">
+          <p class="site-footer__disclaimer">
+            <strong>Thông báo minh họa:</strong> Mọi công trình kiến trúc, hình ảnh minh họa, địa danh,
+            tên gọi và thông số trên website đều là các ý niệm sáng tạo phục vụ mục đích trưng bày giao diện (portfolio showcase).
+            Không cấu thành hợp đồng thương mại thực tế.
+          </p>
+
+          <div class="site-footer__actions">
+            <span class="site-footer__copyright">&copy; 2024 Living Blueprint</span>
+            <button class="site-footer__back-to-top" type="button" aria-label="Cuộn về đầu trang">
+              <span>Về đầu trang</span>
+              <span class="site-footer__back-to-top-arrow" aria-hidden="true">&uarr;</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </footer>
+
+  </div><!-- .page-wrapper -->
+
+  <!-- JavaScript module entry point -->
+  <script type="module" src="js/main.js"></script>
+
+</body>
+</html>

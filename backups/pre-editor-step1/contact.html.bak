@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Liên hệ &amp; Tư vấn Thiết kế Kiến trúc — Living Blueprint. Gửi yêu cầu trao đổi trực tiếp đến kiến trúc sư.">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Liên hệ &amp; Tư vấn — Living Blueprint</title>
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Liên hệ &amp; Tư vấn — Living Blueprint">
+  <meta property="og:description" content="Trao đổi ý niệm và yêu cầu tư vấn thiết kế kiến trúc — nội thất cùng kiến trúc sư.">
+  <meta property="og:locale" content="vi_VN">
+
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23F5F3EF'/%3E%3Cline x1='8' y1='8' x2='8' y2='22' stroke='%231A1916' stroke-width='2'/%3E%3Cline x1='8' y1='22' x2='15' y2='22' stroke='%231A1916' stroke-width='2'/%3E%3Cline x1='18' y1='8' x2='18' y2='22' stroke='%231A1916' stroke-width='2'/%3E%3Cpath d='M18 8 L25 8 Q28 8 28 12 Q28 15 18 16' stroke='%231A1916' stroke-width='1.5' fill='none'/%3E%3Cpath d='M18 16 L26 16 Q30 16 30 20 Q30 24 18 24' stroke='%231A1916' stroke-width='1.5' fill='none'/%3E%3Cline x1='8' y1='28' x2='28' y2='28' stroke='%23A8865C' stroke-width='1'/%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+  <!-- Foundation CSS -->
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/typography.css">
+  <link rel="stylesheet" href="css/layout.css">
+
+  <!-- Global Components CSS — Phase 1 -->
+  <link rel="stylesheet" href="css/components/navbar.css">
+  <link rel="stylesheet" href="css/components/drawer.css">
+  <link rel="stylesheet" href="css/components/cursor.css">
+  <link rel="stylesheet" href="css/components/footer.css">
+  <link rel="stylesheet" href="css/components/loader.css">
+
+  <!-- Page CSS — Phase 5 -->
+  <link rel="stylesheet" href="css/pages/contact.css">
+</head>
+
+<body>
+
+  <!-- ── 1. PAGE LOADER ── -->
+  <div class="page-loader" aria-hidden="false">
+    <div class="page-loader__content">
+      <img src="assets/svg/logo.svg" alt="" class="page-loader__logo" width="48" height="48">
+      <span class="page-loader__brand">Living Blueprint</span>
+      <div class="page-loader__line-wrap" aria-hidden="true">
+        <div class="page-loader__line"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 2. CUSTOM RING CURSOR ── -->
+  <div class="custom-cursor is-hidden" aria-hidden="true">
+    <div class="custom-cursor__dot"></div>
+    <div class="custom-cursor__ring">
+      <span class="custom-cursor__label">XEM</span>
+    </div>
+  </div>
+
+  <!-- ── 3. MOBILE FULLSCREEN DRAWER ── -->
+  <aside id="mobile-nav-drawer" class="mobile-drawer" aria-label="Menu di động" aria-hidden="true">
+    <div class="mobile-drawer__header">
+      <a href="index.html" class="mobile-drawer__brand">
+        <img src="assets/svg/logo.svg" alt="" width="28" height="28">
+        <span class="mobile-drawer__brand-title">Living Blueprint</span>
+      </a>
+      <button class="mobile-drawer__close" type="button" aria-label="Đóng menu">
+        <img src="assets/svg/icons/close.svg" alt="" class="mobile-drawer__close-icon" width="18" height="18">
+      </button>
+    </div>
+
+    <nav class="mobile-drawer__nav" aria-label="Liên kết điều hướng di động">
+      <ul class="mobile-drawer__list" role="list">
+        <li class="mobile-drawer__item">
+          <a href="projects.html" class="mobile-drawer__link">
+            <span class="mobile-drawer__num">01</span>
+            <span class="mobile-drawer__text">Dự án</span>
+          </a>
+        </li>
+        <li class="mobile-drawer__item">
+          <a href="about.html" class="mobile-drawer__link">
+            <span class="mobile-drawer__num">02</span>
+            <span class="mobile-drawer__text">Giới thiệu</span>
+          </a>
+        </li>
+        <li class="mobile-drawer__item">
+          <a href="about.html#process" class="mobile-drawer__link">
+            <span class="mobile-drawer__num">03</span>
+            <span class="mobile-drawer__text">Quy trình</span>
+          </a>
+        </li>
+        <li class="mobile-drawer__item">
+          <a href="contact.html" class="mobile-drawer__link is-active">
+            <span class="mobile-drawer__num">04</span>
+            <span class="mobile-drawer__text">Liên hệ</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="mobile-drawer__footer">
+      <span class="mobile-drawer__meta">Trao đổi ý tưởng</span>
+      <a href="mailto:hello@livingblueprint.demo" class="mobile-drawer__email">hello@livingblueprint.demo</a>
+      <span class="mobile-drawer__note">Portfolio cá nhân kiến trúc sư · Mọi đồ án là ý niệm sáng tạo mẫu.</span>
+    </div>
+  </aside>
+
+  <!-- ── PAGE WRAPPER ── -->
+  <div class="page-wrapper">
+
+    <a href="#main-content" class="sr-only">Bỏ qua điều hướng</a>
+
+    <!-- ── 4. HEADER & NAVBAR ── -->
+    <header role="banner">
+      <nav class="site-navbar" aria-label="Điều hướng chính">
+        <div class="site-navbar__inner">
+          <a href="index.html" class="site-navbar__brand" aria-label="Living Blueprint — Trang chủ">
+            <img src="assets/svg/logo.svg" alt="" class="site-navbar__logo-icon" width="32" height="32">
+            <div class="site-navbar__brand-text">
+              <span class="site-navbar__brand-title">Living Blueprint</span>
+              <span class="site-navbar__brand-sub">Kiến trúc &amp; Nội thất</span>
+            </div>
+          </a>
+
+          <div class="site-navbar__nav">
+            <ul class="site-navbar__links" role="list">
+              <li><a href="projects.html" class="site-navbar__link">Dự án</a></li>
+              <li><a href="about.html" class="site-navbar__link">Giới thiệu</a></li>
+              <li><a href="about.html#process" class="site-navbar__link">Quy trình</a></li>
+              <li><a href="contact.html" class="site-navbar__link is-active" aria-current="page">Liên hệ</a></li>
+            </ul>
+
+            <a href="contact.html" class="site-navbar__cta" aria-label="Gửi yêu cầu tư vấn">
+              <span>Tư vấn</span>
+              <span class="site-navbar__cta-plus" aria-hidden="true">+</span>
+            </a>
+          </div>
+
+          <button class="site-navbar__toggle" type="button" aria-label="Mở menu điều hướng di động" aria-expanded="false" aria-controls="mobile-nav-drawer">
+            <span class="site-navbar__toggle-line"></span>
+            <span class="site-navbar__toggle-line"></span>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <!-- ── MAIN CONTENT ── -->
+    <main id="main-content">
+      <section class="contact-hero" aria-label="Liên hệ và trao đổi dự án">
+        <div class="container">
+          <div class="contact-wrap">
+
+            <!-- Architect Details Sidebar -->
+            <div class="contact-info">
+              <h1 class="contact-info-title">
+                Khởi tạo<br>
+                <em>không gian sống.</em>
+              </h1>
+              <p class="contact-info-desc">
+                Nếu bạn đang ấp ủ một ý niệm cư ngụ tĩnh tại, một biệt thự nghỉ dưỡng hòa mình vào thiên nhiên hay một giải pháp không gian nội thất tối giản, hãy để lại thông tin để chúng ta cùng đối thoại.
+              </p>
+
+              <div class="contact-block">
+                <span class="contact-block-label">Định danh thực hành</span>
+                <span class="contact-block-val">Living Blueprint — Portfolio Kiến trúc sư Cá nhân</span>
+              </div>
+
+              <div class="contact-block">
+                <span class="contact-block-label">Thư điện tử trao đổi</span>
+                <a href="mailto:inquiries@livingblueprint.demo" class="contact-block-val link-underline" style="font-size: 1.125rem;">
+                  inquiries@livingblueprint.demo
+                </a>
+              </div>
+
+              <div class="contact-block">
+                <span class="contact-block-label">Bối cảnh địa bàn nghiên cứu (Minh họa)</span>
+                <span class="contact-block-val" style="font-size: 1.05rem; font-family: var(--font-ui); color: var(--color-ink-muted);">
+                  Hà Nội · Đà Nẵng · TP.Hồ Chí Minh
+                </span>
+              </div>
+
+              <div class="contact-block">
+                <span class="contact-block-label">Thời gian phản hồi</span>
+                <span class="contact-block-val" style="font-size: 0.95rem; font-family: var(--font-ui); color: var(--color-ink-muted);">
+                  Thứ Hai — Thứ Sáu: 09:00 — 18:00 (GMT+7)
+                </span>
+              </div>
+
+              <div class="contact-demo-disclaimer">
+                <strong>* Ghi chú portfolio:</strong> Biểu mẫu liên hệ đóng vai trò là thành phần giao diện trải nghiệm mẫu (UX Demo). Thông tin bạn nhập được kiểm tra định dạng trực tiếp tại trình duyệt nhưng chưa được gửi tới máy chủ thật.
+              </div>
+            </div>
+
+            <!-- Contact Form Container -->
+            <div class="contact-form-container">
+              <div class="contact-form-header">
+                <span class="contact-form-kicker">Trao đổi ban đầu</span>
+                <h2 class="contact-form-title">Gửi Yêu Cầu Tư Vấn</h2>
+              </div>
+
+              <!-- Live Demo Feedback Box -->
+              <div id="contact-feedback" role="alert" aria-live="polite" style="display: none;"></div>
+
+              <form class="contact-form" id="contact-form" action="#" method="POST" novalidate>
+                <!-- Field 1: Name -->
+                <div class="form-field">
+                  <label for="name" class="form-label">
+                    <span>Họ và tên *</span>
+                  </label>
+                  <input type="text" id="name" name="name" class="form-input" placeholder="Ví dụ: Nguyễn Văn An" autocomplete="name" required>
+                </div>
+
+                <!-- Field 2: Email -->
+                <div class="form-field">
+                  <label for="email" class="form-label">
+                    <span>Địa chỉ Email *</span>
+                  </label>
+                  <input type="email" id="email" name="email" class="form-input" placeholder="name@domain.com" autocomplete="email" required>
+                </div>
+
+                <!-- Field 3: Phone (Optional) -->
+                <div class="form-field">
+                  <label for="phone" class="form-label">
+                    <span>Số điện thoại</span>
+                    <span class="form-label-optional">(Không bắt buộc)</span>
+                  </label>
+                  <input type="tel" id="phone" name="phone" class="form-input" placeholder="Ví dụ: 0912 345 678" autocomplete="tel">
+                </div>
+
+                <!-- Field 4: Scope (Kiến trúc / Nội thất / Khác) -->
+                <div class="form-field">
+                  <label for="scope" class="form-label">
+                    <span>Loại dự án *</span>
+                  </label>
+                  <select id="scope" name="scope" class="form-select" required>
+                    <option value="" disabled selected>Vui lòng chọn loại hình công trình...</option>
+                    <option value="architecture">Thiết kế Kiến trúc (Biệt thự / Nhà ở / Pavilion)</option>
+                    <option value="interior">Thiết kế Nội thất (Không gian sống / Tối giản)</option>
+                    <option value="other">Ý niệm không gian &amp; Khác</option>
+                  </select>
+                </div>
+
+                <!-- Field 5: Message -->
+                <div class="form-field">
+                  <label for="message" class="form-label">
+                    <span>Nội dung yêu cầu *</span>
+                  </label>
+                  <textarea id="message" name="message" class="form-textarea" placeholder="Chia sẻ đôi nét về hiện trạng khu đất, ý niệm không gian bạn mong muốn hoặc các câu hỏi cần tư vấn..." required></textarea>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="form-submit-btn">
+                  <span>Gửi yêu cầu tư vấn</span>
+                  <span aria-hidden="true">&rarr;</span>
+                </button>
+
+                <p class="form-disclaimer">
+                  * Biểu mẫu hiện hoạt động ở chế độ Demo Interface. Dữ liệu đầu vào sẽ được xác thực tại client và hiển thị hộp thoại xác nhận mô phỏng, chưa truyền phát qua hệ thống backend.
+                </p>
+              </form>
+            </div>
+
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ── 5. EDITORIAL FOOTER ── -->
+    <footer class="site-footer" role="contentinfo">
+      <div class="site-footer__inner">
+
+        <div class="site-footer__hero">
+          <span class="site-footer__tagline">Portfolio Kiến trúc sư Cá nhân</span>
+          <h2 class="site-footer__headline">
+            Kiến trúc thở cùng <em>thiên nhiên</em>.<br>
+            Không gian trường tồn cùng <em>thời gian</em>.
+          </h2>
+        </div>
+
+        <div class="site-footer__grid">
+          <div class="site-footer__col">
+            <a href="index.html" class="site-footer__brand" aria-label="Living Blueprint — Trang chủ">
+              <img src="assets/svg/logo.svg" alt="" width="28" height="28">
+              <span class="site-footer__brand-title">Living Blueprint</span>
+            </a>
+            <p class="site-footer__desc">
+              Portfolio cá nhân kiến trúc sư thực hành kiến trúc và nội thất tối giản đương đại, chuyên sâu về biệt thự pavilion, không gian nghỉ dưỡng và nghiên cứu ý niệm không gian.
+            </p>
+          </div>
+
+          <div class="site-footer__col">
+            <h3 class="site-footer__col-title">Mục lục</h3>
+            <ul class="site-footer__list" role="list">
+              <li><a href="index.html" class="site-footer__link">Trang chủ</a></li>
+              <li><a href="projects.html" class="site-footer__link">Dự án tiêu biểu</a></li>
+              <li><a href="about.html" class="site-footer__link">Về kiến trúc sư</a></li>
+              <li><a href="about.html#process" class="site-footer__link">Quy trình thiết kế</a></li>
+              <li><a href="contact.html" class="site-footer__link is-active">Liên hệ tư vấn</a></li>
+            </ul>
+          </div>
+
+          <div class="site-footer__col">
+            <h3 class="site-footer__col-title">Liên hệ</h3>
+            <div class="site-footer__info-item">
+              <span class="site-footer__info-label">Trao đổi trực tiếp</span>
+              <a href="mailto:inquiries@livingblueprint.demo" class="site-footer__info-value">inquiries@livingblueprint.demo</a>
+            </div>
+            <div class="site-footer__info-item">
+              <span class="site-footer__info-label">Bối cảnh thực hành</span>
+              <span class="site-footer__info-value">Hà Nội · Đà Nẵng · TP.HCM (Minh họa)</span>
+            </div>
+            <div class="site-footer__info-item">
+              <span class="site-footer__info-label">Thời gian làm việc</span>
+              <span class="site-footer__info-value">Thứ Hai — Thứ Sáu: 09:00 — 18:00 (GMT+7)</span>
+            </div>
+          </div>
+
+          <div class="site-footer__col">
+            <h3 class="site-footer__col-title">Chuyên môn</h3>
+            <ul class="site-footer__list" role="list">
+              <li><span class="site-footer__link">Thiết kế Kiến trúc</span></li>
+              <li><span class="site-footer__link">Thiết kế Nội thất</span></li>
+              <li><span class="site-footer__link">Phát triển Ý tưởng Không gian</span></li>
+              <li><span class="site-footer__link">Khảo cứu Vi khí hậu</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="site-footer__bottom">
+          <p class="site-footer__disclaimer">
+            <strong>Thông báo minh họa:</strong> Mọi đồ án kiến trúc, hình ảnh minh họa, địa danh,
+            tên gọi và thông số trên website đều là các ý niệm sáng tạo phục vụ mục đích trưng bày portfolio cá nhân kiến trúc sư.
+            Không cấu thành hợp đồng dịch vụ thương mại thực tế.
+          </p>
+
+          <div class="site-footer__actions">
+            <span class="site-footer__copyright">&copy; 2024 Living Blueprint</span>
+            <button class="site-footer__back-to-top" type="button" aria-label="Cuộn về đầu trang">
+              <span>Về đầu trang</span>
+              <span class="site-footer__back-to-top-arrow" aria-hidden="true">&uarr;</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </footer>
+
+  </div><!-- .page-wrapper -->
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

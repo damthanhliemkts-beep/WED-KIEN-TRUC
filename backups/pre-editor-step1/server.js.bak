@@ -1,0 +1,38 @@
+const http = require('http');
+const fs = require('fs');
+const path = require('path');
+
+const root = 'd:\\ArchitecturePortfolio';
+const mimes = {
+  '.html': 'text/html; charset=utf-8',
+  '.css': 'text/css; charset=utf-8',
+  '.js': 'application/javascript; charset=utf-8',
+  '.svg': 'image/svg+xml',
+  '.png': 'image/png',
+  '.jpg': 'image/jpeg',
+  '.json': 'application/json'
+};
+
+const server = http.createServer((req, res) => {
+  let urlPath = req.url.split('?')[0];
+  if (urlPath === '/' || urlPath === '') urlPath = '/index.html';
+  const filePath = path.join(root, urlPath.replace(/\//g, path.sep));
+  
+  fs.readFile(filePath, (err, data) => {
+    if (err) {
+      res.writeHead(404, { 'Content-Type': 'text/plain' });
+      res.end('404 Not Found');
+      return;
+    }
+    const ext = path.extname(filePath).toLowerCase();
+    res.writeHead(200, {
+      'Content-Type': mimes[ext] || 'application/octet-stream',
+      'Access-Control-Allow-Origin': '*'
+    });
+    res.end(data);
+  });
+});
+
+server.listen(3000, '127.0.0.1', () => {
+  console.log('Server running on http://127.0.0.1:3000');
+});

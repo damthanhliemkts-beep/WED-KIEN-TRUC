@@ -1,0 +1,991 @@
+/* ============================================================
+   LIVING BLUEPRINT — Stylesheet: Project Detail Monograph
+   Phase 4: Architectural Editorial & Minimal Luxury Layout
+   ============================================================ */
+
+/* ── SECTION 01: HERO BANNER ──────────────────────────────── */
+.pdetail-hero {
+  position: relative;
+  min-height: 92vh;
+  display: flex;
+  align-items: flex-end;
+  padding: var(--space-16) var(--container-pad) var(--space-12);
+  overflow: hidden;
+  background-color: var(--color-ink);
+}
+
+.pdetail-hero__bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transition: transform 1.2s var(--ease-expo), opacity 0.8s ease;
+  will-change: transform;
+}
+
+.pdetail-hero:hover .pdetail-hero__bg {
+  transform: scale(1.02);
+}
+
+.pdetail-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(26, 25, 22, 0.95) 0%,
+    rgba(26, 25, 22, 0.55) 50%,
+    rgba(26, 25, 22, 0.25) 100%
+  );
+  pointer-events: none;
+}
+
+.pdetail-hero__content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  color: var(--color-on-dark);
+}
+
+.pdetail-hero__top-nav {
+  margin-bottom: var(--space-8);
+}
+
+.pdetail-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-ui);
+  font-size: var(--text-label);
+  font-weight: var(--fw-medium);
+  letter-spacing: var(--ls-widest);
+  text-transform: uppercase;
+  color: rgba(245, 243, 239, 0.75);
+  text-decoration: none;
+  padding: var(--space-2) 0;
+  transition: color var(--transition-fast), transform var(--transition-fast);
+}
+
+.pdetail-back-btn:hover {
+  color: var(--color-on-dark);
+  transform: translateX(-4px);
+}
+
+.pdetail-hero__meta-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: var(--ls-widest);
+  text-transform: uppercase;
+  color: var(--color-accent-light);
+  margin-bottom: var(--space-3);
+  background: rgba(26, 25, 22, 0.45);
+  padding: var(--space-1) var(--space-3);
+  border: 1px solid rgba(168, 134, 92, 0.35);
+  backdrop-filter: blur(8px);
+}
+
+.pdetail-hero__title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.75rem, 6.5vw, 5.75rem);
+  font-weight: var(--fw-light);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-tight);
+  color: #FFFFFF;
+  margin-bottom: var(--space-5);
+  max-width: 1100px;
+}
+
+.pdetail-hero__specs-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-4) var(--space-8);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: var(--ls-wider);
+  color: rgba(245, 243, 239, 0.75);
+  border-top: 1px solid rgba(245, 243, 239, 0.15);
+  padding-top: var(--space-4);
+}
+
+.pdetail-hero__specs-item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.pdetail-hero__status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 8px;
+  border-radius: 2px;
+  font-size: 10px;
+  background: rgba(168, 134, 92, 0.2);
+  border: 1px solid var(--color-accent);
+  color: var(--color-accent-light);
+}
+
+.pdetail-hero__status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--color-accent-light);
+}
+
+/* ── COMMON SECTION STRUCTURE ──────────────────────────────── */
+.pdetail-section {
+  padding-block: var(--space-20);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.pdetail-section--warm {
+  background-color: var(--color-bg-warm);
+}
+
+.pdetail-section-head {
+  margin-bottom: var(--space-12);
+}
+
+.pdetail-section-kicker {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  letter-spacing: var(--ls-widest);
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: var(--space-2);
+}
+
+.pdetail-section-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 3.8vw, 3.25rem);
+  font-weight: var(--fw-light);
+  letter-spacing: var(--ls-tight);
+  color: var(--color-ink);
+  line-height: 1.15;
+}
+
+.pdetail-section-title em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--color-ink-muted);
+}
+
+/* ── SECTION 02: TỔNG QUAN & BỐI CẢNH (OVERVIEW) ─────────────── */
+.pdetail-overview-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: var(--space-16);
+  align-items: start;
+}
+
+.pdetail-narrative__summary {
+  font-size: clamp(1.15rem, 1.6vw, 1.4rem);
+  line-height: var(--lh-relaxed);
+  color: var(--color-ink);
+  font-family: var(--font-heading);
+  font-weight: var(--fw-regular);
+  margin-bottom: var(--space-8);
+  border-left: 2px solid var(--color-accent);
+  padding-left: var(--space-5);
+}
+
+.pdetail-narrative__context-title {
+  font-family: var(--font-heading);
+  font-size: var(--text-h4);
+  font-weight: var(--fw-regular);
+  margin-bottom: var(--space-3);
+  color: var(--color-ink);
+}
+
+.pdetail-narrative__context-text {
+  font-size: var(--text-body);
+  line-height: var(--lh-relaxed);
+  color: var(--color-ink-muted);
+  margin-bottom: var(--space-8);
+}
+
+.pdetail-objectives-box {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  padding: var(--space-8);
+}
+
+.pdetail-objectives-title {
+  font-family: var(--font-ui);
+  font-size: var(--text-label);
+  letter-spacing: var(--ls-widest);
+  text-transform: uppercase;
+  color: var(--color-ink);
+  margin-bottom: var(--space-4);
+  display: block;
+}
+
+.pdetail-objectives-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.pdetail-objective-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  font-size: var(--text-body-sm);
+  color: var(--color-ink);
+  line-height: 1.5;
+}
+
+.pdetail-objective-item::before {
+  content: '—';
+  color: var(--color-accent);
+  font-weight: bold;
+}
+
+/* Specs Sidebar (Architectural Titleblock) */
+.pdetail-specs-sidebar {
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  position: sticky;
+  top: calc(var(--nav-height) + var(--space-6));
+}
+
+.pdetail-specs-header {
+  padding: var(--space-5) var(--space-6);
+  border-bottom: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pdetail-specs-header-title {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: var(--ls-widest);
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--color-ink);
+}
+
+.pdetail-specs-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1px;
+  background-color: var(--color-border);
+}
+
+.pdetail-spec-cell {
+  background-color: var(--color-bg);
+  padding: var(--space-4) var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.pdetail-spec-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: var(--ls-widest);
+  text-transform: uppercase;
+  color: var(--color-ink-muted);
+}
+
+.pdetail-spec-val {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 400;
+  color: var(--color-ink);
+}
+
+.pdetail-role-box {
+  padding: var(--space-5) var(--space-6);
+  background-color: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+}
+
+.pdetail-role-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: var(--ls-widest);
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: 4px;
+  display: block;
+}
+
+.pdetail-role-val {
+  font-family: var(--font-ui);
+  font-size: var(--text-body-sm);
+  font-weight: 500;
+  color: var(--color-ink);
+}
+
+/* ── SECTION 03: Ý TƯỞNG THIẾT KẾ (CONCEPT) ─────────────────── */
+.pdetail-concept-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-12);
+  align-items: start;
+  margin-bottom: var(--space-12);
+}
+
+.pdetail-philosophy-quote {
+  font-family: var(--font-heading);
+  font-size: clamp(1.4rem, 2.2vw, 1.85rem);
+  font-weight: 300;
+  font-style: italic;
+  line-height: var(--lh-tight);
+  color: var(--color-ink);
+  border-top: 1px solid var(--color-border);
+  padding-top: var(--space-6);
+  margin: 0;
+}
+
+.pdetail-concept-desc {
+  font-size: var(--text-body-lg);
+  line-height: var(--lh-relaxed);
+  color: var(--color-ink);
+  white-space: pre-line;
+}
+
+.pdetail-decisions-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-6);
+  margin-top: var(--space-10);
+}
+
+.pdetail-decision-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  padding: var(--space-6);
+  position: relative;
+  transition: transform var(--transition-fast), border-color var(--transition-fast);
+}
+
+.pdetail-decision-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--color-accent);
+}
+
+.pdetail-decision-num {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: var(--ls-wider);
+  color: var(--color-accent);
+  display: block;
+  margin-bottom: var(--space-2);
+}
+
+.pdetail-decision-text {
+  font-size: var(--text-body-sm);
+  color: var(--color-ink);
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* ── SECTION 04: BẢN VẼ KIẾN TRÚC (DRAWINGS) ────────────────── */
+.pdetail-drawings-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-8);
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: var(--space-4);
+}
+
+.pdetail-drawing-tab-btn {
+  background: none;
+  border: 1px solid transparent;
+  padding: var(--space-2) var(--space-4);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: var(--ls-wider);
+  text-transform: uppercase;
+  color: var(--color-ink-muted);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.pdetail-drawing-tab-btn:hover {
+  color: var(--color-ink);
+  background-color: var(--color-surface);
+}
+
+.pdetail-drawing-tab-btn.is-active {
+  color: var(--color-ink);
+  border-color: var(--color-border);
+  background-color: var(--color-surface);
+  font-weight: 600;
+}
+
+.pdetail-drawings-display {
+  background-color: #FAF8F5;
+  border: 1px solid var(--color-border);
+  padding: var(--space-8);
+  position: relative;
+  overflow: hidden;
+}
+
+.pdetail-drawing-card {
+  display: none;
+}
+
+.pdetail-drawing-card.is-active {
+  display: block;
+  animation: pdetailFadeIn 0.4s var(--ease-expo);
+}
+
+.pdetail-drawing-canvas-wrap {
+  width: 100%;
+  max-width: 1000px;
+  margin-inline: auto;
+  border: 1px solid var(--color-border);
+  background-color: #FAF8F5;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  cursor: zoom-in;
+  position: relative;
+  transition: transform var(--transition-fast);
+}
+
+.pdetail-drawing-canvas-wrap:hover {
+  transform: scale(1.008);
+}
+
+.pdetail-drawing-canvas-wrap svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.pdetail-drawing-meta-bar {
+  margin-top: var(--space-6);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border);
+}
+
+.pdetail-drawing-info-title {
+  font-family: var(--font-heading);
+  font-size: var(--text-h4);
+  font-weight: 400;
+  color: var(--color-ink);
+  margin-bottom: 4px;
+}
+
+.pdetail-drawing-info-desc {
+  font-size: var(--text-body-sm);
+  color: var(--color-ink-muted);
+}
+
+.pdetail-drawing-expand-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  padding: var(--space-2) var(--space-4);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: var(--ls-wider);
+  text-transform: uppercase;
+  color: var(--color-ink);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.pdetail-drawing-expand-btn:hover {
+  border-color: var(--color-accent);
+  background-color: var(--color-ink);
+  color: var(--color-on-dark);
+}
+
+.pdetail-drawing-disclaimer {
+  margin-top: var(--space-4);
+  font-size: var(--text-xs);
+  color: var(--color-ink-muted);
+  font-style: italic;
+}
+
+/* ── SECTION 05: KHÔNG GIAN KIẾN TRÚC & NỘI THẤT (GALLERY) ───── */
+.pdetail-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--space-8);
+}
+
+.pdetail-gallery-item {
+  position: relative;
+  overflow: hidden;
+  cursor: zoom-in;
+  background-color: var(--color-surface);
+}
+
+.pdetail-gallery-item--wide {
+  grid-column: span 12;
+  aspect-ratio: 16 / 9;
+}
+
+.pdetail-gallery-item--portrait {
+  grid-column: span 6;
+  aspect-ratio: 4 / 5;
+}
+
+.pdetail-gallery-item--square {
+  grid-column: span 6;
+  aspect-ratio: 1 / 1;
+}
+
+.pdetail-gallery-thumb {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.8s var(--ease-expo);
+}
+
+.pdetail-gallery-item:hover .pdetail-gallery-thumb {
+  transform: scale(1.03);
+}
+
+.pdetail-gallery-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(26, 25, 22, 0.85) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity var(--transition-ui);
+  display: flex;
+  align-items: flex-end;
+  padding: var(--space-6);
+  color: var(--color-on-dark);
+}
+
+.pdetail-gallery-item:hover .pdetail-gallery-overlay {
+  opacity: 1;
+}
+
+.pdetail-gallery-tag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: var(--ls-widest);
+  text-transform: uppercase;
+  color: var(--color-accent-light);
+  margin-bottom: var(--space-1);
+  display: block;
+}
+
+.pdetail-gallery-title {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 300;
+  color: #FFFFFF;
+}
+
+/* ── SECTION 06: VẬT LIỆU & CHI TIẾT (MATERIALS) ─────────────── */
+.pdetail-materials-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-6);
+  margin-bottom: var(--space-12);
+}
+
+.pdetail-material-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  transition: transform var(--transition-fast);
+}
+
+.pdetail-material-card:hover {
+  transform: translateY(-2px);
+}
+
+.pdetail-material-swatch {
+  width: 36px;
+  height: 36px;
+  border-radius: 2px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.pdetail-material-category {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: var(--ls-widest);
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.pdetail-material-name {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--color-ink);
+  line-height: 1.25;
+}
+
+.pdetail-material-origin {
+  font-size: var(--text-xs);
+  color: var(--color-ink-muted);
+  font-style: italic;
+}
+
+.pdetail-material-desc {
+  font-size: var(--text-body-sm);
+  color: var(--color-ink);
+  line-height: 1.5;
+  margin-top: auto;
+}
+
+.pdetail-tectonics-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-12);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  padding: var(--space-10);
+}
+
+.pdetail-lighting-box h3,
+.pdetail-details-box h3 {
+  font-family: var(--font-heading);
+  font-size: var(--text-h4);
+  font-weight: 400;
+  margin-bottom: var(--space-4);
+  color: var(--color-ink);
+}
+
+.pdetail-lighting-box p {
+  font-size: var(--text-body);
+  line-height: var(--lh-relaxed);
+  color: var(--color-ink-muted);
+}
+
+.pdetail-details-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.pdetail-details-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  font-size: var(--text-body);
+  color: var(--color-ink-muted);
+  line-height: 1.5;
+}
+
+.pdetail-details-item::before {
+  content: '▸';
+  color: var(--color-accent);
+  flex-shrink: 0;
+}
+
+/* ── SECTION 07: DỰ ÁN TIẾP THEO (NEXT PROJECT) ─────────────── */
+.pdetail-next-section {
+  position: relative;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  background-color: var(--color-ink);
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.pdetail-next-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.7;
+  transition: transform 1s var(--ease-expo), opacity 0.6s ease;
+}
+
+.pdetail-next-section:hover .pdetail-next-bg {
+  transform: scale(1.03);
+  opacity: 0.85;
+}
+
+.pdetail-next-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(26, 25, 22, 0.9) 0%,
+    rgba(26, 25, 22, 0.65) 50%,
+    rgba(26, 25, 22, 0.85) 100%
+  );
+}
+
+.pdetail-next-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding: var(--space-12) var(--container-pad);
+  color: var(--color-on-dark);
+}
+
+.pdetail-next-kicker {
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  letter-spacing: var(--ls-widest);
+  text-transform: uppercase;
+  color: var(--color-accent-light);
+  margin-bottom: var(--space-3);
+  display: block;
+}
+
+.pdetail-next-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 300;
+  line-height: var(--lh-tight);
+  color: #FFFFFF;
+  margin-bottom: var(--space-4);
+  transition: transform var(--transition-ui);
+}
+
+.pdetail-next-section:hover .pdetail-next-title {
+  transform: translateX(8px);
+}
+
+.pdetail-next-meta {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: var(--ls-wider);
+  color: rgba(245, 243, 239, 0.7);
+  margin-bottom: var(--space-6);
+  display: block;
+}
+
+.pdetail-next-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-family: var(--font-ui);
+  font-size: var(--text-label);
+  font-weight: 500;
+  letter-spacing: var(--ls-widest);
+  text-transform: uppercase;
+  color: #FFFFFF;
+  border-bottom: 1px solid var(--color-accent);
+  padding-bottom: 4px;
+  transition: gap var(--transition-fast);
+}
+
+.pdetail-next-section:hover .pdetail-next-cta {
+  gap: var(--space-5);
+  color: var(--color-accent-light);
+}
+
+/* ── LIGHTBOX MODAL ────────────────────────────────────────── */
+.pdetail-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background-color: rgba(18, 17, 15, 0.96);
+  backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+
+.pdetail-lightbox.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.pdetail-lightbox__close {
+  position: absolute;
+  top: var(--space-6);
+  right: var(--space-6);
+  background: none;
+  border: none;
+  color: var(--color-on-dark);
+  font-size: 2rem;
+  width: 44px;
+  height: 44px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  transition: transform var(--transition-fast), color var(--transition-fast);
+}
+
+.pdetail-lightbox__close:hover {
+  transform: rotate(90deg);
+  color: var(--color-accent-light);
+}
+
+.pdetail-lightbox__nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(26, 25, 22, 0.6);
+  border: 1px solid rgba(245, 243, 239, 0.2);
+  color: var(--color-on-dark);
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.5rem;
+  z-index: 10;
+  transition: all var(--transition-fast);
+}
+
+.pdetail-lightbox__nav-btn:hover {
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+.pdetail-lightbox__nav-btn--prev {
+  left: var(--space-6);
+}
+
+.pdetail-lightbox__nav-btn--next {
+  right: var(--space-6);
+}
+
+.pdetail-lightbox__body {
+  width: 90vw;
+  max-width: 1200px;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-on-dark);
+}
+
+.pdetail-lightbox__image-wrap {
+  width: 100%;
+  max-height: 72vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.pdetail-lightbox__image-wrap svg,
+.pdetail-lightbox__image-wrap img,
+.pdetail-lightbox__image-wrap .lightbox-gradient-view {
+  max-width: 100%;
+  max-height: 72vh;
+  object-fit: contain;
+}
+
+.lightbox-gradient-view {
+  width: 800px;
+  height: 500px;
+  border-radius: 2px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.pdetail-lightbox__caption {
+  margin-top: var(--space-4);
+  text-align: center;
+  max-width: 800px;
+}
+
+.pdetail-lightbox__caption-title {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-weight: 300;
+  margin-bottom: 4px;
+}
+
+.pdetail-lightbox__caption-text {
+  font-size: var(--text-xs);
+  color: rgba(245, 243, 239, 0.7);
+  font-family: var(--font-mono);
+}
+
+/* Keyframes */
+@keyframes pdetailFadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── RESPONSIVE MEDIA QUERIES ───────────────────────────────── */
+@media (max-width: 1024px) {
+  .pdetail-overview-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-10);
+  }
+
+  .pdetail-specs-sidebar {
+    position: static;
+  }
+
+  .pdetail-concept-layout {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+
+  .pdetail-materials-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .pdetail-tectonics-layout {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+}
+
+@media (max-width: 768px) {
+  .pdetail-hero {
+    min-height: 80vh;
+    padding-bottom: var(--space-8);
+  }
+
+  .pdetail-section {
+    padding-block: var(--space-14);
+  }
+
+  .pdetail-decisions-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pdetail-gallery-grid {
+    gap: var(--space-4);
+  }
+
+  .pdetail-gallery-item--portrait,
+  .pdetail-gallery-item--square {
+    grid-column: span 12;
+  }
+
+  .pdetail-materials-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pdetail-lightbox__nav-btn {
+    width: 38px;
+    height: 38px;
+    font-size: 1.2rem;
+  }
+
+  .pdetail-lightbox__nav-btn--prev { left: var(--space-2); }
+  .pdetail-lightbox__nav-btn--next { right: var(--space-2); }
+}

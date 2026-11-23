@@ -1,0 +1,138 @@
+/* ============================================================
+   LIVING BLUEPRINT — Component: Custom Ring Cursor
+   Inspired by YODEZEEN · Minimal luxury
+   ============================================================ */
+
+/* Container for custom cursor elements */
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: var(--z-cursor);
+  overflow: hidden;
+  transition: opacity 0.3s ease;
+}
+
+/* Central precise dot */
+.custom-cursor__dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  background-color: var(--color-ink);
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition:
+    transform 0.15s var(--ease-out),
+    opacity 0.2s var(--ease-out),
+    background-color 0.2s var(--ease-out);
+  will-change: transform;
+}
+
+/* Outer smooth ring */
+.custom-cursor__ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 32px;
+  height: 32px;
+  border: 1px solid rgba(26, 25, 22, 0.45);
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    width 0.25s var(--ease-out),
+    height 0.25s var(--ease-out),
+    border-color 0.25s var(--ease-out),
+    background-color 0.25s var(--ease-out),
+    transform 0.08s linear;
+  will-change: transform, width, height;
+}
+
+/* Text label inside cursor ring (e.g., "VIEW", "EXPLORE") */
+.custom-cursor__label {
+  font-family: var(--font-mono);
+  font-size: 8px;
+  font-weight: var(--fw-medium);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-on-dark);
+  opacity: 0;
+  transform: scale(0.6);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  user-select: none;
+}
+
+/* ── Interactive States ────────────────────────────────── */
+
+/* Hovering regular links/buttons */
+.custom-cursor.is-hovering .custom-cursor__ring {
+  width: 48px;
+  height: 48px;
+  border-color: var(--color-accent);
+  background-color: rgba(168, 134, 92, 0.08);
+}
+
+.custom-cursor.is-hovering .custom-cursor__dot {
+  opacity: 0.4;
+  transform: translate(-50%, -50%) scale(1.5);
+  background-color: var(--color-accent);
+}
+
+/* Hovering project cards — "VIEW" mode */
+.custom-cursor.is-viewing .custom-cursor__ring {
+  width: 68px;
+  height: 68px;
+  background-color: rgba(26, 25, 22, 0.88);
+  border-color: transparent;
+  backdrop-filter: blur(4px);
+}
+
+.custom-cursor.is-viewing .custom-cursor__dot {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0);
+}
+
+.custom-cursor.is-viewing .custom-cursor__label {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Hidden when cursor leaves window */
+.custom-cursor.is-hidden {
+  opacity: 0;
+}
+
+/* Click feedback */
+.custom-cursor.is-clicking .custom-cursor__ring {
+  transform: translate(-50%, -50%) scale(0.85);
+}
+
+/* ── Fallback / Device disable rules ───────────────────── */
+
+/* Disabled on touch devices and small viewports */
+@media (hover: none), (pointer: coarse), (max-width: 768px) {
+  .custom-cursor {
+    display: none !important;
+  }
+}
+
+/* Disabled for users requesting reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .custom-cursor {
+    display: none !important;
+  }
+}
+
+body[data-touch="true"] .custom-cursor,
+body[data-reduced-motion="true"] .custom-cursor {
+  display: none !important;
+}

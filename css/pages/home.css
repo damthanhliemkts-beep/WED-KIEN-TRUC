@@ -1,0 +1,326 @@
+/* ============================================================
+   LIVING BLUEPRINT — Page: Home Content Sections
+   Featured Works (Asymmetric Editorial Grid), Services Strip & Teaser
+   ============================================================ */
+
+/* ── Section Header ────────────────────────────────────── */
+
+.section-head {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-bottom: var(--space-12);
+}
+
+.section-head--row {
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-6);
+}
+
+.section-kicker {
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  letter-spacing: var(--ls-widest);
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.section-title {
+  font-family: var(--font-heading);
+  font-size: var(--text-h2);
+  font-weight: var(--fw-light);
+  letter-spacing: var(--ls-tight);
+  line-height: var(--lh-heading);
+}
+
+.section-title em {
+  font-style: italic;
+  color: var(--color-ink-muted);
+}
+
+/* ── Featured Projects Editorial Grid ──────────────────── */
+
+.featured-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  grid-template-rows: auto auto;
+  gap: var(--card-gap);
+  margin-bottom: var(--space-12);
+}
+
+.featured-card {
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+  color: var(--color-on-dark);
+  background-color: var(--color-ink);
+  display: block;
+}
+
+/* Big hero project card spans 2 rows */
+.featured-card--lead {
+  grid-row: span 2;
+  aspect-ratio: 4 / 5;
+}
+
+.featured-card--side {
+  aspect-ratio: 16 / 10;
+}
+
+.featured-card__bg {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s var(--ease-expo);
+  position: relative;
+}
+
+.featured-card:hover .featured-card__bg {
+  transform: scale(1.04);
+}
+
+.featured-card__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(26, 25, 22, 0.88) 0%,
+    rgba(26, 25, 22, 0.25) 50%,
+    transparent 100%
+  );
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: clamp(1.25rem, 3vw, 2.5rem);
+  transition: background 0.4s ease;
+}
+
+.featured-card:hover .featured-card__overlay {
+  background: linear-gradient(
+    to top,
+    rgba(26, 25, 22, 0.94) 0%,
+    rgba(26, 25, 22, 0.4) 60%,
+    transparent 100%
+  );
+}
+
+.featured-card__cat {
+  font-family: var(--font-ui);
+  font-size: var(--text-label);
+  letter-spacing: var(--ls-widest);
+  text-transform: uppercase;
+  color: var(--color-accent-light);
+  margin-bottom: var(--space-2);
+}
+
+.featured-card__title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.5rem, 2.8vw, 2.5rem);
+  font-weight: var(--fw-light);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-tight);
+  margin-bottom: var(--space-2);
+}
+
+.featured-card__meta {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: rgba(245, 243, 239, 0.7);
+  letter-spacing: var(--ls-wider);
+}
+
+/* ── Disciplines / Services Strip (Huni Inspired) ──────── */
+
+.disciplines-strip {
+  padding-block: var(--space-24);
+  background-color: var(--color-bg-warm);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  position: relative;
+}
+
+.disciplines-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-16);
+}
+
+.discipline-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding: var(--space-8);
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  overflow: hidden;
+  transition: transform var(--transition-ui), box-shadow var(--transition-ui);
+}
+
+.discipline-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.discipline-watermark {
+  position: absolute;
+  top: -20px;
+  right: var(--space-6);
+  font-family: var(--font-heading);
+  font-size: clamp(6rem, 12vw, 10rem);
+  font-weight: var(--fw-light);
+  color: rgba(26, 25, 22, 0.04);
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+.discipline-tag {
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  letter-spacing: var(--ls-widest);
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.discipline-title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: var(--fw-light);
+  letter-spacing: var(--ls-tight);
+  line-height: 1.15;
+}
+
+.discipline-desc {
+  font-size: var(--text-body);
+  color: var(--color-ink-muted);
+  line-height: var(--lh-relaxed);
+  max-width: 440px;
+}
+
+.discipline-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border);
+}
+
+.discipline-item {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: var(--ls-wide);
+  color: var(--color-ink);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.discipline-item::before {
+  content: '—';
+  color: var(--color-accent);
+}
+
+/* ── About Studio Teaser Section ───────────────────────── */
+
+.teaser-section {
+  padding-block: var(--space-24);
+}
+
+.teaser-layout {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: var(--space-16);
+  align-items: center;
+}
+
+.teaser-quote {
+  font-family: var(--font-heading);
+  font-size: clamp(1.75rem, 3.2vw, 2.75rem);
+  font-weight: var(--fw-light);
+  font-style: italic;
+  line-height: var(--lh-heading);
+  letter-spacing: var(--ls-tight);
+  color: var(--color-ink);
+  border-left: 2px solid var(--color-accent);
+  padding-left: var(--space-8);
+}
+
+.teaser-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.teaser-text {
+  font-size: var(--text-body-lg);
+  color: var(--color-ink-muted);
+  line-height: var(--lh-relaxed);
+}
+
+.teaser-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--color-border);
+}
+
+.teaser-stat-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.teaser-stat-num {
+  font-family: var(--font-heading);
+  font-size: 2.25rem;
+  font-weight: var(--fw-light);
+  color: var(--color-ink);
+  line-height: 1;
+}
+
+.teaser-stat-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: var(--ls-wider);
+  text-transform: uppercase;
+  color: var(--color-ink-muted);
+}
+
+/* ── Responsive Overrides ──────────────────────────────── */
+
+@media (max-width: 1024px) {
+  .featured-grid {
+    grid-template-columns: 1fr;
+  }
+  .featured-card--lead {
+    grid-row: span 1;
+    aspect-ratio: 16 / 10;
+  }
+  .disciplines-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+  .teaser-layout {
+    grid-template-columns: 1fr;
+    gap: var(--space-10);
+  }
+}
+
+@media (max-width: 600px) {
+  .featured-card--lead,
+  .featured-card--side {
+    aspect-ratio: 4 / 3;
+  }
+  .teaser-quote {
+    padding-left: var(--space-4);
+  }
+  .teaser-stats {
+    grid-template-columns: 1fr 1fr;
+  }
+}
