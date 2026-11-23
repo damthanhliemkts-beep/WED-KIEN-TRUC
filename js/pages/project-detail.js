@@ -109,8 +109,8 @@ export function initProjectDetailPage() {
               <div class="pdetail-objectives-box">
                 <span class="pdetail-objectives-title">Mục tiêu Thiết kế Cốt lõi</span>
                 <div class="pdetail-objectives-list" role="list">
-                  ${project.objectives.map(obj => `
-                    <div class="pdetail-objective-item" role="listitem">${obj}</div>
+                  ${project.objectives.map((obj, idx) => `
+                    <div class="pdetail-objective-item" role="listitem" data-project-array="objectives" data-idx="${idx}">${obj}</div>
                   `).join('')}
                 </div>
               </div>
@@ -121,39 +121,39 @@ export function initProjectDetailPage() {
           <aside class="pdetail-specs-sidebar" aria-label="Thông số kỹ thuật dự án minh họa">
             <div class="pdetail-specs-header">
               <span class="pdetail-specs-header-title">HỒ SƠ Ý NIỆM (MINH HỌA)</span>
-              <span class="font-mono text-xs" style="color: var(--color-accent);">LB-${project.year}</span>
+              <span class="font-mono text-xs" style="color: var(--color-accent);" data-project-key="year">LB-${project.year}</span>
             </div>
 
             <div class="pdetail-specs-grid">
               <div class="pdetail-spec-cell">
                 <span class="pdetail-spec-label">Loại hình công trình</span>
-                <span class="pdetail-spec-val">${project.type}</span>
+                <span class="pdetail-spec-val" data-project-key="type">${project.type}</span>
               </div>
               <div class="pdetail-spec-cell">
                 <span class="pdetail-spec-label">Tổng diện tích sàn (Giả định)</span>
-                <span class="pdetail-spec-val">${project.area}</span>
+                <span class="pdetail-spec-val" data-project-key="area">${project.area}</span>
               </div>
               <div class="pdetail-spec-cell">
                 <span class="pdetail-spec-label">Ngôn ngữ kiến trúc</span>
-                <span class="pdetail-spec-val">${project.style}</span>
+                <span class="pdetail-spec-val" data-project-key="style">${project.style}</span>
               </div>
               <div class="pdetail-spec-cell">
                 <span class="pdetail-spec-label">Trạng thái hồ sơ</span>
-                <span class="pdetail-spec-val">${project.statusLabel || (project.status === 'completed' ? 'Đã hoàn thành' : 'Đang thực hiện')}</span>
+                <span class="pdetail-spec-val" data-project-key="statusLabel">${project.statusLabel || (project.status === 'completed' ? 'Đã hoàn thành' : 'Đang thực hiện')}</span>
               </div>
               <div class="pdetail-spec-cell">
                 <span class="pdetail-spec-label">Địa điểm (Bối cảnh giả định)</span>
-                <span class="pdetail-spec-val">${project.location}</span>
+                <span class="pdetail-spec-val" data-project-key="location">${project.location}</span>
               </div>
               <div class="pdetail-spec-cell">
                 <span class="pdetail-spec-label">Năm nghiên cứu ý niệm</span>
-                <span class="pdetail-spec-val">${project.year}</span>
+                <span class="pdetail-spec-val" data-project-key="year">${project.year}</span>
               </div>
             </div>
 
             <div class="pdetail-role-box">
               <span class="pdetail-role-label">Vai trò đề xuất</span>
-              <span class="pdetail-role-val">${project.role || 'Chủ trì Thiết kế Kiến trúc &amp; Nội thất (Đề xuất ý niệm)'}</span>
+              <span class="pdetail-role-val" data-project-key="role">${project.role || 'Chủ trì Thiết kế Kiến trúc &amp; Nội thất (Đề xuất ý niệm)'}</span>
             </div>
 
             <div style="margin-top: 1rem; padding: 0.75rem; background: var(--color-bg-warm, #EFECE6); border-left: 2px solid var(--color-accent); font-size: 0.75rem; line-height: 1.5; color: var(--color-ink-muted);">
@@ -175,24 +175,24 @@ export function initProjectDetailPage() {
         <div class="pdetail-concept-layout">
           <div>
             ${project.philosophy ? `
-              <blockquote class="pdetail-philosophy-quote">
+              <blockquote class="pdetail-philosophy-quote" data-project-key="philosophy">
                 ${project.philosophy}
               </blockquote>
             ` : ''}
           </div>
 
           <div>
-            <p class="pdetail-concept-desc">
+            <p class="pdetail-concept-desc" data-project-key="concept">
               ${project.concept || project.shortDesc}
             </p>
             ${project.spatialStrategy ? `
               <p class="pdetail-concept-desc" style="margin-top: 1rem;">
-                <strong>Tổ chức không gian:</strong> ${project.spatialStrategy}
+                <strong>Tổ chức không gian:</strong> <span data-project-key="spatialStrategy">${project.spatialStrategy}</span>
               </p>
             ` : ''}
             ${project.landscapeRelation ? `
               <p class="pdetail-concept-desc" style="margin-top: 1rem;">
-                <strong>Giao thoa cảnh quan:</strong> ${project.landscapeRelation}
+                <strong>Giao thoa cảnh quan:</strong> <span data-project-key="landscapeRelation">${project.landscapeRelation}</span>
               </p>
             ` : ''}
           </div>
@@ -203,7 +203,7 @@ export function initProjectDetailPage() {
             ${project.keyDecisions.map((dec, idx) => `
               <div class="pdetail-decision-card" role="listitem">
                 <span class="pdetail-decision-num">QUYẾT ĐỊNH THIẾT KẾ 0${idx + 1}</span>
-                <p class="pdetail-decision-text">${dec}</p>
+                <p class="pdetail-decision-text" data-project-array="keyDecisions" data-idx="${idx}">${dec}</p>
               </div>
             `).join('')}
           </div>
@@ -259,8 +259,8 @@ export function initProjectDetailPage() {
 
                 <div class="pdetail-drawing-meta-bar">
                   <div>
-                    <h3 class="pdetail-drawing-info-title">${drw.title}</h3>
-                    <p class="pdetail-drawing-info-desc">${drw.desc}</p>
+                    <h3 class="pdetail-drawing-info-title" data-project-drawing-key="title" data-idx="${idx}">${drw.title}</h3>
+                    <p class="pdetail-drawing-info-desc" data-project-drawing-key="desc" data-idx="${idx}">${drw.desc}</p>
                   </div>
                   <button
                     class="pdetail-drawing-expand-btn"
@@ -311,12 +311,13 @@ export function initProjectDetailPage() {
                   style="background: ${photo.gradient};"
                   role="img"
                   aria-label="${photo.alt}"
+                  data-project-gallery-image="${idx}"
                 ></div>
                 <div class="pdetail-gallery-overlay">
                   <div>
-                    <span class="pdetail-gallery-tag">${photo.tag || 'Không gian'}</span>
-                    <h3 class="pdetail-gallery-title">${photo.title}</h3>
-                    <p class="text-xs text-muted" style="color: rgba(245,243,239,0.85); margin-top: 4px;">${photo.caption}</p>
+                    <span class="pdetail-gallery-tag" data-project-gallery-key="tag" data-idx="${idx}">${photo.tag || 'Không gian'}</span>
+                    <h3 class="pdetail-gallery-title" data-project-gallery-key="title" data-idx="${idx}">${photo.title}</h3>
+                    <p class="text-xs text-muted" style="color: rgba(245,243,239,0.85); margin-top: 4px;" data-project-gallery-key="caption" data-idx="${idx}">${photo.caption}</p>
                   </div>
                 </div>
               </div>
@@ -339,13 +340,13 @@ export function initProjectDetailPage() {
 
         ${project.materials && project.materials.length > 0 ? `
           <div class="pdetail-materials-grid" role="list">
-            ${project.materials.map(mat => `
+            ${project.materials.map((mat, idx) => `
               <div class="pdetail-material-card" role="listitem">
                 <div class="pdetail-material-swatch" style="background-color: ${mat.swatchColor};"></div>
-                <span class="pdetail-material-category">${mat.category}</span>
-                <h3 class="pdetail-material-name">${mat.name}</h3>
-                <span class="pdetail-material-origin">${mat.origin}</span>
-                <p class="pdetail-material-desc">${mat.description}</p>
+                <span class="pdetail-material-category" data-project-mat-key="category" data-idx="${idx}">${mat.category}</span>
+                <h3 class="pdetail-material-name" data-project-mat-key="name" data-idx="${idx}">${mat.name}</h3>
+                <span class="pdetail-material-origin" data-project-mat-key="origin" data-idx="${idx}">${mat.origin}</span>
+                <p class="pdetail-material-desc" data-project-mat-key="description" data-idx="${idx}">${mat.description}</p>
               </div>
             `).join('')}
           </div>
@@ -354,7 +355,7 @@ export function initProjectDetailPage() {
         <div class="pdetail-tectonics-layout">
           <div class="pdetail-lighting-box">
             <h3>Chiến lược Ánh sáng Tự nhiên &amp; Nhân tạo</h3>
-            <p>${project.lightingStrategy || 'Ánh sáng tự nhiên được đưa sâu vào lòng công trình thông qua giếng trời và vách kính mở. Hệ thống chiếu sáng nhân tạo gián tiếp tôn vinh vẻ đẹp thô mộc của vật liệu.'}</p>
+            <p data-project-key="lightingStrategy">${project.lightingStrategy || 'Ánh sáng tự nhiên được đưa sâu vào lòng công trình thông qua giếng trời và vách kính mở. Hệ thống chiếu sáng nhân tạo gián tiếp tôn vinh vẻ đẹp thô mộc của vật liệu.'}</p>
           </div>
 
           <div class="pdetail-details-box">
@@ -364,8 +365,8 @@ export function initProjectDetailPage() {
                 'Mộng gỗ truyền thống xử lý chìm không để lộ vít kim loại.',
                 'Khe co giãn nhiệt âm chân tường tạo cảm giác khối tích thanh thoát.',
                 'Hệ thống thu nước ngầm kín bảo vệ bề mặt hoàn thiện tự nhiên.'
-              ]).map(det => `
-                <div class="pdetail-details-item" role="listitem">${det}</div>
+              ]).map((det, idx) => `
+                <div class="pdetail-details-item" role="listitem" data-project-array="tectonicDetails" data-idx="${idx}">${det}</div>
               `).join('')}
             </div>
           </div>

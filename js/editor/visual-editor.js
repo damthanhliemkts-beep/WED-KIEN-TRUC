@@ -1,6 +1,7 @@
 /* ============================================================
    LIVING BLUEPRINT — Visual Content Editor Core Controller
-   Complete Client-Side Visual Management System
+   Complete Universal Visual Management System
+   Allows editing ALL texts, images, and projects across the website
    ============================================================ */
 
 'use strict';
@@ -22,8 +23,6 @@ class VisualEditor {
     this.activeProjects = [];
     this.currentProjectSlug = null;
     this.currentProject = null;
-    this.domElements = new Map(); // key -> element
-    this.projectElements = new Map(); // key -> element
     this.toastContainer = null;
     this.modalBackdrop = null;
   }
@@ -42,7 +41,7 @@ class VisualEditor {
     // 1. Nạp dữ liệu mới nhất từ server
     await this.fetchInitialData();
 
-    // 2. Xác định dự án hiện tại nếu đang ở trang chi tiết
+    // 2. Xác định dự án hiện tại
     this.detectCurrentProject();
 
     // 3. Tiêm giao diện Dock & Toast
@@ -54,7 +53,7 @@ class VisualEditor {
     // 4. Lắng nghe phím tắt & sự kiện
     this.setupEventListeners();
 
-    console.info('%c[Living Blueprint Editor]%c: Đã sẵn sàng. Nhấn Ctrl+E để bật chỉnh sửa.', 'color:#A8865C; font-weight:600;', 'color:#9E9A93;');
+    console.info('%c[Living Blueprint Editor]%c: Đã sẵn sàng. Nhấn Ctrl+E để chỉnh sửa TẤT CẢ nội dung.', 'color:#A8865C; font-weight:600;', 'color:#9E9A93;');
   }
 
   /**
@@ -86,12 +85,19 @@ class VisualEditor {
   }
 
   /**
-   * Xác định trang chi tiết công trình
+   * Xác định trang chi tiết công trình (hỗ trợ cả khi không có ?slug=)
    */
   detectCurrentProject() {
     const params = new URLSearchParams(window.location.search);
-    this.currentProjectSlug = params.get('slug');
-    if (this.currentProjectSlug) {
+    let slug = params.get('slug');
+
+    // Nếu đang ở trang project.html mà không có query param slug, mặc định lấy đồ án đầu tiên
+    if (!slug && (window.location.pathname.includes('project') || document.getElementById('project-detail-mount'))) {
+      slug = this.activeProjects[0]?.slug || 'villa-la-phong';
+    }
+
+    this.currentProjectSlug = slug;
+    if (this.currentProjectSlug && this.activeProjects) {
       this.currentProject = this.activeProjects.find(p => p.slug === this.currentProjectSlug);
     }
   }
@@ -120,6 +126,8 @@ class VisualEditor {
     dock.setAttribute('role', 'toolbar');
     dock.setAttribute('aria-label', 'Living Blueprint Visual Editor Toolbar');
 
+    const isProjectPage = window.location.pathname.includes('project');
+
     dock.innerHTML = `
       <div class="lb-dock__brand" id="lb-dock-collapse-btn" title="Thu gọn / Mở rộng thanh công cụ">
         <span class="lb-dock__brand-dot"></span>
@@ -130,10 +138,18 @@ class VisualEditor {
 
       <div class="lb-dock__tools" style="display: flex; align-items: center; gap: 8px;">
         <!-- Nút gạt chế độ Chỉnh sửa / Xem trước -->
-        <button type="button" class="lb-btn" id="lb-toggle-edit-btn" title="Bật / Tắt chế độ chỉnh sửa (Ctrl + E)">
+        <button type="button" class="lb-btn" id="lb-toggle-edit-btn" title="Bật / Tắt chế độ chỉnh sửa tất cả (Ctrl + E)">
           <span id="lb-mode-icon">✏️</span>
           <span id="lb-mode-text">Chỉnh sửa</span>
         </button>
+
+        ${isProjectPage ? `
+          <!-- Nút Sửa chi tiết công trình đang xem -->
+          <button type="button" class="lb-btn" id="lb-edit-current-project-btn" title="Mở bảng sửa toàn bộ thông số đồ án này">
+            <span>📝</span>
+            <span>Sửa đồ án này</span>
+          </button>
+        ` : ''}
 
         <!-- Nút Thêm công trình mới -->
         <button type="button" class="lb-btn" id="lb-add-project-btn" title="Thêm công trình kiến trúc / nội thất mới">
@@ -142,7 +158,7 @@ class VisualEditor {
         </button>
 
         <!-- Nút Quản lý danh sách đồ án -->
-        <button type="button" class="lb-btn" id="lb-manage-projects-btn" title="Quản lý và sắp xếp 8 đồ án">
+        <button type="button" class="lb-btn" id="lb-manage-projects-btn" title="Quản lý và sắp xếp các đồ án">
           <span>📁</span>
           <span>Quản lý đồ án</span>
         </button>
@@ -180,6 +196,11 @@ class VisualEditor {
     document.getElementById('lb-dock-collapse-btn').addEventListener('click', () => {
       dock.classList.toggle('lb-dock--collapsed');
     });
+
+    const editCurrentBtn = document.getElementById('lb-edit-current-project-btn');
+    if (editCurrentBtn) {
+      editCurrentBtn.addEventListener('click', () => this.openEditCurrentProjectModal());
+    }
   }
 
   /**
@@ -227,7 +248,7 @@ class VisualEditor {
   }
 
   /**
-   * Bật / Tắt chế độ chỉnh sửa
+   * Bật / Tắt chế độ chỉnh sửa toàn diện
    */
   toggleEditMode(forceState = null) {
     this.isEditMode = forceState !== null ? forceState : !this.isEditMode;
@@ -242,7 +263,7 @@ class VisualEditor {
       text.textContent = 'Xem trước';
       this.attachInlineEditHandlers();
       this.attachImageEditHandlers();
-      this.showToast('Đã BẬT chế độ chỉnh sửa. Bạn có thể nhấp vào văn bản hoặc ảnh để thay đổi.', 'info');
+      this.showToast('Đã BẬT chỉnh sửa toàn diện. Nhấp vào BẤT KỲ chữ hoặc ảnh nào để sửa trực tiếp.', 'info');
     } else {
       document.body.classList.remove('lb-edit-mode');
       btn.classList.remove('lb-btn--active');
@@ -255,64 +276,139 @@ class VisualEditor {
   }
 
   /**
-   * Kích hoạt chỉnh sửa trực tiếp trên các phần tử văn bản
+   * Kích hoạt chỉnh sửa trực tiếp trên TẤT CẢ các phần tử văn bản hiển thị
    */
   attachInlineEditHandlers() {
-    // 1. Văn bản tĩnh site-content
+    this.detectCurrentProject();
+
+    // 1. Tất cả phần tử có data-content-key (nội dung trang tĩnh)
     const contentElements = document.querySelectorAll('[data-content-key]');
     contentElements.forEach((el) => {
-      el.setAttribute('contenteditable', 'true');
-      el.setAttribute('spellcheck', 'false');
-
-      if (!el._lbBound) {
-        el.addEventListener('input', () => this.handleContentInput(el));
-        el.addEventListener('paste', (e) => this.handlePlainTextPaste(e));
-        el._lbBound = true;
-      }
+      this.makeEditable(el, (val) => {
+        const key = el.getAttribute('data-content-key');
+        this.setContentValue(key, val);
+      });
     });
 
-    // 2. Văn bản chi tiết công trình (nếu có trên trang project-detail)
-    const projectElements = document.querySelectorAll('[data-project-key]');
-    projectElements.forEach((el) => {
-      el.setAttribute('contenteditable', 'true');
-      el.setAttribute('spellcheck', 'false');
+    // 2. Tất cả phần tử trên trang chi tiết công trình (project.html)
+    const projectMount = document.getElementById('project-detail-mount');
+    if (projectMount) {
+      const projectElements = projectMount.querySelectorAll(
+        '[data-project-key], [data-project-array], [data-project-drawing-key], [data-project-gallery-key], [data-project-mat-key], h1, h2, h3, p, blockquote, .pdetail-spec-val, .pdetail-objective-item, .pdetail-decision-text, .pdetail-material-name, .pdetail-material-desc, .pdetail-drawing-info-title, .pdetail-drawing-info-desc, .pdetail-gallery-title, .pdetail-gallery-tag'
+      );
+      projectElements.forEach((el) => {
+        if (el.tagName === 'BUTTON' || el.tagName === 'A' || el.closest('.pdetail-hero__top-nav') || el.closest('.lb-dock') || el.closest('.lb-modal')) return;
 
-      if (!el._lbBound) {
-        el.addEventListener('input', () => this.handleProjectInput(el));
-        el.addEventListener('paste', (e) => this.handlePlainTextPaste(e));
-        el._lbBound = true;
-      }
+        this.makeEditable(el, (val) => {
+          this.handleProjectInput(el, val);
+        });
+      });
+    }
+
+    // 3. Mọi khối văn bản trên các trang khác (about, contact, index, projects)
+    const generalElements = document.querySelectorAll(
+      'main h1, main h2, main h3, main p, main blockquote, .about-bio, .about-name, .about-intro span, .philosophy-card__title, .philosophy-card__desc, .discipline-card__title, .discipline-card__desc, .contact-info-desc, .contact-block-val, .site-footer__copyright, .site-footer__tagline, .site-footer__headline, .site-footer__desc'
+    );
+    generalElements.forEach((el) => {
+      if (el.tagName === 'BUTTON' || el.tagName === 'A' || el.closest('.lb-dock') || el.closest('.lb-modal') || el.closest('#project-detail-mount')) return;
+
+      this.makeEditable(el, (val) => {
+        const contentKey = el.getAttribute('data-content-key');
+        if (contentKey) {
+          this.setContentValue(contentKey, val);
+        } else {
+          const page = document.body.dataset.page || 'general';
+          const key = `${page}.${el.className.split(' ')[0] || el.tagName.toLowerCase()}`;
+          this.setContentValue(key, val);
+        }
+      });
     });
+  }
+
+  /**
+   * Biến một phần tử thành có thể chỉnh sửa an toàn
+   */
+  makeEditable(el, updateCallback) {
+    el.setAttribute('contenteditable', 'true');
+    el.setAttribute('spellcheck', 'false');
+
+    if (!el._lbBound) {
+      el.addEventListener('input', () => {
+        const val = el.innerText.trim();
+        updateCallback(val);
+        this.markDirty();
+      });
+      el.addEventListener('paste', (e) => this.handlePlainTextPaste(e));
+      el._lbBound = true;
+    }
   }
 
   /**
    * Hủy kích hoạt chỉnh sửa trực tiếp khi chuyển sang Xem trước
    */
   detachInlineEditHandlers() {
-    document.querySelectorAll('[data-content-key], [data-project-key]').forEach((el) => {
+    document.querySelectorAll('[contenteditable="true"]').forEach((el) => {
       el.removeAttribute('contenteditable');
     });
   }
 
   /**
-   * Xử lý nhập liệu văn bản site-content
-   */
-  handleContentInput(el) {
-    const key = el.getAttribute('data-content-key');
-    const val = el.innerText.trim();
-    this.setContentValue(key, val);
-    this.markDirty();
-  }
-
-  /**
    * Xử lý nhập liệu chi tiết công trình
    */
-  handleProjectInput(el) {
-    if (!this.currentProject) return;
-    const key = el.getAttribute('data-project-key');
-    const val = el.innerText.trim();
-    this.currentProject[key] = val;
-    this.markDirty();
+  handleProjectInput(el, val) {
+    if (!this.currentProject) {
+      this.detectCurrentProject();
+      if (!this.currentProject) return;
+    }
+
+    // 1. Direct project key
+    const directKey = el.getAttribute('data-project-key');
+    if (directKey) {
+      this.currentProject[directKey] = val;
+      return;
+    }
+
+    // 2. Array item (objectives, keyDecisions, tectonicDetails)
+    const arrayName = el.getAttribute('data-project-array');
+    const idx = parseInt(el.getAttribute('data-idx'), 10);
+    if (arrayName && !isNaN(idx) && Array.isArray(this.currentProject[arrayName])) {
+      this.currentProject[arrayName][idx] = val;
+      return;
+    }
+
+    // 3. Drawing key
+    const drawKey = el.getAttribute('data-project-drawing-key');
+    if (drawKey && !isNaN(idx) && this.currentProject.drawings && this.currentProject.drawings[idx]) {
+      this.currentProject.drawings[idx][drawKey] = val;
+      return;
+    }
+
+    // 4. Gallery key
+    const galKey = el.getAttribute('data-project-gallery-key');
+    if (galKey && !isNaN(idx) && this.currentProject.gallery && this.currentProject.gallery[idx]) {
+      this.currentProject.gallery[idx][galKey] = val;
+      return;
+    }
+
+    // 5. Material key
+    const matKey = el.getAttribute('data-project-mat-key');
+    if (matKey && !isNaN(idx) && this.currentProject.materials && this.currentProject.materials[idx]) {
+      this.currentProject.materials[idx][matKey] = val;
+      return;
+    }
+
+    // 6. Nhận diện ngữ cảnh theo class
+    if (el.classList.contains('pdetail-hero__title')) {
+      this.currentProject.title = val;
+    } else if (el.classList.contains('pdetail-narrative__summary')) {
+      this.currentProject.summary = val;
+    } else if (el.classList.contains('pdetail-narrative__context-text')) {
+      this.currentProject.context = val;
+    } else if (el.classList.contains('pdetail-philosophy-quote')) {
+      this.currentProject.philosophy = val;
+    } else if (el.classList.contains('pdetail-concept-desc')) {
+      this.currentProject.concept = val;
+    }
   }
 
   /**
@@ -342,7 +438,7 @@ class VisualEditor {
    * Gắn huy hiệu "Thay ảnh" trên các khối ảnh
    */
   attachImageEditHandlers() {
-    const imageElements = document.querySelectorAll('[data-editable-image], [data-project-image]');
+    const imageElements = document.querySelectorAll('[data-editable-image], [data-project-image], [data-project-gallery-image]');
     imageElements.forEach((el) => {
       if (el.querySelector('.lb-img-change-badge')) return;
 
@@ -397,18 +493,23 @@ class VisualEditor {
       try {
         const uploadedUrl = await this.uploadImageFile(file);
         if (uploadedUrl) {
-          // Lưu đường dẫn ảnh vào dữ liệu
           const contentKey = targetElement.getAttribute('data-editable-image');
           const projectKey = targetElement.getAttribute('data-project-image');
+          const galleryIdx = targetElement.getAttribute('data-project-gallery-image');
 
           if (contentKey) {
             this.setContentValue(contentKey, uploadedUrl);
           } else if (projectKey && this.currentProject) {
-            this.currentProject[projectKey] = uploadedUrl;
+            this.currentProject[projectKey] = `url('${uploadedUrl}')`;
+          } else if (galleryIdx !== null && this.currentProject && this.currentProject.gallery) {
+            const idx = parseInt(galleryIdx, 10);
+            if (this.currentProject.gallery[idx]) {
+              this.currentProject.gallery[idx].gradient = `url('${uploadedUrl}')`;
+            }
           }
 
           this.markDirty();
-          this.showToast('Tải ảnh thành công! Đừng quên bấm "Lưu thay đổi".', 'success');
+          this.showToast('Đã thay ảnh thành công! Bấm "Lưu thay đổi" (Ctrl + S) để lưu vĩnh viễn.', 'success');
         }
       } catch (err) {
         this.showToast('Lỗi tải ảnh: ' + err.message, 'error');
@@ -549,6 +650,176 @@ class VisualEditor {
   }
 
   /**
+   * Mở Modal Chỉnh Sửa Toàn Diện Công Trình Đang Xem
+   */
+  openEditCurrentProjectModal() {
+    this.detectCurrentProject();
+    if (!this.currentProject) {
+      this.showToast('Không xác định được công trình để chỉnh sửa.', 'error');
+      return;
+    }
+
+    const p = this.currentProject;
+    const title = document.getElementById('lb-modal-title');
+    const content = document.getElementById('lb-modal-content');
+    const footer = document.getElementById('lb-modal-footer');
+
+    title.innerHTML = `<span>📝</span><span>Chỉnh Sửa Toàn Bộ: ${p.title}</span>`;
+
+    content.innerHTML = `
+      <form id="lb-edit-project-form" class="lb-form-grid" novalidate>
+        <div class="lb-form-group lb-form-grid--full">
+          <label class="lb-form-label">Tên công trình *</label>
+          <input type="text" class="lb-form-input" id="ep-title" value="${p.title || ''}" required>
+        </div>
+
+        <div class="lb-form-group">
+          <label class="lb-form-label">Phân loại *</label>
+          <select class="lb-form-select" id="ep-category">
+            <option value="architecture" ${p.category === 'architecture' ? 'selected' : ''}>Thiết kế Kiến trúc</option>
+            <option value="interior" ${p.category === 'interior' ? 'selected' : ''}>Kiến trúc Nội thất</option>
+          </select>
+        </div>
+
+        <div class="lb-form-group">
+          <label class="lb-form-label">Năm hoàn thành / thiết kế *</label>
+          <input type="number" class="lb-form-input" id="ep-year" value="${p.year || new Date().getFullYear()}">
+        </div>
+
+        <div class="lb-form-group">
+          <label class="lb-form-label">Địa điểm *</label>
+          <input type="text" class="lb-form-input" id="ep-location" value="${p.location || ''}">
+        </div>
+
+        <div class="lb-form-group">
+          <label class="lb-form-label">Diện tích *</label>
+          <input type="text" class="lb-form-input" id="ep-area" value="${p.area || ''}">
+        </div>
+
+        <div class="lb-form-group">
+          <label class="lb-form-label">Loại hình chi tiết</label>
+          <input type="text" class="lb-form-input" id="ep-type" value="${p.type || ''}">
+        </div>
+
+        <div class="lb-form-group">
+          <label class="lb-form-label">Phong cách kiến trúc</label>
+          <input type="text" class="lb-form-input" id="ep-style" value="${p.style || 'Minimal Luxury · Đương đại'}">
+        </div>
+
+        <div class="lb-form-group">
+          <label class="lb-form-label">Trạng thái công trình</label>
+          <select class="lb-form-select" id="ep-status">
+            <option value="completed" ${p.status === 'completed' ? 'selected' : ''}>Đã hoàn thành</option>
+            <option value="in-progress" ${p.status === 'in-progress' ? 'selected' : ''}>Đang thực hiện</option>
+          </select>
+        </div>
+
+        <div class="lb-form-group">
+          <label class="lb-form-label">Vai trò thiết kế</label>
+          <input type="text" class="lb-form-input" id="ep-role" value="${p.role || 'Chủ trì Thiết kế Kiến trúc & Nội thất'}">
+        </div>
+
+        <div class="lb-form-group lb-form-grid--full">
+          <label class="lb-form-label">Tóm tắt tổng quan công trình</label>
+          <textarea class="lb-form-textarea" id="ep-summary" rows="3">${p.summary || ''}</textarea>
+        </div>
+
+        <div class="lb-form-group lb-form-grid--full">
+          <label class="lb-form-label">Bối cảnh địa hình & vi khí hậu</label>
+          <textarea class="lb-form-textarea" id="ep-context" rows="2">${p.context || ''}</textarea>
+        </div>
+
+        <div class="lb-form-group lb-form-grid--full">
+          <label class="lb-form-label">Triết lý kiến tạo</label>
+          <textarea class="lb-form-textarea" id="ep-philosophy" rows="2">${p.philosophy || ''}</textarea>
+        </div>
+
+        <div class="lb-form-group lb-form-grid--full">
+          <label class="lb-form-label">Ý niệm kiến trúc & tổ chức không gian</label>
+          <textarea class="lb-form-textarea" id="ep-concept" rows="3">${p.concept || ''}</textarea>
+        </div>
+
+        <div class="lb-form-group lb-form-grid--full">
+          <label class="lb-form-label">Chiến lược chiếu sáng</label>
+          <textarea class="lb-form-textarea" id="ep-lighting" rows="2">${p.lightingStrategy || ''}</textarea>
+        </div>
+
+        <!-- Khung thay đổi ảnh bìa -->
+        <div class="lb-form-group lb-form-grid--full">
+          <label class="lb-form-label">Ảnh đại diện công trình (Cover Photo)</label>
+          <div class="lb-upload-box" id="ep-upload-box">
+            <p style="margin: 0; font-size: 13px; color: #A8865C;">📷 Bấm vào đây để chọn ảnh mới từ máy tính</p>
+            <input type="file" id="ep-file-input" accept="image/jpeg,image/png,image/webp" style="display: none;">
+          </div>
+          <div class="lb-upload-preview" id="ep-upload-preview" style="display: block; ${p.coverGradient.startsWith('url') ? `background-image: ${p.coverGradient};` : `background: ${p.coverGradient};`}"></div>
+        </div>
+      </form>
+    `;
+
+    footer.innerHTML = `
+      <button type="button" class="lb-btn" id="lb-modal-cancel-btn">Hủy bỏ</button>
+      <button type="button" class="lb-btn lb-btn--primary" id="lb-modal-save-ep-btn">Lưu thông số đồ án</button>
+    `;
+
+    let newCoverUrl = null;
+    const uploadBox = document.getElementById('ep-upload-box');
+    const fileInput = document.getElementById('ep-file-input');
+    const preview = document.getElementById('ep-upload-preview');
+
+    uploadBox.addEventListener('click', () => fileInput.click());
+    fileInput.addEventListener('change', async () => {
+      const file = fileInput.files[0];
+      if (!file) return;
+
+      const r = new FileReader();
+      r.onload = (e) => {
+        preview.style.display = 'block';
+        preview.style.backgroundImage = `url('${e.target.result}')`;
+      };
+      r.readAsDataURL(file);
+
+      this.showToast('Đang tải ảnh đại diện lên...', 'info');
+      try {
+        newCoverUrl = await this.uploadImageFile(file);
+        this.showToast('Ảnh bìa đã sẵn sàng!', 'success');
+      } catch (err) {
+        this.showToast('Lỗi tải ảnh: ' + err.message, 'error');
+      }
+    });
+
+    document.getElementById('lb-modal-cancel-btn').addEventListener('click', () => this.closeModal());
+    document.getElementById('lb-modal-save-ep-btn').addEventListener('click', async () => {
+      p.title = document.getElementById('ep-title').value.trim();
+      p.category = document.getElementById('ep-category').value;
+      p.year = parseInt(document.getElementById('ep-year').value, 10) || p.year;
+      p.location = document.getElementById('ep-location').value.trim();
+      p.area = document.getElementById('ep-area').value.trim();
+      p.type = document.getElementById('ep-type').value.trim();
+      p.style = document.getElementById('ep-style').value.trim();
+      p.status = document.getElementById('ep-status').value;
+      p.statusLabel = p.status === 'completed' ? 'Đã hoàn thành' : 'Đang thực hiện';
+      p.role = document.getElementById('ep-role').value.trim();
+      p.summary = document.getElementById('ep-summary').value.trim();
+      p.context = document.getElementById('ep-context').value.trim();
+      p.philosophy = document.getElementById('ep-philosophy').value.trim();
+      p.concept = document.getElementById('ep-concept').value.trim();
+      p.lightingStrategy = document.getElementById('ep-lighting').value.trim();
+
+      if (newCoverUrl) {
+        p.coverGradient = `url('${newCoverUrl}')`;
+      }
+
+      this.markDirty();
+      this.closeModal();
+      await this.saveChanges();
+      this.showToast('Đã lưu đồ án thành công! Đang làm mới trang...', 'success');
+      setTimeout(() => window.location.reload(), 800);
+    });
+
+    this.openModal();
+  }
+
+  /**
    * Mở Modal Thêm Đồ Án Mới
    */
   openAddProjectModal() {
@@ -633,7 +904,6 @@ class VisualEditor {
       const file = fileInput.files[0];
       if (!file) return;
 
-      // Hiển thị preview ngay
       const r = new FileReader();
       r.onload = (e) => {
         preview.style.display = 'block';
@@ -641,7 +911,6 @@ class VisualEditor {
       };
       r.readAsDataURL(file);
 
-      // Tải lên server
       this.showToast('Đang tải ảnh đại diện lên...', 'info');
       try {
         uploadedCoverUrl = await this.uploadImageFile(file);
@@ -667,9 +936,7 @@ class VisualEditor {
         return;
       }
 
-      // Tạo slug chuẩn từ tiêu đề
       let slug = this.slugify(titleVal);
-      // Đảm bảo không trùng slug
       let uniqueSlug = slug;
       let counter = 1;
       while (this.activeProjects.some(p => p.slug === uniqueSlug)) {
@@ -727,15 +994,11 @@ class VisualEditor {
         ]
       };
 
-      // Đưa đồ án mới lên đầu danh sách
       this.activeProjects.unshift(newProject);
       this.markDirty();
       this.closeModal();
 
-      // Lưu ngay vào server
       await this.saveChanges();
-
-      // Điều hướng tới trang chi tiết của công trình mới tạo
       this.showToast(`Đã tạo thành công đồ án "${titleVal}"! Đang chuyển hướng...`, 'success');
       setTimeout(() => {
         window.location.href = `project.html?slug=${uniqueSlug}`;
@@ -809,7 +1072,6 @@ class VisualEditor {
     html += `</div>`;
     container.innerHTML = html;
 
-    // Gắn sự kiện lên/xuống/xóa
     container.querySelectorAll('[data-action]').forEach(btn => {
       btn.addEventListener('click', (e) => {
         const action = btn.getAttribute('data-action');
@@ -895,7 +1157,6 @@ class VisualEditor {
       }
     });
 
-    // Cảnh báo nếu thoát trang khi chưa lưu thay đổi
     window.addEventListener('beforeunload', (e) => {
       if (this.isDirty) {
         e.preventDefault();
