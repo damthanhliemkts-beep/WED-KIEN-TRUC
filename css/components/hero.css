@@ -187,7 +187,7 @@
   transition: color 0.3s ease;
 }
 
-/* Stepper indicators on right side */
+/* Stepper indicators on right side (Thang đổi giai đoạn ảnh bìa) */
 .hero-hud__stepper {
   display: flex;
   flex-direction: column;
@@ -199,17 +199,22 @@
   display: flex;
   align-items: center;
   gap: var(--space-3);
-  background: transparent;
-  border: none;
-  padding: 4px 0;
+  background: rgba(26, 25, 22, 0.05);
+  border: 1px solid transparent;
+  padding: 5px 12px;
+  border-radius: 9999px;
   cursor: pointer;
   color: var(--color-ink-muted);
-  transition: color var(--transition-fast);
+  transition: all var(--transition-ui);
   text-align: right;
+  backdrop-filter: blur(6px);
 }
 
 .hero-hud__step-btn:hover {
   color: var(--color-ink);
+  background: rgba(168, 134, 92, 0.12);
+  border-color: rgba(168, 134, 92, 0.35);
+  transform: translateX(-3px);
 }
 
 .hero-hud__step-name {
@@ -217,7 +222,7 @@
   font-size: 10px;
   letter-spacing: var(--ls-wider);
   text-transform: uppercase;
-  opacity: 0.6;
+  opacity: 0.7;
   transition: opacity var(--transition-fast), color var(--transition-fast);
 }
 
@@ -226,6 +231,11 @@
   height: 2px;
   background-color: var(--color-border);
   transition: width var(--transition-ui), background-color var(--transition-ui);
+}
+
+.hero-hud__step-btn.is-active {
+  background: rgba(168, 134, 92, 0.18);
+  border-color: var(--color-accent);
 }
 
 .hero-hud__step-btn.is-active .hero-hud__step-name {
@@ -237,6 +247,54 @@
 .hero-hud__step-btn.is-active .hero-hud__step-pill {
   width: 44px;
   background-color: var(--color-accent);
+}
+
+/* ── Hiệu ứng chuyển động mở trang (Initial Entrance Choreography) ──── */
+.site-navbar {
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.7s ease, background-color 0.3s ease;
+}
+
+body:not(.is-loaded) .site-navbar {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+body.is-loaded .site-navbar {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+body:not(.is-loaded) .hero-cinematic__hud {
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+body.is-loaded .hero-cinematic__hud {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.12s, transform 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.12s;
+}
+
+body:not(.is-loaded) .hero-architectural-svg {
+  opacity: 0;
+  transform: scale(0.975);
+}
+
+body.is-loaded .hero-architectural-svg {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.22s, transform 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.22s;
+}
+
+body:not(.is-loaded) .hero-cinematic__bottom-bar {
+  opacity: 0;
+  transform: translateY(18px);
+}
+
+body.is-loaded .hero-cinematic__bottom-bar {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.32s, transform 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.32s;
 }
 
 /* Blueprint theme for HUD when Stage 2 is active */

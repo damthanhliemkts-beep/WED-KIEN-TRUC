@@ -2,7 +2,9 @@
   "site": {
     "brandTitle": "Living Blueprint",
     "brandSub": "Kiến trúc & Nội thất",
-    "metaDescription": "Living Blueprint — Portfolio cá nhân kiến trúc sư thực hành kiến trúc & nội thất đương đại. Trải nghiệm biến đổi không gian kiến trúc 4 giai đoạn."
+    "metaDescription": "Living Blueprint — Portfolio cá nhân kiến trúc sư thực hành kiến trúc & nội thất đương đại. Trải nghiệm biến đổi không gian kiến trúc 4 giai đoạn.",
+    "logoUrl": "assets/svg/logo.svg",
+    "introAnimation": "cinematic"
   },
   "home": {
     "heroKicker": "LIVING BLUEPRINT · PORTFOLIO KIẾN TRÚC SƯ CÁ NHÂN",
@@ -10,6 +12,8 @@
     "heroDesc": "Hành trình kiến tạo từ nét phác thảo ý niệm đến không gian cư ngụ tĩnh tại. Biệt thự pavilion, kiến trúc đương đại và ánh sáng tự nhiên.",
     "heroNotice": "* Minh họa ý niệm kiến trúc (Demo Visualization)",
     "heroCta": "Khám phá công trình tiêu biểu",
+    "heroCoverImage": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80",
+    "heroCoverAlt": "Hoàn thiện thực tế không gian kiến trúc đương đại",
     "featuredKicker": "Công trình tuyển chọn",
     "featuredTitle": "Kiến trúc & Nội thất"
   },

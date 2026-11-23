@@ -686,13 +686,30 @@ body.lb-edit-mode .lb-gallery-action-bar,
 body.lb-edit-mode .lb-hero-action-bar,
 body.lb-edit-mode .lb-portrait-action-bar,
 body.lb-edit-mode .lb-next-action-bar,
-body.lb-edit-mode .lb-editable-img-bar {
+body.lb-edit-mode .lb-editable-img-bar,
+body.lb-edit-mode .lb-logo-action-bar {
   position: absolute;
   z-index: 1000 !important;
   display: flex;
   align-items: center;
   gap: 8px;
   pointer-events: auto !important;
+}
+
+body.lb-edit-mode .site-navbar__brand {
+  position: relative !important;
+}
+
+body.lb-edit-mode .lb-logo-action-bar {
+  top: 100%;
+  left: 0;
+  margin-top: 4px;
+}
+
+body.lb-edit-mode .site-navbar__logo-icon:hover {
+  outline: 2px dashed #A8865C !important;
+  outline-offset: 3px;
+  cursor: pointer !important;
 }
 
 body.lb-edit-mode .lb-drawing-action-bar,

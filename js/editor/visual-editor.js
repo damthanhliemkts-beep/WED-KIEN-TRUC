@@ -163,6 +163,12 @@ class VisualEditor {
           <span>Quản lý đồ án</span>
         </button>
 
+        <!-- Nút Cấu hình Tên & Logo Website -->
+        <button type="button" class="lb-btn" id="lb-site-settings-btn" title="Chỉnh sửa tên thương hiệu, tiêu đề trang và logo web">
+          <span>🏷️</span>
+          <span>Tên &amp; Logo Web</span>
+        </button>
+
         <div class="lb-dock__divider"></div>
 
         <!-- Trạng thái lưu -->
@@ -189,6 +195,7 @@ class VisualEditor {
 
     // Gắn sự kiện các nút trên Dock
     document.getElementById('lb-toggle-edit-btn').addEventListener('click', () => this.toggleEditMode());
+    document.getElementById('lb-site-settings-btn').addEventListener('click', () => this.openSiteSettingsModal());
     document.getElementById('lb-add-project-btn').addEventListener('click', () => this.openAddProjectModal());
     document.getElementById('lb-manage-projects-btn').addEventListener('click', () => this.openManageProjectsModal());
     document.getElementById('lb-save-btn').addEventListener('click', () => this.saveChanges());
@@ -441,6 +448,91 @@ class VisualEditor {
    * Gắn thanh công cụ thay ảnh và sửa đồ án trực tiếp trên TẤT CẢ các khối ảnh & thẻ dự án toàn trang
    */
   attachImageEditHandlers() {
+    // 0. Logo & Thương hiệu trên thanh Navbar
+    const navLogo = document.querySelector('.site-navbar__logo-icon, [data-editable-image="site.logoUrl"]');
+    if (navLogo && !navLogo.parentElement.querySelector('.lb-logo-action-bar')) {
+      const logoParent = navLogo.parentElement;
+      const bar = document.createElement('div');
+      bar.className = 'lb-logo-action-bar';
+      bar.innerHTML = `
+        <button type="button" class="lb-card-btn lb-card-btn--img" style="padding: 3px 8px; font-size: 10px;" title="Thay đổi Logo Website (PNG trong suốt, SVG, JPG)">
+          <span>📷</span><span>Đổi Logo</span>
+        </button>
+      `;
+      const btn = bar.querySelector('button');
+      const triggerLogoChange = (e) => {
+        if (e) {
+          e.preventDefault();
+          e.stopPropagation();
+        }
+        const currentLogo = this.activeContent?.site?.logoUrl || navLogo.src || '';
+        this.openImagePickerModal({
+          title: 'Logo Website (PNG, SVG, WebP)',
+          currentImage: currentLogo,
+          onApply: async (newUrl) => {
+            this.setContentValue('site.logoUrl', newUrl);
+            document.querySelectorAll('.site-navbar__logo-icon, .page-loader__logo, .site-footer__brand img, .mobile-drawer__header img, .mobile-drawer__brand img').forEach(img => {
+              img.src = newUrl;
+            });
+            this.markDirty();
+            await this.saveChanges();
+            this.showToast('Đã thay đổi Logo website thành công!', 'success');
+          }
+        });
+      };
+
+      btn.addEventListener('click', triggerLogoChange);
+      logoParent.appendChild(bar);
+
+      if (!navLogo._lbBound) {
+        navLogo.style.cursor = 'pointer';
+        navLogo.addEventListener('click', (e) => {
+          if (this.isEditMode) {
+            e.preventDefault();
+            e.stopPropagation();
+            triggerLogoChange(e);
+          }
+        });
+        navLogo._lbBound = true;
+      }
+    }
+
+    // 0b. Ảnh bìa hoàn thiện trên trang chủ (Home Hero Reality Layer)
+    const homeHero = document.querySelector('.hero-cinematic');
+    if (homeHero && !homeHero.querySelector('.lb-hero-action-bar')) {
+      const homeBar = document.createElement('div');
+      homeBar.className = 'lb-hero-action-bar';
+      homeBar.innerHTML = `
+        <button type="button" class="lb-card-btn lb-card-btn--img" title="Thay đổi ảnh bìa giai đoạn hoàn thiện của trang chủ">
+          <span>📷</span><span>Đổi ảnh bìa trang chủ</span>
+        </button>
+      `;
+      const homeBtn = homeBar.querySelector('button');
+      homeBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const currentHeroCover = this.activeContent?.home?.heroCoverImage || '';
+        this.openImagePickerModal({
+          title: 'Ảnh Bìa Hoàn Thiện Trang Chủ',
+          currentImage: currentHeroCover,
+          onApply: async (newUrl) => {
+            this.setContentValue('home.heroCoverImage', newUrl);
+            const heroRealityBg = document.querySelector('.hero-cinematic__bg-reality');
+            if (heroRealityBg) {
+              const cleanCover = newUrl.startsWith('url') ? newUrl : `url('${newUrl}')`;
+              heroRealityBg.style.backgroundImage = `radial-gradient(circle at 65% 35%, rgba(200, 169, 122, 0.25) 0%, transparent 65%), linear-gradient(to bottom, rgba(26,25,22,0.45) 0%, rgba(26,25,22,0.7) 100%), ${cleanCover}`;
+              heroRealityBg.style.backgroundSize = 'cover';
+              heroRealityBg.style.backgroundPosition = 'center';
+            }
+            this.markDirty();
+            await this.saveChanges();
+            this.showToast('Đã đổi ảnh bìa trang chủ thành công!', 'success');
+          }
+        });
+      });
+      homeHero.appendChild(homeBar);
+    }
+
     // 1. Thẻ dự án (trên projects.html và index.html)
     const cardElements = document.querySelectorAll('.project-card, .featured-card, [data-project-card-image]');
     cardElements.forEach((card) => {
@@ -882,7 +974,7 @@ class VisualEditor {
    */
   detachImageEditHandlers() {
     document.querySelectorAll(
-      '.lb-card-action-bar, .lb-img-change-badge, .lb-gallery-action-bar, .lb-drawing-action-bar, .lb-hero-action-bar, .lb-portrait-action-bar, .lb-next-action-bar, .lb-swatch-action-bar, .lb-editable-img-bar'
+      '.lb-card-action-bar, .lb-img-change-badge, .lb-gallery-action-bar, .lb-drawing-action-bar, .lb-hero-action-bar, .lb-portrait-action-bar, .lb-next-action-bar, .lb-swatch-action-bar, .lb-editable-img-bar, .lb-logo-action-bar'
     ).forEach(b => b.remove());
   }
 
@@ -1979,6 +2071,198 @@ class VisualEditor {
         }
       });
     });
+  }
+
+  /**
+   * Escape HTML utility để ngăn XSS
+   */
+  escapeHtml(str) {
+    if (!str) return '';
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#039;');
+  }
+
+  /**
+   * Mở Modal Cấu Hình Tên Thương Hiệu, Tiêu Đề & Logo Website
+   */
+  openSiteSettingsModal() {
+    const title = document.getElementById('lb-modal-title');
+    const content = document.getElementById('lb-modal-content');
+    const footer = document.getElementById('lb-modal-footer');
+
+    title.innerHTML = '<span>🏷️</span><span>Cấu Hình Tên & Logo Website Toàn Trang</span>';
+
+    const currentTitle = this.activeContent?.site?.brandTitle || 'Living Blueprint';
+    const currentSub = this.activeContent?.site?.brandSub || 'Kiến trúc & Nội thất';
+    const currentMeta = this.activeContent?.site?.metaDescription || '';
+    let workingLogoUrl = this.activeContent?.site?.logoUrl || 'assets/svg/logo.svg';
+    let workingHeroCover = this.activeContent?.home?.heroCoverImage || 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80';
+    let currentMotion = this.activeContent?.site?.introAnimation || 'cinematic';
+
+    content.innerHTML = `
+      <form id="lb-site-settings-form" class="lb-form-grid" novalidate>
+        <div class="lb-form-group lb-form-grid--full">
+          <label class="lb-form-label">Tên thương hiệu / Studio / KTS *</label>
+          <input type="text" class="lb-form-input" id="ss-brand-title" value="${this.escapeHtml(currentTitle)}" placeholder="VD: Living Blueprint, KTS. Đàm Thanh Liêm..." required>
+        </div>
+
+        <div class="lb-form-group lb-form-grid--full">
+          <label class="lb-form-label">Phụ đề thương hiệu / Lĩnh vực *</label>
+          <input type="text" class="lb-form-input" id="ss-brand-sub" value="${this.escapeHtml(currentSub)}" placeholder="VD: Kiến trúc & Nội thất, Minimal Luxury..." required>
+        </div>
+
+        <div class="lb-form-group lb-form-grid--full">
+          <label class="lb-form-label">Mô tả tóm tắt trang (SEO Meta Description)</label>
+          <textarea class="lb-form-textarea" id="ss-meta-desc" rows="2" placeholder="Tóm tắt giới thiệu ngắn gọn khi chia sẻ link trang web...">${this.escapeHtml(currentMeta)}</textarea>
+        </div>
+
+        <!-- Khung Logo Website -->
+        <div class="lb-form-group lb-form-grid--full" style="background: rgba(0,0,0,0.25); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 14px;">
+          <label class="lb-form-label" style="margin-bottom: 8px; display: block;">Logo Website (Hiển thị tại Header, Footer & Màn hình tải)</label>
+          <div style="display: flex; align-items: center; gap: 16px;">
+            <div id="ss-logo-preview" style="width: 56px; height: 56px; border-radius: 8px; background: #1A1916; border: 1px solid rgba(168,134,92,0.4); display: flex; align-items: center; justify-content: center; padding: 6px;">
+              <img src="${workingLogoUrl}" alt="Logo Preview" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+              <div style="display: flex; gap: 8px;">
+                <button type="button" class="lb-btn" id="ss-upload-logo-btn"><span>📷</span><span>Tải logo từ máy</span></button>
+                <button type="button" class="lb-btn" id="ss-pick-logo-btn"><span>🌐</span><span>Chọn ảnh logo</span></button>
+                <input type="file" id="ss-logo-file-input" accept="image/png,image/svg+xml,image/jpeg,image/webp" style="display: none;">
+              </div>
+              <span style="font-size: 11px; color: #8C8881;">Hỗ trợ file SVG vector, PNG nền trong suốt, JPG, WebP.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Khung Ảnh bìa trang chủ -->
+        <div class="lb-form-group lb-form-grid--full" style="background: rgba(0,0,0,0.25); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 14px;">
+          <label class="lb-form-label" style="margin-bottom: 8px; display: block;">Ảnh bìa trang chủ (Giai đoạn hoàn thiện của thang đổi ảnh)</label>
+          <div style="display: flex; align-items: center; gap: 16px;">
+            <div id="ss-hero-preview" style="width: 100px; height: 60px; border-radius: 6px; background-size: cover; background-position: center; border: 1px solid rgba(255,255,255,0.15); background-image: url('${workingHeroCover}');"></div>
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+              <button type="button" class="lb-btn" id="ss-change-hero-btn"><span>📷</span><span>Đổi ảnh bìa trang chủ</span></button>
+              <span style="font-size: 11px; color: #8C8881;">Ảnh sẽ xuất hiện ở Giai đoạn 4: Hoàn thiện thực tế trong thang cuộn cinematic.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tùy chọn Hiệu ứng mở trang -->
+        <div class="lb-form-group lb-form-grid--full">
+          <label class="lb-form-label">Hiệu ứng chuyển động mở trang (Initial Intro Motion)</label>
+          <select class="lb-form-select" id="ss-intro-motion">
+            <option value="cinematic" ${currentMotion === 'cinematic' ? 'selected' : ''}>Điện ảnh & Tinh tế (Mở rèm, HUD trượt nhẹ, logo thanh lịch)</option>
+            <option value="minimal" ${currentMotion === 'minimal' ? 'selected' : ''}>Tối giản & Nhanh gọn (Tải nhanh 200ms, không độ trễ)</option>
+            <option value="dramatic" ${currentMotion === 'dramatic' ? 'selected' : ''}>Nghệ thuật & Sâu lắng (Hiện dần từ từ, phác thảo ấn tượng)</option>
+          </select>
+        </div>
+      </form>
+    `;
+
+    footer.innerHTML = `
+      <button type="button" class="lb-btn" id="lb-modal-cancel-btn">Hủy bỏ</button>
+      <button type="button" class="lb-btn lb-btn--primary" id="lb-modal-save-ss-btn">Lưu cấu hình</button>
+    `;
+
+    // Handle logo upload from disk
+    const logoFileInput = document.getElementById('ss-logo-file-input');
+    const uploadLogoBtn = document.getElementById('ss-upload-logo-btn');
+    const pickLogoBtn = document.getElementById('ss-pick-logo-btn');
+    const logoPreviewImg = document.querySelector('#ss-logo-preview img');
+
+    uploadLogoBtn.addEventListener('click', () => logoFileInput.click());
+    logoFileInput.addEventListener('change', async () => {
+      const file = logoFileInput.files[0];
+      if (!file) return;
+
+      this.showToast('Đang tải logo mới lên máy chủ...', 'info');
+      try {
+        const uploadedUrl = await this.uploadImageFile(file);
+        workingLogoUrl = uploadedUrl;
+        logoPreviewImg.src = uploadedUrl;
+        this.showToast('Đã tải logo thành công!', 'success');
+      } catch (err) {
+        this.showToast('Lỗi tải logo: ' + err.message, 'error');
+      }
+    });
+
+    pickLogoBtn.addEventListener('click', () => {
+      this.openImagePickerModal({
+        title: 'Logo Website',
+        currentImage: workingLogoUrl,
+        onApply: (newUrl) => {
+          workingLogoUrl = newUrl;
+          logoPreviewImg.src = newUrl;
+          this.openModal();
+        }
+      });
+    });
+
+    // Handle hero cover image change
+    const changeHeroBtn = document.getElementById('ss-change-hero-btn');
+    const heroPreview = document.getElementById('ss-hero-preview');
+    changeHeroBtn.addEventListener('click', () => {
+      this.openImagePickerModal({
+        title: 'Ảnh Bìa Hoàn Thiện Trang Chủ',
+        currentImage: workingHeroCover,
+        onApply: (newUrl) => {
+          workingHeroCover = newUrl;
+          heroPreview.style.backgroundImage = `url('${newUrl}')`;
+          this.openModal();
+        }
+      });
+    });
+
+    document.getElementById('lb-modal-cancel-btn').addEventListener('click', () => this.closeModal());
+    document.getElementById('lb-modal-save-ss-btn').addEventListener('click', async () => {
+      const newTitle = document.getElementById('ss-brand-title').value.trim();
+      const newSub = document.getElementById('ss-brand-sub').value.trim();
+      const newMeta = document.getElementById('ss-meta-desc').value.trim();
+      const newMotion = document.getElementById('ss-intro-motion').value;
+
+      if (!newTitle) {
+        alert('Tên thương hiệu không được để trống.');
+        return;
+      }
+
+      if (!this.activeContent.site) this.activeContent.site = {};
+      if (!this.activeContent.home) this.activeContent.home = {};
+
+      this.activeContent.site.brandTitle = newTitle;
+      this.activeContent.site.brandSub = newSub;
+      this.activeContent.site.metaDescription = newMeta;
+      this.activeContent.site.logoUrl = workingLogoUrl;
+      this.activeContent.site.introAnimation = newMotion;
+      this.activeContent.home.heroCoverImage = workingHeroCover;
+
+      this.markDirty();
+      this.closeModal();
+
+      await this.saveChanges();
+      this.showToast('Đã cập nhật Tên thương hiệu, Logo và Ảnh bìa thành công!', 'success');
+
+      // Cập nhật DOM ngay tức thì
+      document.querySelectorAll('.site-navbar__brand-title, .site-footer__brand-title, .page-loader__brand, .mobile-drawer__brand-text').forEach(el => {
+        el.textContent = newTitle;
+      });
+      document.querySelectorAll('.site-navbar__brand-sub').forEach(el => {
+        el.textContent = newSub;
+      });
+      document.querySelectorAll('.site-navbar__logo-icon, .page-loader__logo, .site-footer__brand img, .mobile-drawer__header img, .mobile-drawer__brand img').forEach(el => {
+        el.src = workingLogoUrl;
+      });
+
+      const heroRealityBg = document.querySelector('.hero-cinematic__bg-reality');
+      if (heroRealityBg && workingHeroCover) {
+        const cleanCover = workingHeroCover.startsWith('url') ? workingHeroCover : `url('${workingHeroCover}')`;
+        heroRealityBg.style.backgroundImage = `radial-gradient(circle at 65% 35%, rgba(200, 169, 122, 0.25) 0%, transparent 65%), linear-gradient(to bottom, rgba(26,25,22,0.45) 0%, rgba(26,25,22,0.7) 100%), ${cleanCover}`;
+      }
+    });
+
+    this.openModal();
   }
 
   /**

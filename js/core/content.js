@@ -14,7 +14,9 @@ const defaultContent = {
   site: {
     brandTitle: "Living Blueprint",
     brandSub: "Kiến trúc & Nội thất",
-    metaDescription: "Living Blueprint — Portfolio cá nhân kiến trúc sư thực hành kiến trúc & nội thất đương đại. Trải nghiệm biến đổi không gian kiến trúc 4 giai đoạn."
+    metaDescription: "Living Blueprint — Portfolio cá nhân kiến trúc sư thực hành kiến trúc & nội thất đương đại. Trải nghiệm biến đổi không gian kiến trúc 4 giai đoạn.",
+    logoUrl: "assets/svg/logo.svg",
+    introAnimation: "cinematic"
   },
   home: {
     heroKicker: "LIVING BLUEPRINT · PORTFOLIO KIẾN TRÚC SƯ CÁ NHÂN",
@@ -22,6 +24,8 @@ const defaultContent = {
     heroDesc: "Hành trình kiến tạo từ nét phác thảo ý niệm đến không gian cư ngụ tĩnh tại. Biệt thự pavilion, kiến trúc đương đại và ánh sáng tự nhiên.",
     heroNotice: "* Minh họa ý niệm kiến trúc (Demo Visualization)",
     heroCta: "Khám phá công trình tiêu biểu",
+    heroCoverImage: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80",
+    heroCoverAlt: "Hoàn thiện thực tế không gian kiến trúc đương đại",
     featuredKicker: "Công trình tuyển chọn",
     featuredTitle: "Kiến trúc & Nội thất"
   },
@@ -154,6 +158,39 @@ export function bindContentToDom() {
       el.style.backgroundRepeat = 'no-repeat';
     }
   });
+
+  // Đồng bộ toàn cục Logo và Thương hiệu
+  const brandTitle = getContent('site.brandTitle');
+  if (brandTitle) {
+    document.querySelectorAll('.site-navbar__brand-title, .site-footer__brand-title, .page-loader__brand, .mobile-drawer__brand-text').forEach((el) => {
+      el.textContent = brandTitle;
+    });
+  }
+
+  const brandSub = getContent('site.brandSub');
+  if (brandSub) {
+    document.querySelectorAll('.site-navbar__brand-sub').forEach((el) => {
+      el.textContent = brandSub;
+    });
+  }
+
+  const logoUrl = getContent('site.logoUrl');
+  if (logoUrl) {
+    document.querySelectorAll('.site-navbar__logo-icon, .page-loader__logo, .site-footer__brand img, .mobile-drawer__header img, .mobile-drawer__brand img').forEach((el) => {
+      el.src = logoUrl;
+    });
+  }
+
+  // Đồng bộ ảnh bìa trang chủ (Home Hero Reality Layer)
+  const heroCover = getContent('home.heroCoverImage');
+  const heroRealityBg = document.querySelector('.hero-cinematic__bg-reality');
+  if (heroRealityBg && heroCover) {
+    const cleanCover = heroCover.startsWith('url') ? heroCover : `url('${heroCover}')`;
+    heroRealityBg.style.backgroundImage = `radial-gradient(circle at 65% 35%, rgba(200, 169, 122, 0.25) 0%, transparent 65%), linear-gradient(to bottom, rgba(26,25,22,0.45) 0%, rgba(26,25,22,0.7) 100%), ${cleanCover}`;
+    heroRealityBg.style.backgroundSize = 'cover';
+    heroRealityBg.style.backgroundPosition = 'center';
+    heroRealityBg.style.backgroundRepeat = 'no-repeat';
+  }
 }
 
 /**
