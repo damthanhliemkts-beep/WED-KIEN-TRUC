@@ -38,6 +38,7 @@
   <!-- Phase 2: Hero & Home Styles -->
   <link rel="stylesheet" href="css/components/hero.css">
   <link rel="stylesheet" href="css/pages/home.css">
+  <link rel="stylesheet" href="css/editor/visual-editor.css">
 
   <!-- GSAP & ScrollTrigger (Local vendor scripts with fallback) -->
   <script src="js/vendor/gsap.min.js"></script>
@@ -575,15 +576,15 @@
           <div class="hero-stage4-reveal" aria-hidden="true">
             <div class="hero-stage4-reveal__inner">
               <p class="hero-stage4-reveal__kicker" data-content-key="home.heroKicker">LIVING BLUEPRINT · PORTFOLIO KIẾN TRÚC SƯ CÁ NHÂN</p>
-              <h2 class="hero-stage4-reveal__title">Từ Nét Vẽ Đến Không Gian Sống</h2>
-              <p class="hero-stage4-reveal__desc">
+              <h2 class="hero-stage4-reveal__title" data-content-key="home.heroTitle">Từ Nét Vẽ Đến Không Gian Sống</h2>
+              <p class="hero-stage4-reveal__desc" data-content-key="home.heroDesc">
                 Hành trình kiến tạo từ nét phác thảo ý niệm đến không gian cư ngụ tĩnh tại. Biệt thự pavilion, kiến trúc đương đại và ánh sáng tự nhiên.
               </p>
-              <span style="display: block; font-family: var(--font-mono); font-size: 0.7rem; color: var(--color-accent); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1.25rem;">
+              <span data-content-key="home.heroNotice" style="display: block; font-family: var(--font-mono); font-size: 0.7rem; color: var(--color-accent); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1.25rem;">
                 * Minh họa ý niệm kiến trúc (Demo Visualization)
               </span>
               <a href="#featured-works" class="hero-stage4-reveal__cta" data-cursor="view" data-cursor-label="XEM">
-                <span>Khám phá công trình tiêu biểu</span>
+                <span data-content-key="home.heroCta">Khám phá công trình tiêu biểu</span>
                 <span aria-hidden="true">&darr;</span>
               </a>
             </div>
@@ -601,7 +602,7 @@
 
           <div class="section-head section-head--row">
             <div>
-              <span class="section-kicker">Công trình tuyển chọn</span>
+              <span class="section-kicker" data-content-key="home.featuredKicker">Công trình tuyển chọn</span>
               <h2 class="section-title">Kiến trúc &amp; <em>Nội thất</em></h2>
             </div>
             <a href="projects.html" class="link-arrow" data-cursor="view" data-cursor-label="TẤT CẢ">

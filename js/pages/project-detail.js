@@ -37,6 +37,7 @@ export function initProjectDetailPage() {
         style="background: ${project.coverGradient};"
         role="img"
         aria-label="${project.coverAlt}"
+        data-project-image="coverGradient"
       ></div>
       <div class="pdetail-hero__overlay" aria-hidden="true"></div>
 
@@ -51,28 +52,28 @@ export function initProjectDetailPage() {
         <div class="pdetail-hero__meta-pill">
           <span>${project.category === 'architecture' ? 'Thiết kế Kiến trúc' : 'Kiến trúc Nội thất'}</span>
           <span aria-hidden="true">·</span>
-          <span>${project.year}</span>
+          <span data-project-key="year">${project.year}</span>
         </div>
 
-        <h1 class="pdetail-hero__title">${project.title}</h1>
+        <h1 class="pdetail-hero__title" data-project-key="title">${project.title}</h1>
 
         <div class="pdetail-hero__specs-bar">
           <div class="pdetail-hero__specs-item">
             <span>ĐỊA ĐIỂM:</span>
-            <strong>${project.location}</strong>
+            <strong data-project-key="location">${project.location}</strong>
           </div>
           <div class="pdetail-hero__specs-item">
             <span>DIỆN TÍCH:</span>
-            <strong>${project.area}</strong>
+            <strong data-project-key="area">${project.area}</strong>
           </div>
           <div class="pdetail-hero__specs-item">
             <span>LOẠI HÌNH:</span>
-            <strong>${project.type}</strong>
+            <strong data-project-key="type">${project.type}</strong>
           </div>
           <div class="pdetail-hero__specs-item">
             <span class="pdetail-hero__status-badge">
               <span class="pdetail-hero__status-dot"></span>
-              ${project.statusLabel || (project.status === 'completed' ? 'Đã hoàn thành' : 'Đang thực hiện')}
+              <span data-project-key="statusLabel">${project.statusLabel || (project.status === 'completed' ? 'Đã hoàn thành' : 'Đang thực hiện')}</span>
             </span>
           </div>
           <div class="pdetail-hero__specs-item">
@@ -95,13 +96,13 @@ export function initProjectDetailPage() {
         <div class="pdetail-overview-grid">
           <!-- Left Column: Narrative & Objectives -->
           <div class="pdetail-narrative">
-            <p class="pdetail-narrative__summary">
+            <p class="pdetail-narrative__summary" data-project-key="summary">
               ${project.summary || project.fullDesc}
             </p>
 
             ${project.context ? `
               <h3 class="pdetail-narrative__context-title">Bối cảnh Địa hình &amp; Vi khí hậu</h3>
-              <p class="pdetail-narrative__context-text">${project.context}</p>
+              <p class="pdetail-narrative__context-text" data-project-key="context">${project.context}</p>
             ` : ''}
 
             ${project.objectives && project.objectives.length > 0 ? `

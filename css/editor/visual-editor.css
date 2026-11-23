@@ -1,0 +1,477 @@
+/* ============================================================
+   LIVING BLUEPRINT — Visual Content Editor Stylesheet
+   Minimal Luxury · Architectural Editorial Styling
+   ============================================================ */
+
+/* ── 1. Root & Dock Container ──────────────────────────────── */
+.lb-dock {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(0);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(26, 25, 22, 0.94);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(168, 134, 92, 0.32);
+  border-radius: 9999px;
+  padding: 6px 14px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.04);
+  font-family: var(--font-ui, -apple-system, BlinkMacSystemFont, 'Inter', sans-serif);
+  font-size: 13px;
+  color: #F5F3EF;
+  user-select: none;
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.3s ease;
+}
+
+.lb-dock--hidden {
+  transform: translateX(-50%) translateY(100px);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.lb-dock--collapsed .lb-dock__tools {
+  display: none !important;
+}
+
+/* ── 2. Brand & State Indicators ───────────────────────────── */
+.lb-dock__brand {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono, 'Space Mono', monospace);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #A8865C;
+  padding: 4px 8px;
+  border-radius: 9999px;
+  background: rgba(168, 134, 92, 0.12);
+  cursor: pointer;
+}
+
+.lb-dock__brand-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #A8865C;
+  box-shadow: 0 0 8px #A8865C;
+}
+
+.lb-dock__divider {
+  width: 1px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.12);
+  margin: 0 2px;
+}
+
+/* ── 3. Dock Buttons ───────────────────────────────────────── */
+.lb-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  border: 1px solid transparent;
+  color: #DDD9D2;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 6px 12px;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.lb-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #FFFFFF;
+}
+
+.lb-btn--primary {
+  background: #A8865C;
+  color: #1A1916;
+  font-weight: 600;
+}
+
+.lb-btn--primary:hover {
+  background: #BFA075;
+  color: #1A1916;
+}
+
+.lb-btn--active {
+  background: rgba(168, 134, 92, 0.2);
+  border-color: rgba(168, 134, 92, 0.5);
+  color: #A8865C;
+}
+
+.lb-btn--danger {
+  color: #E57373;
+}
+.lb-btn--danger:hover {
+  background: rgba(229, 115, 115, 0.12);
+  color: #FF8A80;
+}
+
+.lb-badge-status {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  padding: 4px 8px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.04);
+  color: #9E9A93;
+}
+
+.lb-badge-status--dirty {
+  color: #E6A23C;
+  background: rgba(230, 162, 60, 0.1);
+}
+
+.lb-badge-status__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #67C23A;
+}
+
+.lb-badge-status--dirty .lb-badge-status__dot {
+  background: #E6A23C;
+  animation: lb-pulse 1.4s infinite;
+}
+
+@keyframes lb-pulse {
+  0% { transform: scale(0.9); opacity: 0.7; }
+  50% { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(0.9); opacity: 0.7; }
+}
+
+/* ── 4. Editable Region Styling ────────────────────────────── */
+body.lb-edit-mode [data-content-key],
+body.lb-edit-mode [data-project-key] {
+  outline: 1px dashed rgba(168, 134, 92, 0.4);
+  outline-offset: 3px;
+  cursor: text;
+  transition: outline 0.15s ease, background-color 0.15s ease;
+  min-height: 1em;
+}
+
+body.lb-edit-mode [data-content-key]:hover,
+body.lb-edit-mode [data-project-key]:hover {
+  outline: 1px solid #A8865C;
+  background-color: rgba(168, 134, 92, 0.06);
+}
+
+body.lb-edit-mode [data-content-key]:focus,
+body.lb-edit-mode [data-project-key]:focus {
+  outline: 2px solid #A8865C !important;
+  background-color: rgba(168, 134, 92, 0.12) !important;
+  border-radius: 2px;
+}
+
+/* Image replacement overlay */
+body.lb-edit-mode [data-editable-image],
+body.lb-edit-mode [data-project-image] {
+  position: relative !important;
+  outline: 1px dashed rgba(168, 134, 92, 0.5) !important;
+  outline-offset: -2px;
+  cursor: pointer;
+}
+
+body.lb-edit-mode .lb-img-change-badge {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 100;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(26, 25, 22, 0.88);
+  backdrop-filter: blur(8px);
+  border: 1px solid #A8865C;
+  color: #F5F3EF;
+  font-family: var(--font-ui, sans-serif);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 9999px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+  cursor: pointer;
+  opacity: 0.9;
+  transition: all 0.2s ease;
+}
+
+body.lb-edit-mode .lb-img-change-badge:hover {
+  opacity: 1;
+  background: #A8865C;
+  color: #1A1916;
+}
+
+/* ── 5. Toast Notifications ────────────────────────────────── */
+.lb-toast-container {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 11000;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  pointer-events: none;
+}
+
+.lb-toast {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 280px;
+  max-width: 420px;
+  background: rgba(26, 25, 22, 0.96);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(168, 134, 92, 0.4);
+  border-radius: 8px;
+  padding: 12px 18px;
+  color: #F5F3EF;
+  font-family: var(--font-ui, sans-serif);
+  font-size: 13px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+  animation: lb-slide-in 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.lb-toast--success { border-color: #67C23A; }
+.lb-toast--error { border-color: #E57373; }
+.lb-toast--info { border-color: #A8865C; }
+
+@keyframes lb-slide-in {
+  from { transform: translateX(40px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+/* ── 6. Modals (Project Manager & Add Project) ──────────────── */
+.lb-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 10, 9, 0.85);
+  backdrop-filter: blur(12px);
+  z-index: 12000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.lb-modal-backdrop.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.lb-modal {
+  width: 100%;
+  max-width: 900px;
+  max-height: 88vh;
+  background: #1A1916;
+  border: 1px solid rgba(168, 134, 92, 0.35);
+  border-radius: 12px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.7);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  font-family: var(--font-ui, sans-serif);
+  color: #F5F3EF;
+  transform: translateY(20px);
+  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.lb-modal-backdrop.is-open .lb-modal {
+  transform: translateY(0);
+}
+
+.lb-modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.lb-modal__title {
+  font-family: var(--font-display, 'Cormorant Garamond', serif);
+  font-size: 22px;
+  font-weight: 500;
+  color: #F5F3EF;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.lb-modal__close {
+  background: transparent;
+  border: none;
+  color: #9E9A93;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.lb-modal__close:hover {
+  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.lb-modal__body {
+  padding: 24px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.lb-modal__footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  padding: 16px 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(0, 0, 0, 0.2);
+}
+
+/* Project Table & Card list in Modal */
+.lb-project-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.lb-project-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  padding: 12px 16px;
+  transition: all 0.2s ease;
+}
+
+.lb-project-item:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(168, 134, 92, 0.3);
+}
+
+.lb-project-item__thumb {
+  width: 64px;
+  height: 48px;
+  border-radius: 4px;
+  background-size: cover;
+  background-position: center;
+  flex-shrink: 0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.lb-project-item__info {
+  flex: 1;
+  min-width: 0;
+}
+
+.lb-project-item__title {
+  font-size: 15px;
+  font-weight: 500;
+  color: #F5F3EF;
+  margin-bottom: 3px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.lb-project-item__meta {
+  font-size: 12px;
+  color: #8C8881;
+  display: flex;
+  gap: 8px;
+}
+
+.lb-project-item__actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Forms in Modal */
+.lb-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.lb-form-grid--full {
+  grid-column: span 2;
+}
+
+.lb-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.lb-form-label {
+  font-size: 11px;
+  font-family: var(--font-mono, monospace);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #A8865C;
+}
+
+.lb-form-input,
+.lb-form-textarea,
+.lb-form-select {
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 6px;
+  padding: 8px 12px;
+  color: #F5F3EF;
+  font-family: inherit;
+  font-size: 13px;
+  transition: border-color 0.2s;
+}
+
+.lb-form-input:focus,
+.lb-form-textarea:focus,
+.lb-form-select:focus {
+  outline: none;
+  border-color: #A8865C;
+  box-shadow: 0 0 0 2px rgba(168, 134, 92, 0.2);
+}
+
+.lb-upload-box {
+  border: 2px dashed rgba(168, 134, 92, 0.4);
+  border-radius: 8px;
+  padding: 24px;
+  text-align: center;
+  background: rgba(168, 134, 92, 0.04);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.lb-upload-box:hover {
+  background: rgba(168, 134, 92, 0.08);
+  border-color: #A8865C;
+}
+
+.lb-upload-preview {
+  width: 100%;
+  height: 180px;
+  border-radius: 6px;
+  background-size: cover;
+  background-position: center;
+  margin-top: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: none;
+}

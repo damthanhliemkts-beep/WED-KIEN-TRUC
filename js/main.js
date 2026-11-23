@@ -18,6 +18,7 @@ import { initHeroScroll } from './animations/hero-scroll.js';
 import { initProjectsPage } from './pages/projects.js';
 import { initContactPage } from './pages/contact.js';
 import { initProjectDetailPage } from './pages/project-detail.js';
+import { visualEditor } from './editor/visual-editor.js';
 
 /* ── Dev console branding ──────────────────────────────── */
 console.log(
@@ -99,6 +100,9 @@ domReady().then(async () => {
   if (App.currentPage === 'project-detail') {
     initProjectDetailPage();
   }
+
+  // 9. Initialize Local Visual Content Editor (Localhost only)
+  await visualEditor.init();
 
   console.log(
     `%c[Ready] Page: ${App.currentPage} | Touch: ${App.touchDevice} | Reduced motion: ${App.reducedMotion}`,
