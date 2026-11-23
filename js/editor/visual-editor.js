@@ -438,10 +438,10 @@ class VisualEditor {
    * Gắn huy hiệu "Thay ảnh" trên các khối ảnh
    */
   /**
-   * Gắn thanh công cụ thay ảnh và sửa đồ án trực tiếp trên tất cả các khối ảnh & thẻ dự án
+   * Gắn thanh công cụ thay ảnh và sửa đồ án trực tiếp trên TẤT CẢ các khối ảnh & thẻ dự án toàn trang
    */
   attachImageEditHandlers() {
-    // 1. Gắn action bar [📷 Đổi ảnh] [✏️ Sửa] trên tất cả thẻ dự án (trên projects.html và index.html)
+    // 1. Thẻ dự án (trên projects.html và index.html)
     const cardElements = document.querySelectorAll('.project-card, .featured-card, [data-project-card-image]');
     cardElements.forEach((card) => {
       const cardContainer = card.closest('.project-card') || card.closest('.featured-card') || card;
@@ -500,13 +500,26 @@ class VisualEditor {
 
       cardContainer.appendChild(bar);
 
-      // Ngăn chặn điều hướng ngoài ý muốn khi nhấp vào các nút chỉnh sửa trên thẻ
+      // Nhấp trực tiếp vào ảnh thẻ trong chế độ sửa cũng mở modal thay ảnh
+      const bgEl = cardContainer.querySelector('.project-card__bg, .featured-card__bg');
+      if (bgEl && !bgEl._lbCardClickBound) {
+        bgEl.addEventListener('click', (e) => {
+          if (this.isEditMode) {
+            e.preventDefault();
+            e.stopPropagation();
+            btnImg.click();
+          }
+        });
+        bgEl._lbCardClickBound = true;
+      }
+
+      // Ngăn chặn điều hướng ngoài ý muốn khi nhấp vào thẻ trong chế độ sửa
       const links = cardContainer.querySelectorAll('a');
       links.forEach((link) => {
         if (!link._lbNavBlocked) {
           link.addEventListener('click', (e) => {
             if (this.isEditMode) {
-              if (e.target.closest('.lb-card-action-bar') || e.target.closest('[contenteditable="true"]')) {
+              if (e.target.closest('.lb-card-action-bar') || e.target.closest('[contenteditable="true"]') || e.target.closest('.project-card__bg, .featured-card__bg')) {
                 e.preventDefault();
               }
             }
@@ -516,47 +529,65 @@ class VisualEditor {
       });
     });
 
-    // 2. Gắn badge "Đổi ảnh bìa chính" trên trang chi tiết (project.html hero)
+    // 2. Ảnh bìa chính trên trang chi tiết công trình (project.html Hero)
+    const heroSection = document.getElementById('hero-section') || document.querySelector('.pdetail-hero');
     const heroBg = document.getElementById('detail-hero-bg') || document.querySelector('[data-project-image="coverGradient"]');
-    if (heroBg) {
-      const heroParent = heroBg.parentElement || heroBg;
-      if (!heroParent.querySelector('.lb-img-change-badge')) {
-        const badge = document.createElement('button');
-        badge.type = 'button';
-        badge.className = 'lb-img-change-badge';
-        badge.innerHTML = `<span>📷</span><span>Đổi ảnh bìa chính</span>`;
-        badge.addEventListener('click', (e) => {
-          e.stopPropagation();
+    if (heroSection && heroBg && !heroSection.querySelector('.lb-hero-action-bar')) {
+      const heroBar = document.createElement('div');
+      heroBar.className = 'lb-hero-action-bar';
+      heroBar.innerHTML = `
+        <button type="button" class="lb-card-btn lb-card-btn--img" title="Thay đổi ảnh bìa chính của công trình">
+          <span>📷</span><span>Đổi ảnh bìa chính</span>
+        </button>
+      `;
+
+      const heroBtn = heroBar.querySelector('button');
+      const triggerHeroChange = (e) => {
+        if (e) {
           e.preventDefault();
-          this.detectCurrentProject();
-          if (!this.currentProject) return;
+          e.stopPropagation();
+        }
+        this.detectCurrentProject();
+        if (!this.currentProject) return;
 
-          this.openImagePickerModal({
-            title: `Ảnh bìa ${this.currentProject.title}`,
-            currentImage: this.currentProject.coverGradient,
-            onApply: async (newUrl) => {
-              this.currentProject.coverGradient = newUrl.startsWith('url') ? newUrl : `url('${newUrl}')`;
-              heroBg.style.backgroundImage = `url('${newUrl}')`;
-              heroBg.style.backgroundSize = 'cover';
-              heroBg.style.backgroundPosition = 'center';
+        this.openImagePickerModal({
+          title: `Ảnh bìa: ${this.currentProject.title}`,
+          currentImage: this.currentProject.coverGradient,
+          onApply: async (newUrl) => {
+            this.currentProject.coverGradient = newUrl.startsWith('url') ? newUrl : `url('${newUrl}')`;
+            heroBg.style.backgroundImage = `url('${newUrl}')`;
+            heroBg.style.backgroundSize = 'cover';
+            heroBg.style.backgroundPosition = 'center';
 
-              this.markDirty();
-              await this.saveChanges();
-              this.showToast('Đã thay đổi ảnh bìa chính thành công!', 'success');
-            }
-          });
+            this.markDirty();
+            await this.saveChanges();
+            this.showToast('Đã thay đổi ảnh bìa chính thành công!', 'success');
+          }
         });
-        heroParent.appendChild(badge);
+      };
+
+      heroBtn.addEventListener('click', triggerHeroChange);
+      heroSection.appendChild(heroBar);
+
+      if (!heroBg._lbBound) {
+        heroBg.addEventListener('click', (e) => {
+          if (this.isEditMode) {
+            if (e.target.closest('.pdetail-hero__content, .pdetail-hero__top-nav, button, a')) return;
+            triggerHeroChange(e);
+          }
+        });
+        heroBg._lbBound = true;
       }
     }
 
-    // 3. Gắn action bar trên các ảnh Gallery (project.html Section 05)
-    const galleryItems = document.querySelectorAll('[data-project-gallery-image]');
-    galleryItems.forEach((el) => {
-      const parent = el.closest('.pdetail-gallery-item') || el.parentElement || el;
-      if (parent.querySelector('.lb-gallery-action-bar')) return;
+    // 3. TẤT CẢ các ảnh trong thư viện Không Gian (project.html Section 05 - cả 6 ảnh)
+    const galleryItems = document.querySelectorAll('.pdetail-gallery-item');
+    galleryItems.forEach((item) => {
+      if (item.querySelector('.lb-gallery-action-bar')) return;
 
-      const idx = parseInt(el.getAttribute('data-project-gallery-image'), 10);
+      const idx = parseInt(item.getAttribute('data-gallery-idx') || '0', 10);
+      const thumb = item.querySelector('.pdetail-gallery-thumb') || item;
+
       const bar = document.createElement('div');
       bar.className = 'lb-gallery-action-bar';
       bar.innerHTML = `
@@ -565,10 +596,12 @@ class VisualEditor {
         </button>
       `;
 
-      const btn = bar.querySelector('.lb-card-btn');
-      btn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        e.preventDefault();
+      const btn = bar.querySelector('button');
+      const triggerGalleryChange = (e) => {
+        if (e) {
+          e.preventDefault();
+          e.stopPropagation();
+        }
         this.detectCurrentProject();
         if (!this.currentProject || !this.currentProject.gallery || !this.currentProject.gallery[idx]) return;
 
@@ -578,24 +611,35 @@ class VisualEditor {
           currentImage: photo.gradient,
           onApply: async (newUrl) => {
             photo.gradient = newUrl.startsWith('url') ? newUrl : `url('${newUrl}')`;
-            el.style.backgroundImage = `url('${newUrl}')`;
-            el.style.backgroundSize = 'cover';
-            el.style.backgroundPosition = 'center';
-            el.style.backgroundRepeat = 'no-repeat';
+            thumb.style.backgroundImage = `url('${newUrl}')`;
+            thumb.style.backgroundSize = 'cover';
+            thumb.style.backgroundPosition = 'center';
+            thumb.style.backgroundRepeat = 'no-repeat';
 
             this.markDirty();
             await this.saveChanges();
             this.showToast(`Đã thay đổi ảnh #${idx + 1} thành công!`, 'success');
           }
         });
-      });
-      parent.appendChild(bar);
+      };
+
+      btn.addEventListener('click', triggerGalleryChange);
+      item.appendChild(bar);
+
+      if (!item._lbBound) {
+        item.addEventListener('click', (e) => {
+          if (this.isEditMode) {
+            if (e.target.closest('[contenteditable="true"]') || e.target.closest('.lb-gallery-action-bar')) return;
+            triggerGalleryChange(e);
+          }
+        });
+        item._lbBound = true;
+      }
     });
 
-    // 4. Gắn action bar trên các bản vẽ kiến trúc (project.html Section 04)
-    const drawingCards = document.querySelectorAll('.pdetail-drawing-card, .pdetail-drawing-canvas-wrap');
-    drawingCards.forEach((wrap) => {
-      const card = wrap.closest('.pdetail-drawing-card') || wrap;
+    // 4. TẤT CẢ các bản vẽ kiến trúc (project.html Section 04 - mọi tab)
+    const drawingCards = document.querySelectorAll('.pdetail-drawing-card');
+    drawingCards.forEach((card) => {
       const canvasWrap = card.querySelector('.pdetail-drawing-canvas-wrap') || card;
       if (canvasWrap.querySelector('.lb-drawing-action-bar')) return;
 
@@ -608,10 +652,12 @@ class VisualEditor {
         </button>
       `;
 
-      const btn = bar.querySelector('.lb-card-btn');
-      btn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        e.preventDefault();
+      const btn = bar.querySelector('button');
+      const triggerDrawingChange = (e) => {
+        if (e) {
+          e.preventDefault();
+          e.stopPropagation();
+        }
         this.detectCurrentProject();
         if (!this.currentProject || !this.currentProject.drawings || !this.currentProject.drawings[idx]) return;
 
@@ -631,27 +677,176 @@ class VisualEditor {
             this.showToast(`Đã cập nhật bản vẽ "${drw.title}" thành công!`, 'success');
           }
         });
-      });
+      };
+
+      btn.addEventListener('click', triggerDrawingChange);
       canvasWrap.appendChild(bar);
+
+      if (!canvasWrap._lbBound) {
+        canvasWrap.addEventListener('click', (e) => {
+          if (this.isEditMode) {
+            if (e.target.closest('.lb-drawing-action-bar') || e.target.closest('[contenteditable="true"]')) return;
+            triggerDrawingChange(e);
+          }
+        });
+        canvasWrap._lbBound = true;
+      }
     });
 
-    // 5. Gắn badge trên các ảnh tĩnh (vd: about.portrait)
+    // 5. Dự án tiếp theo (project.html Section 07)
+    const nextSection = document.querySelector('.pdetail-next-section');
+    if (nextSection && !nextSection.querySelector('.lb-next-action-bar')) {
+      const nextBg = nextSection.querySelector('.pdetail-next-bg');
+      const nextHref = nextSection.getAttribute('href') || '';
+      const match = nextHref.match(/slug=([^&]+)/);
+      const nextSlug = match ? match[1] : null;
+      const nextProj = nextSlug ? this.activeProjects.find(p => p.slug === nextSlug) : null;
+
+      if (nextProj) {
+        const bar = document.createElement('div');
+        bar.className = 'lb-next-action-bar';
+        bar.innerHTML = `
+          <button type="button" class="lb-card-btn lb-card-btn--img" title="Thay đổi ảnh đại diện đồ án tiếp theo: ${nextProj.title}">
+            <span>📷</span><span>Đổi ảnh đồ án này</span>
+          </button>
+        `;
+        const btn = bar.querySelector('button');
+        const triggerNextChange = (e) => {
+          if (e) {
+            e.preventDefault();
+            e.stopPropagation();
+          }
+          this.openImagePickerModal({
+            title: `Ảnh đồ án: ${nextProj.title}`,
+            currentImage: nextProj.coverGradient,
+            onApply: async (newUrl) => {
+              nextProj.coverGradient = newUrl.startsWith('url') ? newUrl : `url('${newUrl}')`;
+              if (nextBg) {
+                nextBg.style.backgroundImage = `url('${newUrl}')`;
+                nextBg.style.backgroundSize = 'cover';
+                nextBg.style.backgroundPosition = 'center';
+              }
+              this.markDirty();
+              await this.saveChanges();
+              this.showToast(`Đã thay đổi ảnh cho đồ án "${nextProj.title}" thành công!`, 'success');
+            }
+          });
+        };
+
+        btn.addEventListener('click', triggerNextChange);
+        nextSection.appendChild(bar);
+
+        if (!nextSection._lbBound) {
+          nextSection.addEventListener('click', (e) => {
+            if (this.isEditMode) {
+              if (e.target.closest('[contenteditable="true"]')) return;
+              triggerNextChange(e);
+            }
+          });
+          nextSection._lbBound = true;
+        }
+      }
+    }
+
+    // 6. Mẫu vật liệu & Màu sắc (project.html Section 06)
+    const matCards = document.querySelectorAll('.pdetail-material-card');
+    matCards.forEach((card, idx) => {
+      const swatch = card.querySelector('.pdetail-material-swatch');
+      if (swatch && !swatch._lbBound) {
+        swatch.title = 'Nhấp để đổi màu mẫu vật liệu';
+        swatch.addEventListener('click', (e) => {
+          if (!this.isEditMode) return;
+          e.stopPropagation();
+          this.detectCurrentProject();
+          if (!this.currentProject || !this.currentProject.materials || !this.currentProject.materials[idx]) return;
+
+          const mat = this.currentProject.materials[idx];
+          const newColor = prompt(`Nhập mã màu HEX mới cho vật liệu "${mat.name}" (VD: #8C7860, #4A5568):`, mat.swatchColor || '#6B6762');
+          if (newColor && newColor.trim()) {
+            mat.swatchColor = newColor.trim();
+            swatch.style.backgroundColor = newColor.trim();
+            this.markDirty();
+            this.saveChanges();
+            this.showToast(`Đã cập nhật màu vật liệu "${mat.name}" thành công!`, 'success');
+          }
+        });
+        swatch._lbBound = true;
+      }
+    });
+
+    // 7. Ảnh chân dung kiến trúc sư (about.html)
+    const portrait = document.querySelector('.about-portrait, [data-editable-image="about.portrait"]');
+    if (portrait && !portrait.querySelector('.lb-portrait-action-bar')) {
+      const bar = document.createElement('div');
+      bar.className = 'lb-portrait-action-bar';
+      bar.innerHTML = `
+        <button type="button" class="lb-card-btn lb-card-btn--img" title="Thay đổi ảnh chân dung kiến trúc sư (Tải từ máy hoặc chọn ảnh)">
+          <span>📷</span><span>Đổi ảnh chân dung / Tải ảnh lên</span>
+        </button>
+      `;
+      const btn = bar.querySelector('button');
+      const triggerPortraitChange = (e) => {
+        if (e) {
+          e.preventDefault();
+          e.stopPropagation();
+        }
+        const currBg = portrait.style.backgroundImage || (this.activeContent?.about?.portrait) || '';
+        this.openImagePickerModal({
+          title: 'Ảnh Chân Dung Kiến Trúc Sư Đàm Thanh Liêm',
+          currentImage: currBg,
+          onApply: async (newUrl) => {
+            this.setContentValue('about.portrait', newUrl);
+            portrait.classList.add('has-image');
+            portrait.style.backgroundImage = `url('${newUrl}')`;
+            portrait.style.backgroundSize = 'cover';
+            portrait.style.backgroundPosition = 'center';
+            portrait.style.backgroundRepeat = 'no-repeat';
+
+            this.markDirty();
+            await this.saveChanges();
+            this.showToast('Đã thay đổi ảnh chân dung thành công!', 'success');
+          }
+        });
+      };
+
+      btn.addEventListener('click', triggerPortraitChange);
+      portrait.appendChild(bar);
+
+      if (!portrait._lbBound) {
+        portrait.addEventListener('click', (e) => {
+          if (this.isEditMode) {
+            if (e.target.closest('button, .lb-portrait-action-bar, [contenteditable="true"]')) return;
+            triggerPortraitChange(e);
+          }
+        });
+        portrait._lbBound = true;
+      }
+    }
+
+    // 8. Tất cả các ảnh có data-editable-image khác
     const editableImages = document.querySelectorAll('[data-editable-image]');
     editableImages.forEach((el) => {
+      if (el.classList.contains('about-portrait')) return;
       const parent = el.parentElement || el;
-      if (parent.querySelector('.lb-img-change-badge')) return;
+      if (parent.querySelector('.lb-editable-img-bar')) return;
 
       const contentKey = el.getAttribute('data-editable-image');
-      const badge = document.createElement('button');
-      badge.type = 'button';
-      badge.className = 'lb-img-change-badge';
-      badge.innerHTML = `<span>📷</span><span>Thay ảnh</span>`;
-      badge.addEventListener('click', (e) => {
-        e.stopPropagation();
-        e.preventDefault();
+      const bar = document.createElement('div');
+      bar.className = 'lb-editable-img-bar';
+      bar.innerHTML = `
+        <button type="button" class="lb-card-btn lb-card-btn--img">
+          <span>📷</span><span>Đổi ảnh</span>
+        </button>
+      `;
+      const btn = bar.querySelector('button');
+      const triggerImgChange = (e) => {
+        if (e) {
+          e.preventDefault();
+          e.stopPropagation();
+        }
         this.openImagePickerModal({
-          title: 'Ảnh hiển thị',
-          currentImage: el.style.backgroundImage || '',
+          title: 'Hình ảnh hiển thị',
+          currentImage: el.style.backgroundImage || el.src || '',
           onApply: async (newUrl) => {
             this.setContentValue(contentKey, newUrl);
             if (el.tagName === 'IMG') {
@@ -666,19 +861,29 @@ class VisualEditor {
             this.showToast('Đã thay đổi hình ảnh thành công!', 'success');
           }
         });
-      });
-      parent.appendChild(badge);
+      };
+      btn.addEventListener('click', triggerImgChange);
+      parent.appendChild(bar);
+
+      if (!el._lbBound) {
+        el.addEventListener('click', (e) => {
+          if (this.isEditMode) {
+            if (e.target.closest('button, .lb-editable-img-bar, [contenteditable="true"]')) return;
+            triggerImgChange(e);
+          }
+        });
+        el._lbBound = true;
+      }
     });
   }
 
   /**
-   * Xóa huy hiệu và thanh công cụ ảnh khi tắt chế độ chỉnh sửa
+   * Xóa tất cả thanh công cụ ảnh khi tắt chế độ chỉnh sửa
    */
   detachImageEditHandlers() {
-    document.querySelectorAll('.lb-card-action-bar').forEach(b => b.remove());
-    document.querySelectorAll('.lb-img-change-badge').forEach(b => b.remove());
-    document.querySelectorAll('.lb-gallery-action-bar').forEach(b => b.remove());
-    document.querySelectorAll('.lb-drawing-action-bar').forEach(b => b.remove());
+    document.querySelectorAll(
+      '.lb-card-action-bar, .lb-img-change-badge, .lb-gallery-action-bar, .lb-drawing-action-bar, .lb-hero-action-bar, .lb-portrait-action-bar, .lb-next-action-bar, .lb-swatch-action-bar, .lb-editable-img-bar'
+    ).forEach(b => b.remove());
   }
 
   /**

@@ -644,26 +644,96 @@ body.lb-edit-mode .lb-card-action-bar {
   background-color: #151412;
 }
 
-/* ── 10. Drawing & Gallery Action Bars (Project Detail) ────── */
+/* ── 10. Universal Visual Elements & Action Bars (Project Detail & Site) ────── */
 body.lb-edit-mode .pdetail-drawing-canvas-wrap,
-body.lb-edit-mode .pdetail-gallery-item {
+body.lb-edit-mode .pdetail-gallery-item,
+body.lb-edit-mode .pdetail-hero,
+body.lb-edit-mode .pdetail-next-section,
+body.lb-edit-mode .about-portrait,
+body.lb-edit-mode .project-card,
+body.lb-edit-mode .featured-card,
+body.lb-edit-mode [data-editable-image] {
   position: relative !important;
+  transition: outline 0.15s ease;
+}
+
+body.lb-edit-mode .pdetail-drawing-canvas-wrap:hover,
+body.lb-edit-mode .pdetail-gallery-item:hover,
+body.lb-edit-mode .about-portrait:hover,
+body.lb-edit-mode .project-card:hover,
+body.lb-edit-mode .featured-card:hover,
+body.lb-edit-mode [data-editable-image]:hover {
+  outline: 2px dashed #A8865C !important;
+  outline-offset: -2px;
+}
+
+body.lb-edit-mode .pdetail-drawing-canvas-wrap,
+body.lb-edit-mode .pdetail-gallery-item,
+body.lb-edit-mode .about-portrait,
+body.lb-edit-mode .pdetail-material-swatch {
+  cursor: pointer !important;
+}
+
+body.lb-edit-mode .pdetail-material-swatch:hover {
+  outline: 2px solid #A8865C;
+  outline-offset: 2px;
+  transform: scale(1.1);
+  transition: all 0.2s ease;
 }
 
 body.lb-edit-mode .lb-drawing-action-bar,
-body.lb-edit-mode .lb-gallery-action-bar {
+body.lb-edit-mode .lb-gallery-action-bar,
+body.lb-edit-mode .lb-hero-action-bar,
+body.lb-edit-mode .lb-portrait-action-bar,
+body.lb-edit-mode .lb-next-action-bar,
+body.lb-edit-mode .lb-editable-img-bar {
   position: absolute;
-  top: 14px;
-  right: 14px;
-  z-index: 1000;
+  z-index: 1000 !important;
   display: flex;
   align-items: center;
   gap: 8px;
   pointer-events: auto !important;
 }
 
+body.lb-edit-mode .lb-drawing-action-bar,
+body.lb-edit-mode .lb-gallery-action-bar,
+body.lb-edit-mode .lb-editable-img-bar {
+  top: 14px;
+  right: 14px;
+}
+
+body.lb-edit-mode .lb-hero-action-bar {
+  top: 96px;
+  right: 28px;
+}
+
+body.lb-edit-mode .lb-portrait-action-bar {
+  top: 20px;
+  right: 20px;
+}
+
+body.lb-edit-mode .lb-next-action-bar {
+  top: 24px;
+  right: 28px;
+}
+
 body.lb-edit-mode .pdetail-gallery-item:hover .pdetail-gallery-thumb {
   transform: none !important;
+}
+
+@media (max-width: 768px) {
+  body.lb-edit-mode .lb-hero-action-bar {
+    top: 76px;
+    right: 16px;
+  }
+  body.lb-edit-mode .lb-portrait-action-bar {
+    top: 12px;
+    right: 12px;
+  }
+  body.lb-edit-mode .lb-next-action-bar {
+    top: 16px;
+    right: 16px;
+  }
 }
 
 /* ── 11. Modal Tabs & Media Management ────────────────────── */

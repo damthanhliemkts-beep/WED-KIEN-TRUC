@@ -132,6 +132,8 @@ export function bindContentToDom() {
         el.style.backgroundImage = val.startsWith('url') ? val : `url('${val}')`;
         el.style.backgroundSize = 'cover';
         el.style.backgroundPosition = 'center';
+        el.style.backgroundRepeat = 'no-repeat';
+        el.classList.add('has-image');
       }
     }
   });

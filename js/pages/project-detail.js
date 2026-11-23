@@ -577,9 +577,16 @@ function initLightbox(container, project) {
   drawingTriggers.forEach((trig) => {
     trig.addEventListener('click', (e) => {
       if (document.body.classList.contains('lb-edit-mode')) {
-        if (e.target.closest('.lb-card-action-bar, .lb-img-change-badge, .lb-drawing-action-bar, [contenteditable="true"]')) {
+        if (e.target.closest('[contenteditable="true"]')) {
           return;
         }
+        const actionBtn = trig.querySelector('.lb-drawing-action-bar button') || trig.closest('.pdetail-drawing-card')?.querySelector('.lb-drawing-action-bar button');
+        if (actionBtn && e.target !== actionBtn && !actionBtn.contains(e.target)) {
+          e.preventDefault();
+          e.stopPropagation();
+          actionBtn.click();
+        }
+        return;
       }
       const idx = parseInt(trig.getAttribute('data-drawing-idx') || '0', 10);
       const pool = (project.drawings || []).map(d => ({
@@ -597,9 +604,16 @@ function initLightbox(container, project) {
   galleryTriggers.forEach((trig) => {
     trig.addEventListener('click', (e) => {
       if (document.body.classList.contains('lb-edit-mode')) {
-        if (e.target.closest('.lb-card-action-bar, .lb-img-change-badge, .lb-gallery-action-bar, [contenteditable="true"]')) {
+        if (e.target.closest('[contenteditable="true"]')) {
           return;
         }
+        const actionBtn = trig.querySelector('.lb-gallery-action-bar button');
+        if (actionBtn && e.target !== actionBtn && !actionBtn.contains(e.target)) {
+          e.preventDefault();
+          e.stopPropagation();
+          actionBtn.click();
+        }
+        return;
       }
       const idx = parseInt(trig.getAttribute('data-gallery-idx') || '0', 10);
       const pool = (project.gallery || []).map(g => ({

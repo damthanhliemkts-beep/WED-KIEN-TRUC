@@ -35,6 +35,17 @@
   box-shadow: 0 12px 36px rgba(0, 0, 0, 0.06);
 }
 
+.about-portrait.has-image .about-portrait__watermark,
+.about-portrait.has-image .about-portrait__notice-box {
+  display: none !important;
+}
+
+.about-portrait.has-image {
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+
 /* Minimal architectural corner marks */
 .about-portrait::before {
   content: '';
