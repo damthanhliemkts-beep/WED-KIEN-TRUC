@@ -437,88 +437,413 @@ class VisualEditor {
   /**
    * Gắn huy hiệu "Thay ảnh" trên các khối ảnh
    */
+  /**
+   * Gắn thanh công cụ thay ảnh và sửa đồ án trực tiếp trên tất cả các khối ảnh & thẻ dự án
+   */
   attachImageEditHandlers() {
-    const imageElements = document.querySelectorAll('[data-editable-image], [data-project-image], [data-project-gallery-image]');
-    imageElements.forEach((el) => {
-      if (el.querySelector('.lb-img-change-badge')) return;
+    // 1. Gắn action bar [📷 Đổi ảnh] [✏️ Sửa] trên tất cả thẻ dự án (trên projects.html và index.html)
+    const cardElements = document.querySelectorAll('.project-card, .featured-card, [data-project-card-image]');
+    cardElements.forEach((card) => {
+      const cardContainer = card.closest('.project-card') || card.closest('.featured-card') || card;
+      if (cardContainer.querySelector('.lb-card-action-bar')) return;
 
+      const slug = cardContainer.getAttribute('data-slug') ||
+                   cardContainer.getAttribute('data-project-card-slug') ||
+                   card.getAttribute('data-project-card-image');
+
+      const project = this.activeProjects.find(p => p.slug === slug);
+      if (!project) return;
+
+      const bar = document.createElement('div');
+      bar.className = 'lb-card-action-bar';
+      bar.innerHTML = `
+        <button type="button" class="lb-card-btn lb-card-btn--img" title="Thay đổi hình ảnh đại diện của ${project.title}">
+          <span>📷</span><span>Đổi ảnh</span>
+        </button>
+        <button type="button" class="lb-card-btn lb-card-btn--edit" title="Sửa chi tiết thông số đồ án ${project.title}">
+          <span>✏️</span><span>Sửa</span>
+        </button>
+      `;
+
+      const btnImg = bar.querySelector('.lb-card-btn--img');
+      const btnEdit = bar.querySelector('.lb-card-btn--edit');
+
+      btnImg.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        this.openImagePickerModal({
+          title: project.title,
+          currentImage: project.coverGradient,
+          onApply: async (newUrl) => {
+            project.coverGradient = newUrl.startsWith('url') ? newUrl : `url('${newUrl}')`;
+
+            const bgEl = cardContainer.querySelector('.project-card__bg, .featured-card__bg') || cardContainer;
+            if (bgEl) {
+              bgEl.style.backgroundImage = `url('${newUrl}')`;
+              bgEl.style.backgroundSize = 'cover';
+              bgEl.style.backgroundPosition = 'center';
+              bgEl.style.backgroundRepeat = 'no-repeat';
+            }
+
+            this.markDirty();
+            await this.saveChanges();
+            this.showToast(`Đã thay đổi ảnh bìa cho đồ án "${project.title}" thành công!`, 'success');
+          }
+        });
+      });
+
+      btnEdit.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        this.openEditProjectModal(project);
+      });
+
+      cardContainer.appendChild(bar);
+
+      // Ngăn chặn điều hướng ngoài ý muốn khi nhấp vào các nút chỉnh sửa trên thẻ
+      const links = cardContainer.querySelectorAll('a');
+      links.forEach((link) => {
+        if (!link._lbNavBlocked) {
+          link.addEventListener('click', (e) => {
+            if (this.isEditMode) {
+              if (e.target.closest('.lb-card-action-bar') || e.target.closest('[contenteditable="true"]')) {
+                e.preventDefault();
+              }
+            }
+          });
+          link._lbNavBlocked = true;
+        }
+      });
+    });
+
+    // 2. Gắn badge "Đổi ảnh bìa chính" trên trang chi tiết (project.html hero)
+    const heroBg = document.getElementById('detail-hero-bg') || document.querySelector('[data-project-image="coverGradient"]');
+    if (heroBg) {
+      const heroParent = heroBg.parentElement || heroBg;
+      if (!heroParent.querySelector('.lb-img-change-badge')) {
+        const badge = document.createElement('button');
+        badge.type = 'button';
+        badge.className = 'lb-img-change-badge';
+        badge.innerHTML = `<span>📷</span><span>Đổi ảnh bìa chính</span>`;
+        badge.addEventListener('click', (e) => {
+          e.stopPropagation();
+          e.preventDefault();
+          this.detectCurrentProject();
+          if (!this.currentProject) return;
+
+          this.openImagePickerModal({
+            title: `Ảnh bìa ${this.currentProject.title}`,
+            currentImage: this.currentProject.coverGradient,
+            onApply: async (newUrl) => {
+              this.currentProject.coverGradient = newUrl.startsWith('url') ? newUrl : `url('${newUrl}')`;
+              heroBg.style.backgroundImage = `url('${newUrl}')`;
+              heroBg.style.backgroundSize = 'cover';
+              heroBg.style.backgroundPosition = 'center';
+
+              this.markDirty();
+              await this.saveChanges();
+              this.showToast('Đã thay đổi ảnh bìa chính thành công!', 'success');
+            }
+          });
+        });
+        heroParent.appendChild(badge);
+      }
+    }
+
+    // 3. Gắn badge trên các ảnh Gallery (project.html)
+    const galleryItems = document.querySelectorAll('[data-project-gallery-image]');
+    galleryItems.forEach((el) => {
+      const parent = el.parentElement || el;
+      if (parent.querySelector('.lb-img-change-badge')) return;
+
+      const idx = parseInt(el.getAttribute('data-project-gallery-image'), 10);
       const badge = document.createElement('button');
       badge.type = 'button';
       badge.className = 'lb-img-change-badge';
       badge.innerHTML = `<span>📷</span><span>Thay ảnh</span>`;
       badge.addEventListener('click', (e) => {
         e.stopPropagation();
-        this.triggerImageUpload(el);
+        e.preventDefault();
+        this.detectCurrentProject();
+        if (!this.currentProject || !this.currentProject.gallery || !this.currentProject.gallery[idx]) return;
+
+        const photo = this.currentProject.gallery[idx];
+        this.openImagePickerModal({
+          title: photo.title || `Ảnh thư viện #${idx + 1}`,
+          currentImage: photo.gradient,
+          onApply: async (newUrl) => {
+            photo.gradient = newUrl.startsWith('url') ? newUrl : `url('${newUrl}')`;
+            el.style.backgroundImage = `url('${newUrl}')`;
+            el.style.backgroundSize = 'cover';
+            el.style.backgroundPosition = 'center';
+
+            this.markDirty();
+            await this.saveChanges();
+            this.showToast(`Đã thay đổi ảnh #${idx + 1} thành công!`, 'success');
+          }
+        });
       });
-      el.appendChild(badge);
+      parent.appendChild(badge);
+    });
+
+    // 4. Gắn badge trên các ảnh tĩnh (vd: about.portrait)
+    const editableImages = document.querySelectorAll('[data-editable-image]');
+    editableImages.forEach((el) => {
+      const parent = el.parentElement || el;
+      if (parent.querySelector('.lb-img-change-badge')) return;
+
+      const contentKey = el.getAttribute('data-editable-image');
+      const badge = document.createElement('button');
+      badge.type = 'button';
+      badge.className = 'lb-img-change-badge';
+      badge.innerHTML = `<span>📷</span><span>Thay ảnh</span>`;
+      badge.addEventListener('click', (e) => {
+        e.stopPropagation();
+        e.preventDefault();
+        this.openImagePickerModal({
+          title: 'Ảnh hiển thị',
+          currentImage: el.style.backgroundImage || '',
+          onApply: async (newUrl) => {
+            this.setContentValue(contentKey, newUrl);
+            if (el.tagName === 'IMG') {
+              el.src = newUrl;
+            } else {
+              el.style.backgroundImage = `url('${newUrl}')`;
+              el.style.backgroundSize = 'cover';
+              el.style.backgroundPosition = 'center';
+            }
+            this.markDirty();
+            await this.saveChanges();
+            this.showToast('Đã thay đổi hình ảnh thành công!', 'success');
+          }
+        });
+      });
+      parent.appendChild(badge);
     });
   }
 
   /**
-   * Xóa huy hiệu "Thay ảnh" khi tắt chế độ chỉnh sửa
+   * Xóa huy hiệu và thanh công cụ ảnh khi tắt chế độ chỉnh sửa
    */
   detachImageEditHandlers() {
+    document.querySelectorAll('.lb-card-action-bar').forEach(b => b.remove());
     document.querySelectorAll('.lb-img-change-badge').forEach(b => b.remove());
   }
 
   /**
-   * Kích hoạt chọn file ảnh từ máy tính
+   * Mở Modal Chọn / Tải Hình Ảnh Đa Năng (File máy tính, URL mạng, Thư viện ảnh mẫu)
    */
-  triggerImageUpload(targetElement) {
-    const fileInput = document.createElement('input');
-    fileInput.type = 'file';
-    fileInput.accept = 'image/jpeg,image/png,image/webp';
-    fileInput.style.display = 'none';
+  openImagePickerModal({ title, currentImage, onApply }) {
+    const modalTitle = document.getElementById('lb-modal-title');
+    const modalContent = document.getElementById('lb-modal-content');
+    const modalFooter = document.getElementById('lb-modal-footer');
+
+    modalTitle.innerHTML = `<span>📷</span><span>Thay Đổi Hình Ảnh: ${title}</span>`;
+
+    let selectedImageUrl = currentImage || '';
+    if (selectedImageUrl.startsWith("url('") || selectedImageUrl.startsWith('url("')) {
+      selectedImageUrl = selectedImageUrl.replace(/^url\(['"]?/, '').replace(/['"]?\)$/, '');
+    }
+
+    const presets = [
+      {
+        title: 'Villa Rừng Thông Minimalist',
+        url: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80'
+      },
+      {
+        title: 'Pavilion Đương Đại Ven Hồ',
+        url: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1600&q=80'
+      },
+      {
+        title: 'Biệt Thự Đồi Đá Ven Biển',
+        url: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=1600&q=80'
+      },
+      {
+        title: 'Nội Thất Gỗ Mộc Tối Giản',
+        url: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1600&q=80'
+      },
+      {
+        title: 'Studio Kiến Trúc Sáng Tạo',
+        url: 'https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1600&q=80'
+      },
+      {
+        title: 'Bê Tông Mỹ Thuật & Vườn Zen',
+        url: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=80'
+      }
+    ];
+
+    modalContent.innerHTML = `
+      <div class="lb-image-picker">
+        <!-- Tab Navigation -->
+        <div class="lb-picker-tabs">
+          <button type="button" class="lb-picker-tab-btn is-active" data-tab="upload">📁 Tải ảnh từ máy tính</button>
+          <button type="button" class="lb-picker-tab-btn" data-tab="url">🔗 Nhập Link ảnh Web</button>
+          <button type="button" class="lb-picker-tab-btn" data-tab="presets">🏛️ Ảnh mẫu kiến trúc</button>
+        </div>
+
+        <!-- Tab 1: Upload -->
+        <div class="lb-picker-pane is-active" id="pane-upload">
+          <div class="lb-upload-box" id="picker-upload-box">
+            <div style="font-size: 28px; margin-bottom: 8px;">📷</div>
+            <p style="margin: 0; font-size: 14px; color: #F5F3EF; font-weight: 500;">Bấm vào đây để chọn ảnh từ máy tính của bạn</p>
+            <p style="margin: 4px 0 0; font-size: 12px; color: #9E9A93;">Hỗ trợ ảnh định dạng JPG, PNG, WebP (Tối đa 10MB)</p>
+            <input type="file" id="picker-file-input" accept="image/jpeg,image/png,image/webp" style="display: none;">
+          </div>
+        </div>
+
+        <!-- Tab 2: URL -->
+        <div class="lb-picker-pane" id="pane-url" style="display: none;">
+          <div class="lb-form-group">
+            <label class="lb-form-label">Dán đường dẫn ảnh trực tuyến (Image URL)</label>
+            <div style="display: flex; gap: 8px;">
+              <input type="url" class="lb-form-input" id="picker-url-input" placeholder="https://images.unsplash.com/photo-..." style="flex: 1;">
+              <button type="button" class="lb-btn" id="picker-preview-url-btn">Xem trước</button>
+            </div>
+            <span style="font-size: 11px; color: #9E9A93; margin-top: 4px; display: block;">Có thể sử dụng ảnh từ Unsplash, Pinterest hoặc bất kỳ website nào.</span>
+          </div>
+        </div>
+
+        <!-- Tab 3: Presets -->
+        <div class="lb-picker-pane" id="pane-presets" style="display: none;">
+          <div class="lb-presets-grid">
+            ${presets.map((p) => `
+              <div class="lb-preset-item" data-url="${p.url}">
+                <div class="lb-preset-thumb" style="background-image: url('${p.url}');"></div>
+                <div class="lb-preset-title">${p.title}</div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+
+        <!-- Live Preview Section -->
+        <div class="lb-picker-preview-section">
+          <div class="lb-picker-preview-label">Xem trước ảnh hiển thị:</div>
+          <div class="lb-picker-preview-img" id="picker-preview-display" style="${selectedImageUrl ? `background-image: url('${selectedImageUrl}');` : 'background: #2A2825;'}">
+            ${!selectedImageUrl ? '<span style="color: #6B6762; font-size: 12px;">Chưa chọn ảnh</span>' : ''}
+          </div>
+        </div>
+      </div>
+    `;
+
+    modalFooter.innerHTML = `
+      <button type="button" class="lb-btn" id="picker-cancel-btn">Hủy bỏ</button>
+      <button type="button" class="lb-btn lb-btn--primary" id="picker-apply-btn">✓ Áp dụng hình ảnh này</button>
+    `;
+
+    // Tab switching
+    const tabBtns = modalContent.querySelectorAll('.lb-picker-tab-btn');
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        tabBtns.forEach(b => b.classList.remove('is-active'));
+        btn.classList.add('is-active');
+        const tab = btn.getAttribute('data-tab');
+        modalContent.querySelectorAll('.lb-picker-pane').forEach(p => p.style.display = 'none');
+        document.getElementById(`pane-${tab}`).style.display = 'block';
+      });
+    });
+
+    const previewDisplay = document.getElementById('picker-preview-display');
+    const updatePreview = (url) => {
+      selectedImageUrl = url;
+      previewDisplay.innerHTML = '';
+      previewDisplay.style.backgroundImage = `url('${url}')`;
+      previewDisplay.style.backgroundSize = 'cover';
+      previewDisplay.style.backgroundPosition = 'center';
+    };
+
+    // Upload handling
+    const uploadBox = document.getElementById('picker-upload-box');
+    const fileInput = document.getElementById('picker-file-input');
+    uploadBox.addEventListener('click', () => fileInput.click());
 
     fileInput.addEventListener('change', async () => {
       const file = fileInput.files[0];
       if (!file) return;
 
-      // 1. Xem trước ảnh tức thì
       const reader = new FileReader();
-      reader.onload = (e) => {
-        const previewUrl = e.target.result;
-        if (targetElement.tagName === 'IMG') {
-          targetElement.src = previewUrl;
-        } else {
-          targetElement.style.backgroundImage = `url('${previewUrl}')`;
-          targetElement.style.backgroundSize = 'cover';
-          targetElement.style.backgroundPosition = 'center';
-        }
-      };
+      reader.onload = (e) => updatePreview(e.target.result);
       reader.readAsDataURL(file);
 
-      // 2. Gửi ảnh lên server qua API /api/upload-image
       this.showToast('Đang tải ảnh lên máy chủ...', 'info');
       try {
         const uploadedUrl = await this.uploadImageFile(file);
-        if (uploadedUrl) {
-          const contentKey = targetElement.getAttribute('data-editable-image');
-          const projectKey = targetElement.getAttribute('data-project-image');
-          const galleryIdx = targetElement.getAttribute('data-project-gallery-image');
-
-          if (contentKey) {
-            this.setContentValue(contentKey, uploadedUrl);
-          } else if (projectKey && this.currentProject) {
-            this.currentProject[projectKey] = `url('${uploadedUrl}')`;
-          } else if (galleryIdx !== null && this.currentProject && this.currentProject.gallery) {
-            const idx = parseInt(galleryIdx, 10);
-            if (this.currentProject.gallery[idx]) {
-              this.currentProject.gallery[idx].gradient = `url('${uploadedUrl}')`;
-            }
-          }
-
-          this.markDirty();
-          this.showToast('Đã thay ảnh thành công! Bấm "Lưu thay đổi" (Ctrl + S) để lưu vĩnh viễn.', 'success');
-        }
+        updatePreview(uploadedUrl);
+        this.showToast('Đã tải ảnh lên máy chủ thành công!', 'success');
       } catch (err) {
         this.showToast('Lỗi tải ảnh: ' + err.message, 'error');
       }
     });
 
-    document.body.appendChild(fileInput);
-    fileInput.click();
-    fileInput.remove();
+    // URL preview
+    document.getElementById('picker-preview-url-btn').addEventListener('click', () => {
+      const url = document.getElementById('picker-url-input').value.trim();
+      if (!url) {
+        alert('Vui lòng nhập đường dẫn ảnh.');
+        return;
+      }
+      updatePreview(url);
+    });
+
+    // Preset selection
+    modalContent.querySelectorAll('.lb-preset-item').forEach(item => {
+      item.addEventListener('click', () => {
+        modalContent.querySelectorAll('.lb-preset-item').forEach(i => i.classList.remove('is-selected'));
+        item.classList.add('is-selected');
+        const url = item.getAttribute('data-url');
+        updatePreview(url);
+      });
+    });
+
+    // Cancel / Apply
+    document.getElementById('picker-cancel-btn').addEventListener('click', () => this.closeModal());
+    document.getElementById('picker-apply-btn').addEventListener('click', async () => {
+      if (!selectedImageUrl) {
+        alert('Vui lòng chọn hoặc tải lên một hình ảnh.');
+        return;
+      }
+      this.closeModal();
+      await onApply(selectedImageUrl);
+    });
+
+    this.openModal();
+  }
+
+  /**
+   * Kích hoạt chọn file ảnh từ máy tính (Fallback)
+   */
+  triggerImageUpload(targetElement) {
+    this.openImagePickerModal({
+      title: 'Khối hình ảnh',
+      currentImage: targetElement.style.backgroundImage || '',
+      onApply: async (newUrl) => {
+        const contentKey = targetElement.getAttribute('data-editable-image');
+        const projectKey = targetElement.getAttribute('data-project-image');
+        const galleryIdx = targetElement.getAttribute('data-project-gallery-image');
+
+        if (targetElement.tagName === 'IMG') {
+          targetElement.src = newUrl;
+        } else {
+          targetElement.style.backgroundImage = `url('${newUrl}')`;
+          targetElement.style.backgroundSize = 'cover';
+          targetElement.style.backgroundPosition = 'center';
+        }
+
+        if (contentKey) {
+          this.setContentValue(contentKey, newUrl);
+        } else if (projectKey && this.currentProject) {
+          this.currentProject[projectKey] = `url('${newUrl}')`;
+        } else if (galleryIdx !== null && this.currentProject && this.currentProject.gallery) {
+          const idx = parseInt(galleryIdx, 10);
+          if (this.currentProject.gallery[idx]) {
+            this.currentProject.gallery[idx].gradient = `url('${newUrl}')`;
+          }
+        }
+
+        this.markDirty();
+        await this.saveChanges();
+        this.showToast('Đã thay ảnh thành công!', 'success');
+      }
+    });
   }
 
   /**
@@ -654,12 +979,19 @@ class VisualEditor {
    */
   openEditCurrentProjectModal() {
     this.detectCurrentProject();
-    if (!this.currentProject) {
+    this.openEditProjectModal(this.currentProject);
+  }
+
+  /**
+   * Mở Modal Chỉnh Sửa Bất Kỳ Đồ Án Nào
+   */
+  openEditProjectModal(targetProject = null) {
+    const p = targetProject || this.currentProject;
+    if (!p) {
       this.showToast('Không xác định được công trình để chỉnh sửa.', 'error');
       return;
     }
 
-    const p = this.currentProject;
     const title = document.getElementById('lb-modal-title');
     const content = document.getElementById('lb-modal-content');
     const footer = document.getElementById('lb-modal-footer');
@@ -746,7 +1078,10 @@ class VisualEditor {
 
         <!-- Khung thay đổi ảnh bìa -->
         <div class="lb-form-group lb-form-grid--full">
-          <label class="lb-form-label">Ảnh đại diện công trình (Cover Photo)</label>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+            <label class="lb-form-label" style="margin: 0;">Ảnh đại diện công trình (Cover Photo)</label>
+            <button type="button" class="lb-btn" id="ep-open-picker-btn" style="padding: 4px 10px; font-size: 11px;">📷 Mở thư viện chọn ảnh</button>
+          </div>
           <div class="lb-upload-box" id="ep-upload-box">
             <p style="margin: 0; font-size: 13px; color: #A8865C;">📷 Bấm vào đây để chọn ảnh mới từ máy tính</p>
             <input type="file" id="ep-file-input" accept="image/jpeg,image/png,image/webp" style="display: none;">
@@ -766,25 +1101,42 @@ class VisualEditor {
     const fileInput = document.getElementById('ep-file-input');
     const preview = document.getElementById('ep-upload-preview');
 
+    const updateCover = (url) => {
+      newCoverUrl = url;
+      preview.style.display = 'block';
+      preview.style.backgroundImage = `url('${url}')`;
+      preview.style.backgroundSize = 'cover';
+      preview.style.backgroundPosition = 'center';
+    };
+
     uploadBox.addEventListener('click', () => fileInput.click());
     fileInput.addEventListener('change', async () => {
       const file = fileInput.files[0];
       if (!file) return;
 
       const r = new FileReader();
-      r.onload = (e) => {
-        preview.style.display = 'block';
-        preview.style.backgroundImage = `url('${e.target.result}')`;
-      };
+      r.onload = (e) => updateCover(e.target.result);
       r.readAsDataURL(file);
 
       this.showToast('Đang tải ảnh đại diện lên...', 'info');
       try {
-        newCoverUrl = await this.uploadImageFile(file);
+        const uploaded = await this.uploadImageFile(file);
+        updateCover(uploaded);
         this.showToast('Ảnh bìa đã sẵn sàng!', 'success');
       } catch (err) {
         this.showToast('Lỗi tải ảnh: ' + err.message, 'error');
       }
+    });
+
+    document.getElementById('ep-open-picker-btn').addEventListener('click', () => {
+      this.openImagePickerModal({
+        title: `Ảnh bìa ${p.title}`,
+        currentImage: newCoverUrl || p.coverGradient,
+        onApply: async (pickedUrl) => {
+          updateCover(pickedUrl);
+          this.openEditProjectModal(p);
+        }
+      });
     });
 
     document.getElementById('lb-modal-cancel-btn').addEventListener('click', () => this.closeModal());
@@ -806,14 +1158,26 @@ class VisualEditor {
       p.lightingStrategy = document.getElementById('ep-lighting').value.trim();
 
       if (newCoverUrl) {
-        p.coverGradient = `url('${newCoverUrl}')`;
+        p.coverGradient = newCoverUrl.startsWith('url') ? newCoverUrl : `url('${newCoverUrl}')`;
       }
 
       this.markDirty();
       this.closeModal();
       await this.saveChanges();
-      this.showToast('Đã lưu đồ án thành công! Đang làm mới trang...', 'success');
-      setTimeout(() => window.location.reload(), 800);
+      this.showToast('Đã lưu đồ án thành công!', 'success');
+
+      // Cập nhật card trên trang nếu có
+      const cardBg = document.querySelector(`[data-project-card-slug="${p.slug}"] .project-card__bg, [data-project-card-image="${p.slug}"]`);
+      if (cardBg && newCoverUrl) {
+        cardBg.style.backgroundImage = `url('${newCoverUrl}')`;
+        cardBg.style.backgroundSize = 'cover';
+        cardBg.style.backgroundPosition = 'center';
+      }
+
+      const isCurrentDetail = window.location.pathname.includes('project') && (!this.currentProjectSlug || this.currentProjectSlug === p.slug);
+      if (isCurrentDetail) {
+        setTimeout(() => window.location.reload(), 800);
+      }
     });
 
     this.openModal();
@@ -1063,6 +1427,8 @@ class VisualEditor {
           <div class="lb-project-item__actions">
             ${index > 0 ? `<button type="button" class="lb-btn" data-action="up" data-index="${index}" title="Chuyển lên">↑</button>` : ''}
             ${index < this.activeProjects.length - 1 ? `<button type="button" class="lb-btn" data-action="down" data-index="${index}" title="Chuyển xuống">↓</button>` : ''}
+            <button type="button" class="lb-btn" data-action="change-img" data-index="${index}" title="Đổi ảnh đại diện">📷 Ảnh</button>
+            <button type="button" class="lb-btn" data-action="edit" data-index="${index}" title="Sửa thông số đồ án">✏️ Sửa</button>
             <a href="project.html?slug=${p.slug}" class="lb-btn" title="Xem chi tiết đồ án">Xem</a>
             <button type="button" class="lb-btn lb-btn--danger" data-action="delete" data-index="${index}" title="Xóa đồ án">Xóa</button>
           </div>
@@ -1076,6 +1442,8 @@ class VisualEditor {
       btn.addEventListener('click', (e) => {
         const action = btn.getAttribute('data-action');
         const idx = parseInt(btn.getAttribute('data-index'), 10);
+        const target = this.activeProjects[idx];
+        if (!target) return;
 
         if (action === 'up' && idx > 0) {
           const temp = this.activeProjects[idx];
@@ -1089,8 +1457,21 @@ class VisualEditor {
           this.activeProjects[idx + 1] = temp;
           this.markDirty();
           this.renderProjectsList(container);
+        } else if (action === 'change-img') {
+          this.openImagePickerModal({
+            title: target.title,
+            currentImage: target.coverGradient,
+            onApply: async (newUrl) => {
+              target.coverGradient = newUrl.startsWith('url') ? newUrl : `url('${newUrl}')`;
+              this.markDirty();
+              await this.saveChanges();
+              this.openManageProjectsModal();
+              this.showToast(`Đã thay đổi ảnh cho đồ án "${target.title}" thành công!`, 'success');
+            }
+          });
+        } else if (action === 'edit') {
+          this.openEditProjectModal(target);
         } else if (action === 'delete') {
-          const target = this.activeProjects[idx];
           if (confirm(`Bạn có chắc chắn muốn xóa đồ án "${target.title}"?`)) {
             this.activeProjects.splice(idx, 1);
             this.markDirty();

@@ -5,6 +5,8 @@
 
 'use strict';
 
+import { projects } from './data.js';
+
 /**
  * Default in-memory content fallback
  */
@@ -115,6 +117,39 @@ export function bindContentToDom() {
       } else {
         el.textContent = val;
       }
+    }
+  });
+
+  // Ánh xạ ảnh tĩnh (vd: chân dung kiến trúc sư)
+  const imgElements = document.querySelectorAll('[data-editable-image]');
+  imgElements.forEach((el) => {
+    const key = el.getAttribute('data-editable-image');
+    const val = getContent(key);
+    if (val) {
+      if (el.tagName === 'IMG') {
+        el.src = val;
+      } else {
+        el.style.backgroundImage = val.startsWith('url') ? val : `url('${val}')`;
+        el.style.backgroundSize = 'cover';
+        el.style.backgroundPosition = 'center';
+      }
+    }
+  });
+
+  // Ánh xạ ảnh bìa thẻ dự án
+  const cardImgElements = document.querySelectorAll('[data-project-card-image]');
+  cardImgElements.forEach((el) => {
+    const slug = el.getAttribute('data-project-card-image');
+    const project = projects.find(p => p.slug === slug);
+    if (project && project.coverGradient) {
+      if (project.coverGradient.startsWith('url(')) {
+        el.style.backgroundImage = project.coverGradient;
+      } else {
+        el.style.background = project.coverGradient;
+      }
+      el.style.backgroundSize = 'cover';
+      el.style.backgroundPosition = 'center';
+      el.style.backgroundRepeat = 'no-repeat';
     }
   });
 }

@@ -54,6 +54,7 @@ export function initProjectsPage() {
         data-slug="${project.slug}"
         data-category="${project.category}"
         data-status="${project.status}"
+        data-project-card-slug="${project.slug}"
       >
         <a
           href="project.html?slug=${project.slug}"
@@ -65,9 +66,10 @@ export function initProjectsPage() {
           <!-- Rich Gradient / Architecture Placeholder -->
           <div
             class="project-card__bg"
-            style="background: ${project.coverGradient};"
+            style="background: ${project.coverGradient}; background-size: cover; background-position: center; background-repeat: no-repeat;"
             role="img"
             aria-label="${project.coverAlt}"
+            data-project-card-image="${project.slug}"
           ></div>
 
           <!-- Card Content Overlay -->
@@ -78,15 +80,15 @@ export function initProjectsPage() {
                 <span class="project-card__status-dot project-card__status-dot--${project.status}"></span>
                 ${project.status === 'completed' ? 'Đã hoàn thành' : 'Đang thực hiện'}
               </span>
-              <span class="project-card__year-badge">${project.year}</span>
+              <span class="project-card__year-badge" data-project-key="year">${project.year}</span>
             </div>
 
             <!-- Bottom Information -->
             <div class="project-card__content">
               <span class="project-card__cat">${project.category === 'architecture' ? 'Kiến trúc' : 'Nội thất'}</span>
-              <h2 class="project-card__title">${project.title}</h2>
+              <h2 class="project-card__title" data-project-key="title">${project.title}</h2>
               <p class="project-card__meta">${project.location} · ${project.area}</p>
-              <p class="project-card__desc">${project.shortDesc}</p>
+              <p class="project-card__desc" data-project-key="shortDesc">${project.shortDesc}</p>
               <span class="project-card__arrow">Xem chi tiết công trình &rarr;</span>
             </div>
           </div>
