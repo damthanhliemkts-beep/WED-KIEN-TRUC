@@ -1,0 +1,52 @@
+========================================================================
+   HƯỚNG DẪN MỞ VÀ TIẾP TỤC LÀM VIỆC DỰ ÁN LIVING BLUEPRINT TẠI NHÀ
+========================================================================
+
+Xin chào! Toàn bộ mã nguồn, dữ liệu đồ án, hình ảnh và hệ thống Visual Editor
+đã được đóng gói đầy đủ và sẵn sàng để bạn tiếp tục làm việc ở nhà.
+
+Dự án này sử dụng mã nguồn thuần (Native JavaScript & Node.js), hoàn toàn
+KHÔNG cần cài đặt thêm thư viện nặng nề (không cần npm install).
+
+------------------------------------------------------------------------
+CÁCH 1: KHỞI ĐỘNG BẰNG 1 CÚ NHẤP CHUỘT (NHANH NHẤT)
+------------------------------------------------------------------------
+1. Nhấp đúp chuột vào tệp:
+   👉 KHOI-DONG-WEB.bat
+
+2. Tệp sẽ tự động khởi động máy chủ và mở trình duyệt web tại địa chỉ:
+   👉 http://localhost:3000
+
+* Yêu cầu nhỏ: Máy tính ở nhà chỉ cần cài đặt Node.js (nếu chưa có, tải bản LTS
+  miễn phí tại: https://nodejs.org).
+
+------------------------------------------------------------------------
+CÁCH 2: DÙNG LỆNH TERMINAL / COMMAND PROMPT
+------------------------------------------------------------------------
+1. Mở thư mục dự án trong VS Code hoặc Command Prompt (Terminal).
+2. Chạy lệnh:
+   node server.js
+3. Mở trình duyệt web truy cập:
+   http://localhost:3000
+
+------------------------------------------------------------------------
+CÁCH 3: TẢI HOẶC ĐỒNG BỘ TRỰC TIẾP TỪ GITHUB
+------------------------------------------------------------------------
+Toàn bộ mã nguồn mới nhất đã được lưu trữ trên kho GitHub cá nhân của bạn:
+👉 Link kho: https://github.com/damthanhliemkts-beep/WED-KIEN-TRUC.git
+
+Lệnh clone về máy tính ở nhà:
+git clone https://github.com/damthanhliemkts-beep/WED-KIEN-TRUC.git
+
+------------------------------------------------------------------------
+CÁC TÍNH NĂNG CHÍNH ĐÃ ĐƯỢC TÍCH HỢP TRÊN TRANG WEB:
+------------------------------------------------------------------------
+- Phím tắt bật/tắt chế độ sửa: Nhấn [Ctrl + E] hoặc bấm nút "Chỉnh sửa" ở góc dưới.
+- Phím tắt lưu thay đổi: Nhấn [Ctrl + S] hoặc bấm nút "Lưu thay đổi".
+- Đổi tên & Logo web: Bấm nút "🏷️ Tên & Logo Web" trên thanh Dock.
+- Đổi hình ảnh/bản vẽ: Nhấp trực tiếp vào bất kỳ bức ảnh, bản vẽ hay thẻ đồ án nào
+  trên web để tải ảnh mới từ máy tính lên.
+- Quản lý & thêm đồ án: Dùng 2 nút "📁 Quản lý đồ án" và "+ Thêm đồ án".
+
+Chúc bạn làm việc thuận lợi và tiếp tục phát triển trang web thật ưng ý!
+========================================================================
