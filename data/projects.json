@@ -7,7 +7,7 @@
     "location": "Đà Lạt, Lâm Đồng",
     "status": "completed",
     "statusLabel": "Đã hoàn thành",
-    "coverGradient": "url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80')",
+    "coverGradient": "url('/assets/images/uploads/Gemini_Generated_Image_1bfaek1bfaek1bfa_1795418113948.png')",
     "coverAlt": "Phối cảnh ngoại thất Villa Lá Phong ẩn mình giữa rừng thông Đà Lạt — Minh họa ý niệm",
     "area": "420 m²",
     "type": "Biệt thự tư nhân",
@@ -63,7 +63,7 @@
         "id": "gal-vlp-1",
         "title": "Phối cảnh góc tiếp cận xuyên rừng thông",
         "aspect": "wide",
-        "gradient": "linear-gradient(150deg, #3C4A32 0%, #687A56 50%, #8FA678 100%)",
+        "gradient": "url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1600&q=80')",
         "caption": "Lối tiếp cận được giấu kín sau rặng thông cổ thụ, mở dần tầm nhìn khi bước qua chiếc cầu gỗ mộc.",
         "tag": "Ngoại thất",
         "alt": "Lối vào công trình xuyên qua rừng thông nguyên sinh"
@@ -72,7 +72,7 @@
         "id": "gal-vlp-2",
         "title": "Phòng khách lớn ngập tràn ánh sáng cao nguyên",
         "aspect": "wide",
-        "gradient": "linear-gradient(135deg, #B8A888 0%, #8C7858 50%, #5E4E36 100%)",
+        "gradient": "url('https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=1600&q=80')",
         "caption": "Không gian phòng khách trần cao 4.8m với vách kính panoramic đón trọn thung lũng sương sớm.",
         "tag": "Nội thất",
         "alt": "Phòng khách trần cao với vách kính lớn nhìn ra rừng thông"

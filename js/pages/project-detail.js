@@ -254,7 +254,7 @@ export function initProjectDetailPage() {
                   data-cursor-label="PHÓNG TO"
                   title="Nhấn để phóng to bản vẽ"
                 >
-                  ${drw.svg}
+                  ${drw.svg && drw.svg.trim().startsWith('<svg') ? drw.svg : `<img src="${(drw.svg || '').replace(/^url\(['"]?/, '').replace(/['"]?\)$/, '')}" alt="${drw.title}" class="drawing-img-canvas" style="max-width: 100%; max-height: 520px; object-fit: contain; margin: 0 auto; display: block; background: #FAF8F5; border-radius: 4px;">`}
                 </div>
 
                 <div class="pdetail-drawing-meta-bar">
@@ -479,11 +479,22 @@ function initLightbox(container, project) {
     const item = currentPool[currentIndex];
 
     if (item.type === 'drawing') {
-      mediaContainer.innerHTML = item.svg;
+      const isSvg = item.svg && item.svg.trim().startsWith('<svg');
+      if (isSvg) {
+        mediaContainer.innerHTML = item.svg;
+      } else {
+        const cleanUrl = (item.svg || '').replace(/^url\(['"]?/, '').replace(/['"]?\)$/, '');
+        mediaContainer.innerHTML = `<img src="${cleanUrl}" alt="${item.title}" style="max-width: 90vw; max-height: 80vh; object-fit: contain; box-shadow: 0 8px 32px rgba(0,0,0,0.4); border-radius: 4px; background: #FAF8F5;">`;
+      }
     } else {
-      mediaContainer.innerHTML = `
-        <div class="lightbox-gradient-view" style="background: ${item.gradient}; width: 85vw; max-width: 960px; height: 550px;"></div>
-      `;
+      if (item.gradient && item.gradient.startsWith('url(')) {
+        const cleanUrl = item.gradient.replace(/^url\(['"]?/, '').replace(/['"]?\)$/, '');
+        mediaContainer.innerHTML = `<img src="${cleanUrl}" alt="${item.title}" style="max-width: 90vw; max-height: 80vh; object-fit: contain; box-shadow: 0 8px 32px rgba(0,0,0,0.4); border-radius: 4px;">`;
+      } else {
+        mediaContainer.innerHTML = `
+          <div class="lightbox-gradient-view" style="background: ${item.gradient}; width: 85vw; max-width: 960px; height: 550px;"></div>
+        `;
+      }
     }
 
     if (titleEl) titleEl.textContent = item.title;
@@ -564,7 +575,12 @@ function initLightbox(container, project) {
   // Wire drawing triggers
   const drawingTriggers = container.querySelectorAll('[data-lightbox-type="drawing"]');
   drawingTriggers.forEach((trig) => {
-    trig.addEventListener('click', () => {
+    trig.addEventListener('click', (e) => {
+      if (document.body.classList.contains('lb-edit-mode')) {
+        if (e.target.closest('.lb-card-action-bar, .lb-img-change-badge, .lb-drawing-action-bar, [contenteditable="true"]')) {
+          return;
+        }
+      }
       const idx = parseInt(trig.getAttribute('data-drawing-idx') || '0', 10);
       const pool = (project.drawings || []).map(d => ({
         type: 'drawing',
@@ -579,7 +595,12 @@ function initLightbox(container, project) {
   // Wire gallery triggers
   const galleryTriggers = container.querySelectorAll('[data-lightbox-type="gallery"]');
   galleryTriggers.forEach((trig) => {
-    trig.addEventListener('click', () => {
+    trig.addEventListener('click', (e) => {
+      if (document.body.classList.contains('lb-edit-mode')) {
+        if (e.target.closest('.lb-card-action-bar, .lb-img-change-badge, .lb-gallery-action-bar, [contenteditable="true"]')) {
+          return;
+        }
+      }
       const idx = parseInt(trig.getAttribute('data-gallery-idx') || '0', 10);
       const pool = (project.gallery || []).map(g => ({
         type: 'gallery',

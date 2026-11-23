@@ -643,3 +643,109 @@ body.lb-edit-mode .lb-card-action-bar {
   justify-content: center;
   background-color: #151412;
 }
+
+/* ── 10. Drawing & Gallery Action Bars (Project Detail) ────── */
+body.lb-edit-mode .pdetail-drawing-canvas-wrap,
+body.lb-edit-mode .pdetail-gallery-item {
+  position: relative !important;
+}
+
+body.lb-edit-mode .lb-drawing-action-bar,
+body.lb-edit-mode .lb-gallery-action-bar {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  pointer-events: auto !important;
+}
+
+body.lb-edit-mode .pdetail-gallery-item:hover .pdetail-gallery-thumb {
+  transform: none !important;
+}
+
+/* ── 11. Modal Tabs & Media Management ────────────────────── */
+.lb-modal-tabs {
+  display: flex;
+  gap: 6px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  margin-bottom: 20px;
+  padding-bottom: 6px;
+}
+
+.lb-modal-tab-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  color: #9E9A93;
+  font-family: var(--font-ui, sans-serif);
+  font-size: 13px;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.lb-modal-tab-btn:hover {
+  color: #F5F3EF;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.lb-modal-tab-btn.is-active {
+  color: #1A1916;
+  background: #A8865C;
+  font-weight: 600;
+  border-color: #A8865C;
+}
+
+.lb-modal-tab-pane {
+  display: none;
+}
+
+.lb-modal-tab-pane.is-active {
+  display: block;
+}
+
+.lb-media-edit-card {
+  display: grid;
+  grid-template-columns: 140px 1fr auto;
+  gap: 16px;
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 14px;
+  margin-bottom: 12px;
+  align-items: center;
+}
+
+.lb-media-edit-thumb {
+  width: 140px;
+  height: 90px;
+  border-radius: 6px;
+  background-size: cover;
+  background-position: center;
+  background-color: #2A2825;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.lb-media-edit-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.lb-media-edit-fields--full {
+  grid-column: span 2;
+}
+
+.lb-media-edit-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}

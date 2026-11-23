@@ -550,18 +550,23 @@ class VisualEditor {
       }
     }
 
-    // 3. Gắn badge trên các ảnh Gallery (project.html)
+    // 3. Gắn action bar trên các ảnh Gallery (project.html Section 05)
     const galleryItems = document.querySelectorAll('[data-project-gallery-image]');
     galleryItems.forEach((el) => {
-      const parent = el.parentElement || el;
-      if (parent.querySelector('.lb-img-change-badge')) return;
+      const parent = el.closest('.pdetail-gallery-item') || el.parentElement || el;
+      if (parent.querySelector('.lb-gallery-action-bar')) return;
 
       const idx = parseInt(el.getAttribute('data-project-gallery-image'), 10);
-      const badge = document.createElement('button');
-      badge.type = 'button';
-      badge.className = 'lb-img-change-badge';
-      badge.innerHTML = `<span>📷</span><span>Thay ảnh</span>`;
-      badge.addEventListener('click', (e) => {
+      const bar = document.createElement('div');
+      bar.className = 'lb-gallery-action-bar';
+      bar.innerHTML = `
+        <button type="button" class="lb-card-btn lb-card-btn--img" title="Thay đổi hình ảnh này (Tải từ máy hoặc chọn ảnh mẫu)">
+          <span>📷</span><span>Đổi ảnh này</span>
+        </button>
+      `;
+
+      const btn = bar.querySelector('.lb-card-btn');
+      btn.addEventListener('click', (e) => {
         e.stopPropagation();
         e.preventDefault();
         this.detectCurrentProject();
@@ -576,6 +581,7 @@ class VisualEditor {
             el.style.backgroundImage = `url('${newUrl}')`;
             el.style.backgroundSize = 'cover';
             el.style.backgroundPosition = 'center';
+            el.style.backgroundRepeat = 'no-repeat';
 
             this.markDirty();
             await this.saveChanges();
@@ -583,10 +589,53 @@ class VisualEditor {
           }
         });
       });
-      parent.appendChild(badge);
+      parent.appendChild(bar);
     });
 
-    // 4. Gắn badge trên các ảnh tĩnh (vd: about.portrait)
+    // 4. Gắn action bar trên các bản vẽ kiến trúc (project.html Section 04)
+    const drawingCards = document.querySelectorAll('.pdetail-drawing-card, .pdetail-drawing-canvas-wrap');
+    drawingCards.forEach((wrap) => {
+      const card = wrap.closest('.pdetail-drawing-card') || wrap;
+      const canvasWrap = card.querySelector('.pdetail-drawing-canvas-wrap') || card;
+      if (canvasWrap.querySelector('.lb-drawing-action-bar')) return;
+
+      const idx = parseInt(card.getAttribute('data-drawing-idx') || canvasWrap.getAttribute('data-drawing-idx') || '0', 10);
+      const bar = document.createElement('div');
+      bar.className = 'lb-drawing-action-bar';
+      bar.innerHTML = `
+        <button type="button" class="lb-card-btn lb-card-btn--img" title="Tải ảnh bản vẽ kiến trúc mới (JPG, PNG, WebP) hoặc nhập link ảnh CAD">
+          <span>📷</span><span>Đổi bản vẽ / Tải ảnh lên</span>
+        </button>
+      `;
+
+      const btn = bar.querySelector('.lb-card-btn');
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        e.preventDefault();
+        this.detectCurrentProject();
+        if (!this.currentProject || !this.currentProject.drawings || !this.currentProject.drawings[idx]) return;
+
+        const drw = this.currentProject.drawings[idx];
+        this.openImagePickerModal({
+          title: `Bản vẽ: ${drw.title}`,
+          currentImage: drw.svg && drw.svg.startsWith('<svg') ? '' : drw.svg,
+          onApply: async (newUrl) => {
+            drw.svg = newUrl;
+            const cleanUrl = newUrl.replace(/^url\(['"]?/, '').replace(/['"]?\)$/, '');
+            canvasWrap.innerHTML = `<img src="${cleanUrl}" alt="${drw.title}" class="drawing-img-canvas" style="max-width: 100%; max-height: 520px; object-fit: contain; margin: 0 auto; display: block; background: #FAF8F5; border-radius: 4px;">`;
+            
+            canvasWrap.appendChild(bar);
+
+            this.markDirty();
+            await this.saveChanges();
+            this.showToast(`Đã cập nhật bản vẽ "${drw.title}" thành công!`, 'success');
+          }
+        });
+      });
+      canvasWrap.appendChild(bar);
+    });
+
+    // 5. Gắn badge trên các ảnh tĩnh (vd: about.portrait)
     const editableImages = document.querySelectorAll('[data-editable-image]');
     editableImages.forEach((el) => {
       const parent = el.parentElement || el;
@@ -628,6 +677,8 @@ class VisualEditor {
   detachImageEditHandlers() {
     document.querySelectorAll('.lb-card-action-bar').forEach(b => b.remove());
     document.querySelectorAll('.lb-img-change-badge').forEach(b => b.remove());
+    document.querySelectorAll('.lb-gallery-action-bar').forEach(b => b.remove());
+    document.querySelectorAll('.lb-drawing-action-bar').forEach(b => b.remove());
   }
 
   /**
@@ -998,173 +1049,415 @@ class VisualEditor {
 
     title.innerHTML = `<span>📝</span><span>Chỉnh Sửa Toàn Bộ: ${p.title}</span>`;
 
-    content.innerHTML = `
-      <form id="lb-edit-project-form" class="lb-form-grid" novalidate>
-        <div class="lb-form-group lb-form-grid--full">
-          <label class="lb-form-label">Tên công trình *</label>
-          <input type="text" class="lb-form-input" id="ep-title" value="${p.title || ''}" required>
+    let workingDrawings = JSON.parse(JSON.stringify(p.drawings || []));
+    let workingGallery = JSON.parse(JSON.stringify(p.gallery || []));
+    let newCoverUrl = null;
+    let activeModalTab = 'ep-info';
+
+    const renderFullModal = () => {
+      content.innerHTML = `
+        <!-- Modal Tabs -->
+        <div class="lb-modal-tabs">
+          <button type="button" class="lb-modal-tab-btn ${activeModalTab === 'ep-info' ? 'is-active' : ''}" data-tab="ep-info">
+            📋 Thông tin & Ý niệm
+          </button>
+          <button type="button" class="lb-modal-tab-btn ${activeModalTab === 'ep-drawings' ? 'is-active' : ''}" data-tab="ep-drawings">
+            📐 Bản vẽ Kiến trúc (${workingDrawings.length})
+          </button>
+          <button type="button" class="lb-modal-tab-btn ${activeModalTab === 'ep-gallery' ? 'is-active' : ''}" data-tab="ep-gallery">
+            🖼️ Thư viện ảnh (${workingGallery.length})
+          </button>
         </div>
 
-        <div class="lb-form-group">
-          <label class="lb-form-label">Phân loại *</label>
-          <select class="lb-form-select" id="ep-category">
-            <option value="architecture" ${p.category === 'architecture' ? 'selected' : ''}>Thiết kế Kiến trúc</option>
-            <option value="interior" ${p.category === 'interior' ? 'selected' : ''}>Kiến trúc Nội thất</option>
-          </select>
+        <!-- PANE 1: THÔNG TIN CHUNG -->
+        <div class="lb-modal-tab-pane ${activeModalTab === 'ep-info' ? 'is-active' : ''}" id="pane-ep-info">
+          <form id="lb-edit-project-form" class="lb-form-grid" novalidate>
+            <div class="lb-form-group lb-form-grid--full">
+              <label class="lb-form-label">Tên công trình *</label>
+              <input type="text" class="lb-form-input" id="ep-title" value="${p.title || ''}" required>
+            </div>
+
+            <div class="lb-form-group">
+              <label class="lb-form-label">Phân loại *</label>
+              <select class="lb-form-select" id="ep-category">
+                <option value="architecture" ${p.category === 'architecture' ? 'selected' : ''}>Thiết kế Kiến trúc</option>
+                <option value="interior" ${p.category === 'interior' ? 'selected' : ''}>Kiến trúc Nội thất</option>
+              </select>
+            </div>
+
+            <div class="lb-form-group">
+              <label class="lb-form-label">Năm hoàn thành / thiết kế *</label>
+              <input type="number" class="lb-form-input" id="ep-year" value="${p.year || new Date().getFullYear()}">
+            </div>
+
+            <div class="lb-form-group">
+              <label class="lb-form-label">Địa điểm *</label>
+              <input type="text" class="lb-form-input" id="ep-location" value="${p.location || ''}">
+            </div>
+
+            <div class="lb-form-group">
+              <label class="lb-form-label">Diện tích *</label>
+              <input type="text" class="lb-form-input" id="ep-area" value="${p.area || ''}">
+            </div>
+
+            <div class="lb-form-group">
+              <label class="lb-form-label">Loại hình chi tiết</label>
+              <input type="text" class="lb-form-input" id="ep-type" value="${p.type || ''}">
+            </div>
+
+            <div class="lb-form-group">
+              <label class="lb-form-label">Phong cách kiến trúc</label>
+              <input type="text" class="lb-form-input" id="ep-style" value="${p.style || 'Minimal Luxury · Đương đại'}">
+            </div>
+
+            <div class="lb-form-group">
+              <label class="lb-form-label">Trạng thái công trình</label>
+              <select class="lb-form-select" id="ep-status">
+                <option value="completed" ${p.status === 'completed' ? 'selected' : ''}>Đã hoàn thành</option>
+                <option value="in-progress" ${p.status === 'in-progress' ? 'selected' : ''}>Đang thực hiện</option>
+              </select>
+            </div>
+
+            <div class="lb-form-group">
+              <label class="lb-form-label">Vai trò thiết kế</label>
+              <input type="text" class="lb-form-input" id="ep-role" value="${p.role || 'Chủ trì Thiết kế Kiến trúc & Nội thất'}">
+            </div>
+
+            <div class="lb-form-group lb-form-grid--full">
+              <label class="lb-form-label">Tóm tắt tổng quan công trình</label>
+              <textarea class="lb-form-textarea" id="ep-summary" rows="3">${p.summary || ''}</textarea>
+            </div>
+
+            <div class="lb-form-group lb-form-grid--full">
+              <label class="lb-form-label">Bối cảnh địa hình & vi khí hậu</label>
+              <textarea class="lb-form-textarea" id="ep-context" rows="2">${p.context || ''}</textarea>
+            </div>
+
+            <div class="lb-form-group lb-form-grid--full">
+              <label class="lb-form-label">Triết lý kiến tạo</label>
+              <textarea class="lb-form-textarea" id="ep-philosophy" rows="2">${p.philosophy || ''}</textarea>
+            </div>
+
+            <div class="lb-form-group lb-form-grid--full">
+              <label class="lb-form-label">Ý niệm kiến trúc & tổ chức không gian</label>
+              <textarea class="lb-form-textarea" id="ep-concept" rows="3">${p.concept || ''}</textarea>
+            </div>
+
+            <div class="lb-form-group lb-form-grid--full">
+              <label class="lb-form-label">Chiến lược chiếu sáng</label>
+              <textarea class="lb-form-textarea" id="ep-lighting" rows="2">${p.lightingStrategy || ''}</textarea>
+            </div>
+
+            <!-- Khung thay đổi ảnh bìa -->
+            <div class="lb-form-group lb-form-grid--full">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                <label class="lb-form-label" style="margin: 0;">Ảnh đại diện công trình (Cover Photo)</label>
+                <button type="button" class="lb-btn" id="ep-open-picker-btn" style="padding: 4px 10px; font-size: 11px;">📷 Mở thư viện chọn ảnh</button>
+              </div>
+              <div class="lb-upload-box" id="ep-upload-box">
+                <p style="margin: 0; font-size: 13px; color: #A8865C;">📷 Bấm vào đây để chọn ảnh mới từ máy tính</p>
+                <input type="file" id="ep-file-input" accept="image/jpeg,image/png,image/webp" style="display: none;">
+              </div>
+              <div class="lb-upload-preview" id="ep-upload-preview" style="display: block; ${newCoverUrl ? `background-image: url('${newCoverUrl}');` : (p.coverGradient.startsWith('url') ? `background-image: ${p.coverGradient};` : `background: ${p.coverGradient};`)}"></div>
+            </div>
+          </form>
         </div>
 
-        <div class="lb-form-group">
-          <label class="lb-form-label">Năm hoàn thành / thiết kế *</label>
-          <input type="number" class="lb-form-input" id="ep-year" value="${p.year || new Date().getFullYear()}">
-        </div>
-
-        <div class="lb-form-group">
-          <label class="lb-form-label">Địa điểm *</label>
-          <input type="text" class="lb-form-input" id="ep-location" value="${p.location || ''}">
-        </div>
-
-        <div class="lb-form-group">
-          <label class="lb-form-label">Diện tích *</label>
-          <input type="text" class="lb-form-input" id="ep-area" value="${p.area || ''}">
-        </div>
-
-        <div class="lb-form-group">
-          <label class="lb-form-label">Loại hình chi tiết</label>
-          <input type="text" class="lb-form-input" id="ep-type" value="${p.type || ''}">
-        </div>
-
-        <div class="lb-form-group">
-          <label class="lb-form-label">Phong cách kiến trúc</label>
-          <input type="text" class="lb-form-input" id="ep-style" value="${p.style || 'Minimal Luxury · Đương đại'}">
-        </div>
-
-        <div class="lb-form-group">
-          <label class="lb-form-label">Trạng thái công trình</label>
-          <select class="lb-form-select" id="ep-status">
-            <option value="completed" ${p.status === 'completed' ? 'selected' : ''}>Đã hoàn thành</option>
-            <option value="in-progress" ${p.status === 'in-progress' ? 'selected' : ''}>Đang thực hiện</option>
-          </select>
-        </div>
-
-        <div class="lb-form-group">
-          <label class="lb-form-label">Vai trò thiết kế</label>
-          <input type="text" class="lb-form-input" id="ep-role" value="${p.role || 'Chủ trì Thiết kế Kiến trúc & Nội thất'}">
-        </div>
-
-        <div class="lb-form-group lb-form-grid--full">
-          <label class="lb-form-label">Tóm tắt tổng quan công trình</label>
-          <textarea class="lb-form-textarea" id="ep-summary" rows="3">${p.summary || ''}</textarea>
-        </div>
-
-        <div class="lb-form-group lb-form-grid--full">
-          <label class="lb-form-label">Bối cảnh địa hình & vi khí hậu</label>
-          <textarea class="lb-form-textarea" id="ep-context" rows="2">${p.context || ''}</textarea>
-        </div>
-
-        <div class="lb-form-group lb-form-grid--full">
-          <label class="lb-form-label">Triết lý kiến tạo</label>
-          <textarea class="lb-form-textarea" id="ep-philosophy" rows="2">${p.philosophy || ''}</textarea>
-        </div>
-
-        <div class="lb-form-group lb-form-grid--full">
-          <label class="lb-form-label">Ý niệm kiến trúc & tổ chức không gian</label>
-          <textarea class="lb-form-textarea" id="ep-concept" rows="3">${p.concept || ''}</textarea>
-        </div>
-
-        <div class="lb-form-group lb-form-grid--full">
-          <label class="lb-form-label">Chiến lược chiếu sáng</label>
-          <textarea class="lb-form-textarea" id="ep-lighting" rows="2">${p.lightingStrategy || ''}</textarea>
-        </div>
-
-        <!-- Khung thay đổi ảnh bìa -->
-        <div class="lb-form-group lb-form-grid--full">
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-            <label class="lb-form-label" style="margin: 0;">Ảnh đại diện công trình (Cover Photo)</label>
-            <button type="button" class="lb-btn" id="ep-open-picker-btn" style="padding: 4px 10px; font-size: 11px;">📷 Mở thư viện chọn ảnh</button>
+        <!-- PANE 2: QUẢN LÝ BẢN VẼ KIẾN TRÚC -->
+        <div class="lb-modal-tab-pane ${activeModalTab === 'ep-drawings' ? 'is-active' : ''}" id="pane-ep-drawings">
+          <div id="ep-drawings-list-container">
+            ${workingDrawings.map((drw, idx) => {
+              const isSvg = drw.svg && drw.svg.trim().startsWith('<svg');
+              const cleanUrl = drw.svg ? drw.svg.replace(/^url\(['"]?/, '').replace(/['"]?\)$/, '') : '';
+              return `
+                <div class="lb-media-edit-card" data-idx="${idx}">
+                  <div class="lb-media-edit-thumb" id="drw-thumb-${idx}">
+                    ${isSvg ? `<div style="padding: 4px; font-size: 10px; color: #1A1916; background: #FAF8F5; text-align: center; font-weight: bold;">📐 VECTOR SVG</div>` : `<div style="width: 100%; height: 100%; background: url('${cleanUrl}') center/contain no-repeat #FAF8F5;"></div>`}
+                  </div>
+                  <div class="lb-media-edit-fields">
+                    <div>
+                      <label class="lb-form-label">Tên bản vẽ</label>
+                      <input type="text" class="lb-form-input ep-drw-title" data-idx="${idx}" value="${drw.title || ''}" placeholder="Mặt bằng...">
+                    </div>
+                    <div>
+                      <label class="lb-form-label">Tỷ lệ</label>
+                      <input type="text" class="lb-form-input ep-drw-scale" data-idx="${idx}" value="${drw.scale || '1:100'}" placeholder="1:100">
+                    </div>
+                    <div class="lb-media-edit-fields--full">
+                      <label class="lb-form-label">Mô tả bản vẽ</label>
+                      <input type="text" class="lb-form-input ep-drw-desc" data-idx="${idx}" value="${drw.desc || ''}" placeholder="Mô tả công năng hoặc giải pháp...">
+                    </div>
+                  </div>
+                  <div class="lb-media-edit-actions">
+                    <button type="button" class="lb-btn lb-btn--primary" data-action="pick-drawing" data-idx="${idx}" style="font-size: 11px; padding: 6px 10px;">
+                      📷 Đổi bản vẽ
+                    </button>
+                    <button type="button" class="lb-btn lb-btn--danger" data-action="delete-drawing" data-idx="${idx}" style="font-size: 11px; padding: 6px 10px;">
+                      🗑️ Xóa
+                    </button>
+                  </div>
+                </div>
+              `;
+            }).join('')}
           </div>
-          <div class="lb-upload-box" id="ep-upload-box">
-            <p style="margin: 0; font-size: 13px; color: #A8865C;">📷 Bấm vào đây để chọn ảnh mới từ máy tính</p>
-            <input type="file" id="ep-file-input" accept="image/jpeg,image/png,image/webp" style="display: none;">
-          </div>
-          <div class="lb-upload-preview" id="ep-upload-preview" style="display: block; ${p.coverGradient.startsWith('url') ? `background-image: ${p.coverGradient};` : `background: ${p.coverGradient};`}"></div>
+          <button type="button" class="lb-btn" id="ep-add-drawing-btn" style="width: 100%; margin-top: 10px; padding: 12px; border: 1px dashed #A8865C; background: rgba(168,134,92,0.05);">
+            ➕ Thêm bản vẽ kiến trúc mới
+          </button>
         </div>
-      </form>
-    `;
+
+        <!-- PANE 3: QUẢN LÝ THƯ VIỆN ẢNH -->
+        <div class="lb-modal-tab-pane ${activeModalTab === 'ep-gallery' ? 'is-active' : ''}" id="pane-ep-gallery">
+          <div id="ep-gallery-list-container">
+            ${workingGallery.map((photo, idx) => {
+              const bgStyle = photo.gradient.startsWith('url') ? `background-image: ${photo.gradient};` : `background: ${photo.gradient};`;
+              return `
+                <div class="lb-media-edit-card" data-idx="${idx}">
+                  <div class="lb-media-edit-thumb" id="gal-thumb-${idx}" style="${bgStyle}; background-size: cover; background-position: center;"></div>
+                  <div class="lb-media-edit-fields">
+                    <div>
+                      <label class="lb-form-label">Tiêu đề ảnh</label>
+                      <input type="text" class="lb-form-input ep-gal-title" data-idx="${idx}" value="${photo.title || ''}" placeholder="Phối cảnh...">
+                    </div>
+                    <div>
+                      <label class="lb-form-label">Thẻ phân loại</label>
+                      <input type="text" class="lb-form-input ep-gal-tag" data-idx="${idx}" value="${photo.tag || 'Không gian'}" placeholder="Ngoại thất, Nội thất...">
+                    </div>
+                    <div class="lb-media-edit-fields--full">
+                      <label class="lb-form-label">Chú thích không gian & xúc giác</label>
+                      <input type="text" class="lb-form-input ep-gal-caption" data-idx="${idx}" value="${photo.caption || ''}" placeholder="Mô tả ánh sáng, chất cảm vật liệu...">
+                    </div>
+                  </div>
+                  <div class="lb-media-edit-actions">
+                    <button type="button" class="lb-btn lb-btn--primary" data-action="pick-photo" data-idx="${idx}" style="font-size: 11px; padding: 6px 10px;">
+                      📷 Đổi ảnh này
+                    </button>
+                    <button type="button" class="lb-btn lb-btn--danger" data-action="delete-photo" data-idx="${idx}" style="font-size: 11px; padding: 6px 10px;">
+                      🗑️ Xóa
+                    </button>
+                  </div>
+                </div>
+              `;
+            }).join('')}
+          </div>
+          <button type="button" class="lb-btn" id="ep-add-gallery-btn" style="width: 100%; margin-top: 10px; padding: 12px; border: 1px dashed #A8865C; background: rgba(168,134,92,0.05);">
+            ➕ Thêm ảnh mới vào thư viện
+          </button>
+        </div>
+      `;
+
+      // Tab handlers
+      content.querySelectorAll('.lb-modal-tab-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          saveInputsToMemory();
+          activeModalTab = btn.getAttribute('data-tab');
+          renderFullModal();
+        });
+      });
+
+      // Cover photo handlers
+      const uploadBox = document.getElementById('ep-upload-box');
+      const fileInput = document.getElementById('ep-file-input');
+      const preview = document.getElementById('ep-upload-preview');
+
+      if (uploadBox && fileInput) {
+        uploadBox.addEventListener('click', () => fileInput.click());
+        fileInput.addEventListener('change', async () => {
+          const file = fileInput.files[0];
+          if (!file) return;
+
+          const r = new FileReader();
+          r.onload = (e) => {
+            newCoverUrl = e.target.result;
+            if (preview) {
+              preview.style.display = 'block';
+              preview.style.backgroundImage = `url('${e.target.result}')`;
+            }
+          };
+          r.readAsDataURL(file);
+
+          this.showToast('Đang tải ảnh đại diện lên...', 'info');
+          try {
+            const uploaded = await this.uploadImageFile(file);
+            newCoverUrl = uploaded;
+            this.showToast('Ảnh bìa đã sẵn sàng!', 'success');
+          } catch (err) {
+            this.showToast('Lỗi tải ảnh: ' + err.message, 'error');
+          }
+        });
+      }
+
+      const pickerBtn = document.getElementById('ep-open-picker-btn');
+      if (pickerBtn) {
+        pickerBtn.addEventListener('click', () => {
+          saveInputsToMemory();
+          this.openImagePickerModal({
+            title: `Ảnh bìa ${p.title}`,
+            currentImage: newCoverUrl || p.coverGradient,
+            onApply: async (pickedUrl) => {
+              newCoverUrl = pickedUrl;
+              renderFullModal();
+              this.openModal();
+            }
+          });
+        });
+      }
+
+      // Drawing actions
+      content.querySelectorAll('[data-action="pick-drawing"]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          saveInputsToMemory();
+          const idx = parseInt(btn.getAttribute('data-idx'), 10);
+          const drw = workingDrawings[idx];
+          this.openImagePickerModal({
+            title: `Bản vẽ: ${drw.title || 'Mới'}`,
+            currentImage: drw.svg && drw.svg.startsWith('<svg') ? '' : drw.svg,
+            onApply: async (pickedUrl) => {
+              drw.svg = pickedUrl;
+              renderFullModal();
+              this.openModal();
+            }
+          });
+        });
+      });
+
+      content.querySelectorAll('[data-action="delete-drawing"]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          saveInputsToMemory();
+          const idx = parseInt(btn.getAttribute('data-idx'), 10);
+          workingDrawings.splice(idx, 1);
+          renderFullModal();
+        });
+      });
+
+      const addDrwBtn = document.getElementById('ep-add-drawing-btn');
+      if (addDrwBtn) {
+        addDrwBtn.addEventListener('click', () => {
+          saveInputsToMemory();
+          workingDrawings.push({
+            id: `drw-${Date.now()}`,
+            title: 'Bản vẽ chi tiết mới',
+            type: 'plan',
+            scale: '1:100',
+            desc: 'Mô tả chi tiết công năng và giải pháp kỹ thuật.',
+            svg: '<svg viewBox="0 0 1200 750" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="1200" height="750" fill="#FAF8F5"/><rect x="80" y="80" width="1040" height="590" fill="none" stroke="#1A1916" stroke-width="2"/><text x="600" y="375" fill="#1A1916" font-family="sans-serif" font-size="20" text-anchor="middle">SƠ ĐỒ BẢN VẼ MỚI</text></svg>'
+          });
+          renderFullModal();
+        });
+      }
+
+      // Gallery actions
+      content.querySelectorAll('[data-action="pick-photo"]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          saveInputsToMemory();
+          const idx = parseInt(btn.getAttribute('data-idx'), 10);
+          const photo = workingGallery[idx];
+          this.openImagePickerModal({
+            title: `Ảnh: ${photo.title || 'Mới'}`,
+            currentImage: photo.gradient,
+            onApply: async (pickedUrl) => {
+              photo.gradient = pickedUrl.startsWith('url') ? pickedUrl : `url('${pickedUrl}')`;
+              renderFullModal();
+              this.openModal();
+            }
+          });
+        });
+      });
+
+      content.querySelectorAll('[data-action="delete-photo"]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          saveInputsToMemory();
+          const idx = parseInt(btn.getAttribute('data-idx'), 10);
+          workingGallery.splice(idx, 1);
+          renderFullModal();
+        });
+      });
+
+      const addGalBtn = document.getElementById('ep-add-gallery-btn');
+      if (addGalBtn) {
+        addGalBtn.addEventListener('click', () => {
+          saveInputsToMemory();
+          workingGallery.push({
+            id: `photo-${Date.now()}`,
+            title: 'Góc nhìn không gian mới',
+            aspect: 'wide',
+            gradient: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80',
+            caption: 'Góc nhìn thể hiện sự hài hòa giữa hình khối kiến trúc và ánh sáng tự nhiên.',
+            tag: 'Không gian',
+            alt: 'Ảnh không gian kiến trúc mới'
+          });
+          renderFullModal();
+        });
+      }
+    };
+
+    const saveInputsToMemory = () => {
+      const titleInput = document.getElementById('ep-title');
+      if (titleInput) {
+        p.title = titleInput.value.trim();
+        p.category = document.getElementById('ep-category').value;
+        p.year = parseInt(document.getElementById('ep-year').value, 10) || p.year;
+        p.location = document.getElementById('ep-location').value.trim();
+        p.area = document.getElementById('ep-area').value.trim();
+        p.type = document.getElementById('ep-type').value.trim();
+        p.style = document.getElementById('ep-style').value.trim();
+        p.status = document.getElementById('ep-status').value;
+        p.statusLabel = p.status === 'completed' ? 'Đã hoàn thành' : 'Đang thực hiện';
+        p.role = document.getElementById('ep-role').value.trim();
+        p.summary = document.getElementById('ep-summary').value.trim();
+        p.context = document.getElementById('ep-context').value.trim();
+        p.philosophy = document.getElementById('ep-philosophy').value.trim();
+        p.concept = document.getElementById('ep-concept').value.trim();
+        p.lightingStrategy = document.getElementById('ep-lighting').value.trim();
+      }
+
+      content.querySelectorAll('.ep-drw-title').forEach(input => {
+        const idx = parseInt(input.getAttribute('data-idx'), 10);
+        if (workingDrawings[idx]) workingDrawings[idx].title = input.value.trim();
+      });
+      content.querySelectorAll('.ep-drw-scale').forEach(input => {
+        const idx = parseInt(input.getAttribute('data-idx'), 10);
+        if (workingDrawings[idx]) workingDrawings[idx].scale = input.value.trim();
+      });
+      content.querySelectorAll('.ep-drw-desc').forEach(input => {
+        const idx = parseInt(input.getAttribute('data-idx'), 10);
+        if (workingDrawings[idx]) workingDrawings[idx].desc = input.value.trim();
+      });
+
+      content.querySelectorAll('.ep-gal-title').forEach(input => {
+        const idx = parseInt(input.getAttribute('data-idx'), 10);
+        if (workingGallery[idx]) workingGallery[idx].title = input.value.trim();
+      });
+      content.querySelectorAll('.ep-gal-tag').forEach(input => {
+        const idx = parseInt(input.getAttribute('data-idx'), 10);
+        if (workingGallery[idx]) workingGallery[idx].tag = input.value.trim();
+      });
+      content.querySelectorAll('.ep-gal-caption').forEach(input => {
+        const idx = parseInt(input.getAttribute('data-idx'), 10);
+        if (workingGallery[idx]) workingGallery[idx].caption = input.value.trim();
+      });
+    };
+
+    renderFullModal();
 
     footer.innerHTML = `
       <button type="button" class="lb-btn" id="lb-modal-cancel-btn">Hủy bỏ</button>
       <button type="button" class="lb-btn lb-btn--primary" id="lb-modal-save-ep-btn">Lưu thông số đồ án</button>
     `;
 
-    let newCoverUrl = null;
-    const uploadBox = document.getElementById('ep-upload-box');
-    const fileInput = document.getElementById('ep-file-input');
-    const preview = document.getElementById('ep-upload-preview');
-
-    const updateCover = (url) => {
-      newCoverUrl = url;
-      preview.style.display = 'block';
-      preview.style.backgroundImage = `url('${url}')`;
-      preview.style.backgroundSize = 'cover';
-      preview.style.backgroundPosition = 'center';
-    };
-
-    uploadBox.addEventListener('click', () => fileInput.click());
-    fileInput.addEventListener('change', async () => {
-      const file = fileInput.files[0];
-      if (!file) return;
-
-      const r = new FileReader();
-      r.onload = (e) => updateCover(e.target.result);
-      r.readAsDataURL(file);
-
-      this.showToast('Đang tải ảnh đại diện lên...', 'info');
-      try {
-        const uploaded = await this.uploadImageFile(file);
-        updateCover(uploaded);
-        this.showToast('Ảnh bìa đã sẵn sàng!', 'success');
-      } catch (err) {
-        this.showToast('Lỗi tải ảnh: ' + err.message, 'error');
-      }
-    });
-
-    document.getElementById('ep-open-picker-btn').addEventListener('click', () => {
-      this.openImagePickerModal({
-        title: `Ảnh bìa ${p.title}`,
-        currentImage: newCoverUrl || p.coverGradient,
-        onApply: async (pickedUrl) => {
-          updateCover(pickedUrl);
-          this.openEditProjectModal(p);
-        }
-      });
-    });
-
     document.getElementById('lb-modal-cancel-btn').addEventListener('click', () => this.closeModal());
     document.getElementById('lb-modal-save-ep-btn').addEventListener('click', async () => {
-      p.title = document.getElementById('ep-title').value.trim();
-      p.category = document.getElementById('ep-category').value;
-      p.year = parseInt(document.getElementById('ep-year').value, 10) || p.year;
-      p.location = document.getElementById('ep-location').value.trim();
-      p.area = document.getElementById('ep-area').value.trim();
-      p.type = document.getElementById('ep-type').value.trim();
-      p.style = document.getElementById('ep-style').value.trim();
-      p.status = document.getElementById('ep-status').value;
-      p.statusLabel = p.status === 'completed' ? 'Đã hoàn thành' : 'Đang thực hiện';
-      p.role = document.getElementById('ep-role').value.trim();
-      p.summary = document.getElementById('ep-summary').value.trim();
-      p.context = document.getElementById('ep-context').value.trim();
-      p.philosophy = document.getElementById('ep-philosophy').value.trim();
-      p.concept = document.getElementById('ep-concept').value.trim();
-      p.lightingStrategy = document.getElementById('ep-lighting').value.trim();
+      saveInputsToMemory();
 
       if (newCoverUrl) {
         p.coverGradient = newCoverUrl.startsWith('url') ? newCoverUrl : `url('${newCoverUrl}')`;
       }
+      p.drawings = workingDrawings;
+      p.gallery = workingGallery;
 
       this.markDirty();
       this.closeModal();
       await this.saveChanges();
-      this.showToast('Đã lưu đồ án thành công!', 'success');
+      this.showToast('Đã lưu toàn bộ thông số và bản vẽ/ảnh đồ án thành công!', 'success');
 
       // Cập nhật card trên trang nếu có
       const cardBg = document.querySelector(`[data-project-card-slug="${p.slug}"] .project-card__bg, [data-project-card-image="${p.slug}"]`);
