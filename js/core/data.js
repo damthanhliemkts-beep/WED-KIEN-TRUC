@@ -1218,7 +1218,7 @@ export const projects = [
  */
 export async function syncProjectsFromJson() {
   try {
-    const res = await fetch('/data/projects.json');
+    const res = await fetch('./data/projects.json');
     if (res.ok) {
       const json = await res.json();
       if (Array.isArray(json) && json.length > 0) {

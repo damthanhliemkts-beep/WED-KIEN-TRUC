@@ -65,7 +65,7 @@ export async function loadSiteContent() {
   if (isLoaded) return activeContent;
 
   try {
-    const res = await fetch('/data/site-content.json');
+    const res = await fetch('./data/site-content.json');
     if (res.ok) {
       const data = await res.json();
       activeContent = deepMerge(defaultContent, data);
