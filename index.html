@@ -158,439 +158,47 @@
     <main id="main-content">
 
       <!-- ========================================================
-           PHASE 2: CINEMATIC HERO SCROLL (4-STAGE TRANSFORMATION)
-           Stage 1: Sketch → Stage 2: Blueprint → Stage 3: 3D → Stage 4: Reality
+           HOMEPAGE HERO BANNER (EDITORIAL ARCHITECTURAL HERO)
+           Clean luxury hero banner with natural smooth scrolling
            ======================================================== -->
-      <section class="hero-cinematic" aria-label="Trải nghiệm kiến trúc tương tác 4 giai đoạn">
-        <div class="hero-cinematic__sticky">
+      <section class="hero-home" id="hero-section" aria-label="Giới thiệu không gian kiến trúc">
+        <div
+          class="hero-home__bg"
+          id="home-hero-bg"
+          style="background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80');"
+          role="img"
+          aria-label="Ảnh bìa công trình kiến trúc biệt thự đương đại"
+          data-editable-image="home.heroCoverImage"
+        ></div>
+        <div class="hero-home__overlay" aria-hidden="true"></div>
 
-          <!-- Background Atmospheric Tone Transitions -->
-          <div class="hero-cinematic__bg-blueprint" aria-hidden="true"></div>
-          <div class="hero-cinematic__bg-reality" aria-hidden="true"></div>
-
-          <!-- Top HUD Bar: Stage Metadata & Stepper Buttons -->
-          <div class="hero-cinematic__hud" aria-live="polite">
-            <div class="hero-hud__stage-info">
-              <span class="hero-hud__index">01 / 04</span>
-              <h2 class="hero-hud__label">PHÁC THẢO BAN ĐẦU</h2>
-              <p class="hero-hud__desc">Nét vẽ không gian tự do, xác lập hệ trục chính và cân chỉnh điểm tụ phối cảnh.</p>
-            </div>
-
-            <!-- Stage jump stepper -->
-            <nav class="hero-hud__stepper" aria-label="Chuyển nhanh giai đoạn kiến trúc">
-              <button class="hero-hud__step-btn is-active" data-stage="0" type="button" aria-label="Giai đoạn 1: Phác thảo">
-                <span class="hero-hud__step-name">01 Phác thảo</span>
-                <span class="hero-hud__step-pill"></span>
-              </button>
-              <button class="hero-hud__step-btn" data-stage="1" type="button" aria-label="Giai đoạn 2: Bản vẽ kỹ thuật">
-                <span class="hero-hud__step-name">02 Kỹ thuật</span>
-                <span class="hero-hud__step-pill"></span>
-              </button>
-              <button class="hero-hud__step-btn" data-stage="2" type="button" aria-label="Giai đoạn 3: Phối cảnh 3D">
-                <span class="hero-hud__step-name">03 Khối 3D</span>
-                <span class="hero-hud__step-pill"></span>
-              </button>
-              <button class="hero-hud__step-btn" data-stage="3" type="button" aria-label="Giai đoạn 4: Hoàn thiện thực tế">
-                <span class="hero-hud__step-name">04 Hoàn thiện</span>
-                <span class="hero-hud__step-pill"></span>
-              </button>
-            </nav>
-          </div>
-
-          <!-- Visual Stage: Master Architectural SVG (Unified Perspective Model) -->
-          <div class="hero-cinematic__stage">
-            <svg class="hero-architectural-svg" viewBox="0 0 1600 1000" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Mô hình công trình biệt thự pavilion hiện đại qua 4 giai đoạn kiến trúc">
-              <title>Living Blueprint — Architectural Transformation</title>
-
-              <!-- Shared Definitions: Grids, Patterns & Gradients -->
-              <defs>
-                <!-- Blueprint Fine Grid (10x10) -->
-                <pattern id="blueprint-grid-fine" width="10" height="10" patternUnits="userSpaceOnUse">
-                  <path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(74, 144, 217, 0.08)" stroke-width="0.7"/>
-                </pattern>
-                <!-- Blueprint Major Grid (50x50) -->
-                <pattern id="blueprint-grid-major" width="50" height="50" patternUnits="userSpaceOnUse">
-                  <rect width="50" height="50" fill="url(#blueprint-grid-fine)"/>
-                  <path d="M 50 0 L 0 0 0 50" fill="none" stroke="rgba(74, 144, 217, 0.22)" stroke-width="1"/>
-                </pattern>
-
-                <!-- Wood Teak Louvers Pattern for Reality -->
-                <pattern id="teak-louvers" width="8" height="20" patternUnits="userSpaceOnUse">
-                  <rect width="4" height="20" fill="#9C7244"/>
-                  <rect x="4" width="4" height="20" fill="#BD9360"/>
-                  <line x1="0" y1="0" x2="0" y2="20" stroke="#7A5630" stroke-width="0.8"/>
-                </pattern>
-
-                <!-- Travertine Stone Courses Pattern -->
-                <pattern id="travertine-bands" width="60" height="18" patternUnits="userSpaceOnUse">
-                  <rect width="60" height="18" fill="#E6DFD3"/>
-                  <line x1="0" y1="18" x2="60" y2="18" stroke="#CEC5B6" stroke-width="1"/>
-                  <line x1="30" y1="0" x2="30" y2="18" stroke="#CEC5B6" stroke-width="0.6"/>
-                </pattern>
-
-                <!-- Glass Reflections Gradient -->
-                <linearGradient id="glass-grad" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0%" stop-color="#CBE0E8" stop-opacity="0.45"/>
-                  <stop offset="40%" stop-color="#EAF5F8" stop-opacity="0.75"/>
-                  <stop offset="60%" stop-color="#A8C7D2" stop-opacity="0.30"/>
-                  <stop offset="100%" stop-color="#8BB0BC" stop-opacity="0.60"/>
-                </linearGradient>
-
-                <!-- Pool Water Shimmer Gradient -->
-                <linearGradient id="pool-shimmer" x1="0" y1="0" x2="1" y2="0.6">
-                  <stop offset="0%" stop-color="#5B8D99"/>
-                  <stop offset="50%" stop-color="#7BB4C2"/>
-                  <stop offset="100%" stop-color="#4A7985"/>
-                </linearGradient>
-
-                <!-- Warm Interior Light Radial Glow -->
-                <radialGradient id="interior-glow" cx="50%" cy="50%" r="50%">
-                  <stop offset="0%" stop-color="#FFE8B8" stop-opacity="0.9"/>
-                  <stop offset="40%" stop-color="#E8C482" stop-opacity="0.6"/>
-                  <stop offset="100%" stop-color="#C49B52" stop-opacity="0"/>
-                </radialGradient>
-              </defs>
-
-              <!-- ==============================================
-                   STAGE 1: SKETCH LAYER
-                   ============================================== -->
-              <g id="layer-sketch" class="hero-layer">
-                <!-- Horizon line and Vanishing Rays -->
-                <line x1="40" y1="620" x2="1560" y2="620" class="sketch-guide"/>
-                <text x="60" y="612" class="sketch-annotation">H.L. (HORIZON ELEVATION +1.60)</text>
-
-                <!-- Left Vanishing Rays (-400, 620) -->
-                <line x1="280" y1="740" x2="720" y2="680" class="sketch-guide"/>
-                <line x1="280" y1="540" x2="720" y2="480" class="sketch-guide"/>
-                <line x1="360" y1="290" x2="720" y2="250" class="sketch-guide"/>
-
-                <!-- Right Vanishing Rays (2200, 620) -->
-                <line x1="720" y1="680" x2="1220" y2="660" class="sketch-guide"/>
-                <line x1="720" y1="480" x2="1220" y2="460" class="sketch-guide"/>
-                <line x1="720" y1="250" x2="1160" y2="260" class="sketch-guide"/>
-
-                <!-- Ground Infinity Pool Perimeter Sketch -->
-                <polygon points="200,910 780,850 740,690 260,730" class="sketch-line sketch-stroke" stroke-width="1.6"/>
-                <!-- Pool stepping stones -->
-                <polygon points="290,780 370,765 350,750 270,765" class="sketch-line sketch-stroke" stroke-width="1.2"/>
-                <polygon points="390,760 470,745 450,730 370,745" class="sketch-line sketch-stroke" stroke-width="1.2"/>
-                <polygon points="490,740 570,725 550,710 470,725" class="sketch-line sketch-stroke" stroke-width="1.2"/>
-
-                <!-- Ground Level Living Pavilion -->
-                <line x1="720" y1="680" x2="720" y2="480" class="sketch-line sketch-stroke" stroke-width="2.2"/>
-                <line x1="1220" y1="660" x2="1220" y2="460" class="sketch-line sketch-stroke" stroke-width="2.2"/>
-                <line x1="720" y1="680" x2="1220" y2="660" class="sketch-line sketch-stroke" stroke-width="2.2"/>
-                <line x1="720" y1="480" x2="1220" y2="460" class="sketch-line sketch-stroke" stroke-width="2.2"/>
-
-                <!-- Ground Floor Slender Steel Columns -->
-                <line x1="860" y1="675" x2="860" y2="475" class="sketch-line sketch-stroke" stroke-width="1.5"/>
-                <line x1="980" y1="670" x2="980" y2="470" class="sketch-line sketch-stroke" stroke-width="1.5"/>
-                <line x1="1100" y1="665" x2="1100" y2="465" class="sketch-line sketch-stroke" stroke-width="1.5"/>
-
-                <!-- Cantilever Floating Upper Volume -->
-                <!-- Bottom soffit slab -->
-                <polygon points="360,520 720,480 1160,470 780,510" class="sketch-line sketch-stroke" stroke-width="2.4"/>
-                <!-- Front vertical corner -->
-                <line x1="720" y1="480" x2="720" y2="250" class="sketch-line sketch-stroke" stroke-width="2.4"/>
-                <!-- Left cantilever floating edge -->
-                <line x1="360" y1="520" x2="360" y2="290" class="sketch-line sketch-stroke" stroke-width="2.4"/>
-                <!-- Right volume edge -->
-                <line x1="1160" y1="470" x2="1160" y2="260" class="sketch-line sketch-stroke" stroke-width="2.2"/>
-                <!-- Top roof slab perimeter -->
-                <polygon points="320,280 720,240 1200,250 780,200" class="sketch-line sketch-stroke" stroke-width="2.4"/>
-                <!-- Upper floor glazing mullions -->
-                <line x1="480" y1="506" x2="480" y2="277" class="sketch-line sketch-stroke" stroke-width="1.2"/>
-                <line x1="600" y1="493" x2="600" y2="263" class="sketch-line sketch-stroke" stroke-width="1.2"/>
-
-                <!-- Architectural Sketch Annotations -->
-                <g class="sketch-annotations">
-                  <path d="M 280 430 L 350 490" stroke="var(--color-accent)" stroke-width="1" marker-end="url(#arrow)"/>
-                  <text x="160" y="420" class="sketch-annotation">4.2M FLOATING CANTILEVER</text>
-
-                  <path d="M 980 380 L 1040 460" stroke="var(--color-accent)" stroke-width="1"/>
-                  <text x="1000" y="370" class="sketch-annotation">FLOOR-TO-CEILING GLAZING</text>
-
-                  <path d="M 520 860 L 560 810" stroke="var(--color-accent)" stroke-width="1"/>
-                  <text x="420" y="880" class="sketch-annotation">REFLECTING WATER BASIN</text>
-                </g>
-
-                <!-- Pine tree gesture sketch on left -->
-                <path d="M 170 750 Q 160 580 180 420" stroke="var(--color-ink)" stroke-width="2" fill="none"/>
-                <path d="M 180 420 Q 120 400 90 440" stroke="var(--color-ink)" stroke-width="1.2" fill="none"/>
-                <path d="M 180 460 Q 240 430 270 470" stroke="var(--color-ink)" stroke-width="1.2" fill="none"/>
-                <path d="M 175 510 Q 100 480 80 520" stroke="var(--color-ink)" stroke-width="1.2" fill="none"/>
-              </g>
-
-              <!-- ==============================================
-                   STAGE 2: BLUEPRINT LAYER
-                   ============================================== -->
-              <g id="layer-blueprint" class="hero-layer" opacity="0">
-                <!-- Blueprint Grid Canvas -->
-                <rect x="0" y="0" width="1600" height="1000" fill="url(#blueprint-grid-major)"/>
-
-                <!-- Structural Grid Axis Lines -->
-                <line x1="360" y1="120" x2="360" y2="860" class="blueprint-axis"/>
-                <line x1="720" y1="120" x2="720" y2="860" class="blueprint-axis"/>
-                <line x1="1160" y1="120" x2="1160" y2="860" class="blueprint-axis"/>
-
-                <!-- Axis Bubbles Top -->
-                <circle cx="360" cy="110" r="16" stroke="#4A90D9" stroke-width="1.5" fill="#0A1628"/>
-                <text x="360" y="115" text-anchor="middle" class="blueprint-text">A</text>
-
-                <circle cx="720" cy="110" r="16" stroke="#4A90D9" stroke-width="1.5" fill="#0A1628"/>
-                <text x="720" y="115" text-anchor="middle" class="blueprint-text">B</text>
-
-                <circle cx="1160" cy="110" r="16" stroke="#4A90D9" stroke-width="1.5" fill="#0A1628"/>
-                <text x="1160" y="115" text-anchor="middle" class="blueprint-text">C</text>
-
-                <!-- Elevation Markers Left -->
-                <text x="70" y="255" class="blueprint-dim">▲ ROOF SLAB +7.400</text>
-                <line x1="180" y1="250" x2="320" y2="250" stroke="#4A90D9" stroke-width="1" stroke-dasharray="2,3"/>
-
-                <text x="70" y="485" class="blueprint-dim">▲ FFL LEVEL 2 +3.600</text>
-                <line x1="180" y1="480" x2="280" y2="480" stroke="#4A90D9" stroke-width="1" stroke-dasharray="2,3"/>
-
-                <text x="70" y="685" class="blueprint-dim">▼ FFL LEVEL 1 +0.000</text>
-                <line x1="180" y1="680" x2="260" y2="680" stroke="#4A90D9" stroke-width="1" stroke-dasharray="2,3"/>
-
-                <!-- Dimension Strings (Dimension Ticks) -->
-                <!-- Dim A-B (4,200mm) -->
-                <line x1="360" y1="160" x2="720" y2="160" stroke="#4A90D9" stroke-width="1.2"/>
-                <line x1="360" y1="152" x2="360" y2="168" stroke="#4A90D9" stroke-width="1.5"/>
-                <line x1="720" y1="152" x2="720" y2="168" stroke="#4A90D9" stroke-width="1.5"/>
-                <text x="540" y="152" text-anchor="middle" class="blueprint-dim">4,200 mm</text>
-
-                <!-- Dim B-C (8,600mm) -->
-                <line x1="720" y1="160" x2="1160" y2="160" stroke="#4A90D9" stroke-width="1.2"/>
-                <line x1="1160" y1="152" x2="1160" y2="168" stroke="#4A90D9" stroke-width="1.5"/>
-                <text x="940" y="152" text-anchor="middle" class="blueprint-dim">8,600 mm</text>
-
-                <!-- Precise CAD Geometry of Pavilion -->
-                <!-- Pool basin CAD -->
-                <polygon points="200,910 780,850 740,690 260,730" class="blueprint-line" stroke-width="1.5"/>
-                <!-- Pool water depth grid -->
-                <line x1="230" y1="820" x2="760" y2="770" stroke="rgba(74, 144, 217, 0.4)" stroke-dasharray="3,3"/>
-
-                <!-- Ground Floor Pavilion CAD with double walls -->
-                <polygon points="720,680 1220,660 1220,460 720,480" class="blueprint-line" stroke-width="2"/>
-                <!-- Inner offset wall line -->
-                <polygon points="730,670 1210,652 1210,470 730,488" stroke="rgba(74, 144, 217, 0.5)" stroke-width="1" fill="none"/>
-
-                <!-- Columns Crosshairs -->
-                <circle cx="860" cy="575" r="7" stroke="#4A90D9" stroke-width="1.5" fill="#0A1628"/>
-                <line x1="850" y1="575" x2="870" y2="575" stroke="#4A90D9" stroke-width="1"/>
-                <line x1="860" y1="565" x2="860" y2="585" stroke="#4A90D9" stroke-width="1"/>
-
-                <circle cx="980" cy="570" r="7" stroke="#4A90D9" stroke-width="1.5" fill="#0A1628"/>
-                <line x1="970" y1="570" x2="990" y2="570" stroke="#4A90D9" stroke-width="1"/>
-                <line x1="980" y1="560" x2="980" y2="580" stroke="#4A90D9" stroke-width="1"/>
-
-                <circle cx="1100" cy="565" r="7" stroke="#4A90D9" stroke-width="1.5" fill="#0A1628"/>
-                <line x1="1090" y1="565" x2="1110" y2="565" stroke="#4A90D9" stroke-width="1"/>
-                <line x1="1100" y1="555" x2="1100" y2="575" stroke="#4A90D9" stroke-width="1"/>
-
-                <!-- Cantilever Structure CAD -->
-                <polygon points="360,520 720,480 1160,470 780,510" class="blueprint-line" stroke-width="2.2"/>
-                <polygon points="360,290 720,250 1160,260 780,300" class="blueprint-line" stroke-width="2.2"/>
-                <line x1="360" y1="520" x2="360" y2="290" class="blueprint-line" stroke-width="2.2"/>
-                <line x1="720" y1="480" x2="720" y2="250" class="blueprint-line" stroke-width="2.2"/>
-                <line x1="1160" y1="470" x2="1160" y2="260" class="blueprint-line" stroke-width="2.2"/>
-
-                <!-- Structural cross bracing (tension cable schematic) -->
-                <line x1="360" y1="520" x2="720" y2="250" stroke="rgba(74, 144, 217, 0.4)" stroke-dasharray="4,4"/>
-                <line x1="360" y1="290" x2="720" y2="480" stroke="rgba(74, 144, 217, 0.4)" stroke-dasharray="4,4"/>
-
-                <!-- Technical Title Block Lower Right -->
-                <g transform="translate(1120, 840)">
-                  <rect width="400" height="110" fill="#0A1628" stroke="#4A90D9" stroke-width="1.5"/>
-                  <text x="20" y="30" class="blueprint-text" font-weight="bold">LIVING BLUEPRINT STUDIO</text>
-                  <text x="20" y="55" class="blueprint-dim">PROJECT: MODERN COASTAL PAVILION</text>
-                  <text x="20" y="75" class="blueprint-dim">DRAWING: AXONOMETRIC STRUCTURAL FRAME</text>
-                  <text x="20" y="95" class="blueprint-dim">SCALE: 1:100 · STAGE 02 / REV 04</text>
-                </g>
-              </g>
-
-              <!-- ==============================================
-                   STAGE 3: 3D VOLUMETRIC FORM
-                   ============================================== -->
-              <g id="layer-3d" class="hero-layer" opacity="0">
-                <!-- Ground cast shadow polygon (45 deg sun shadow) -->
-                <polygon points="720,680 1280,660 1480,780 940,840 780,850" fill="rgba(26, 25, 22, 0.16)"/>
-                <!-- Cantilever shadow cast over pool water -->
-                <polygon points="360,520 720,480 680,720 280,760" fill="rgba(26, 25, 22, 0.22)"/>
-
-                <!-- Sunken Pool Basin 3D Volume -->
-                <polygon points="200,910 780,850 740,690 260,730" fill="#758C96"/>
-                <!-- Pool water surface -->
-                <polygon points="215,898 765,842 730,700 270,736" fill="#98AFB8"/>
-                <!-- Stepping stones 3D blocks -->
-                <!-- Stone 1 -->
-                <polygon points="290,780 370,765 350,750 270,765" fill="#EAE6DE"/>
-                <polygon points="270,765 290,780 290,790 270,775" fill="#7A756D"/>
-                <polygon points="290,780 370,765 370,775 290,790" fill="#9E988E"/>
-                <!-- Stone 2 -->
-                <polygon points="390,760 470,745 450,730 370,745" fill="#EAE6DE"/>
-                <polygon points="370,745 390,760 390,770 370,755" fill="#7A756D"/>
-                <polygon points="390,760 470,745 470,755 390,770" fill="#9E988E"/>
-                <!-- Stone 3 -->
-                <polygon points="490,740 570,725 550,710 470,725" fill="#EAE6DE"/>
-                <polygon points="470,725 490,740 490,750 470,735" fill="#7A756D"/>
-                <polygon points="490,740 570,725 570,735 490,750" fill="#9E988E"/>
-
-                <!-- Ground Floor Solid Structure & Glass -->
-                <!-- Back solid wall -->
-                <polygon points="720,680 1220,660 1220,460 720,480" fill="#C5BFB2"/>
-                <!-- Glass Curtain Wall (Semi-transparent with 3D reflection strips) -->
-                <polygon points="725,676 1215,657 1215,465 725,483" fill="url(#glass-grad)" stroke="#92A9B2" stroke-width="1"/>
-                <line x1="860" y1="672" x2="860" y2="477" stroke="#2B2A27" stroke-width="3"/>
-                <line x1="980" y1="667" x2="980" y2="472" stroke="#2B2A27" stroke-width="3"/>
-                <line x1="1100" y1="662" x2="1100" y2="467" stroke="#2B2A27" stroke-width="3"/>
-
-                <!-- Cantilever Soffit (Underside in deep architectural shadow) -->
-                <polygon points="360,520 720,480 1160,470 780,510" fill="#6A655B"/>
-
-                <!-- Cantilever Front Facade (in partial shade) -->
-                <polygon points="720,480 1160,470 1160,260 720,250" fill="#BCB6A8"/>
-
-                <!-- Cantilever Left Facade (Catching direct ambient sun) -->
-                <polygon points="360,520 720,480 720,250 360,290" fill="#EFEBE3"/>
-                <!-- Cantilever Glass Balcony/Window -->
-                <polygon points="380,505 700,475 700,290 380,325" fill="url(#glass-grad)" stroke="#A0B8C2" stroke-width="1"/>
-
-                <!-- Upper Roof Slab 3D Volume (Top surface catching pure skylight) -->
-                <!-- Top surface -->
-                <polygon points="320,280 720,240 1200,250 780,200" fill="#FAF7F2" stroke="#D8D2C5" stroke-width="1"/>
-                <!-- Roof front edge thickness -->
-                <polygon points="320,280 720,240 720,250 320,290" fill="#D3CCC0"/>
-                <polygon points="720,240 1200,250 1200,260 720,250" fill="#A8A295"/>
-
-                <!-- 3D coordinate compass watermark in corner -->
-                <g transform="translate(1360, 200)" opacity="0.4">
-                  <line x1="0" y1="0" x2="-40" y2="25" stroke="#1A1916" stroke-width="1.5"/>
-                  <text x="-48" y="32" class="sketch-annotation">X</text>
-                  <line x1="0" y1="0" x2="40" y2="15" stroke="#1A1916" stroke-width="1.5"/>
-                  <text x="45" y="20" class="sketch-annotation">Y</text>
-                  <line x1="0" y1="0" x2="0" y2="-45" stroke="#1A1916" stroke-width="1.5"/>
-                  <text x="-4" y="-50" class="sketch-annotation">Z</text>
-                </g>
-              </g>
-
-              <!-- ==============================================
-                   STAGE 4: TECTONIC REALITY
-                   ============================================== -->
-              <g id="layer-reality" class="hero-layer" opacity="0">
-                <!-- Warm ambient ground plane -->
-                <polygon points="0,680 1600,640 1600,1000 0,1000" fill="#E8E4DC"/>
-
-                <!-- Realistic Pool with Shimmering Water & Caustics -->
-                <!-- Pool coping frame (Honed dark basalt stone) -->
-                <polygon points="190,920 790,855 745,685 250,725" fill="#42413E"/>
-                <!-- Water body -->
-                <polygon points="200,910 780,850 740,690 260,730" fill="url(#pool-shimmer)"/>
-
-                <!-- Submerged pool light glow -->
-                <ellipse cx="480" cy="780" rx="140" ry="40" fill="rgba(195, 235, 245, 0.45)"/>
-
-                <!-- Stepping Stones in Travertine with underwater reflections -->
-                <!-- Step 1 -->
-                <polygon points="290,780 370,765 350,750 270,765" fill="#F0EDE4"/>
-                <polygon points="270,765 290,780 290,788 270,773" fill="#69655D"/>
-                <polygon points="290,780 370,765 370,773 290,788" fill="#8C867B"/>
-                <!-- Step 2 -->
-                <polygon points="390,760 470,745 450,730 370,745" fill="#F0EDE4"/>
-                <polygon points="370,745 390,760 390,768 370,753" fill="#69655D"/>
-                <polygon points="390,760 470,745 470,753 390,768" fill="#8C867B"/>
-                <!-- Step 3 -->
-                <polygon points="490,740 570,725 550,710 470,725" fill="#F0EDE4"/>
-                <polygon points="470,725 490,740 490,748 470,733" fill="#69655D"/>
-                <polygon points="490,740 570,725 570,733 490,748" fill="#8C867B"/>
-
-                <!-- Ground Floor Travertine Stone Masonry Wall -->
-                <polygon points="720,680 1220,660 1220,460 720,480" fill="url(#travertine-bands)"/>
-
-                <!-- Interior Living Room Ambient Warm Glow (Inside Panoramic Glass) -->
-                <rect x="730" y="480" width="480" height="190" fill="url(#interior-glow)" opacity="0.85"/>
-                <!-- Interior furniture silhouettes inside pavilion -->
-                <rect x="880" y="620" width="120" height="35" rx="3" fill="#3D372E" opacity="0.8"/>
-                <circle cx="1060" cy="540" r="14" fill="#FFE094" opacity="0.95"/> <!-- Warm pendant sphere -->
-
-                <!-- Ground Floor High-Transparency Glass Screen -->
-                <polygon points="725,676 1215,657 1215,465 725,483" fill="url(#glass-grad)" opacity="0.65"/>
-                <!-- Architectural Bronze Columns -->
-                <line x1="860" y1="672" x2="860" y2="477" stroke="#383024" stroke-width="4"/>
-                <line x1="980" y1="667" x2="980" y2="472" stroke="#383024" stroke-width="4"/>
-                <line x1="1100" y1="662" x2="1100" y2="467" stroke="#383024" stroke-width="4"/>
-
-                <!-- Cantilever Volume with Rich Natural Teak Wood Louvers -->
-                <!-- Underside soffit (smoked oak) -->
-                <polygon points="360,520 720,480 1160,470 780,510" fill="#4A3824"/>
-                <!-- Front facade louvers -->
-                <polygon points="720,480 1160,470 1160,260 720,250" fill="url(#teak-louvers)"/>
-
-                <!-- Left Master Bedroom Cantilever Facade -->
-                <polygon points="360,520 720,480 720,250 360,290" fill="#E6DFD4"/>
-                <!-- Recessed panoramic glass with warm bedroom lighting -->
-                <polygon points="380,505 700,475 700,290 380,325" fill="url(#interior-glow)" opacity="0.75"/>
-                <polygon points="380,505 700,475 700,290 380,325" fill="url(#glass-grad)" opacity="0.75"/>
-
-                <!-- Ultra-thin cantilever roof plate with bronze fascia -->
-                <polygon points="320,280 720,240 1200,250 780,200" fill="#FAF8F5"/>
-                <polygon points="320,280 720,240 720,248 320,288" fill="#8A6C44"/> <!-- Warm bronze fascia edge -->
-                <polygon points="720,240 1200,250 1200,258 720,248" fill="#5E482C"/>
-
-                <!-- Landscape: Mature Architectural Japanese/Đà Lạt Pine Tree -->
-                <g class="pine-tree-realistic">
-                  <!-- Trunk -->
-                  <path d="M 170 750 Q 155 580 178 400" stroke="#3D2F22" stroke-width="9" stroke-linecap="round" fill="none"/>
-                  <path d="M 178 400 Q 120 380 90 420" stroke="#3D2F22" stroke-width="4.5" stroke-linecap="round" fill="none"/>
-                  <path d="M 175 440 Q 230 420 260 450" stroke="#3D2F22" stroke-width="4.5" stroke-linecap="round" fill="none"/>
-
-                  <!-- Textured Pine Needle Tufts -->
-                  <ellipse cx="85" cy="415" rx="45" ry="18" fill="#2E4230"/>
-                  <ellipse cx="140" cy="385" rx="55" ry="22" fill="#3D543F"/>
-                  <ellipse cx="260" cy="445" rx="48" ry="20" fill="#283A2A"/>
-                  <ellipse cx="200" cy="360" rx="42" ry="16" fill="#4B634E"/>
-                  <ellipse cx="120" cy="470" rx="38" ry="15" fill="#344837"/>
-
-                  <!-- Warm landscape up-light at tree base -->
-                  <circle cx="165" cy="745" r="4" fill="#FFE2A0"/>
-                  <path d="M 165 745 L 120 540 L 210 540 Z" fill="rgba(255, 226, 160, 0.12)"/>
-                </g>
-              </g>
-            </svg>
-          </div>
-
-          <!-- Bottom HUD Bar: Progress Fill & Scroll Down Prompt -->
-          <div class="hero-cinematic__bottom-bar">
-            <div class="hero-bottom-bar__progress-track" aria-hidden="true">
-              <div class="hero-bottom-bar__progress-fill"></div>
-            </div>
-
-            <div class="hero-bottom-bar__prompt">
-              <span>Cuộn để dựng hình</span>
-              <span class="hero-bottom-bar__prompt-arrow" aria-hidden="true">&darr;</span>
-            </div>
-          </div>
-
-          <!-- Stage 4 Grand Title Reveal Overlay -->
-          <div class="hero-stage4-reveal" aria-hidden="true">
-            <div class="hero-stage4-reveal__inner">
-              <p class="hero-stage4-reveal__kicker" data-content-key="home.heroKicker">LIVING BLUEPRINT · PORTFOLIO KIẾN TRÚC SƯ CÁ NHÂN</p>
-              <h2 class="hero-stage4-reveal__title" data-content-key="home.heroTitle">Từ Nét Vẽ Đến Không Gian Sống</h2>
-              <p class="hero-stage4-reveal__desc" data-content-key="home.heroDesc">
-                Hành trình kiến tạo từ nét phác thảo ý niệm đến không gian cư ngụ tĩnh tại. Biệt thự pavilion, kiến trúc đương đại và ánh sáng tự nhiên.
-              </p>
-              <span data-content-key="home.heroNotice" style="display: block; font-family: var(--font-mono); font-size: 0.7rem; color: var(--color-accent); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1.25rem;">
-                * Minh họa ý niệm kiến trúc (Demo Visualization)
-              </span>
-              <a href="#featured-works" class="hero-stage4-reveal__cta" data-cursor="view" data-cursor-label="XEM">
+        <div class="container hero-home__container">
+          <div class="hero-home__content">
+            <span class="hero-home__kicker" data-content-key="home.heroKicker">LIVING BLUEPRINT · PORTFOLIO KIẾN TRÚC SƯ CÁ NHÂN</span>
+            <h1 class="hero-home__title" data-content-key="home.heroTitle">Từ Nét Vẽ Đến Không Gian Sống</h1>
+            <p class="hero-home__desc" data-content-key="home.heroDesc">
+              Hành trình kiến tạo từ nét phác thảo ý niệm đến không gian cư ngụ tĩnh tại. Biệt thự pavilion, kiến trúc đương đại và ánh sáng tự nhiên.
+            </p>
+            <div class="hero-home__actions">
+              <a href="#featured-works" class="hero-home__cta" data-cursor="view" data-cursor-label="XEM">
                 <span data-content-key="home.heroCta">Khám phá công trình tiêu biểu</span>
                 <span aria-hidden="true">&darr;</span>
               </a>
+              <a href="projects.html" class="hero-home__secondary-cta">
+                <span>Xem toàn bộ 8 đồ án &rarr;</span>
+              </a>
             </div>
+            <span class="hero-home__notice" data-content-key="home.heroNotice">
+              * Minh họa ý niệm kiến trúc (Demo Visualization)
+            </span>
           </div>
+        </div>
 
-        </div><!-- .hero-cinematic__sticky -->
+        <!-- Scroll down indicator -->
+        <a href="#featured-works" class="hero-home__scroll-prompt" aria-label="Cuộn xuống xem công trình">
+          <span class="hero-home__scroll-line"></span>
+          <span>Khám phá</span>
+        </a>
       </section>
 
       <!-- ========================================================

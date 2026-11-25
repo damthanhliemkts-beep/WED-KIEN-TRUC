@@ -53,6 +53,14 @@ class VisualEditor {
     // 4. Lắng nghe phím tắt & sự kiện
     this.setupEventListeners();
 
+    // 5. Tự động kích hoạt chế độ chỉnh sửa nếu có param ?edit=1 trên URL
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('edit') === '1') {
+      setTimeout(() => {
+        if (!this.isEditMode) this.toggleEditMode();
+      }, 250);
+    }
+
     console.info('%c[Living Blueprint Editor]%c: Đã sẵn sàng. Nhấn Ctrl+E để chỉnh sửa TẤT CẢ nội dung.', 'color:#A8865C; font-weight:600;', 'color:#9E9A93;');
   }
 
@@ -497,29 +505,38 @@ class VisualEditor {
       }
     }
 
-    // 0b. Ảnh bìa hoàn thiện trên trang chủ (Home Hero Reality Layer)
-    const homeHero = document.querySelector('.hero-cinematic');
+    // 0b. Ảnh bìa trên trang chủ (Home Hero Banner & Reality Layer)
+    const homeHero = document.querySelector('.hero-home') || document.querySelector('.hero-cinematic');
     if (homeHero && !homeHero.querySelector('.lb-hero-action-bar')) {
       const homeBar = document.createElement('div');
       homeBar.className = 'lb-hero-action-bar';
       homeBar.innerHTML = `
-        <button type="button" class="lb-card-btn lb-card-btn--img" title="Thay đổi ảnh bìa giai đoạn hoàn thiện của trang chủ">
+        <button type="button" class="lb-card-btn lb-card-btn--img" title="Thay đổi ảnh bìa trang chủ">
           <span>📷</span><span>Đổi ảnh bìa trang chủ</span>
         </button>
       `;
       const homeBtn = homeBar.querySelector('button');
-      homeBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
+      const triggerHomeHeroEdit = (e) => {
+        if (e) {
+          e.preventDefault();
+          e.stopPropagation();
+        }
         const currentHeroCover = this.activeContent?.home?.heroCoverImage || '';
         this.openImagePickerModal({
-          title: 'Ảnh Bìa Hoàn Thiện Trang Chủ',
+          title: 'Ảnh Bìa Trang Chủ',
           currentImage: currentHeroCover,
           onApply: async (newUrl) => {
             this.setContentValue('home.heroCoverImage', newUrl);
+            const cleanCover = newUrl.startsWith('url') ? newUrl : `url('${newUrl}')`;
+
+            const homeHeroBg = document.getElementById('home-hero-bg') || document.querySelector('.hero-home__bg');
+            if (homeHeroBg) {
+              homeHeroBg.style.backgroundImage = cleanCover;
+              homeHeroBg.style.backgroundSize = 'cover';
+              homeHeroBg.style.backgroundPosition = 'center';
+            }
             const heroRealityBg = document.querySelector('.hero-cinematic__bg-reality');
             if (heroRealityBg) {
-              const cleanCover = newUrl.startsWith('url') ? newUrl : `url('${newUrl}')`;
               heroRealityBg.style.backgroundImage = `radial-gradient(circle at 65% 35%, rgba(200, 169, 122, 0.25) 0%, transparent 65%), linear-gradient(to bottom, rgba(26,25,22,0.45) 0%, rgba(26,25,22,0.7) 100%), ${cleanCover}`;
               heroRealityBg.style.backgroundSize = 'cover';
               heroRealityBg.style.backgroundPosition = 'center';
@@ -529,8 +546,23 @@ class VisualEditor {
             this.showToast('Đã đổi ảnh bìa trang chủ thành công!', 'success');
           }
         });
-      });
+      };
+
+      homeBtn.addEventListener('click', triggerHomeHeroEdit);
       homeHero.appendChild(homeBar);
+
+      // Cho phép bấm trực tiếp vào nền ảnh bìa khi ở chế độ chỉnh sửa
+      const homeBgEl = document.getElementById('home-hero-bg') || document.querySelector('.hero-home__bg');
+      if (homeBgEl && !homeBgEl._lbBound) {
+        homeBgEl.style.cursor = 'pointer';
+        homeBgEl.addEventListener('click', (e) => {
+          if (this.isEditMode) {
+            if (e.target.closest('.hero-home__content, button, a, .lb-dock, .lb-modal')) return;
+            triggerHomeHeroEdit(e);
+          }
+        });
+        homeBgEl._lbBound = true;
+      }
     }
 
     // 1. Thẻ dự án (trên projects.html và index.html)
@@ -2140,12 +2172,12 @@ class VisualEditor {
 
         <!-- Khung Ảnh bìa trang chủ -->
         <div class="lb-form-group lb-form-grid--full" style="background: rgba(0,0,0,0.25); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 14px;">
-          <label class="lb-form-label" style="margin-bottom: 8px; display: block;">Ảnh bìa trang chủ (Giai đoạn hoàn thiện của thang đổi ảnh)</label>
+          <label class="lb-form-label" style="margin-bottom: 8px; display: block;">Ảnh bìa trang chủ (Hero Banner)</label>
           <div style="display: flex; align-items: center; gap: 16px;">
             <div id="ss-hero-preview" style="width: 100px; height: 60px; border-radius: 6px; background-size: cover; background-position: center; border: 1px solid rgba(255,255,255,0.15); background-image: url('${workingHeroCover}');"></div>
             <div style="display: flex; flex-direction: column; gap: 8px;">
               <button type="button" class="lb-btn" id="ss-change-hero-btn"><span>📷</span><span>Đổi ảnh bìa trang chủ</span></button>
-              <span style="font-size: 11px; color: #8C8881;">Ảnh sẽ xuất hiện ở Giai đoạn 4: Hoàn thiện thực tế trong thang cuộn cinematic.</span>
+              <span style="font-size: 11px; color: #8C8881;">Ảnh bìa kiến trúc hiển thị nổi bật tại đầu trang chủ của website.</span>
             </div>
           </div>
         </div>
@@ -2255,6 +2287,11 @@ class VisualEditor {
         el.src = workingLogoUrl;
       });
 
+      const homeHeroBg = document.getElementById('home-hero-bg') || document.querySelector('.hero-home__bg');
+      if (homeHeroBg && workingHeroCover) {
+        const cleanCover = workingHeroCover.startsWith('url') ? workingHeroCover : `url('${workingHeroCover}')`;
+        homeHeroBg.style.backgroundImage = cleanCover;
+      }
       const heroRealityBg = document.querySelector('.hero-cinematic__bg-reality');
       if (heroRealityBg && workingHeroCover) {
         const cleanCover = workingHeroCover.startsWith('url') ? workingHeroCover : `url('${workingHeroCover}')`;
